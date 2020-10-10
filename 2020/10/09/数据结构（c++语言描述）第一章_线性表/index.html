@@ -6,15 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hexo</title>
+  <title>数据结构（c++语言描述）第一章 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="什么是线性表？ 线性表是最基本、最简单、也是最常用的一种数据结构。线性表（linear list）是数据结构的一种，一个线性表是n个具有相同特性的数据元素的有限序列。 线性表中数据元素之间的关系是一对一的关系，即除了第一个和最后一个数据元素之外，其它数据元素都是首尾相接的（注意，这句话只适用大部分线性表，而不是全部。比如，循环链表逻辑层次上也是一种线性表（存储层次上属于链式存储，但是把最后一个数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构（c++语言描述）第一章">
+<meta property="og:url" content="http://example.com/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="什么是线性表？ 线性表是最基本、最简单、也是最常用的一种数据结构。线性表（linear list）是数据结构的一种，一个线性表是n个具有相同特性的数据元素的有限序列。 线性表中数据元素之间的关系是一对一的关系，即除了第一个和最后一个数据元素之外，其它数据元素都是首尾相接的（注意，这句话只适用大部分线性表，而不是全部。比如，循环链表逻辑层次上也是一种线性表（存储层次上属于链式存储，但是把最后一个数据">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E6%A8%A1%E6%9D%BF%E6%B5%8B%E8%AF%95.png">
+<meta property="og:image" content="http://example.com/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E6%9F%A5%E9%87%8D%E5%B9%B6%E5%88%A0%E9%99%A4.png">
+<meta property="og:image" content="http://example.com/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/%E5%8D%95%E9%93%BE%E8%A1%A8%E6%A8%A1%E6%9D%BF%E6%B5%8B%E8%AF%95.png">
+<meta property="og:image" content="http://example.com/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E9%80%92%E5%A2%9E%E8%BE%93%E5%87%BA.png">
+<meta property="article:published_time" content="2020-10-09T04:50:46.000Z">
+<meta property="article:modified_time" content="2020-10-09T07:14:16.114Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E6%A8%A1%E6%9D%BF%E6%B5%8B%E8%AF%95.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,181 +159,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-数据结构（c++语言描述）第二章_栈和队列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-数据结构（c++语言描述）第一章_线性表" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">队列</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" class="archive-article-date">
-  	<time datetime="2020-10-09T05:56:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="栈与队列"><a href="#栈与队列" class="headerlink" title="栈与队列:"></a>栈与队列:</h2><h3 id="什么是栈-zhan-？"><a href="#什么是栈-zhan-？" class="headerlink" title="什么是栈(zhan)？"></a>什么是栈(zhan)？</h3><blockquote>
-<p>栈是只能在一段进行插入或删除的线性表。允许插入，删除的一端称为栈顶，另一端称为栈底。当栈中没有元素时称为空栈。</p>
-<p>栈有插入和删除两个主要操作，插入称为入栈（压栈），删除称为出栈（弹栈）</p>
-<p>栈的主要特点是后进先出</p>
-</blockquote>
-<p>当有n个元素按照某种顺序压入栈中，且可以在任意时刻弹出时，所获得可能的出栈序列个数可用<code> Catalan</code>列计算，即 1/n+1 *(Cn 2n)   C是排列组合符号。（这个公式不知道怎么打。。。还是拍个图吧）</p>
-<p><img src="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/%E5%85%AC%E5%BC%8F.png"></p>
-<h4 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h4><p>栈是操作受限的线性表，因此线性表那一套操作也可以拿来用</p>
-<p>顺序存储方式存放的栈称为顺序栈</p>
-<p>顺序栈的类模板声明如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">class SeqStack&#123;</span><br><span class="line">	T data[MaxSize];             &#x2F;&#x2F;存放栈元素</span><br><span class="line">	int  top;                    &#x2F;&#x2F;栈顶指针，指栈顶元素在数组的下标    栈空时 top&#x3D;&#x3D;-1,栈满时 top&#x3D;&#x3D;MaxSize-1 </span><br><span class="line">public:</span><br><span class="line">	SeqStack();					&#x2F;&#x2F;构造函数</span><br><span class="line">	void Push(T x);				&#x2F;&#x2F;入栈</span><br><span class="line">	T Pop();					&#x2F;&#x2F;出栈</span><br><span class="line">	T Top();					&#x2F;&#x2F;取栈顶元素（并不出栈）</span><br><span class="line">	bool Empty();				&#x2F;&#x2F;判断栈是否为空 </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>模板函数的实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T,int MaxSize&gt;                       &#x2F;&#x2F;初始化 </span><br><span class="line">SeqStack&lt;T,MaxSize&gt;::SeqStack()&#123;</span><br><span class="line">	top &#x3D; -1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;                     </span><br><span class="line">void SeqStack&lt;T,MaxSize&gt;::Push(T x)&#123;</span><br><span class="line">	if (top&#x3D;&#x3D;MaxSize-1)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;上溢&quot;;</span><br><span class="line">		exit(1); </span><br><span class="line">	&#125;</span><br><span class="line">	top++;</span><br><span class="line">	data[top]&#x3D;x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;   </span><br><span class="line">T SeqStack&lt;T,MaxSize&gt;::Pop()&#123;</span><br><span class="line">	if(top&#x3D;&#x3D;-1)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;下溢&quot;;</span><br><span class="line">		exit(1); </span><br><span class="line">	&#125;</span><br><span class="line">	T x&#x3D;data[top];</span><br><span class="line">	top--;</span><br><span class="line">	return x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;   </span><br><span class="line">T SeqStack&lt;T,MaxSize&gt;::Top()&#123;</span><br><span class="line">	if(top&#x3D;&#x3D;-1)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;下溢&quot;;</span><br><span class="line">		exit(1); </span><br><span class="line">	&#125;</span><br><span class="line">	return data[top];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;   </span><br><span class="line">bool SeqStack&lt;T,MaxSize&gt;::Empty()&#123;</span><br><span class="line">	return top&#x3D;&#x3D;-1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>测试所用的主函数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">	SeqStack&lt;int,5&gt;s;</span><br><span class="line">	s.Push(1);</span><br><span class="line">	s.Push(3);</span><br><span class="line">	s.Push(5);</span><br><span class="line">	s.Push(7);</span><br><span class="line">	s.Push(9);</span><br><span class="line">	cout&lt;&lt;s.Empty()&lt;&lt;&quot;\t&quot;&lt;&lt;&quot;判断是否为空表 &quot;&lt;&lt;endl;          &#x2F;&#x2F;判断是否为空表 </span><br><span class="line">	cout&lt;&lt;s.Top()&lt;&lt;&quot;\t&quot;&lt;&lt;&quot;取栈顶&quot;&lt;&lt;endl;			&#x2F;&#x2F;取栈顶 </span><br><span class="line">	cout&lt;&lt;s.Pop()&lt;&lt;&quot;\t&quot;&lt;&lt;&quot;出栈 &quot;&lt;&lt;endl;			&#x2F;&#x2F;出栈 </span><br><span class="line">	cout&lt;&lt;s.Top()&lt;&lt;&quot;\t&quot;&lt;&lt;&quot;取栈顶 &quot;&lt;&lt;endl;			&#x2F;&#x2F;取栈顶 </span><br><span class="line">	return 0;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p>输出结果:</p>
-<p><img src="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/%E6%A0%88%E6%A8%A1%E6%9D%BF.png"></p>
-<p>顺序栈暂时写这么多。</p>
-<h4 id="链栈"><a href="#链栈" class="headerlink" title="链栈"></a>链栈</h4><p>利用链接存储方式实现的栈叫做链栈</p>
-<p>链栈的实质是不带头结点的单链表</p>
-<p>结点的定义如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T&gt;</span><br><span class="line">struct Node&#123;</span><br><span class="line">	T data;             &#x2F;&#x2F;数据域 </span><br><span class="line">	Node&lt;T&gt; *next;      &#x2F;&#x2F;指针域</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>下面给出单链表的类模板：</p>
-<p>链栈的类模板声明如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T&gt;</span><br><span class="line">class LinkStack&#123;</span><br><span class="line">	Node&lt;T&gt; *top;     &#x2F;&#x2F;栈顶指针</span><br><span class="line">public:</span><br><span class="line">	LinkStack();		&#x2F;&#x2F;构造函数</span><br><span class="line">	~LinkStack();        &#x2F;&#x2F;析构函数  </span><br><span class="line">	void Push(T x);           &#x2F;&#x2F;入栈</span><br><span class="line">	T Pop();                   &#x2F;&#x2F;出栈</span><br><span class="line">	T Top();                     &#x2F;&#x2F;取栈顶元素（并不出栈）</span><br><span class="line">	bool Empty();               &#x2F;&#x2F;判断栈是否为空 </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>具体实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T&gt;</span><br><span class="line">LinkStack&lt;T&gt;::LinkStack()&#123;</span><br><span class="line">	top&#x3D;NULL;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">void LinkStack&lt;T&gt;::Push(T x)&#123;</span><br><span class="line">	Node&lt;T&gt; *s&#x3D;new Node&lt;T&gt;;</span><br><span class="line">	s-&gt;data&#x3D;x;</span><br><span class="line">	s-&gt;next&#x3D;top;</span><br><span class="line">	top&#x3D;s;            &#x2F;&#x2F;将节点s插在栈顶 </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">T LinkStack&lt;T&gt;::Pop()&#123;</span><br><span class="line">	if(top&#x3D;&#x3D;NULL)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;下溢&quot;;</span><br><span class="line">		exit(1);</span><br><span class="line">	&#125;</span><br><span class="line">	T x&#x3D;top-&gt;data;</span><br><span class="line">	Node&lt;T&gt; *p&#x3D;top;</span><br><span class="line">	top&#x3D;top-&gt;next;</span><br><span class="line">	delete p;</span><br><span class="line">	return x;</span><br><span class="line">&#125;</span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">T LinkStack&lt;T&gt;::Top()&#123;</span><br><span class="line">	if(top&#x3D;&#x3D;NULL)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;下溢&quot;;</span><br><span class="line">		exit(1);</span><br><span class="line">	&#125;</span><br><span class="line">	return top-&gt;data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;   </span><br><span class="line">bool LinkStack&lt;T&gt;::Empty()&#123;</span><br><span class="line">	return top&#x3D;&#x3D;NULL;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;  </span><br><span class="line">LinkStack&lt;T&gt;::~LinkStack()&#123;</span><br><span class="line">	Node&lt;T&gt; *p&#x3D;top;</span><br><span class="line">	Node&lt;T&gt; *q;</span><br><span class="line">	while(p)&#123;</span><br><span class="line">		q&#x3D;p;</span><br><span class="line">		p&#x3D;p-&gt;next;</span><br><span class="line">		delete q;</span><br><span class="line">	&#125;</span><br><span class="line">	top&#x3D;NULL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>测试所用的主函数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">	LinkStack&lt;int&gt; s;</span><br><span class="line">	cout&lt;&lt;s.Empty()&lt;&lt;endl;</span><br><span class="line">	s.Push(5);</span><br><span class="line">	cout&lt;&lt;s.Top()&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;s.Pop()&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;s.Pop()&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>输出结果：</p>
-<p><img src="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/%E9%93%BE%E6%A0%88.png"></p>
-<p>链栈暂时写这么多。</p>
-<p>栈也暂时写这么多。</p>
-<hr>
-<h2 id="什么是队列？"><a href="#什么是队列？" class="headerlink" title="什么是队列？"></a>什么是队列？</h2><blockquote>
-<p>队列是一种特殊的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BA%BF%E6%80%A7%E8%A1%A8/3228081">线性表</a>，特殊之处在于它只允许在表的前端（front）进行删除操作，而在表的后端（rear）进行插入操作，和栈一样，队列是一种操作受限制的线性表。进行插入操作的端称为队尾，进行删除操作的端称为队头。</p>
-</blockquote>
-<p>源自百度百科: <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%98%9F%E5%88%97/14580481">https://baike.baidu.com/item/队列/14580481</a></p>
-<p>队列的主要特点是先进先出</p>
-<p>由于队列是 线性表，所以队列也分顺序存储和链式存储，线性表的数据元素类型可以是任意的，因此采用C++模板机制。下面给线性序表的类模板</p>
-<h4 id="队列的顺序存储结构-循环队列"><a href="#队列的顺序存储结构-循环队列" class="headerlink" title="队列的顺序存储结构(循环队列):"></a>队列的顺序存储结构(循环队列):</h4><p>注:</p>
-<p>1.由于队列会出<code> 假溢出</code>现象，因此指针在移动时采取”加一对MaxSize取余“的形式,如</p>
-<p>rear= (rear+1)% MaxSize，front= (front+1)% MaxSize，</p>
-<p>2.判断队是否为空： rear==front</p>
-<p>3.判断队满：     (rear+1)% MaxSize ==front</p>
-<p>类模板的定义：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">class SeqQueue&#123;</span><br><span class="line">	T data[MaxSize];            &#x2F;&#x2F;存放队列元素 </span><br><span class="line">	int front,rear;				&#x2F;&#x2F;队头和队尾指针,队头指针-&gt;队头元素前一个位置下标，，，队尾指针-&gt;队尾元素的下标 </span><br><span class="line">public:	</span><br><span class="line">	SeqQueue();                 &#x2F;&#x2F;构造函数，置空队	 </span><br><span class="line">	void EnQueue(T x);  		&#x2F;&#x2F;将元素x入队 </span><br><span class="line">	T DeQueue();                &#x2F;&#x2F;将队头元素出队</span><br><span class="line">	T GetQueue();               &#x2F;&#x2F;取队头元素（不删除）</span><br><span class="line">	bool Empty();				&#x2F;&#x2F;判断队列是否为空 </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>模板函数的实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">SeqQueue&lt;T,MaxSize&gt;::SeqQueue()&#123;</span><br><span class="line">	front&#x3D;rear&#x3D;0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">void SeqQueue&lt;T,MaxSize&gt;::EnQueue(T x)&#123;</span><br><span class="line">	if((rear+1)%MaxSize&#x3D;&#x3D;front)                &#x2F;&#x2F;判断队列是否满了 </span><br><span class="line">	&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;上溢&quot;;</span><br><span class="line">		exit(1); </span><br><span class="line">	&#125;</span><br><span class="line">	rear&#x3D;(rear+1) % MaxSize;                    &#x2F;&#x2F;防止假上溢 </span><br><span class="line">	data[rear]&#x3D;x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">T SeqQueue&lt;T,MaxSize&gt;::DeQueue()&#123;</span><br><span class="line">	if(rear&#x3D;&#x3D;front)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;下溢&quot;;</span><br><span class="line">		exit(1); </span><br><span class="line">	&#125;</span><br><span class="line">	front&#x3D;(front+1)%MaxSize;</span><br><span class="line">	return data[front];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">T SeqQueue&lt;T,MaxSize&gt;::GetQueue()&#123;</span><br><span class="line">	if(rear&#x3D;&#x3D;front)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;下溢&quot;;</span><br><span class="line">		exit(1); </span><br><span class="line">	&#125;</span><br><span class="line">	return data[front+1];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">bool SeqQueue&lt;T,MaxSize&gt;::Empty()&#123;</span><br><span class="line">	return rear&#x3D;&#x3D;front;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>测试所用的主函数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">	SeqQueue&lt;int,10&gt; s;</span><br><span class="line">	s.EnQueue(1);</span><br><span class="line">	s.EnQueue(3);</span><br><span class="line">	cout&lt;&lt;s.DeQueue()&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;s.GetQueue()&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;s.Empty()&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果:</p>
-<p><img src="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8.png"></p>
-<h4 id="队列的链式存储结构-链队列"><a href="#队列的链式存储结构-链队列" class="headerlink" title="队列的链式存储结构(链队列):"></a>队列的链式存储结构(链队列):</h4><p>链式存储还是要用到结点，结点的定义如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">struct Node&#123;</span><br><span class="line">	T data;             &#x2F;&#x2F;数据域 </span><br><span class="line">	Node&lt;T&gt; *next;      &#x2F;&#x2F;指针域 </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>为了操作方便，队头指针-&gt;链表头结点，队尾指针-&gt;链表尾结点</p>
-<p>类模板的定义：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T&gt;</span><br><span class="line">class LinkQueue&#123;</span><br><span class="line">	Node&lt;T&gt; *front,*rear;     </span><br><span class="line">public:</span><br><span class="line">	LinkQueue();		&#x2F;&#x2F;构造函数，初始化空链队列</span><br><span class="line">	~LinkQueue();        &#x2F;&#x2F;析构函数  </span><br><span class="line">	void EnQueue(T x);           &#x2F;&#x2F;将元素如队 </span><br><span class="line">	T DeQueue();                &#x2F;&#x2F;将队头元素出队</span><br><span class="line">	T GetQueue();  				&#x2F;&#x2F;&#x2F;&#x2F;取队头元素（不删除） </span><br><span class="line">	bool Empty();               &#x2F;&#x2F;判断队列是否为空 </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>模板函数的实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T&gt;</span><br><span class="line">LinkQueue&lt;T&gt;::LinkQueue()&#123;</span><br><span class="line">	Node&lt;T&gt; *s&#x3D;new Node&lt;T&gt;;</span><br><span class="line">	s-&gt;next&#x3D;NULL;</span><br><span class="line">	front&#x3D;rear&#x3D;s; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">void LinkQueue&lt;T&gt;::EnQueue(T x)&#123;</span><br><span class="line">	Node&lt;T&gt; *s&#x3D;new Node&lt;T&gt;;</span><br><span class="line">	s-&gt;data&#x3D;x;</span><br><span class="line">	s-&gt;next&#x3D;NULL;</span><br><span class="line">	rear-&gt;next&#x3D;s;</span><br><span class="line">	rear&#x3D;s;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">T LinkQueue&lt;T&gt;::DeQueue()&#123;</span><br><span class="line">	if(rear&#x3D;&#x3D;front)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;下溢&quot;;</span><br><span class="line">		exit(1);</span><br><span class="line">	&#125;</span><br><span class="line">	Node&lt;T&gt; *s&#x3D;new Node&lt;T&gt;;</span><br><span class="line">	s&#x3D;front-&gt;next;</span><br><span class="line">	T x&#x3D;s-&gt;data;</span><br><span class="line">	front&#x3D;front-&gt;next;</span><br><span class="line">	if(s-&gt;next&#x3D;&#x3D;NULL)&#123;</span><br><span class="line">		rear&#x3D;front;	</span><br><span class="line">	&#125;</span><br><span class="line">	delete s;</span><br><span class="line">	return x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">T LinkQueue&lt;T&gt;::GetQueue()&#123;</span><br><span class="line">	</span><br><span class="line">	return front-&gt;next-&gt;data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">bool LinkQueue&lt;T&gt;::Empty()&#123;</span><br><span class="line">	return rear&#x3D;&#x3D;front;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">LinkQueue&lt;T&gt;::~LinkQueue()&#123;</span><br><span class="line">	Node&lt;T&gt; *p&#x3D;new Node&lt;T&gt;;</span><br><span class="line">	p&#x3D;front-&gt;next;</span><br><span class="line">	Node&lt;T&gt; *q;</span><br><span class="line">	while(p)&#123;</span><br><span class="line">		q&#x3D;p;</span><br><span class="line">		p&#x3D;p-&gt;next;</span><br><span class="line">		delete p;</span><br><span class="line">	&#125;</span><br><span class="line">	front&#x3D;rear&#x3D;NULL;</span><br><span class="line">	cout&lt;&lt;&quot;析构完成&quot;&lt;&lt;endl; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>测试所用的主函数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">	LinkQueue&lt;int&gt;  s;</span><br><span class="line">	s.EnQueue(1);</span><br><span class="line">	s.EnQueue(3);</span><br><span class="line">	s.EnQueue(5);</span><br><span class="line">	cout&lt;&lt;s.GetQueue()&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;s.DeQueue()&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;s.Empty()&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;s.GetQueue()&lt;&lt;endl;</span><br><span class="line">	s.~LinkQueue();</span><br><span class="line">	cout&lt;&lt;s.Empty();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果:</p>
-<p><img src="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/%E9%93%BE%E9%98%9F%E5%88%97.png"></p>
-<p>链队列暂时写这么多。</p>
-<p>队列也暂时写这么多。</p>
-<hr>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>终于写完了栈和队列。。。写栈和队列要对线性表熟悉，栈和队列的许多操作和思想在线性表中都能找到，栈和队列要注意指针的位置以及判断“满”或者”空“的条件</p>
-<h5 id="对于顺序栈："><a href="#对于顺序栈：" class="headerlink" title="对于顺序栈："></a>对于顺序栈：</h5><p>栈顶指针top，指栈顶元素在数组的下标    栈空时 top==-1,栈满时 top==MaxSize-1 。</p>
-<h5 id="对于链栈："><a href="#对于链栈：" class="headerlink" title="对于链栈："></a>对于链栈：</h5><p>队头指针-&gt;链表头结点，队尾指针-&gt;链表尾结点。</p>
-<p>链栈为空： top==-1 。</p>
-<h5 id="对于循环队列"><a href="#对于循环队列" class="headerlink" title="对于循环队列:"></a>对于循环队列:</h5><p>1.由于队列会出<code> 假溢出</code>现象，因此指针在移动时采取”加一对MaxSize取余“的形式,如</p>
-<p>rear= (rear+1)% MaxSize，front= (front+1)% MaxSize，</p>
-<p>2.判断队是否为空： rear==front</p>
-<p>3.判断队满：     (rear+1)% MaxSize ==front</p>
-<h5 id="链队列："><a href="#链队列：" class="headerlink" title="链队列："></a>链队列：</h5><p>队头指针-&gt;链表头结点，队尾指针-&gt;链表尾结点。</p>
-<p>如果有头结点，则链队列的判空条件为rear == front;</p>
-<p>如果没有头结点，则判空条件为rear == NULL 或者front == NULL;但是不能用rear == front。</p>
-<p>第三章总算结束了。。。总结这个还是挺费时间的，不过也值得，这让我更加了解和熟悉了对栈和队列。</p>
-<p>如果有任何的问题和建议可以联系我。</p>
-<hr>
-<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数据结构（c++语言描述）第一章_线性表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/">数据结构（c++语言描述）第一章</a>
+    <h1 class="article-title" itemprop="name">
+      数据结构（c++语言描述）第一章
     </h1>
   
 
@@ -438,6 +280,27 @@ public:
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -445,16 +308,84 @@ public:
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          队列
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Markdown简介，基本语法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -474,428 +405,14 @@ public:
 
 
 
-
   
-    <article id="post-Markdown简介，基本语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">Markdown简介，基本语法</a>
-    </h1>
   
 
-        
-        <a href="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-10-08T14:47:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Markdown-介绍"><a href="#Markdown-介绍" class="headerlink" title="Markdown 介绍"></a>Markdown 介绍</h1><hr>
-<h2 id="Markdown-是什么？"><a href="#Markdown-是什么？" class="headerlink" title="Markdown 是什么？"></a>Markdown 是什么？</h2><blockquote>
-<p>Markdown是一种<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/52671915">轻量级标记语言</a>，创始人为约翰·格鲁伯（英语：John Gruber）。 它允许人们使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML（或者HTML）文档。这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。</p>
-<p>出自百度百科 ： <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/markdown/3245829?fr=aladdin">https://baike.baidu.com/item/markdown/3245829?fr=aladdin</a></p>
-</blockquote>
-<p>对我而言，Markdown就是一个方便我写博客的一个工具。</p>
-<hr>
-<h2 id="Markdown的基本语法"><a href="#Markdown的基本语法" class="headerlink" title="Markdown的基本语法"></a>Markdown的基本语法</h2><h3 id="1-超链接"><a href="#1-超链接" class="headerlink" title="1.超链接"></a>1.超链接</h3><p>这个内容用的比较多，我放到前面来说</p>
-<p>超链接能做到点击文字跳转网址的效果，插入图片（图片引用）等也要用到超链接</p>
-<p>超链接的使用方法：<br>方括号+小括号 【】（），注意字符都要英文状态</p>
-<p>“()”中写入网址即可</p>
-<p>而插入图片需要在超链接的基础上加入”！”即可，即！【】（）。 注意字符都要英文状态</p>
-<p>插入图片还要做些准备工作，具体：</p>
-<p>转载：<a target="_blank" rel="noopener" href="https://www.dazhuanlan.com/2020/03/07/5e633d07bdf47/?__cf_chl_jschl_tk__=c3e9f0e4ce8dc45c7c5f6ddcca7faac38472e034-1602170388-0-AUVr7pFytMavQtiIUGT-Ei6YycDNjzVkiE4avVuTaFpUxjDebrrIf9LD_wCYP6kdIg69xXUeInEWPq0oioW4IJAnoyKUAobEgrNKxbuXj_Yd_hujwKWsf0Sft81Qbx4AHCMG-pM16x6oSLHAOhd8k7sewd2CUbzb1rN1qgFeoh5_VHiuQFqn1PEuPl17wMqx4A7IlANvc9QvrMmRgNJEzqJRiApM-NvjfXSxmr9swcseqXgBD9gzqdKP0ww3tEukaLHi3f5wJmEsUX2xhh3ZmOcQWvRZw9ss_DtgV61ilaCFKfIIgu5uCF2U-JYkePkr2Q">SGHYXP的博客</a></p>
-<p>超链接暂时就写这么多，以后有需要用到别的超链接了再写</p>
-<p>文本链接：</p>
-<p><a href="zaroku0312.github.io" title="我的博客">我的博客</a></p>
-<p>插入本地图片：</p>
-<p><img src="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/%E9%AD%823.jpg"></p>
-<p>插入网络图片：</p>
-<p><img src="https://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA&step_word=&hs=0&pn=1&spn=0&di=11220&pi=0&rn=1&tn=baiduimagedetail&is=0,0&istype=0&ie=utf-8&oe=utf-8&in=&cl=2&lm=-1&st=undefined&cs=2762516417,1589137703&os=17973078,3989723247&simid=3446011292,185616932&adpicid=0&lpn=0&ln=1634&fr=&fmq=1602169406654_R&fm=&ic=undefined&s=undefined&hd=undefined&latest=undefined&copyright=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&ist=&jit=&cg=&bdtype=0&oriquery=&objurl=http://img4q.duitang.com/uploads/item/201307/06/20130706150649_vPECX.jpeg&fromurl=ippr_z2C$qAzdH3FAzdH3Fooo_z&e3B17tpwg2_z&e3Bv54AzdH3Frj5rsjAzdH3F4ks52AzdH3Fb9c9al8aAzdH3F1jpwtsAzdH3F&gsm=2&rpstart=0&rpnum=0&islist=&querylist=&force=undefined" alt="进击的巨人"></p>
-<p>代码如下：</p>
-<p><img src="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/%E8%B6%85%E9%93%BE%E6%8E%A5.png"></p>
-<hr>
-<h3 id="2-标题"><a href="#2-标题" class="headerlink" title="2.标题"></a>2.标题</h3><p>在文本前面加上 # 即可，# 为一级标题， ## 为二级标题，以此类推，总共六层，一级标题最大，六级标题最小，要注意 # 必须是要英文状态。</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><p>代码如下：</p>
-<p><img src="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/%E8%B6%85%E9%93%BE%E6%8E%A5.png"></p>
-<hr>
-<h3 id="3-字体"><a href="#3-字体" class="headerlink" title="3.字体"></a>3.字体</h3><p>Markdown可以使用的字体如下：</p>
-<p><em>斜体文本</em></p>
-<p> <em>斜体文本</em> </p>
-<p><strong>粗体文本</strong> </p>
-<p><strong>粗体文本</strong> </p>
-<p><strong><em>粗斜体文本</em></strong> </p>
-<p><strong><em>粗斜体文本</em></strong></p>
-<p><img src="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/%E5%AD%97%E4%BD%93.png"></p>
-<p>给字体加点“特技”，具体实现对照代码看</p>
-<p><del>测试字体</del></p>
-<p><u>测试字体</u></p>
-<p>脚注  <a href="%E6%AC%A2%E8%BF%8E%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2">^ 测试字体</a></p>
-<p><img src="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/%E5%AD%97%E4%BD%93.png"></p>
-<hr>
-<h3 id="4-区块和代码"><a href="#4-区块和代码" class="headerlink" title="4.区块和代码"></a>4.区块和代码</h3><p>区块使用方法：字体前加入”&gt;”即可</p>
-<p>如：</p>
-<blockquote>
-<p>我的博客</p>
-<p>Zaroku0312.github.io</p>
-</blockquote>
-<p>区块中间可以进行嵌套：</p>
-<blockquote>
-<p>最外层</p>
-<blockquote>
-<p>第一层嵌套</p>
-<blockquote>
-<p>第二层嵌套</p>
-<blockquote>
-<p>第三层嵌套</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>代码如下</p>
-<p><img src="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/%E5%8C%BA%E5%9D%97.png"></p>
-<p>关于代码</p>
-<p>单句的代码用两个 ` 包含起来（在TAB上面英文状态）</p>
-<p>如：<code>return 0;</code></p>
-<p>多行代码可以用代码区块</p>
-<p> 用一个TAB键即可    </p>
-<pre><code>#include&lt;stdio.h&gt;
-int main()&#123;
-    printf(&quot;Hello World!&quot;);
-    return 0;
-&#125;</code></pre>
-<hr>
-<p>关于Markdown常用的语法就写这么多，更多Markdown语法可参考<a target="_blank" rel="noopener" href="https://www.runoob.com/markdown/md-tutorial.html">菜鸟教程</a></p>
-<hr>
-<p>不知道为啥，我的区块居然显示不出来QAQ导致了文章排版好像出现了错误</p>
-<p>这是我在Markdowm上的显示</p>
-<p><img src="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/%E9%94%99%E8%AF%AF.jpg"></p>
-<p>百度了一下也没百度个结果出来</p>
-<p>还有就是插入的网络图片也不会显示，下次有机会我在找找看如何解决把。</p>
-<hr>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-关于PC登陆博客404" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/07/%E5%85%B3%E4%BA%8EPC%E7%99%BB%E9%99%86%E5%8D%9A%E5%AE%A2404/">关于PC登陆博客404（拒绝访问）</a>
-    </h1>
   
 
-        
-        <a href="/2020/10/07/%E5%85%B3%E4%BA%8EPC%E7%99%BB%E9%99%86%E5%8D%9A%E5%AE%A2404/" class="archive-article-date">
-  	<time datetime="2020-10-07T15:33:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> 百度了许久，一开始还以为是哪里的设置出现了问题才导致的，后来又有人说是局域网的问题，也有人说是个人的网络的问题，寻求了众多的方法都并未解决，其实以上种种方法都是“错误”的，其实并不是我个人的问题，近几个月挺多人都表示在PC上登陆不进去，其实是网站出了问题。。。大部分人和我以同样方法搭载博客的人都出现了不能或很难登陆的这个问题，等过一阵子希望能大家都能够正常登陆把。</p>
-<hr>
-<p>那么为什么手机又能登陆呢？  这让我百思不得其解，下次有时间我再去找找原因把。</p>
-<hr>
-<p>这次的404让我认识了挺多的。。。   有些网上所谓的方法是不能够全信的，有些可能并没有啥用，可能他们也没有搞懂问题的根源?  不过这次的解决方法也还是有的，就是让自己Ping 通自己的博客网址，就能做到登陆了，当然没有Ping通的当然还是无法访问（怎么有种掩耳盗铃的感觉）</p>
-<p>下次有机会我再写一篇关于Ping的做法把。</p>
-<hr>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/07/%E5%85%B3%E4%BA%8EPC%E7%99%BB%E9%99%86%E5%8D%9A%E5%AE%A2404/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-莫名其妙的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/06/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84%E9%97%AE%E9%A2%98/">莫名其妙的问题</a>
-    </h1>
   
 
-        
-        <a href="/2020/10/06/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-10-06T10:00:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##不知道为什么<br>####我花了一个中午的时间去搭建了hexo,也将它推向了远端（Github），但是！！！<br>####我跪了 QAQ<br>####用手机上登陆我的个人博客还是可以登的，但是我用电脑登却登陆不进去，找了很久我也没有找到是啥原因。。。<br>####我也是醉了<br>####等我找到了解决方法我在写一篇解决方法吧</p>
-<hr>
-<p>#我的博客：<a target="_blank" rel="noopener" href="http://www.zaroku0312.github.io/">www.Zaroku0312.github.io</a> </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/06/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-my-first-post" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/05/my-first-post/">我的第一篇博客</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/05/my-first-post/" class="archive-article-date">
-  	<time datetime="2020-10-05T11:23:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="启程"><a href="#启程" class="headerlink" title="启程"></a>启程</h2><p>我是一个大二的学生<br>在2020年10月的某个假期，我突然意识到了自己好像似乎有那么一点点的咸鱼，在大一，我可以说是以应付方的度过了大一，整天咸鱼在宿舍里，“LOL它不香吗”，“DarkSoulsIII它不香吗”，“Sekiro它不香吗”。。。<br>在大一，我在游戏中荒废里许多的时光，感觉学得的知识好像也并不多。现在看着知乎，B站，贴吧上的各路大神，我不经陷入了沉思：原来我这么菜的吗。。。<br>唉，过去的就当过去了，人总得往前看</p>
-<hr>
-<h2 id="“种一棵树最好的时间是十年前-其次是现在”"><a href="#“种一棵树最好的时间是十年前-其次是现在”" class="headerlink" title="“种一棵树最好的时间是十年前,其次是现在”"></a>“种一棵树最好的时间是十年前,其次是现在”</h2><p>在这几天，我了解一下博客，我决定博客的形式记录下我接下来的学习和成长，也算是记录下自己努力吧。</p>
-<hr>
-<p>这第一篇博客也可以算是个小测试吧，字体排版啥的还没具体去了解，明天还有早课，暂时就写这么多吧。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/05/my-first-post/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/05/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/05/hello-world/" class="archive-article-date">
-  	<time datetime="2020-10-05T11:00:00.008Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/05/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -918,8 +435,8 @@ int main()&#123;
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

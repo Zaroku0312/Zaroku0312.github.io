@@ -152,6 +152,119 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每日leetcode-2-计数质数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/12/%E6%AF%8F%E6%97%A5leetcode-2-%E8%AE%A1%E6%95%B0%E8%B4%A8%E6%95%B0/">每日leetcode-2-计数质数</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/12/%E6%AF%8F%E6%97%A5leetcode-2-%E8%AE%A1%E6%95%B0%E8%B4%A8%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2020-10-12T00:54:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="每日leetcode-2-计数质数"><a href="#每日leetcode-2-计数质数" class="headerlink" title="每日leetcode-2-计数质数"></a>每日leetcode-2-计数质数</h2><p>问题描述:<br>    统计所有小于非负整数 <em><code>n</code></em> 的质数的数量。 0 &lt;= n &lt;= 5 * 10^6         (要注意是小于N)</p>
+<p>示例 1：</p>
+<p>输入：n = 10<br>输出：4<br>解释：小于 10 的质数一共有 4 个, 它们是 2, 3, 5, 7 。</p>
+<p>示例 2：</p>
+<p>输入：n = 0<br>输出：0</p>
+<p>示例 3：</p>
+<p>输入：n = 1<br>输出：0</p>
+<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-primes">https://leetcode-cn.com/problems/count-primes</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<p>答题模板：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int countPrimes(int n) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>解题思路，总结用一个循环，发现一个质数，计数器就++，最后返回计数器</p>
+<p>下面给出我的代码：(简单暴力，但是也超时了。。。。)  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int countPrimes(int n) &#123;</span><br><span class="line">		if(n&lt;3)&#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			int flag&#x3D;0;</span><br><span class="line">			int i,j;</span><br><span class="line">			for(i&#x3D;2;i&lt;n;i++)&#123;</span><br><span class="line">				for(j&#x3D;2;j&lt;i;j++)&#123;</span><br><span class="line">					if(i%j&#x3D;&#x3D;0)&#123;</span><br><span class="line">                        break;</span><br><span class="line">                    &#125;</span><br><span class="line">				&#125;</span><br><span class="line">                if(j&#x3D;&#x3D;i)  flag++;</span><br><span class="line">			&#125;</span><br><span class="line">			return flag;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>写了两个循环，时间复杂度太高了？</p>
+<p>注:这个代码超时了</p>
+<hr>
+<p>接下来我对我的代码进行了一下优化:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int countPrimes(int n) &#123;</span><br><span class="line">		if(n&lt;3)&#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">			int flag&#x3D;1;</span><br><span class="line">			int i,j;</span><br><span class="line">			for(i&#x3D;3;i&lt;n;i++)&#123;</span><br><span class="line">                 if ((i % 2) &#x3D;&#x3D; 0)</span><br><span class="line">                  continue;</span><br><span class="line">                bool sing &#x3D;true;</span><br><span class="line">				for(j&#x3D;3;j*j&lt;&#x3D;i;j+&#x3D;2)&#123;</span><br><span class="line">					if(i%j&#x3D;&#x3D;0)&#123;</span><br><span class="line">                        sing&#x3D;false;</span><br><span class="line">                        break;</span><br><span class="line">                    &#125;</span><br><span class="line">				&#125;</span><br><span class="line">                if(sing)  flag++;</span><br><span class="line">			&#125;</span><br><span class="line">			return flag;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在求质数时，老师教我们采用<code>sqrt(i)</code> 的办法，但是我发现用<code>j*j&lt;=i</code> 会更好，因为采取前一种的话循环时在哪能只能采取<code>j++</code></p>
+<p>而采取第二种方法时候能采取<code>j+=2</code> 能跳过偶数部分，使程序的时间更短，不过采取<code>j+=2</code> 的方式的话前面需要多求一步：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if ((i % 2) &#x3D;&#x3D; 0)</span><br><span class="line">           continue;</span><br></pre></td></tr></table></figure>
+
+<p>经测试，优化后的代码可以通过测试。</p>
+<hr>
+<p>下面让我们看看别人的做法:</p>
+<p>基本思想：我们在进行顺序遍历时，每取得一个数（排除0、1），如果将它所有的倍数（排除0、1、本身）都清除，那么，剩下的数是必为素数。</p>
+<p>这就是的<code>厄拉多塞筛法</code></p>
+<p>下面是别人的代码:</p>
+<p>作者：magicalchao<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-primes/solution/ji-shu-zhi-shu-bao-li-fa-ji-you-hua-shai-fa-ji-you/">https://leetcode-cn.com/problems/count-primes/solution/ji-shu-zhi-shu-bao-li-fa-ji-you-hua-shai-fa-ji-you/</a><br>来源：力扣（LeetCode）</p>
+<p>声明一个长度为最大限制数的布尔数组。用布尔值来区别筛选出的数和质数。</p>
+<p>运用厄拉多塞筛法得代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int countPrimes(int n) &#123;</span><br><span class="line">    int count &#x3D; 0;</span><br><span class="line">    &#x2F;&#x2F;初始默认所有数为质数</span><br><span class="line">    vector&lt;bool&gt; signs(n, true);</span><br><span class="line">    for (int i &#x3D; 2; i &lt; n; i++) &#123;</span><br><span class="line">        if (signs[i]) &#123;</span><br><span class="line">            count++;</span><br><span class="line">            for (int j &#x3D; i + i; j &lt; n; j +&#x3D; i) &#123;</span><br><span class="line">                &#x2F;&#x2F;排除不是质数的数</span><br><span class="line">                signs[j] &#x3D; false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注： <code>vector</code> 是一个容器的类型</p>
+<p>用厄拉多塞筛法能减少运行的时间，但对于这道题还能继续优化:</p>
+<p>运用比特表（Bitmap）算法对筛法进行内存优化：</p>
+<p>作者：magicalchao<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-primes/solution/ji-shu-zhi-shu-bao-li-fa-ji-you-hua-shai-fa-ji-you/">https://leetcode-cn.com/problems/count-primes/solution/ji-shu-zhi-shu-bao-li-fa-ji-you-hua-shai-fa-ji-you/</a><br>来源：力扣（LeetCode）</p>
+<blockquote>
+<p>上面运用厄拉多塞筛法求一定范围内的质数已经十分高效了。然而，我们使用布尔数组标记一个数是否为质数时，每个值都占用了一个字节（Byte）。但是，我们仅需要两个不同的值来表示是否为质数即可。即一个比特（bit）来表示即可（0、1）。如果这样的话，我们便最优可节省八分之七的空间（然而，还得结合代码和实际情况，并不是用了就一定有效果）。</p>
+<p>关于比特表算法在此便简要概述以下（可略过）：</p>
+<p>假如有从 1 至 8 总共八个数。现有一个字节大小的内存空间可供使用（仅供参考，不考虑实际用途及比特算法的最佳用处）。如何将每个数登记下来，并可以随时检查一个数是否存在呢？<br>如果用一个数组表示，即使不考虑数组的内存开销，哪怕用一个 byte 类型的变量记录每一数也将超出内存可使用范围。但是由于每个字节共有八个比特位，则可以用每个比特位来表示每个数字则恰好可以登记完所有的数字。<br>示例：</p>
+<p>登记数字 1 ：0 0 0 0 0 0 0 1<br>登记数字 1、3：0 0 0 0 0 1 0 1<br>登记数字 1、2、3、4、5 ：0 0 0 1 1 1 1 1</p>
+</blockquote>
+<p>下面是他的代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">int countPrimes(int n) &#123;</span><br><span class="line">    int count &#x3D; 0;</span><br><span class="line">    &#x2F;&#x2F;一个 int 变量不知道占多少字节（但请注意，这里采用了常量）</span><br><span class="line">    const int size &#x3D; sizeof(int) * 8;</span><br><span class="line">    vector&lt;int&gt; signs(n &#x2F; size + 1,0);</span><br><span class="line">    for (int i &#x3D; 2; i &lt; n; i++)&#123;</span><br><span class="line">        &#x2F;&#x2F;将元素和需确定得数字经行按位或运算，如果值改变，说明不存在该数字（未登记该数字），则其为质数。</span><br><span class="line">        &#x2F;&#x2F;在C++中，其提供了 bitset 来操作位，在此便不做介绍了。如果用了，可读性肯定会更好。</span><br><span class="line">        &#x2F;&#x2F;(当某个数为 2 的 n 次方时（n为自然数），其 &amp; (n - 1) 所得值将等价于取余运算所得值)</span><br><span class="line">        &#x2F;&#x2F;*如果 x &#x3D; 2^n ，则 x &amp; (n - 1) &#x3D;&#x3D; x % n</span><br><span class="line">        &#x2F;&#x2F;下面判断可以写成</span><br><span class="line">        &#x2F;&#x2F;if ((signs[i &#x2F; size] &amp; (1 &lt;&lt; (i % 32))) &#x3D;&#x3D; 0)</span><br><span class="line">        if ((signs[i &#x2F; size] &amp; (1 &lt;&lt; (i &amp; (size - 1)))) &#x3D;&#x3D; 0)&#123;</span><br><span class="line">            count++;</span><br><span class="line">            for (int j &#x3D; i + i; j &lt; n; j +&#x3D; i)&#123;</span><br><span class="line">                &#x2F;&#x2F;登记该数字</span><br><span class="line">            	signs[j &#x2F; size] |&#x3D; 1 &lt;&lt; (j &amp; (size - 1));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在LeetCode上，比特表（Bitmap）算法后能大量减少运行时间:  运行时间又<code>268 ms</code>减少到了<code>44 ms</code>,太强了。。。</p>
+<p>以上就是本题的全部内容了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/12/%E6%AF%8F%E6%97%A5leetcode-2-%E8%AE%A1%E6%95%B0%E8%B4%A8%E6%95%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-每日leetcode-1-移除链表元素" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -206,7 +319,7 @@
 <hr>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这第一题做的还是花了我挺多时间的，主要是它给定了一个框架，显得不是很自由，而且这个<code>head</code> 并不是头结点着实卡了我很久，第一次就当熟悉熟悉LeetCode了</p>
 <p>通过这题我了解了什么是哨兵结点以及它的主要思想，希望下次遇到类似的问题能想起它来。</p>
-<p>这道题就到这里了，如果你有任何的问题和建议可以练习我。</p>
+<p>这道题就到这里了，如果你有任何的问题和建议可以联系我。</p>
 
       
 
@@ -256,7 +369,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">第二章_栈与队列</a>
+      <a class="article-title" href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">数据结构（c++语言描述）第二章_栈和队列</a>
     </h1>
   
 

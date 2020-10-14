@@ -152,6 +152,140 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每日leetcode-4-2的幂" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/">每日leetcode-4-2的幂</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/" class="archive-article-date">
+  	<time datetime="2020-10-14T06:47:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="2的幂"><a href="#2的幂" class="headerlink" title="2的幂"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/power-of-two/">2的幂</a></h2><p>源自LeetCode:  <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/power-of-two/">https://leetcode-cn.com/problems/power-of-two/</a></p>
+<p>问题描述:</p>
+<p>给定一个整数，编写一个函数来判断它是否是 2 的幂次方。</p>
+<p><strong>示例 1:</strong></p>
+<blockquote>
+<p><strong>输入:</strong> 1 </p>
+<p><strong>输出:</strong> true </p>
+<p><strong>解释:</strong> 2^0 = 1</p>
+</blockquote>
+<p><strong>示例 2:</strong></p>
+<blockquote>
+<p><strong>输入:</strong> 16 </p>
+<p><strong>输出:</strong> true </p>
+<p><strong>解释:</strong> 2^4 = 16</p>
+</blockquote>
+<p><strong>示例 3:</strong></p>
+<blockquote>
+<p><strong>输入:</strong> 218</p>
+<p><strong>输出:</strong> false</p>
+</blockquote>
+<p>题目给出的模板：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPowerOfTwo(int n) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>乍一看好像还挺简单的,写一个循环,就可以搞定了</p>
+<p>下面给出我的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPowerOfTwo(int n) &#123;</span><br><span class="line">    	if(n&#x3D;&#x3D;1) return true;</span><br><span class="line">    	double a&#x3D;2;</span><br><span class="line">		while(1)&#123;</span><br><span class="line">			if(n&#x3D;&#x3D;a) return true;</span><br><span class="line">			if(n&lt;a)	 return false;</span><br><span class="line">			a*&#x3D;2;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，程序中的 <code>a</code>不能是<code>int</code> 类型，范围太小了，因此我采用了<code>double</code> 类型。</p>
+<p>一次就通过了？？？ 就这？</p>
+<p>让我来康康别人是怎么做的把。</p>
+<hr>
+<p>果然LeetCode不会让人失望的，我去解答区，看到的画风是这样的：</p>
+<p><img src="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/1%E8%A1%8C.png"></p>
+<p>我当时的表情是这样的:<br><img src="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/EX.jpg"></p>
+<p>原来是这个题目太弱了，不是我变强了：<br><img src="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/%E5%90%90xie.jpg"></p>
+<p>下面看看他们是怎么做的吧:</p>
+<p>作者：kadgang<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/power-of-two/solution/shi-yong-wei-yun-suan-xiao-ji-qiao-yi-xing-returnj/">https://leetcode-cn.com/problems/power-of-two/solution/shi-yong-wei-yun-suan-xiao-ji-qiao-yi-xing-returnj/</a><br>来源：力扣（LeetCode）</p>
+<blockquote>
+<p>首先拿到这道题可以观察题目。题目要求判断当前整数是否为2的幂。<br>那么首先可以观察一些2的幂的二进制。<br>例：<br>1 = 1;<br>2 = 10;<br>4 = 100;<br>8 = 1000;<br>…<br>是的，所有为2的幂的整数，其二进制均是除了其有效最高位以外全是0的数。也就是说，我们只需要判断这个数是否有除了有效最高位之外还有没有其他的1即可。</p>
+<p>那么这里可以用到一个位运算小技巧：给定一个数n，将n和(n-1)做一次与运算，即可将n的最后一位1去掉</p>
+<p>那么对于所有2的幂，我们将它与它-1后的数做一次与运算，就会将其唯一一位1消去，最后等于0。</p>
+</blockquote>
+<p>如果它等于0，那么就证明它是2的幂了。</p>
+<p>给出代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPowerOfTwo(int n) &#123;</span><br><span class="line">        return n &gt; 0 &amp;&amp; !(n &amp; (n - 1));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>等等，与运算是啥？</p>
+<blockquote>
+<p>“与”运算是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA/140338">计算机</a>中一种<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9F%BA%E6%9C%AC/763181">基本</a>的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97/7224729">逻辑运算</a>方式，符号表示为&amp;，与之相对应的词是“或”，在日常口语交流和书写中一般做关联词。汉语中表示<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%92%8C/1692925">和</a>的意思。</p>
+<h2 id="与运算的用法"><a href="#与运算的用法" class="headerlink" title="与运算的用法"></a>与运算的用法</h2><p>参加运算的两个数据，按二进制位进行“与”运算。</p>
+<p>运算规则：0&amp;0=0;0&amp;1=0;1&amp;0=0;1&amp;1=1;</p>
+<p>即：两位同时为“1”，结果才为“1”，否则为0</p>
+<p>例如：3&amp;5即 0000 0011 &amp; 0000 0101 = 0000 0001因此，3&amp;5的值得1。</p>
+<p>另，负数按补码形式参加按位与运算。</p>
+<p>“与运算”的特殊用途：</p>
+<p>（1）清零。如果想将一个单元清零，即使其全部二进制位为0，只要与一个各位都为零的数值相与，结果为零。</p>
+<p>（2）取一个数中指定位</p>
+<p>方法：找一个数，对应X要取的位，该数的对应位为1，其余位为零，此数与X进行“与运算”可以得到X中的指定位。</p>
+<p>例：设X=10101110，</p>
+<p>取X的第4位，用 X &amp; 0000 1111 = 0000 1110即可得到；</p>
+<p>还可用来取X的2、4、6位。</p>
+</blockquote>
+<p>源自百度百科: <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BD%8D%E8%BF%90%E7%AE%97/6888804?fr=aladdin">https://baike.baidu.com/item/位运算/6888804?fr=aladdin</a></p>
+<blockquote>
+<p>与运算，对应位全是1结果为1，否则为0</p>
+<p>或运算，对应位全是0结果为0，否则为1</p>
+</blockquote>
+<hr>
+<p>感觉自己还是才学疏浅啊。。。通过这题我学到了个<code>与运算</code>，以及<code>与运算</code>的一个性质（给定一个数n，将n和(n-1)做一次与运算，即可将n的最后一位1去掉）</p>
+<p>这道题就暂时到这里了，如果你有什么问题或者建议可以联系我</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-每日leetcode-3-存在重复元素" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1161,81 +1295,10 @@ int main()&#123;
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/05/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/05/hello-world/" class="archive-article-date">
-  	<time datetime="2020-10-05T11:00:00.008Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/05/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 

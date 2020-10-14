@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2020 | Hexo</title>
+  <title>每日leetcode-4-2的幂 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2020/index.html">
+  <meta name="description" content="2的幂源自LeetCode:  https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;power-of-two&#x2F; 问题描述: 给定一个整数，编写一个函数来判断它是否是 2 的幂次方。 示例 1:  输入: 1  输出: true  解释: 2^0 &#x3D; 1  示例 2:  输入: 16  输出: true  解释: 2^4 &#x3D; 16  示例 3:  输入: 218 输出: false">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每日leetcode-4-2的幂">
+<meta property="og:url" content="http://example.com/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="2的幂源自LeetCode:  https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;power-of-two&#x2F; 问题描述: 给定一个整数，编写一个函数来判断它是否是 2 的幂次方。 示例 1:  输入: 1  输出: true  解释: 2^0 &#x3D; 1  示例 2:  输入: 16  输出: true  解释: 2^4 &#x3D; 16  示例 3:  输入: 218 输出: false">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/1%E8%A1%8C.png">
+<meta property="og:image" content="http://example.com/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/EX.jpg">
+<meta property="og:image" content="http://example.com/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/%E5%90%90xie.jpg">
+<meta property="article:published_time" content="2020-10-14T06:47:20.000Z">
+<meta property="article:modified_time" content="2020-10-14T07:38:14.801Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/1%E8%A1%8C.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,295 +158,226 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-每日leetcode-4-2的幂" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      每日leetcode-4-2的幂
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/" class="archive-article-date">
+
+        
+        <a href="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/" class="archive-article-date">
   	<time datetime="2020-10-14T06:47:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-14</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/">每日leetcode-4-2的幂</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="2的幂"><a href="#2的幂" class="headerlink" title="2的幂"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/power-of-two/">2的幂</a></h2><p>源自LeetCode:  <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/power-of-two/">https://leetcode-cn.com/problems/power-of-two/</a></p>
+<p>问题描述:</p>
+<p>给定一个整数，编写一个函数来判断它是否是 2 的幂次方。</p>
+<p><strong>示例 1:</strong></p>
+<blockquote>
+<p><strong>输入:</strong> 1 </p>
+<p><strong>输出:</strong> true </p>
+<p><strong>解释:</strong> 2^0 = 1</p>
+</blockquote>
+<p><strong>示例 2:</strong></p>
+<blockquote>
+<p><strong>输入:</strong> 16 </p>
+<p><strong>输出:</strong> true </p>
+<p><strong>解释:</strong> 2^4 = 16</p>
+</blockquote>
+<p><strong>示例 3:</strong></p>
+<blockquote>
+<p><strong>输入:</strong> 218</p>
+<p><strong>输出:</strong> false</p>
+</blockquote>
+<p>题目给出的模板：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPowerOfTwo(int n) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>乍一看好像还挺简单的,写一个循环,就可以搞定了</p>
+<p>下面给出我的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPowerOfTwo(int n) &#123;</span><br><span class="line">    	if(n&#x3D;&#x3D;1) return true;</span><br><span class="line">    	double a&#x3D;2;</span><br><span class="line">		while(1)&#123;</span><br><span class="line">			if(n&#x3D;&#x3D;a) return true;</span><br><span class="line">			if(n&lt;a)	 return false;</span><br><span class="line">			a*&#x3D;2;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
+<p>需要注意的是，程序中的 <code>a</code>不能是<code>int</code> 类型，范围太小了，因此我采用了<code>double</code> 类型。</p>
+<p>一次就通过了？？？ 就这？</p>
+<p>让我来康康别人是怎么做的把。</p>
+<hr>
+<p>果然LeetCode不会让人失望的，我去解答区，看到的画风是这样的：</p>
+<p><img src="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/1%E8%A1%8C.png"></p>
+<p>我当时的表情是这样的:<br><img src="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/EX.jpg"></p>
+<p>原来是这个题目太弱了，不是我变强了：<br><img src="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/%E5%90%90xie.jpg"></p>
+<p>下面看看他们是怎么做的吧:</p>
+<p>作者：kadgang<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/power-of-two/solution/shi-yong-wei-yun-suan-xiao-ji-qiao-yi-xing-returnj/">https://leetcode-cn.com/problems/power-of-two/solution/shi-yong-wei-yun-suan-xiao-ji-qiao-yi-xing-returnj/</a><br>来源：力扣（LeetCode）</p>
+<blockquote>
+<p>首先拿到这道题可以观察题目。题目要求判断当前整数是否为2的幂。<br>那么首先可以观察一些2的幂的二进制。<br>例：<br>1 = 1;<br>2 = 10;<br>4 = 100;<br>8 = 1000;<br>…<br>是的，所有为2的幂的整数，其二进制均是除了其有效最高位以外全是0的数。也就是说，我们只需要判断这个数是否有除了有效最高位之外还有没有其他的1即可。</p>
+<p>那么这里可以用到一个位运算小技巧：给定一个数n，将n和(n-1)做一次与运算，即可将n的最后一位1去掉</p>
+<p>那么对于所有2的幂，我们将它与它-1后的数做一次与运算，就会将其唯一一位1消去，最后等于0。</p>
+</blockquote>
+<p>如果它等于0，那么就证明它是2的幂了。</p>
+<p>给出代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPowerOfTwo(int n) &#123;</span><br><span class="line">        return n &gt; 0 &amp;&amp; !(n &amp; (n - 1));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>等等，与运算是啥？</p>
+<blockquote>
+<p>“与”运算是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA/140338">计算机</a>中一种<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9F%BA%E6%9C%AC/763181">基本</a>的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97/7224729">逻辑运算</a>方式，符号表示为&amp;，与之相对应的词是“或”，在日常口语交流和书写中一般做关联词。汉语中表示<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%92%8C/1692925">和</a>的意思。</p>
+<h2 id="与运算的用法"><a href="#与运算的用法" class="headerlink" title="与运算的用法"></a>与运算的用法</h2><p>参加运算的两个数据，按二进制位进行“与”运算。</p>
+<p>运算规则：0&amp;0=0;0&amp;1=0;1&amp;0=0;1&amp;1=1;</p>
+<p>即：两位同时为“1”，结果才为“1”，否则为0</p>
+<p>例如：3&amp;5即 0000 0011 &amp; 0000 0101 = 0000 0001因此，3&amp;5的值得1。</p>
+<p>另，负数按补码形式参加按位与运算。</p>
+<p>“与运算”的特殊用途：</p>
+<p>（1）清零。如果想将一个单元清零，即使其全部二进制位为0，只要与一个各位都为零的数值相与，结果为零。</p>
+<p>（2）取一个数中指定位</p>
+<p>方法：找一个数，对应X要取的位，该数的对应位为1，其余位为零，此数与X进行“与运算”可以得到X中的指定位。</p>
+<p>例：设X=10101110，</p>
+<p>取X的第4位，用 X &amp; 0000 1111 = 0000 1110即可得到；</p>
+<p>还可用来取X的2、4、6位。</p>
+</blockquote>
+<p>源自百度百科: <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BD%8D%E8%BF%90%E7%AE%97/6888804?fr=aladdin">https://baike.baidu.com/item/位运算/6888804?fr=aladdin</a></p>
+<blockquote>
+<p>与运算，对应位全是1结果为1，否则为0</p>
+<p>或运算，对应位全是0结果为0，否则为1</p>
+</blockquote>
+<hr>
+<p>感觉自己还是才学疏浅啊。。。通过这题我学到了个<code>与运算</code>，以及<code>与运算</code>的一个性质（给定一个数n，将n和(n-1)做一次与运算，即可将n的最后一位1去掉）</p>
+<p>这道题就暂时到这里了，如果你有什么问题或者建议可以联系我</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/13/%E6%AF%8F%E6%97%A5leetcode-3-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/" class="archive-article-date">
-  	<time datetime="2020-10-13T03:34:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-13</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/10/13/%E6%AF%8F%E6%97%A5leetcode-3-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">每日leetcode-3-存在重复元素</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/13/%E6%AF%8F%E6%97%A5leetcode-3-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/">每日leetcode-3-存在重复元素</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/12/%E6%AF%8F%E6%97%A5leetcode-2-%E8%AE%A1%E6%95%B0%E8%B4%A8%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-10-12T00:54:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/12/%E6%AF%8F%E6%97%A5leetcode-2-%E8%AE%A1%E6%95%B0%E8%B4%A8%E6%95%B0/">每日leetcode-2-计数质数</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/11/%E6%AF%8F%E6%97%A5leetcode-1-%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0/" class="archive-article-date">
-  	<time datetime="2020-10-11T04:51:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/11/%E6%AF%8F%E6%97%A5leetcode-1-%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0/">每日leetcode-1.移除链表元素</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" class="archive-article-date">
-  	<time datetime="2020-10-09T05:56:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">数据结构（c++语言描述）第二章_栈和队列</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2020-10-09T04:50:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/">数据结构（c++语言描述）第一章</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-10-08T14:47:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">Markdown简介，基本语法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/07/%E5%85%B3%E4%BA%8EPC%E7%99%BB%E9%99%86%E5%8D%9A%E5%AE%A2404/" class="archive-article-date">
-  	<time datetime="2020-10-07T15:33:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/07/%E5%85%B3%E4%BA%8EPC%E7%99%BB%E9%99%86%E5%8D%9A%E5%AE%A2404/">关于PC登陆博客404（拒绝访问）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/06/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-10-06T10:00:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/06/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84%E9%97%AE%E9%A2%98/">莫名其妙的问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/05/my-first-post/" class="archive-article-date">
-  	<time datetime="2020-10-05T11:23:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/05/my-first-post/">我的第一篇博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -462,8 +401,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

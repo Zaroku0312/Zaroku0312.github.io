@@ -152,6 +152,378 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数据结构（c++语言描述）第一章_线性表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/">数据结构（c++语言描述）第一章</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/" class="archive-article-date">
+  	<time datetime="2020-10-09T04:50:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是线性表？"><a href="#什么是线性表？" class="headerlink" title="什么是线性表？"></a>什么是线性表？</h2><blockquote>
+<p>线性表是最基本、最简单、也是最常用的一种数据结构。线性表<em>（linear list）</em>是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1450">数据结构</a>的一种，一个线性表是n个具有相同特性的数据元素的有限序列。</p>
+<p>线性表中数据元素之间的关系是一对一的关系，即除了第一个和最后一个数据元素之外，其它数据元素都是首尾相接的（注意，这句话只适用大部分线性表，而不是全部。比如，循环链表逻辑层次上也是一种线性表（存储层次上属于链式存储，但是把最后一个数据元素的尾指针指向了首位结点）。</p>
+</blockquote>
+<p>源自百度百科: <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BA%BF%E6%80%A7%E8%A1%A8/3228081">https://baike.baidu.com/item/线性表/3228081</a></p>
+<hr>
+<h2 id="线性表有两种存储结构-顺序存储和链式存储"><a href="#线性表有两种存储结构-顺序存储和链式存储" class="headerlink" title="线性表有两种存储结构:顺序存储和链式存储"></a>线性表有两种存储结构:顺序存储和链式存储</h2><h3 id="1-顺序存储"><a href="#1-顺序存储" class="headerlink" title="1.顺序存储"></a>1.顺序存储</h3><blockquote>
+<p>顺序表是在计算机内存中以<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E7%BB%84/3794097">数组</a>的形式保存的线性表，线性表的顺序存储是指用一组地址连续的存储单元依次存储线性表中的各个元素、使得线性表中在逻辑结构上相邻的数据元素存储在相邻的物理存储单元中，即通过数据元素物理存储的相邻关系来反映数据元素之间逻辑上的相邻关系，采用顺序存储结构的线性表通常称为顺序表。顺序表是将表中的结点依次存放在计算机内存中一组地址连续的存储单元中。 [1] </p>
+</blockquote>
+<p>源自百度百科: <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%A1%BA%E5%BA%8F%E8%A1%A8/9664274">https://baike.baidu.com/item/顺序表/9664274</a></p>
+<p>由于线性表的数据元素类型可以是任意的，因此采用C++模板机制。下面给出顺序表的类模板</p>
+<p>类模板的定义：</p>
+<pre><code> template &lt;class T,int MaxSize&gt;
+ class SeqList&#123;
+    T data[MaxSize];
+    int length;
+public:
+    SeqList();
+    SeqList(T a[],int n);        
+    int ListLength();            //求表长 
+    T Get(int pos);              //按位查找  取得第pos个元素 
+    int Locate(T item);          //按值查找  求值为 item的元素符号
+    void PrintSeqList();         // 输出
+    void Insert(int i,T item);   //在第i个位置插入值为 item的元素
+    T Delete(int i);             //删除第i个元素
+
+&#125;;</code></pre>
+<p>模板函数的实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">SeqList&lt;T,MaxSize&gt;::SeqList()&#123;</span><br><span class="line">	length &#x3D;0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">SeqList&lt;T,MaxSize&gt;::SeqList(T a[],int n)&#123;</span><br><span class="line">	if(n&gt;MaxSize) &#123; cerr&lt;&lt;&quot;参数非法！&quot;;  exit(1); &#125;</span><br><span class="line">	for(int i&#x3D;0;i&lt;n;i++)&#123; data[i]&#x3D;a[i];&#125;</span><br><span class="line">	length&#x3D;n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">int SeqList&lt;T,MaxSize&gt;::ListLength()&#123;</span><br><span class="line">	return length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">T SeqList&lt;T,MaxSize&gt;::Get(int pos)&#123;</span><br><span class="line">	if(pos&lt;1||pos&gt;length)&#123;cerr&lt;&lt;&quot;参数非法！&quot;;  exit(1); &#125;</span><br><span class="line">	return data[pos-1];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">int SeqList&lt;T,MaxSize&gt;::Locate(T item)&#123;</span><br><span class="line">	for(int i&#x3D;0;i&lt;length;i++)&#123;</span><br><span class="line">		if(data[i]&#x3D;&#x3D;item)&#123; return i+1;	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">void SeqList&lt;T,MaxSize&gt;::PrintSeqList()&#123;</span><br><span class="line">	for(int i&#x3D;0;i&lt;length;i++)&#123;</span><br><span class="line">		cout&lt;&lt;data[i]&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;	</span><br><span class="line">	</span><br><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">void SeqList&lt;T,MaxSize&gt;::Insert(int i,T item)&#123;</span><br><span class="line">	</span><br><span class="line">	if(length &gt;&#x3D; MaxSize)</span><br><span class="line">	&#123;	</span><br><span class="line">		cerr&lt;&lt;&quot;上溢&quot;;</span><br><span class="line">		exit(1);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	if(i&lt;1||i&gt;length+1) </span><br><span class="line">	&#123;	</span><br><span class="line">		cerr&lt;&lt;&quot;插入位置非法&quot;;</span><br><span class="line">		exit(1);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	for(int j&#x3D;length-1;j&gt;&#x3D;i-1;j++)</span><br><span class="line">	&#123;	</span><br><span class="line">		data[j+1]&#x3D;data[j];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	data[i-1]&#x3D;item;</span><br><span class="line">	length++;</span><br><span class="line">&#125;	</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">T SeqList&lt;T,MaxSize&gt;::Delete(int i)&#123;</span><br><span class="line">	</span><br><span class="line">	if(length&#x3D;&#x3D;0)</span><br><span class="line">	&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;下溢&quot;;</span><br><span class="line">		exit(1);	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	if(i&lt;1||i&gt;length)</span><br><span class="line">	&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;删除位置非法！&quot;;</span><br><span class="line">		exit(1); </span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	T x&#x3D;data[i-1];</span><br><span class="line">	for(int j&#x3D;i;j&lt;length;j++)</span><br><span class="line">	&#123;</span><br><span class="line">		data[j-1]&#x3D;data[j];</span><br><span class="line">	&#125;</span><br><span class="line">	length--;</span><br><span class="line">	return x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试所用的主函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">	int main()&#123;</span><br><span class="line">	cout&lt;&lt;&quot;顺序表模板测试！&quot;&lt;&lt;endl;</span><br><span class="line">	int a[]&#x3D;&#123;1,2,3,4,5,6,7,8,9,10&#125;;</span><br><span class="line">	SeqList&lt;int ,1024&gt;  s(a,10);              &#x2F;&#x2F;测试构造函数 </span><br><span class="line">	cout&lt;&lt;s.Get(3)&lt;&lt;endl;					  &#x2F;&#x2F;测试   Get </span><br><span class="line">&#x2F;&#x2F;	s.PrintSeqList();						  &#x2F;&#x2F;测试   输出 </span><br><span class="line">	cout&lt;&lt;s.ListLength()&lt;&lt;endl;             &#x2F;&#x2F;求表长 </span><br><span class="line">	s.Insert(6,11);   						&#x2F;&#x2F;在第i个位置插入值</span><br><span class="line">	cout&lt;&lt;s.Locate(11)&lt;&lt;endl;               &#x2F;&#x2F;找数值&quot;x&quot;的下标        </span><br><span class="line">	s.Delete(8);							&#x2F;&#x2F;删除第i个元素</span><br><span class="line">	s.PrintSeqList();</span><br><span class="line">	return 0; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>输出结果:</p>
+<p><img src="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E6%A8%A1%E6%9D%BF%E6%B5%8B%E8%AF%95.png"></p>
+<h4 id="扩展："><a href="#扩展：" class="headerlink" title="扩展："></a>扩展：</h4><p>问题描述：</p>
+<blockquote>
+<p>试编写算法，从顺序表中删除所有值重复的元素，使所有元素的值均不同。例如，对于线性表（2，8，9，2，5，5，6，8，7，2），则执行此算法后变为(2，8，9，5，6，7)。注意，表中元素未必是排好序的，且每个值的第一次出现应当保留。</p>
+</blockquote>
+<p>我的代码：(类模板的实现)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">void SeqList&lt;T,MaxSize&gt;::DeleteRepetition()&#123;</span><br><span class="line">	for(int i&#x3D;0;i&lt;length;i++)&#123;</span><br><span class="line">		for(int j&#x3D;1;j&lt;length;)&#123;</span><br><span class="line">			if(data[i]&#x3D;&#x3D;data[j]&amp;&amp;i!&#x3D;j)</span><br><span class="line">			&#123;</span><br><span class="line">				for(int k&#x3D;j;k&lt;length;k++)</span><br><span class="line">				&#123;</span><br><span class="line">					if(k+1&lt;length)</span><br><span class="line">					data[k]&#x3D;data[k+1];</span><br><span class="line">				&#125;</span><br><span class="line">				length--;</span><br><span class="line">			&#125;</span><br><span class="line">			else j++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注，需要在类模板中声明</p>
+<p>测试所用的主函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">	int a[]&#x3D;&#123;2,8,9,2,5,5,6,8,7,2&#125;;</span><br><span class="line">	SeqList&lt;int,1024&gt; s(a,10);</span><br><span class="line">	s.DeleteRepetition();</span><br><span class="line">	s.PrintSeqList();             &#x2F;&#x2F;输出顺序表s </span><br><span class="line">	return 0; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>输出结果:<br><img src="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E6%9F%A5%E9%87%8D%E5%B9%B6%E5%88%A0%E9%99%A4.png"></p>
+<p>顺序表暂时写这么多，如有疑问或者有更好的算法可以联系我。</p>
+<hr>
+<h3 id="2-链式存储"><a href="#2-链式存储" class="headerlink" title="2.链式存储"></a>2.链式存储</h3><blockquote>
+<p>链表是一种物理<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%AD%98%E5%82%A8%E5%8D%95%E5%85%83/8727749">存储单元</a>上非连续、非顺序的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/350782">存储结构</a>，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0/715313">数据元素</a>的逻辑顺序是通过链表中的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%8C%87%E9%92%88/2878304">指针</a>链接次序实现的。链表由一系列结点（链表中每一个元素称为结点）组成，结点可以在运行时动态生成。每个结点包括两个部分：一个是存储<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0">数据元素</a>的数据域，另一个是存储下一个结点地址的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%8C%87%E9%92%88/2878304">指针</a>域。 相比于<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BA%BF%E6%80%A7%E8%A1%A8/3228081">线性表</a><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84/9845234">顺序结构</a>，操作复杂。由于不必须按顺序存储，链表在插入的时候可以达到O(1)的复杂度，比另一种线性表顺序表快得多，但是查找一个节点或者访问特定编号的节点则需要O(n)的时间，而线性表和顺序表相应的时间复杂度分别是O(logn)和O(1)。</p>
+<p>使用链表结构可以克服<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E7%BB%84/3794097">数组</a>链表需要预先知道数据大小的缺点，链表结构可以充分利用计算机内存空间，实现灵活的内存动态管理。但是链表失去了<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E7%BB%84/3794097">数组</a>随机读取的优点，同时链表由于增加了结点的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%8C%87%E9%92%88/2878304">指针</a>域，空间开销比较大。链表最明显的好处就是，常规<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E7%BB%84/3794097">数组</a>排列关联项目的方式可能不同于这些数据项目在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%AE%B0%E5%BF%86%E4%BD%93/3029693">记忆体</a>或<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A3%81%E7%9B%98/2842227">磁盘</a>上顺序，数据的存取往往要在不同的排列顺序中转换。链表允许插入和移除表上任意位置上的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%8A%82%E7%82%B9/865052">节点</a>，但是不允许<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%9A%8F%E6%9C%BA%E5%AD%98%E5%8F%96/4610937">随机存取</a>。链表有很多种不同的类型：<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8/8671935">单向链表</a>，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/2968731">双向链表</a>以及<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8/3228465">循环链表</a>。链表可以在多种编程语言中实现。像Lisp和Scheme这样的语言的内建<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/10997964">数据类型</a>中就包含了链表的存取和操作。程序语言或<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AF%AD%E8%A8%80">面向对象语言</a>，如C,C++和Java依靠易变工具来生成链表。</p>
+</blockquote>
+<p>源自百度百科：<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%93%BE%E8%A1%A8/9794473">https://baike.baidu.com/item/链表/9794473</a></p>
+<p>链式表可以分为单链表，双链表，循环链表</p>
+<p>具体差异大家可以自行百度。</p>
+<p>下面介绍单链表：</p>
+<blockquote>
+<p>单链表是一种链式存取的数据结构，用一组地址任意的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%AD%98%E5%82%A8%E5%8D%95%E5%85%83/8727749">存储单元</a>存放线性表中的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0/715313">数据元素</a>。链表中的数据是以结点来表示的，每个结点的构成：元素(<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0/715313">数据元素</a>的映象) + <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%8C%87%E9%92%88/2878304">指针</a>(指示后继元素存储位置)，元素就是存储数据的存储单元，指针就是连接每个结点的地址数据。</p>
+</blockquote>
+<p>源自百度百科: <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8D%95%E9%93%BE%E8%A1%A8/3228368">https://baike.baidu.com/item/单链表/3228368</a></p>
+<p>单链表创建前首先需要创建链表结点</p>
+<p>单链表结点的定义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">struct Node&#123;</span><br><span class="line">	T data;             &#x2F;&#x2F;数据域    </span><br><span class="line">	Node *next;      &#x2F;&#x2F;链指针域 </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>下面给出单链表的类模板：</p>
+<p>类模板的定义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class LinkList&#123;</span><br><span class="line">	Node &lt;T&gt; *head;        &#x2F;&#x2F;头指针 </span><br><span class="line">public:</span><br><span class="line">	LinkList();            &#x2F;&#x2F;建立带有头节点的空链表</span><br><span class="line">	LinkList(T a[],int n); &#x2F;&#x2F;建立有n个元素的单链表</span><br><span class="line">	~LinkList();           &#x2F;&#x2F;析构函数</span><br><span class="line">	int LinkLength();		&#x2F;&#x2F;算长度</span><br><span class="line">	T Get(int pos);         &#x2F;&#x2F;按位查找 </span><br><span class="line">	int Locate(T item);     &#x2F;&#x2F;按值查找</span><br><span class="line">	void PrinLinkList();    &#x2F;&#x2F;输出表内容</span><br><span class="line">	void Insert(int i,T item); &#x2F;&#x2F;在第i个节点插入 item；</span><br><span class="line">	T Delete(int i);           &#x2F;&#x2F;删除第i个节点</span><br><span class="line">	void Invert();             &#x2F;&#x2F;逆置单链表 </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>具体实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T&gt;</span><br><span class="line">LinkList&lt;T&gt;::LinkList()&#123;</span><br><span class="line">	head&#x3D;new Node &lt;T&gt;;</span><br><span class="line">	head-&gt;next&#x3D;NULL;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">LinkList&lt;T&gt;::LinkList(T a[],int n)&#123;</span><br><span class="line">	head&#x3D;new Node&lt;T&gt;;</span><br><span class="line">	Node&lt;T&gt; *rear&#x3D;head;</span><br><span class="line">	Node&lt;T&gt; *s;</span><br><span class="line">	for(int i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">		s&#x3D;new Node&lt;T&gt;;</span><br><span class="line">		s-&gt;data&#x3D;a[i];</span><br><span class="line">		rear-&gt;next&#x3D;s;</span><br><span class="line">		rear&#x3D;s;</span><br><span class="line">	&#125;</span><br><span class="line">	rear-&gt;next&#x3D;NULL;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">int LinkList&lt;T&gt;::LinkLength()&#123;</span><br><span class="line">	int num&#x3D;0;</span><br><span class="line">	Node&lt;T&gt; *p&#x3D;head-&gt;next;</span><br><span class="line">	while(p)&#123;</span><br><span class="line">		p&#x3D;p-&gt;next;</span><br><span class="line">		num++;</span><br><span class="line">	&#125;</span><br><span class="line">	return num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">T LinkList&lt;T&gt;::Get(int pos)&#123;</span><br><span class="line">	Node&lt;T&gt; *p &#x3D;head-&gt;next;</span><br><span class="line">	int j&#x3D;1; </span><br><span class="line">	while (p&amp;&amp;j&lt;pos)</span><br><span class="line">	&#123;</span><br><span class="line">		p&#x3D;p-&gt;next;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	if(!p||j&gt;pos)</span><br><span class="line">	&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;查找位置非法&quot;;</span><br><span class="line">		exit(1); </span><br><span class="line">	&#125;</span><br><span class="line">	else return p-&gt;data; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">int LinkList&lt;T&gt;::Locate(T item)&#123;</span><br><span class="line">	Node&lt;T&gt; *p&#x3D;head-&gt;next;</span><br><span class="line">	int j&#x3D;1;</span><br><span class="line">	while(p&amp;&amp;p-&gt;data!&#x3D;item)</span><br><span class="line">	&#123;</span><br><span class="line">		p&#x3D;p-&gt;next;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	if(p)&#123;  return j; &#125;</span><br><span class="line">	else return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">void LinkList&lt;T&gt;::PrinLinkList()&#123;</span><br><span class="line">	Node&lt;T&gt; *p&#x3D;head-&gt;next;</span><br><span class="line">	while(p)&#123;</span><br><span class="line">		cout&lt;&lt;p-&gt;data&lt;&lt;endl;</span><br><span class="line">		p&#x3D;p-&gt;next;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">void LinkList&lt;T&gt;::Insert(int i,T item)&#123;</span><br><span class="line">	Node&lt;T&gt; *p &#x3D;head;</span><br><span class="line">	int j&#x3D;0;</span><br><span class="line">	if(i&lt;1)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;插入位置非法&quot;;</span><br><span class="line">		exit(1); </span><br><span class="line">	&#125;</span><br><span class="line">	while(p&amp;&amp;j&lt;i-1)&#123;</span><br><span class="line">		p&#x3D;p-&gt;next;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	if(!p)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;插入位置非法&quot;;</span><br><span class="line">		exit(1); </span><br><span class="line">	&#125;</span><br><span class="line">	else&#123;</span><br><span class="line">		Node&lt;T&gt; *s&#x3D;new Node&lt;T&gt;;</span><br><span class="line">		s-&gt;data&#x3D;item;</span><br><span class="line">		s-&gt;next&#x3D;p-&gt;next;</span><br><span class="line">		p-&gt;next&#x3D;s;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">T LinkList&lt;T&gt;::Delete(int i)&#123;</span><br><span class="line">	Node&lt;T&gt; *p &#x3D;head;</span><br><span class="line">	int j&#x3D;0;</span><br><span class="line">	while(p&amp;&amp;j&lt;i-1)&#123;</span><br><span class="line">		p&#x3D;p-&gt;next;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	if(!p||!p-&gt;next)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;删除位置非法&quot;;</span><br><span class="line">		exit(1); </span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		Node&lt;T&gt; *q&#x3D;p-&gt;next;</span><br><span class="line">		T x&#x3D;q-&gt;data;</span><br><span class="line">		p-&gt;next&#x3D;q-&gt;next;</span><br><span class="line">		delete q;</span><br><span class="line">		return x;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template&lt;class T&gt;</span><br><span class="line">LinkList&lt;T&gt;::~LinkList()</span><br><span class="line">&#123;</span><br><span class="line">	Node&lt;T&gt; *p&#x3D;head;</span><br><span class="line">	Node&lt;T&gt; *q;</span><br><span class="line">	while(p)&#123;</span><br><span class="line">		q&#x3D;p;</span><br><span class="line">		p&#x3D;p-&gt;next;</span><br><span class="line">		delete q;</span><br><span class="line">	&#125;</span><br><span class="line">	head&#x3D;NULL;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">template&lt;class T&gt;</span><br><span class="line">void LinkList&lt;T&gt;::Invert()&#123;</span><br><span class="line">	Node&lt;T&gt; *p&#x3D;head-&gt;next;</span><br><span class="line">	Node&lt;T&gt; *q;</span><br><span class="line">	head-&gt;next&#x3D;NULL;</span><br><span class="line">	while(p!&#x3D;NULL)&#123;</span><br><span class="line">		q&#x3D;p;</span><br><span class="line">		p&#x3D;p-&gt;next;</span><br><span class="line">		q-&gt;next&#x3D;head-&gt;next;</span><br><span class="line">		head-&gt;next&#x3D;q;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>测试所用的主函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">	cout&lt;&lt;&quot;单链表模板测试！&quot;&lt;&lt;endl;</span><br><span class="line">	int a[]&#x3D;&#123;1,2,3,4,5,6,7,8,9,10&#125;;</span><br><span class="line">	LinkList&lt;int&gt;  s(a,10);              &#x2F;&#x2F;测试构造函数 </span><br><span class="line">	cout&lt;&lt;s.Get(3)&lt;&lt;endl;					  &#x2F;&#x2F;测试   Get </span><br><span class="line">&#x2F;&#x2F;	s.PrinLinkList();					  &#x2F;&#x2F;测试   输出 </span><br><span class="line">	cout&lt;&lt;s.LinkLength()&lt;&lt;endl;             &#x2F;&#x2F;求表长 </span><br><span class="line">	s.Insert(6,11);   						&#x2F;&#x2F;在第i个位置插入值</span><br><span class="line">	cout&lt;&lt;s.Locate(11)&lt;&lt;endl;               &#x2F;&#x2F;找数值&quot;x&quot;的下标        </span><br><span class="line">	s.Delete(8);							&#x2F;&#x2F;删除第i个元素</span><br><span class="line">	s.PrinLinkList();</span><br><span class="line">	return 0;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+
+
+<p>输出结果：</p>
+<p><img src="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/%E5%8D%95%E9%93%BE%E8%A1%A8%E6%A8%A1%E6%9D%BF%E6%B5%8B%E8%AF%95.png"></p>
+<h4 id="扩展：-1"><a href="#扩展：-1" class="headerlink" title="扩展："></a>扩展：</h4><p>问题描述：已知一个无序单链表，表中节点的data字段为正整数。试编写算法按递增次序打印表中节点的值。</p>
+<p>我的代码：(类模板的实现)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">void LinkList&lt;T&gt;::IncreasingOutput()&#123;</span><br><span class="line">	Node&lt;T&gt; *p&#x3D;head-&gt;next;</span><br><span class="line">	T min&#x3D;p-&gt;data;</span><br><span class="line">	T last_min;</span><br><span class="line">	int j&#x3D;0; </span><br><span class="line">	</span><br><span class="line">	int num&#x3D;0;                                        &#x2F;&#x2F;计算表长 </span><br><span class="line">	Node&lt;T&gt; *q&#x3D;head-&gt;next; </span><br><span class="line">	while(q)&#123;</span><br><span class="line">		q&#x3D;q-&gt;next;</span><br><span class="line">		num++;</span><br><span class="line">	&#125; </span><br><span class="line">	</span><br><span class="line">	while(p)&#123;                        	 </span><br><span class="line">		if(min&gt;(p-&gt;data))								&#x2F;&#x2F;找出最小值</span><br><span class="line">		&#123;</span><br><span class="line">			min&#x3D;p-&gt;data;</span><br><span class="line">		&#125;</span><br><span class="line">		p&#x3D;p-&gt;next; </span><br><span class="line">	&#125;</span><br><span class="line">	p&#x3D;head-&gt;next;												&#x2F;&#x2F;重置p 输出链表中全部的最小值 </span><br><span class="line">	while(p)&#123;</span><br><span class="line">		if(min&#x3D;&#x3D;(p-&gt;data))&#123;</span><br><span class="line">			cout&lt;&lt;min&lt;&lt;endl;</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">		p&#x3D;p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	while(j!&#x3D;num)&#123;</span><br><span class="line">			last_min&#x3D;min;                                        &#x2F;&#x2F;last_min保存min</span><br><span class="line">			p&#x3D;head-&gt;next;	</span><br><span class="line">			while(p)&#123;</span><br><span class="line">				if(min&lt;p-&gt;data) </span><br><span class="line">				&#123;</span><br><span class="line">					min&#x3D;p-&gt;data;</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">				p&#x3D;p-&gt;next;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			p&#x3D;head-&gt;next;	</span><br><span class="line">			while(p)&#123;</span><br><span class="line">				if(min&gt;(p-&gt;data)&amp;&amp;(p-&gt;data)&gt;last_min) 				&#x2F;&#x2F;找出链表中大于上一个 min（last_min）的链表中的最小值  </span><br><span class="line">					&#123;</span><br><span class="line">						min&#x3D;p-&gt;data;</span><br><span class="line">					&#125;	</span><br><span class="line">					p&#x3D;p-&gt;next;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			p&#x3D;head-&gt;next;												&#x2F;&#x2F;输出链表中全部的最小值 </span><br><span class="line">			while(p)&#123;</span><br><span class="line">				if(min&#x3D;&#x3D;p-&gt;data)&#123;</span><br><span class="line">					cout&lt;&lt;min&lt;&lt;endl;</span><br><span class="line">					j++; </span><br><span class="line">				&#125;</span><br><span class="line">				p&#x3D;p-&gt;next;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注，同样使用时需要在类模板中定义。</p>
+<p>测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">	int a[]&#x3D;&#123;2,3,6,5,2,6,5,9,60,6,58,3,44,5,8&#125;;</span><br><span class="line">	LinkList&lt;int&gt; s(a,15);</span><br><span class="line">	&#x2F;&#x2F;s.PrinLinkList();</span><br><span class="line">	s.IncreasingOutput();</span><br><span class="line">	return 0;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>测试结果:</p>
+<p><img src="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E9%80%92%E5%A2%9E%E8%BE%93%E5%87%BA.png"></p>
+<p>单链表暂时写这么多，如有疑问或者有更好的算法可以联系我。</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>线性表的顺序表和链式表两种方法各有优劣:顺序表可按序号进行随机访问，但其插入和删除操作由于需要移动表长一半的元素，因此时间复杂度均为O(n)；单链表只能从表头开始依次向后扫描，因此无法按序号进行随机访问，但其插入和删除无需移动顺序，因此在给出单链表某个结点的指针后，其插入和删除操作的时间复杂度均为O(n)。</p>
+<p>如果您有任何疑问和建议可以联系我。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Markdown简介，基本语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">Markdown简介，基本语法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2020-10-08T14:47:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Markdown-介绍"><a href="#Markdown-介绍" class="headerlink" title="Markdown 介绍"></a>Markdown 介绍</h1><hr>
+<h2 id="Markdown-是什么？"><a href="#Markdown-是什么？" class="headerlink" title="Markdown 是什么？"></a>Markdown 是什么？</h2><blockquote>
+<p>Markdown是一种<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/52671915">轻量级标记语言</a>，创始人为约翰·格鲁伯（英语：John Gruber）。 它允许人们使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML（或者HTML）文档。这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。</p>
+<p>出自百度百科 ： <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/markdown/3245829?fr=aladdin">https://baike.baidu.com/item/markdown/3245829?fr=aladdin</a></p>
+</blockquote>
+<p>对我而言，Markdown就是一个方便我写博客的一个工具。</p>
+<hr>
+<h2 id="Markdown的基本语法"><a href="#Markdown的基本语法" class="headerlink" title="Markdown的基本语法"></a>Markdown的基本语法</h2><h3 id="1-超链接"><a href="#1-超链接" class="headerlink" title="1.超链接"></a>1.超链接</h3><p>这个内容用的比较多，我放到前面来说</p>
+<p>超链接能做到点击文字跳转网址的效果，插入图片（图片引用）等也要用到超链接</p>
+<p>超链接的使用方法：<br>方括号+小括号 【】（），注意字符都要英文状态</p>
+<p>“()”中写入网址即可</p>
+<p>而插入图片需要在超链接的基础上加入”！”即可，即！【】（）。 注意字符都要英文状态</p>
+<p>插入图片还要做些准备工作，具体：</p>
+<p>转载：<a target="_blank" rel="noopener" href="https://www.dazhuanlan.com/2020/03/07/5e633d07bdf47/?__cf_chl_jschl_tk__=c3e9f0e4ce8dc45c7c5f6ddcca7faac38472e034-1602170388-0-AUVr7pFytMavQtiIUGT-Ei6YycDNjzVkiE4avVuTaFpUxjDebrrIf9LD_wCYP6kdIg69xXUeInEWPq0oioW4IJAnoyKUAobEgrNKxbuXj_Yd_hujwKWsf0Sft81Qbx4AHCMG-pM16x6oSLHAOhd8k7sewd2CUbzb1rN1qgFeoh5_VHiuQFqn1PEuPl17wMqx4A7IlANvc9QvrMmRgNJEzqJRiApM-NvjfXSxmr9swcseqXgBD9gzqdKP0ww3tEukaLHi3f5wJmEsUX2xhh3ZmOcQWvRZw9ss_DtgV61ilaCFKfIIgu5uCF2U-JYkePkr2Q">SGHYXP的博客</a></p>
+<p>超链接暂时就写这么多，以后有需要用到别的超链接了再写</p>
+<p>文本链接：</p>
+<p><a href="zaroku0312.github.io" title="我的博客">我的博客</a></p>
+<p>插入本地图片：</p>
+<p><img src="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/%E9%AD%823.jpg"></p>
+<p>插入网络图片：</p>
+<p><img src="https://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA&step_word=&hs=0&pn=1&spn=0&di=11220&pi=0&rn=1&tn=baiduimagedetail&is=0,0&istype=0&ie=utf-8&oe=utf-8&in=&cl=2&lm=-1&st=undefined&cs=2762516417,1589137703&os=17973078,3989723247&simid=3446011292,185616932&adpicid=0&lpn=0&ln=1634&fr=&fmq=1602169406654_R&fm=&ic=undefined&s=undefined&hd=undefined&latest=undefined&copyright=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&ist=&jit=&cg=&bdtype=0&oriquery=&objurl=http://img4q.duitang.com/uploads/item/201307/06/20130706150649_vPECX.jpeg&fromurl=ippr_z2C$qAzdH3FAzdH3Fooo_z&e3B17tpwg2_z&e3Bv54AzdH3Frj5rsjAzdH3F4ks52AzdH3Fb9c9al8aAzdH3F1jpwtsAzdH3F&gsm=2&rpstart=0&rpnum=0&islist=&querylist=&force=undefined" alt="进击的巨人"></p>
+<p>代码如下：</p>
+<p><img src="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/%E8%B6%85%E9%93%BE%E6%8E%A5.png"></p>
+<hr>
+<h3 id="2-标题"><a href="#2-标题" class="headerlink" title="2.标题"></a>2.标题</h3><p>在文本前面加上 # 即可，# 为一级标题， ## 为二级标题，以此类推，总共六层，一级标题最大，六级标题最小，要注意 # 必须是要英文状态。</p>
+<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><p>代码如下：</p>
+<p><img src="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/%E8%B6%85%E9%93%BE%E6%8E%A5.png"></p>
+<hr>
+<h3 id="3-字体"><a href="#3-字体" class="headerlink" title="3.字体"></a>3.字体</h3><p>Markdown可以使用的字体如下：</p>
+<p><em>斜体文本</em></p>
+<p> <em>斜体文本</em> </p>
+<p><strong>粗体文本</strong> </p>
+<p><strong>粗体文本</strong> </p>
+<p><strong><em>粗斜体文本</em></strong> </p>
+<p><strong><em>粗斜体文本</em></strong></p>
+<p><img src="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/%E5%AD%97%E4%BD%93.png"></p>
+<p>给字体加点“特技”，具体实现对照代码看</p>
+<p><del>测试字体</del></p>
+<p><u>测试字体</u></p>
+<p>脚注  <a href="%E6%AC%A2%E8%BF%8E%E8%BF%9B%E5%85%A5%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2">^ 测试字体</a></p>
+<p><img src="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/%E5%AD%97%E4%BD%93.png"></p>
+<hr>
+<h3 id="4-区块和代码"><a href="#4-区块和代码" class="headerlink" title="4.区块和代码"></a>4.区块和代码</h3><p>区块使用方法：字体前加入”&gt;”即可</p>
+<p>如：</p>
+<blockquote>
+<p>我的博客</p>
+<p>Zaroku0312.github.io</p>
+</blockquote>
+<p>区块中间可以进行嵌套：</p>
+<blockquote>
+<p>最外层</p>
+<blockquote>
+<p>第一层嵌套</p>
+<blockquote>
+<p>第二层嵌套</p>
+<blockquote>
+<p>第三层嵌套</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>代码如下</p>
+<p><img src="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/%E5%8C%BA%E5%9D%97.png"></p>
+<p>关于代码</p>
+<p>单句的代码用两个 ` 包含起来（在TAB上面英文状态）</p>
+<p>如：<code>return 0;</code></p>
+<p>多行代码可以用代码区块</p>
+<p> 用一个TAB键即可    </p>
+<pre><code>#include&lt;stdio.h&gt;
+int main()&#123;
+    printf(&quot;Hello World!&quot;);
+    return 0;
+&#125;</code></pre>
+<hr>
+<p>关于Markdown常用的语法就写这么多，更多Markdown语法可参考<a target="_blank" rel="noopener" href="https://www.runoob.com/markdown/md-tutorial.html">菜鸟教程</a></p>
+<hr>
+<p>不知道为啥，我的区块居然显示不出来QAQ导致了文章排版好像出现了错误</p>
+<p>这是我在Markdowm上的显示</p>
+<p><img src="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/%E9%94%99%E8%AF%AF.jpg"></p>
+<p>百度了一下也没百度个结果出来</p>
+<p>还有就是插入的网络图片也不会显示，下次有机会我在找找看如何解决把。</p>
+<hr>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-关于PC登陆博客404" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/07/%E5%85%B3%E4%BA%8EPC%E7%99%BB%E9%99%86%E5%8D%9A%E5%AE%A2404/">关于PC登陆博客404（拒绝访问）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/07/%E5%85%B3%E4%BA%8EPC%E7%99%BB%E9%99%86%E5%8D%9A%E5%AE%A2404/" class="archive-article-date">
+  	<time datetime="2020-10-07T15:33:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 百度了许久，一开始还以为是哪里的设置出现了问题才导致的，后来又有人说是局域网的问题，也有人说是个人的网络的问题，寻求了众多的方法都并未解决，其实以上种种方法都是“错误”的，其实并不是我个人的问题，近几个月挺多人都表示在PC上登陆不进去，其实是网站出了问题。。。大部分人和我以同样方法搭载博客的人都出现了不能或很难登陆的这个问题，等过一阵子希望能大家都能够正常登陆把。</p>
+<hr>
+<p>那么为什么手机又能登陆呢？  这让我百思不得其解，下次有时间我再去找找原因把。</p>
+<hr>
+<p>这次的404让我认识了挺多的。。。   有些网上所谓的方法是不能够全信的，有些可能并没有啥用，可能他们也没有搞懂问题的根源?  不过这次的解决方法也还是有的，就是让自己Ping 通自己的博客网址，就能做到登陆了，当然没有Ping通的当然还是无法访问（怎么有种掩耳盗铃的感觉）</p>
+<p>下次有机会我再写一篇关于Ping的做法把。</p>
+<hr>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/07/%E5%85%B3%E4%BA%8EPC%E7%99%BB%E9%99%86%E5%8D%9A%E5%AE%A2404/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-莫名其妙的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

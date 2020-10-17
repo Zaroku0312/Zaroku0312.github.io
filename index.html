@@ -152,6 +152,124 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每日leetcode-7-删除排序数组中的重复项" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/17/%E6%AF%8F%E6%97%A5leetcode-7-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/">每日leetcode-7-删除排序数组中的重复项</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/17/%E6%AF%8F%E6%97%A5leetcode-7-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/" class="archive-article-date">
+  	<time datetime="2020-10-17T05:48:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="删除排序数组中的重复项"><a href="#删除排序数组中的重复项" class="headerlink" title="删除排序数组中的重复项"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">删除排序数组中的重复项</a></h4><p>源自LeetCode:  <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/</a></p>
+<p>问题描述:</p>
+<p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
+<p><strong>示例 1:</strong></p>
+<blockquote>
+<p>给定数组 nums = [1,1,2], </p>
+<p>函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </p>
+<p>你不需要考虑数组中超出新长度后面的元素。</p>
+</blockquote>
+<p> <strong>示例 2:</strong></p>
+<blockquote>
+<p>给定 nums = [0,0,1,1,1,2,2,3,3,4],</p>
+<p>函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</p>
+<p>你不需要考虑数组中超出新长度后面的元素。</p>
+</blockquote>
+<p><strong>说明:</strong></p>
+<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
+<p>请注意，输入数组是以<strong>「引用」</strong>方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
+<blockquote>
+<p>// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝<br>int len = removeDuplicates(nums);</p>
+<p>// 在函数里修改输入数组对于调用者是可见的。<br>// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>for (int i = 0; i &lt; len; i++) {<br>   print(nums[i]);<br>}</p>
+</blockquote>
+<p>题目给出的模板：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeDuplicates(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>乍一看挺简单的，把最后的一个数字相继的提出然后通过依次的乘十累加还原逆序数即可，简单粗暴。</p>
+<p>(注意这是错误答案！！！）</p>
+<p>下面给出我的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int reverse(int x) &#123;</span><br><span class="line">    	if(x&#x3D;&#x3D;0) return 0;</span><br><span class="line">		int s&#x3D;0,t&#x3D;0;</span><br><span class="line">		while(x!&#x3D;0)&#123;</span><br><span class="line">			t&#x3D;x%10;</span><br><span class="line">			x&#x2F;&#x3D;10;</span><br><span class="line">			s&#x3D;s*10+t;</span><br><span class="line">		&#125;</span><br><span class="line">		return s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>错误！！！</p>
+<p><img src="/2020/10/17/%E6%AF%8F%E6%97%A5leetcode-7-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/bolgword/source/_posts/错误.png"></p>
+<p><img src="/2020/10/17/%E6%AF%8F%E6%97%A5leetcode-7-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/bolgword/source/_posts/迷惑.jpg"></p>
+<p>让我们看看<code>int</code> 的取值范围: -2147483648到+2147483647，好比这个测试案例，反转之后的S已经超过<code>int</code> 的最大限制了，按题目要求，溢出的输出0即可。</p>
+<p>下面改进一下我的代码：（加入一个溢出判断即可）因为我是计算完才判断的，所以<code>s</code> 已经溢出了，就很危险，所以要将<code>s</code> 改成<code>long</code> 这样溢出了也无所谓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int reverse(int x) &#123;</span><br><span class="line">    	if(x&#x3D;&#x3D;0) return 0;</span><br><span class="line">		long s&#x3D;0,t&#x3D;0;</span><br><span class="line">		while(x!&#x3D;0)&#123;</span><br><span class="line">			t&#x3D;x%10;</span><br><span class="line">			x&#x2F;&#x3D;10;</span><br><span class="line">			s&#x3D;s*10+t;</span><br><span class="line">		&#125;</span><br><span class="line">		if (s &gt;&#x3D; INT_MAX || s &lt;&#x3D; INT_MIN)</span><br><span class="line">            s &#x3D; 0;</span><br><span class="line">		return s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>本题完成</p>
+<p><img src="/2020/10/17/%E6%AF%8F%E6%97%A5leetcode-7-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/bolgword/source/_posts/完成.png"></p>
+<p>完成是完成了，但是感觉应该有更好的方法做这个。（要不怎么才打败了这么点人。。。）</p>
+<p>让我来康康别人是怎么做的把。</p>
+<hr>
+<p>作者：initial_d-2<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-integer/solution/0ms_ji-jian-_chao-yue-100_yi-dong-_7zheng-shu-fan-/">https://leetcode-cn.com/problems/reverse-integer/solution/0ms_ji-jian-_chao-yue-100_yi-dong-_7zheng-shu-fan-/</a><br>来源：力扣（LeetCode）</p>
+<p>给出代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int reverse(int x) &#123;</span><br><span class="line">        if(x&#x2F;10 &#x3D;&#x3D; 0) return x; &#x2F;&#x2F;平凡情况：若x∈[-9,9]，则直接返回其本身</span><br><span class="line">        int y &#x3D; 0;</span><br><span class="line">        while(x) &#123;</span><br><span class="line">            if(y &gt; INT_MAX&#x2F;10 || y &lt; INT_MIN&#x2F;10) &#x2F;&#x2F;溢出</span><br><span class="line">                return 0;</span><br><span class="line">            y *&#x3D; 10;</span><br><span class="line">            y +&#x3D; x%10; &#x2F;&#x2F;取出x的个位，存入y中对称的位置</span><br><span class="line">            x &#x2F;&#x3D; 10;   &#x2F;&#x2F;去掉x的个位</span><br><span class="line">        &#125;</span><br><span class="line">        return y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>分析: 比我之前的要减少了一个步骤，不用计算出来在判断溢出，而是边计算边判断它是否会溢出，好像也就优化了一点点（亿点点）。</p>
+<p>但是！！！</p>
+<p><img src="/2020/10/17/%E6%AF%8F%E6%97%A5leetcode-7-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/bolgword/source/_posts/0ms.png"></p>
+<p><img src="/2020/10/17/%E6%AF%8F%E6%97%A5leetcode-7-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/bolgword/source/_posts/迷惑.jpg"></p>
+<p>这 <code>0ms</code> 啥意思啊，为啥能减少这么多时间。。。感觉是Leetcode测试点的问题了</p>
+<p>太强了</p>
+<hr>
+<p>这道题就暂时到这里了，如果你有什么问题或者建议可以联系我</p>
+<p>每日一题感觉还是有点累的，今天的事比较多，但也还是坚持写完了这道题，继续加油！！！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/17/%E6%AF%8F%E6%97%A5leetcode-7-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-python学习-01-Days" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -231,7 +349,7 @@
 <p>演示及效果:</p>
 <p><img src="/2020/10/17/python%E5%AD%A6%E4%B9%A0-01-Days/%E4%BD%A9%E5%A5%87.gif"></p>
 <hr>
-<p>Day 1还是比较轻松的，python第一天的学习就到这里吧！</p>
+<p>Day 1还是比较轻松的，python第一天的学习就到这里吧！100天学python，今天是第一天</p>
 
       
 
@@ -1087,103 +1205,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/12/%E6%AF%8F%E6%97%A5leetcode-2-%E8%AE%A1%E6%95%B0%E8%B4%A8%E6%95%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-每日leetcode-1-移除链表元素" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/11/%E6%AF%8F%E6%97%A5leetcode-1-%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0/">每日leetcode-1.移除链表元素</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/11/%E6%AF%8F%E6%97%A5leetcode-1-%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0/" class="archive-article-date">
-  	<time datetime="2020-10-11T04:51:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一直听说刷Leetcode对以后的发展很有帮助，那就从今天开始，每日刷一道leetcode里的题（由于能力有限，暂时就安排每日刷一道，以后说不定能做到每日多道），一天一道，一年就是365道，三年就是1095道！就是说不到3年我就能突破1000道了。。。（想想有点小激动）重在坚持把，其实我也不知道能否坚持下来，毕竟我感觉我的自控能力还是略差的。</p>
-<hr>
-<h2 id="每日leetcode-1-移除链表元素"><a href="#每日leetcode-1-移除链表元素" class="headerlink" title="每日leetcode-1.移除链表元素"></a>每日leetcode-1.移除链表元素</h2><p>源自leetcode :  <a target="_blank" rel="noopener" href="https://leetcode-cn.com/classic/problems/remove-linked-list-elements/description/">https://leetcode-cn.com/classic/problems/remove-linked-list-elements/description/</a></p>
-<p>删除链表中等于给定值<code> val</code>的所有节点.</p>
-<p>示例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 1-&gt;2-&gt;6-&gt;3-&gt;4-&gt;5-&gt;6, val &#x3D; 6</span><br><span class="line">输出: 1-&gt;2-&gt;3-&gt;4-&gt;5</span><br></pre></td></tr></table></figure>
-
-<p>给出的模板:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* removeElements(ListNode* head, int val) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h4><p>历遍一次链表，找到链表中数据域为<code> val</code>的结点，将其“跳过”，再释放它。最后返回链表的头结点即可。</p>
-<p>题目中的<code>head</code>并不是头结点，而是首结点（这是一个大坑)，一般的结点<code>head</code>是不存放元素的，而题目中的<code>head</code> 可能是会被删除掉的，为了保证<code>head</code> 被删除的情况下还能找到”头”</p>
-<p>这里我采用了一个<code>虚拟头结点</code>的做法:  用虚拟头结点来保存第一个结点的地址</p>
-<p>下面给出我的代码: 由于本题是用C++写的，因此“跳过”时还要释放它。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* removeElements(ListNode* head, int val) &#123;</span><br><span class="line">        ListNode *p&#x3D;new ListNode(0);</span><br><span class="line">        p-&gt;next&#x3D;head;</span><br><span class="line">        ListNode *q&#x3D;p;</span><br><span class="line">        while(q-&gt;next!&#x3D;NULL)&#123;</span><br><span class="line">        	if(q-&gt;next-&gt;val&#x3D;&#x3D;val)&#123;</span><br><span class="line">                    ListNode *s&#x3D;q-&gt;next;</span><br><span class="line">					q-&gt;next&#x3D;q-&gt;next-&gt;next;</span><br><span class="line">                    delete s;</span><br><span class="line">			&#125;</span><br><span class="line">            else</span><br><span class="line">        	q&#x3D;q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        return p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>下面来看看官方给的解法：</p>
-<p>一道题目自己解出来还不够，尽量还要去看看别人的解法，说不定你会有新的收获~</p>
-<p>官方给的解法是用<code>哨兵节点</code> </p>
-<p>可以通过哨兵节点去解决它，哨兵节点广泛应用于树和链表中，如伪头、伪尾、标记等，它们是纯功能的，通常不保存任何数据，其主要目的是使链表标准化，如使链表永不为空、永不无头、简化插入和删除。</p>
-<p>在这里哨兵节点将被用于伪头。<br>算法：</p>
-<p>初始化哨兵节点为 ListNode(0) 且设置 sentinel.next = head。<br>初始化两个指针 curr 和 prev 指向当前节点和前继节点。<br>当 curr != nullptr：</p>
-<p>比较当前节点和要删除的节点：</p>
-<p>若当前节点就是要删除的节点：则 prev.next = curr.next。<br>否则设 prve = curr。</p>
-<p>遍历下一个元素：curr = curr.next。</p>
-<p>返回 sentinel.next。</p>
-<p>下面给出它的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">  public:</span><br><span class="line">  ListNode* removeElements(ListNode* head, int val) &#123;</span><br><span class="line">    ListNode* sentinel &#x3D; new ListNode(0);</span><br><span class="line">    sentinel-&gt;next &#x3D; head;</span><br><span class="line"></span><br><span class="line">    ListNode *prev &#x3D; sentinel, *curr &#x3D; head, *toDelete &#x3D; nullptr;</span><br><span class="line">    while (curr !&#x3D; nullptr) &#123;</span><br><span class="line">      if (curr-&gt;val &#x3D;&#x3D; val) &#123;</span><br><span class="line">        prev-&gt;next &#x3D; curr-&gt;next;</span><br><span class="line">        toDelete &#x3D; curr;</span><br><span class="line">      &#125; else prev &#x3D; curr;</span><br><span class="line"></span><br><span class="line">      curr &#x3D; curr-&gt;next;</span><br><span class="line"></span><br><span class="line">      if (toDelete !&#x3D; nullptr) &#123;</span><br><span class="line">        delete toDelete;</span><br><span class="line">        toDelete &#x3D; nullptr;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ListNode *ret &#x3D; sentinel-&gt;next;</span><br><span class="line">    delete sentinel;</span><br><span class="line">    return ret;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>作者：LeetCode<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-linked-list-elements/solution/yi-chu-lian-biao-yuan-su-by-leetcode/">https://leetcode-cn.com/problems/remove-linked-list-elements/solution/yi-chu-lian-biao-yuan-su-by-leetcode/</a><br>来源：力扣（LeetCode）</p>
-<hr>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这第一题做的还是花了我挺多时间的，主要是它给定了一个框架，显得不是很自由，而且这个<code>head</code> 并不是头结点着实卡了我很久，第一次就当熟悉熟悉LeetCode了</p>
-<p>通过这题我了解了什么是哨兵结点以及它的主要思想，希望下次遇到类似的问题能想起它来。</p>
-<p>这道题就到这里了，如果你有任何的问题和建议可以联系我。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/11/%E6%AF%8F%E6%97%A5leetcode-1-%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0/">展开全文 >></a>
         </p>
       
 

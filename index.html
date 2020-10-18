@@ -152,6 +152,134 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每日leetcode-8-最后一个单词的长度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/18/%E6%AF%8F%E6%97%A5leetcode-8-%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E9%95%BF%E5%BA%A6/">每日leetcode-8-最后一个单词的长度</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/18/%E6%AF%8F%E6%97%A5leetcode-8-%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E9%95%BF%E5%BA%A6/" class="archive-article-date">
+  	<time datetime="2020-10-18T05:20:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="最后一个单词的长度"><a href="#最后一个单词的长度" class="headerlink" title="最后一个单词的长度"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/length-of-last-word/">最后一个单词的长度</a></h4><p>源自LeetCode:  <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/length-of-last-word/">https://leetcode-cn.com/problems/length-of-last-word/</a></p>
+<p>问题描述:</p>
+<p>给定一个仅包含大小写字母和空格 ‘ ‘ 的字符串 s，返回其最后一个单词的长度。如果字符串从左向右滚动显示，那么最后一个单词就是最后出现的单词。</p>
+<p>如果不存在最后一个单词，请返回 0 。</p>
+<p>说明：一个单词是指仅由字母组成、不包含任何空格字符的 最大子字符串。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/length-of-last-word">https://leetcode-cn.com/problems/length-of-last-word</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;Hello World&quot;</span><br><span class="line">输出: 5</span><br></pre></td></tr></table></figure>
+
+<p>题目给出的模板：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int lengthOfLastWord(string s) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>乍一看挺简单的，从后往前找空格，找到最后一个单词输出其长度即可</p>
+<p>下面给出我的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int lengthOfLastWord(string s) &#123;</span><br><span class="line">    	int len &#x3D; 0;       &#x2F;&#x2F;记录长度</span><br><span class="line">    	bool flag&#x3D;false;         &#x2F;&#x2F;用来判断是否找到了单词</span><br><span class="line">		for(int i&#x3D;s.length()-1;i&gt;&#x3D;0;i--)&#123;</span><br><span class="line">			if(s[i]&#x3D;&#x3D;&#39; &#39;)&#123;</span><br><span class="line">				if(flag) break;</span><br><span class="line">				continue;         &#x2F;&#x2F;在没找到单词之前遇到空格都是跳过</span><br><span class="line">			&#125;</span><br><span class="line">			len++;                 </span><br><span class="line">			flag&#x3D;true;           &#x2F;&#x2F;不是空格了，就是找到了单词，往前走再找到空格就弹出</span><br><span class="line">		&#125;</span><br><span class="line">		return len;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>让我来康康别人是怎么做的把。</p>
+<hr>
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>作者：xiao-li-ge-6<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/length-of-last-word/solution/c-qiao-yong-stream-da-bai-100-by-xiao-li-ge-6/">https://leetcode-cn.com/problems/length-of-last-word/solution/c-qiao-yong-stream-da-bai-100-by-xiao-li-ge-6/</a><br>来源：力扣（LeetCode）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int lengthOfLastWord(string s) </span><br><span class="line">    &#123;</span><br><span class="line">        istringstream in(s);</span><br><span class="line">        string res;</span><br><span class="line">        while(in&gt;&gt;res);</span><br><span class="line">        return res.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>没见过，容我去百度一下</p>
+<blockquote>
+<p>istringstream是一个类 要用它时要包含<code>&lt;sstream&gt;</code>这个头文件。</p>
+</blockquote>
+<blockquote>
+<p><code>&lt;sstream&gt;</code>库定义了三种类：istringstream、ostringstream和stringstream，分别用来进行流的输入、输出和输入输出操作。</p>
+</blockquote>
+<p>下面举个例子会更容易懂一点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include&lt;iostream&gt;  </span><br><span class="line">#include&lt;sstream&gt;        &#x2F;&#x2F;istringstream 必须包含这个头文件</span><br><span class="line">#include&lt;string&gt;  </span><br><span class="line">using namespace std;  </span><br><span class="line">int main()  </span><br><span class="line">&#123;  </span><br><span class="line">    string str&#x3D;&quot;i am a boy&quot;;  </span><br><span class="line">    istringstream is(str);  </span><br><span class="line">    string s;  </span><br><span class="line">    while(is&gt;&gt;s)  </span><br><span class="line">    &#123;  </span><br><span class="line">        cout&lt;&lt;s&lt;&lt;endl;  </span><br><span class="line">    &#125;  </span><br><span class="line">      </span><br></pre></td></tr></table></figure>
+
+<p>输出:</p>
+<blockquote>
+<p>i</p>
+<p>am</p>
+<p>a</p>
+<p>boy</p>
+</blockquote>
+<p>所以程序中的 <code>res.size()</code>就是返回最后一个单词的长度</p>
+<p>用<code>istringstream</code> 来做带空格的字符串的问题，好像挺不戳的</p>
+<p>具体可看<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_28949185/article/details/102652477">https://blog.csdn.net/weixin_28949185/article/details/102652477</a> （转载）</p>
+<hr>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>作者：zegang-i<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/length-of-last-word/solution/c-stdfind_if-by-zegang-i/">https://leetcode-cn.com/problems/length-of-last-word/solution/c-stdfind_if-by-zegang-i/</a><br>来源：力扣（LeetCode）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int lengthOfLastWord(string s) &#123;</span><br><span class="line">        int rst &#x3D; 0;</span><br><span class="line">        string::reverse_iterator it &#x3D; std::find_if(s.rbegin(), s.rend(), [](char t) &#123; return isalpha(t);&#125;);</span><br><span class="line">        while (it !&#x3D; s.rend() &amp;&amp; isalpha(*it++) &amp;&amp; ++rst);</span><br><span class="line">        &#x2F;&#x2F; for(; it !&#x3D; s.rend(); ++it) &#123;</span><br><span class="line">        &#x2F;&#x2F;     if (isalpha(*it)) &#123;</span><br><span class="line">        &#x2F;&#x2F;         ++rst;</span><br><span class="line">        &#x2F;&#x2F;         continue;</span><br><span class="line">        &#x2F;&#x2F;     &#125;</span><br><span class="line">        &#x2F;&#x2F;     break;</span><br><span class="line">        &#x2F;&#x2F; &#125;       </span><br><span class="line">        return rst;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>容我再去百度一下</p>
+<p>STL的find，find_if函数提供了一种对数组、STL容器进行查找的方法。使用该函数，需 头文件<code>&lt;algorithm&gt;</code></p>
+<p>等我学了STL了再说吧。。。</p>
+<hr>
+<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><p>作者：xiao-fu-zi-1<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/length-of-last-word/solution/c-soeasy-zai-ye-bu-yong-dan-xin-wo-xue-xi-la-by-xi/">https://leetcode-cn.com/problems/length-of-last-word/solution/c-soeasy-zai-ye-bu-yong-dan-xin-wo-xue-xi-la-by-xi/</a><br>来源：力扣（LeetCode）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int lengthOfLastWord(string s) &#123;</span><br><span class="line">        int index &#x3D; s.size() - 1;</span><br><span class="line">        &#x2F;&#x2F; 去后导0</span><br><span class="line">        while (index &gt;&#x3D; 0 &amp;&amp; isspace(s[index])) --index;</span><br><span class="line">        int cnt &#x3D; 0;</span><br><span class="line">        &#x2F;&#x2F; 开始统计</span><br><span class="line">        while (index &gt;&#x3D; 0 &amp;&amp; isalpha(s[index--])) ++cnt;</span><br><span class="line">        return cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>容我去百度一下。。。</p>
+<blockquote>
+<p><code>isspace</code>，是一种计算机用语，主要用于检查参数c是否为空格字符。</p>
+</blockquote>
+<p>好像没啥意义，直接判断它是不是空格不是一样?</p>
+<p>不过学了个<code>isspace</code> 能让程序看上去更高级一点？</p>
+<hr>
+<p>小结:</p>
+<p>1.用<code>istringstream</code> 来做带空格的字符串的问题，好像挺不戳的</p>
+<p>2.STL好像用的挺多的，找个时间再去学吧</p>
+<p>3.<code>isspace</code>可以拿来装杯用</p>
+<p>这道题就暂时到这里了，如果你有什么问题或者建议可以联系我</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/18/%E6%AF%8F%E6%97%A5leetcode-8-%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E9%95%BF%E5%BA%A6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-python学习-02-Days" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1150,130 +1278,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-每日leetcode-3-存在重复元素" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/13/%E6%AF%8F%E6%97%A5leetcode-3-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/">每日leetcode-3-存在重复元素</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/13/%E6%AF%8F%E6%97%A5leetcode-3-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/" class="archive-article-date">
-  	<time datetime="2020-10-13T03:34:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="存在重复元素"><a href="#存在重复元素" class="headerlink" title="存在重复元素"></a>存在重复元素</h2><p>源自LeetCode:  <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/contains-duplicate/">https://leetcode-cn.com/problems/contains-duplicate/</a></p>
-<p>问题描述:</p>
-<p>给定一个整数数组，判断是否存在重复元素。</p>
-<p>如果任意一值在数组中出现至少两次，函数返回 <code>true</code> 。如果数组中每个元素都不相同，则返回 <code>false</code> 。</p>
-<p><strong>示例 1:</strong></p>
-<blockquote>
-<p><strong>输入:</strong> [1,2,3,1] </p>
-<p><strong>输出:</strong> true</p>
-</blockquote>
-<p><strong>示例 2:</strong></p>
-<blockquote>
-<p><strong>输入:</strong> [1,2,3,4] </p>
-<p><strong>输出:</strong> false</p>
-</blockquote>
-<p><strong>示例 3:</strong></p>
-<blockquote>
-<p><strong>输入:</strong> [1,1,1,3,3,4,3,2,4,2] </p>
-<p><strong>输出:</strong> true</p>
-</blockquote>
-<p>题目给出的模板：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool containsDuplicate(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>乍一看好像还挺简单的，历遍数组，发现重复的返回true就是了</p>
-<p>下面给出我的代码：（注：运行超时）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool containsDuplicate(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">		int i,j;</span><br><span class="line">		for(i&#x3D;0;i&lt;nums.size();i++)</span><br><span class="line">		&#123;</span><br><span class="line">			for(j&#x3D;0;j&lt;nums.size();j++)&#123;</span><br><span class="line">				if(i!&#x3D;j&amp;&amp;nums[i]&#x3D;&#x3D;nums[j])</span><br><span class="line">				return true;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>（注：运行超时）</p>
-<p>果不其然，我又跪了。。。</p>
-<p>这样做的确简单粗暴，但想想过程好像是真的很久。</p>
-<p>让我来康康别人是怎么做的把。</p>
-<hr>
-<p>看了一下别人的做法，发现自己啥都看不懂</p>
-<p>那些解法中含有许多我没学过的知识:</p>
-<p>方法一：<code>哈希表</code> </p>
-<p>要利用 <code>哈希表</code> 得学如下内容</p>
-<p>1.容器： <code>vector</code>       关于<code> vector</code> 我在网上找了一篇教程  ：作者： <a target="_blank" rel="noopener" href="https://me.csdn.net/weixin_41743247">会敲代码的地质汪</a>  教程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41743247/article/details/90635931">https://blog.csdn.net/weixin_41743247/article/details/90635931</a></p>
-<p>2.c++的unordered_map </p>
-<p>3.<code>哈希表</code>   哈希表是要搭配容器一起用的 。 通过使用哈希表，我们可以达到在让此题时间复杂度转变成线性时间复杂度解决问题。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool containsDuplicate(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line"></span><br><span class="line">        unordered_map &lt;int,int&gt;mp;</span><br><span class="line">        for(int i:nums)</span><br><span class="line">        &#123;</span><br><span class="line">            mp[i]++;  &#x2F;&#x2F;i对应的value值++</span><br><span class="line">            if(mp[i]&gt;1)     return true;    &#x2F;&#x2F;i对应的value值大于1，则说明存在重复元素  </span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>作者：zrita<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/contains-duplicate/solution/c-sortmapsetsan-chong-fang-fa-jian-ji-yi-dong-z-by/">https://leetcode-cn.com/problems/contains-duplicate/solution/c-sortmapsetsan-chong-fang-fa-jian-ji-yi-dong-z-by/</a><br>来源：力扣（LeetCode）</p>
-<p>方法二： <code>set</code></p>
-<p>1.python的set和c++的unordered_set    要学这就涉及到了 <code>STL</code></p>
-<p>2.STL  :Standard Template Library : ‘标准’模板库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool containsDuplicate(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line"></span><br><span class="line">         return nums.size() &gt; unordered_set&lt;int&gt;(nums.begin(), nums.end()).size(); </span><br><span class="line">         &#x2F;&#x2F;如果原数组的大小&gt;集合的大小，则说明存在重复元素</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>作者：zrita<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/contains-duplicate/solution/c-sortmapsetsan-chong-fang-fa-jian-ji-yi-dong-z-by/">https://leetcode-cn.com/problems/contains-duplicate/solution/c-sortmapsetsan-chong-fang-fa-jian-ji-yi-dong-z-by/</a><br>来源：力扣（LeetCode）</p>
-<p>方法三:利用 <code>sort</code> 排序后再判断</p>
-<p>sort函数包含在头文件为#include<algorithm>的c++标准库中，调用标准库里的排序方法可以实现对数据的排序</algorithm></p>
-<p>2.sort函数的模板有三个参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void sort (RandomAccessIterator first, RandomAccessIterator last, Compare comp);</span><br></pre></td></tr></table></figure>
-
-<p>（1）第一个参数first：是要排序的数组的起始地址。</p>
-<p>（2）第二个参数last：是结束的地址（最后一个数据的后一个数据的地址）</p>
-<p>（3）第三个参数comp是排序的方法：可以是从升序也可是降序。如果第三个参数不写，则默认的排序方法是从小到大排序。</p>
-<p>利用 sort 写的代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool containsDuplicate(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line"></span><br><span class="line">       sort(nums.begin(),nums.end());</span><br><span class="line">        for(int i&#x3D;1;i&lt;nums.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(nums[i]&#x3D;&#x3D;nums[i-1])</span><br><span class="line">                return true;</span><br><span class="line">        &#125; </span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>作者：zrita<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/contains-duplicate/solution/c-sortmapsetsan-chong-fang-fa-jian-ji-yi-dong-z-by/">https://leetcode-cn.com/problems/contains-duplicate/solution/c-sortmapsetsan-chong-fang-fa-jian-ji-yi-dong-z-by/</a><br>来源：力扣（LeetCode）</p>
-<p>至于 <code>nums.begin(),nums.end()</code> 是啥?   这就要去学<code>vector</code> 了。。。。。</p>
-<hr>
-<p>感觉自己还是个小萌新哈哈，又要去学多点东西了,通过这题我发现了还有那么多要学的东西，继续努力把~</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/13/%E6%AF%8F%E6%97%A5leetcode-3-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/">展开全文 >></a>
         </p>
       
 

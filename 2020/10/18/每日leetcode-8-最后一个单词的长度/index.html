@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>python学习-02-Days | Hexo</title>
+  <title>每日leetcode-8-最后一个单词的长度 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Day 02-语言元素变量和类型 整型：Python中可以处理任意大小的整数（Python 2.x中有int和long两种类型的整数，但这种区分对Python来说意义不大，因此在Python 3.x中整数只有int这一种了），而且支持二进制（如0b100，换算成十进制是4）、八进制（如0o100，换算成十进制是64）、十进制（100）和十六进制（0x100，换算成十进制是256）的表示法。 浮点型">
+  <meta name="description" content="最后一个单词的长度源自LeetCode:  https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;length-of-last-word&#x2F; 问题描述: 给定一个仅包含大小写字母和空格 ‘ ‘ 的字符串 s，返回其最后一个单词的长度。如果字符串从左向右滚动显示，那么最后一个单词就是最后出现的单词。 如果不存在最后一个单词，请返回 0 。 说明：一个单词是指仅由字母组成、不包含任何空格字符">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python学习-02-Days">
-<meta property="og:url" content="http://example.com/2020/10/18/python%E5%AD%A6%E4%B9%A0-02-Days/index.html">
+<meta property="og:title" content="每日leetcode-8-最后一个单词的长度">
+<meta property="og:url" content="http://example.com/2020/10/18/%E6%AF%8F%E6%97%A5leetcode-8-%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E9%95%BF%E5%BA%A6/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Day 02-语言元素变量和类型 整型：Python中可以处理任意大小的整数（Python 2.x中有int和long两种类型的整数，但这种区分对Python来说意义不大，因此在Python 3.x中整数只有int这一种了），而且支持二进制（如0b100，换算成十进制是4）、八进制（如0o100，换算成十进制是64）、十进制（100）和十六进制（0x100，换算成十进制是256）的表示法。 浮点型">
+<meta property="og:description" content="最后一个单词的长度源自LeetCode:  https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;length-of-last-word&#x2F; 问题描述: 给定一个仅包含大小写字母和空格 ‘ ‘ 的字符串 s，返回其最后一个单词的长度。如果字符串从左向右滚动显示，那么最后一个单词就是最后出现的单词。 如果不存在最后一个单词，请返回 0 。 说明：一个单词是指仅由字母组成、不包含任何空格字符">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-10-18T03:09:50.000Z">
-<meta property="article:modified_time" content="2020-10-18T04:21:15.215Z">
+<meta property="article:published_time" content="2020-10-18T05:20:59.000Z">
+<meta property="article:modified_time" content="2020-10-18T06:07:01.572Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -154,171 +154,92 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-python学习-02-Days" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-每日leetcode-8-最后一个单词的长度" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      python学习-02-Days
+      每日leetcode-8-最后一个单词的长度
     </h1>
   
 
         
-        <a href="/2020/10/18/python%E5%AD%A6%E4%B9%A0-02-Days/" class="archive-article-date">
-  	<time datetime="2020-10-18T03:09:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-18</time>
+        <a href="/2020/10/18/%E6%AF%8F%E6%97%A5leetcode-8-%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E9%95%BF%E5%BA%A6/" class="archive-article-date">
+  	<time datetime="2020-10-18T05:20:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Day-02-语言元素"><a href="#Day-02-语言元素" class="headerlink" title="Day 02-语言元素"></a>Day 02-语言元素</h2><h3 id="变量和类型"><a href="#变量和类型" class="headerlink" title="变量和类型"></a>变量和类型</h3><ul>
-<li>整型：Python中可以处理任意大小的整数（Python 2.x中有<code>int</code>和<code>long</code>两种类型的整数，但这种区分对Python来说意义不大，因此在Python 3.x中整数只有int这一种了），而且支持二进制（如<code>0b100</code>，换算成十进制是4）、八进制（如<code>0o100</code>，换算成十进制是64）、十进制（<code>100</code>）和十六进制（<code>0x100</code>，换算成十进制是256）的表示法。</li>
-<li>浮点型：浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的，浮点数除了数学写法（如<code>123.456</code>）之外还支持科学计数法（如<code>1.23456e2</code>）。</li>
-<li>字符串型：字符串是以单引号或双引号括起来的任意文本，比如<code>&#39;hello&#39;</code>和<code>&quot;hello&quot;</code>,字符串还有原始字符串表示法、字节字符串表示法、Unicode字符串表示法，而且可以书写成多行的形式（用三个单引号或三个双引号开头，三个单引号或三个双引号结尾）。</li>
-<li>布尔型：布尔值只有<code>True</code>、<code>False</code>两种值，要么是<code>True</code>，要么是<code>False</code>，在Python中，可以直接用<code>True</code>、<code>False</code>表示布尔值（请注意大小写），也可以通过布尔运算计算出来（例如<code>3 &lt; 5</code>会产生布尔值<code>True</code>，而<code>2 == 1</code>会产生布尔值<code>False</code>）。</li>
-<li>复数型：形如<code>3+5j</code>，跟数学上的复数表示一样，唯一不同的是虚部的<code>i</code>换成了<code>j</code>。实际上，这个类型并不常用，大家了解一下就可以了。</li>
-</ul>
-<h4 id="变量命名"><a href="#变量命名" class="headerlink" title="变量命名"></a>变量命名</h4><p>对于每个变量我们需要给它取一个名字，就如同我们每个人都有属于自己的响亮的名字一样。在Python中，变量命名需要遵循以下这些必须遵守硬性规则和强烈建议遵守的非硬性规则。</p>
-<ul>
-<li>硬性规则：<ul>
-<li>变量名由字母（广义的Unicode字符，不包括特殊字符）、数字和下划线构成，数字不能开头。</li>
-<li>大小写敏感（大写的<code>a</code>和小写的<code>A</code>是两个不同的变量）。</li>
-<li>不要跟关键字（有特殊含义的单词，后面会讲到）和系统保留字（如函数、模块等的名字）冲突。</li>
-</ul>
-</li>
-<li>PEP 8要求：<ul>
-<li>用小写字母拼写，多个单词用下划线连接。</li>
-<li>受保护的实例属性用单个下划线开头（后面会讲到）。</li>
-<li>私有的实例属性用两个下划线开头（后面会讲到）。</li>
-</ul>
-</li>
-</ul>
-<p>当然，作为一个专业的程序员，给变量（事实上应该是所有的标识符）命名时做到见名知意也是非常重要的。</p>
-<h4 id="变量的使用"><a href="#变量的使用" class="headerlink" title="变量的使用"></a>变量的使用</h4><p>Python中的变量不用声明类型就可以用。</p>
-<p>Python中可以使用<code>type</code>函数对变量的类型进行检查。</p>
-<p>如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 100</span><br><span class="line">b &#x3D; 12.345</span><br><span class="line">c &#x3D; 1 + 5j                    # 复数类型</span><br><span class="line">d &#x3D; &#39;hello, world&#39;</span><br><span class="line">e &#x3D; True</span><br><span class="line">print(type(a))   </span><br><span class="line">print(type(b))    </span><br><span class="line">print(type(c))    </span><br><span class="line">print(type(d))    </span><br><span class="line">print(type(e))    </span><br></pre></td></tr></table></figure>
+        <h4 id="最后一个单词的长度"><a href="#最后一个单词的长度" class="headerlink" title="最后一个单词的长度"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/length-of-last-word/">最后一个单词的长度</a></h4><p>源自LeetCode:  <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/length-of-last-word/">https://leetcode-cn.com/problems/length-of-last-word/</a></p>
+<p>问题描述:</p>
+<p>给定一个仅包含大小写字母和空格 ‘ ‘ 的字符串 s，返回其最后一个单词的长度。如果字符串从左向右滚动显示，那么最后一个单词就是最后出现的单词。</p>
+<p>如果不存在最后一个单词，请返回 0 。</p>
+<p>说明：一个单词是指仅由字母组成、不包含任何空格字符的 最大子字符串。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/length-of-last-word">https://leetcode-cn.com/problems/length-of-last-word</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;Hello World&quot;</span><br><span class="line">输出: 5</span><br></pre></td></tr></table></figure>
+
+<p>题目给出的模板：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int lengthOfLastWord(string s) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>乍一看挺简单的，从后往前找空格，找到最后一个单词输出其长度即可</p>
+<p>下面给出我的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int lengthOfLastWord(string s) &#123;</span><br><span class="line">    	int len &#x3D; 0;       &#x2F;&#x2F;记录长度</span><br><span class="line">    	bool flag&#x3D;false;         &#x2F;&#x2F;用来判断是否找到了单词</span><br><span class="line">		for(int i&#x3D;s.length()-1;i&gt;&#x3D;0;i--)&#123;</span><br><span class="line">			if(s[i]&#x3D;&#x3D;&#39; &#39;)&#123;</span><br><span class="line">				if(flag) break;</span><br><span class="line">				continue;         &#x2F;&#x2F;在没找到单词之前遇到空格都是跳过</span><br><span class="line">			&#125;</span><br><span class="line">			len++;                 </span><br><span class="line">			flag&#x3D;true;           &#x2F;&#x2F;不是空格了，就是找到了单词，往前走再找到空格就弹出</span><br><span class="line">		&#125;</span><br><span class="line">		return len;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>让我来康康别人是怎么做的把。</p>
+<hr>
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>作者：xiao-li-ge-6<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/length-of-last-word/solution/c-qiao-yong-stream-da-bai-100-by-xiao-li-ge-6/">https://leetcode-cn.com/problems/length-of-last-word/solution/c-qiao-yong-stream-da-bai-100-by-xiao-li-ge-6/</a><br>来源：力扣（LeetCode）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int lengthOfLastWord(string s) </span><br><span class="line">    &#123;</span><br><span class="line">        istringstream in(s);</span><br><span class="line">        string res;</span><br><span class="line">        while(in&gt;&gt;res);</span><br><span class="line">        return res.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>没见过，容我去百度一下</p>
+<blockquote>
+<p>istringstream是一个类 要用它时要包含<code>&lt;sstream&gt;</code>这个头文件。</p>
+</blockquote>
+<blockquote>
+<p><code>&lt;sstream&gt;</code>库定义了三种类：istringstream、ostringstream和stringstream，分别用来进行流的输入、输出和输入输出操作。</p>
+</blockquote>
+<p>下面举个例子会更容易懂一点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include&lt;iostream&gt;  </span><br><span class="line">#include&lt;sstream&gt;        &#x2F;&#x2F;istringstream 必须包含这个头文件</span><br><span class="line">#include&lt;string&gt;  </span><br><span class="line">using namespace std;  </span><br><span class="line">int main()  </span><br><span class="line">&#123;  </span><br><span class="line">    string str&#x3D;&quot;i am a boy&quot;;  </span><br><span class="line">    istringstream is(str);  </span><br><span class="line">    string s;  </span><br><span class="line">    while(is&gt;&gt;s)  </span><br><span class="line">    &#123;  </span><br><span class="line">        cout&lt;&lt;s&lt;&lt;endl;  </span><br><span class="line">    &#125;  </span><br><span class="line">      </span><br></pre></td></tr></table></figure>
 
 <p>输出:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;class &#39;int&#39;&gt;</span><br><span class="line">&lt;class &#39;float&#39;&gt;</span><br><span class="line">&lt;class &#39;complex&#39;&gt;          # 复数类型</span><br><span class="line">&lt;class &#39;str&#39;&gt;</span><br><span class="line">&lt;class &#39;bool&#39;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>可以使用Python中内置的函数对变量类型进行转换。(强制类型转换)</p>
-<ul>
-<li><code>int()</code>：将一个数值或字符串转换成整数，可以指定进制。</li>
-<li><code>float()</code>：将一个字符串转换成浮点数。</li>
-<li><code>str()</code>：将指定的对象转换成字符串形式，可以指定编码。</li>
-<li><code>chr()</code>：将整数转换成该编码对应的字符串（一个字符）。</li>
-<li><code>ord()</code>：将字符串（一个字符）转换成对应的编码（整数）。</li>
-</ul>
-<p>下面的代码通过键盘输入两个整数来实现对两个整数的算术运算。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">使用input()函数获取键盘输入(字符串)</span><br><span class="line">&#96;input(&#39;a &#x3D; &#39;)&#96;在输入时会输出 &#96; a &#x3D; &#96; 只是输出</span><br><span class="line">使用int()函数将输入的字符串转换成整数</span><br><span class="line">使用print()函数输出带占位符的字符串</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">a &#x3D; int(input(&#39;a &#x3D; &#39;))             </span><br><span class="line">b &#x3D; int(input(&#39;b &#x3D; &#39;))              </span><br><span class="line">print(&#39;%d + %d &#x3D; %d&#39; % (a, b, a + b))</span><br><span class="line">print(&#39;%d - %d &#x3D; %d&#39; % (a, b, a - b))</span><br><span class="line">print(&#39;%d * %d &#x3D; %d&#39; % (a, b, a * b))</span><br><span class="line">print(&#39;%d &#x2F; %d &#x3D; %f&#39; % (a, b, a &#x2F; b))</span><br><span class="line">print(&#39;%d &#x2F;&#x2F; %d &#x3D; %d&#39; % (a, b, a &#x2F;&#x2F; b))</span><br><span class="line">print(&#39;%d %% %d &#x3D; %d&#39; % (a, b, a % b))</span><br><span class="line">print(&#39;%d ** %d &#x3D; %d&#39; % (a, b, a ** b))</span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<p><strong>说明</strong>：上面的print函数中输出的字符串使用了占位符语法，其中<code>%d</code>是整数的占位符，<code>%f</code>是小数的占位符，<code>%%</code>表示百分号（因为百分号代表了占位符，所以带占位符的字符串中要表示百分号必须写成<code>%%</code>），字符串之后的<code>%</code>后面跟的变量值会替换掉占位符然后输出到终端中</p>
+<p>i</p>
+<p>am</p>
+<p>a</p>
+<p>boy</p>
 </blockquote>
+<p>所以程序中的 <code>res.size()</code>就是返回最后一个单词的长度</p>
+<p>用<code>istringstream</code> 来做带空格的字符串的问题，好像挺不戳的</p>
+<p>具体可看<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_28949185/article/details/102652477">https://blog.csdn.net/weixin_28949185/article/details/102652477</a> （转载）</p>
 <hr>
-<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p>Python支持多种运算符，下表大致按照优先级从高到低的顺序列出了所有的运算符。</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>[]</code> <code>[:]</code></td>
-<td>下标，切片</td>
-</tr>
-<tr>
-<td><code>**</code></td>
-<td>指数</td>
-</tr>
-<tr>
-<td><code>~</code> <code>+</code> <code>-</code></td>
-<td>按位取反, 正负号</td>
-</tr>
-<tr>
-<td><code>*</code> <code>/</code> <code>%</code> <code>//</code></td>
-<td>乘，除，模，整除</td>
-</tr>
-<tr>
-<td><code>+</code> <code>-</code></td>
-<td>加，减</td>
-</tr>
-<tr>
-<td><code>&gt;&gt;</code> <code>&lt;&lt;</code></td>
-<td>右移，左移</td>
-</tr>
-<tr>
-<td><code>&amp;</code></td>
-<td>按位与</td>
-</tr>
-<tr>
-<td><code>^</code> `</td>
-<td>`</td>
-</tr>
-<tr>
-<td><code>&lt;=</code> <code>&lt;</code> <code>&gt;</code> <code>&gt;=</code></td>
-<td>小于等于，小于，大于，大于等于</td>
-</tr>
-<tr>
-<td><code>==</code> <code>!=</code></td>
-<td>等于，不等于</td>
-</tr>
-<tr>
-<td><code>is</code> <code>is not</code></td>
-<td>身份运算符</td>
-</tr>
-<tr>
-<td><code>in</code> <code>not in</code></td>
-<td>成员运算符</td>
-</tr>
-<tr>
-<td><code>not</code> <code>or</code> <code>and</code></td>
-<td>逻辑运算符</td>
-</tr>
-<tr>
-<td><code>=</code> <code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code> <code>%=</code> <code>//=</code> <code>**=</code> <code>&amp;=</code> `</td>
-<td>=<code> </code>^=<code> </code>&gt;&gt;=<code> </code>&lt;&lt;=`</td>
-</tr>
-</tbody></table>
-<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><p>和C跟C++一样</p>
-<h3 id="比较运算符和逻辑运算符"><a href="#比较运算符和逻辑运算符" class="headerlink" title="比较运算符和逻辑运算符"></a>比较运算符和逻辑运算符</h3><p>比较运算符有的地方也称为关系运算符，包括<code>==</code>、<code>!=</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&lt;=</code>、<code>&gt;=</code>，和C跟C++一样</p>
-<p>比较运算符会产生布尔值，要么是<code>True</code>要么是<code>False</code>。</p>
-<p>逻辑运算符有三个，分别是<code>and</code>、<code>or</code>和<code>not</code></p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>作者：zegang-i<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/length-of-last-word/solution/c-stdfind_if-by-zegang-i/">https://leetcode-cn.com/problems/length-of-last-word/solution/c-stdfind_if-by-zegang-i/</a><br>来源：力扣（LeetCode）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int lengthOfLastWord(string s) &#123;</span><br><span class="line">        int rst &#x3D; 0;</span><br><span class="line">        string::reverse_iterator it &#x3D; std::find_if(s.rbegin(), s.rend(), [](char t) &#123; return isalpha(t);&#125;);</span><br><span class="line">        while (it !&#x3D; s.rend() &amp;&amp; isalpha(*it++) &amp;&amp; ++rst);</span><br><span class="line">        &#x2F;&#x2F; for(; it !&#x3D; s.rend(); ++it) &#123;</span><br><span class="line">        &#x2F;&#x2F;     if (isalpha(*it)) &#123;</span><br><span class="line">        &#x2F;&#x2F;         ++rst;</span><br><span class="line">        &#x2F;&#x2F;         continue;</span><br><span class="line">        &#x2F;&#x2F;     &#125;</span><br><span class="line">        &#x2F;&#x2F;     break;</span><br><span class="line">        &#x2F;&#x2F; &#125;       </span><br><span class="line">        return rst;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>容我再去百度一下</p>
+<p>STL的find，find_if函数提供了一种对数组、STL容器进行查找的方法。使用该函数，需 头文件<code>&lt;algorithm&gt;</code></p>
+<p>等我学了STL了再说吧。。。</p>
+<hr>
+<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><p>作者：xiao-fu-zi-1<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/length-of-last-word/solution/c-soeasy-zai-ye-bu-yong-dan-xin-wo-xue-xi-la-by-xi/">https://leetcode-cn.com/problems/length-of-last-word/solution/c-soeasy-zai-ye-bu-yong-dan-xin-wo-xue-xi-la-by-xi/</a><br>来源：力扣（LeetCode）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int lengthOfLastWord(string s) &#123;</span><br><span class="line">        int index &#x3D; s.size() - 1;</span><br><span class="line">        &#x2F;&#x2F; 去后导0</span><br><span class="line">        while (index &gt;&#x3D; 0 &amp;&amp; isspace(s[index])) --index;</span><br><span class="line">        int cnt &#x3D; 0;</span><br><span class="line">        &#x2F;&#x2F; 开始统计</span><br><span class="line">        while (index &gt;&#x3D; 0 &amp;&amp; isalpha(s[index--])) ++cnt;</span><br><span class="line">        return cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>容我去百度一下。。。</p>
 <blockquote>
-<p><code>and</code>对应C++的<code>&amp;&amp;</code></p>
-<p> <code>or</code> 对应C++的<code>||</code></p>
-<p><code>not</code> 对应C++的<code>!</code> 就是取非</p>
+<p><code>isspace</code>，是一种计算机用语，主要用于检查参数c是否为空格字符。</p>
 </blockquote>
-<p>逻辑运算符也会产生布尔值，要么是<code>True</code>要么是<code>False</code>。</p>
-<p>下面举个例子:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">flag0 &#x3D; 1 &#x3D;&#x3D; 1</span><br><span class="line">flag1 &#x3D; 3 &gt; 2</span><br><span class="line">flag2 &#x3D; 2 &lt; 1</span><br><span class="line">flag3 &#x3D; flag1 and flag2</span><br><span class="line">flag4 &#x3D; flag1 or flag2</span><br><span class="line">flag5 &#x3D; not (1 !&#x3D; 2)</span><br><span class="line">print(&#39;flag0 &#x3D;&#39;, flag0)    # flag0 &#x3D; True</span><br><span class="line">print(&#39;flag1 &#x3D;&#39;, flag1)    # flag1 &#x3D; True</span><br><span class="line">print(&#39;flag2 &#x3D;&#39;, flag2)    # flag2 &#x3D; False</span><br><span class="line">print(&#39;flag3 &#x3D;&#39;, flag3)    # flag3 &#x3D; False</span><br><span class="line">print(&#39;flag4 &#x3D;&#39;, flag4)    # flag4 &#x3D; True</span><br><span class="line">print(&#39;flag5 &#x3D;&#39;, flag5)    # flag5 &#x3D; False</span><br></pre></td></tr></table></figure>
-
+<p>好像没啥意义，直接判断它是不是空格不是一样?</p>
+<p>不过学了个<code>isspace</code> 能让程序看上去更高级一点？</p>
 <hr>
-<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><h4 id="练习1：华氏温度转换为摄氏温度。"><a href="#练习1：华氏温度转换为摄氏温度。" class="headerlink" title="练习1：华氏温度转换为摄氏温度。"></a>练习1：华氏温度转换为摄氏温度。</h4><blockquote>
-<p>提示：华氏温度到摄氏温度的转换公式为：$C=(F - 32) \div 1.8$。</p>
-</blockquote>
-<p>参考答案：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f &#x3D; float(input(&#39;请输入华氏温度:&#39;))</span><br><span class="line">c &#x3D; (f-32)&#x2F;1.8</span><br><span class="line">print(&#39;%.1f华氏度 &#x3D; %.1f摄氏度&#39;%(f,c))</span><br></pre></td></tr></table></figure>
-
-<p>输出也可以写成这样</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(f&#39;&#123;f:.1f&#125;华氏度 &#x3D; &#123;c:.1f&#125;摄氏度&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>注意单引号前面那个<code>f</code> 是固定格式</p>
-<h4 id="练习2：输入圆的半径计算计算周长和面积。"><a href="#练习2：输入圆的半径计算计算周长和面积。" class="headerlink" title="练习2：输入圆的半径计算计算周长和面积。"></a>练习2：输入圆的半径计算计算周长和面积。</h4><p>参考答案：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">r &#x3D; float(input(&#39;请输入圆的半径:&#39;))</span><br><span class="line">pai&#x3D;3.1415926</span><br><span class="line">print(&#39;圆的周长:%.1f，圆的面积:%.1f&#39;%(2*pai*r,pai*r*r))</span><br></pre></td></tr></table></figure>
-
-<h4 id="练习3：输入年份判断是不是闰年。"><a href="#练习3：输入年份判断是不是闰年。" class="headerlink" title="练习3：输入年份判断是不是闰年。"></a>练习3：输入年份判断是不是闰年。</h4><p>判断任意年份是否为闰年，需要满足以下条件中的任意一个：<br>① 该年份能被 4 整除同时不能被 100 整除；<br>② 该年份能被400整除。</p>
-<p>参考答案：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">year&#x3D;int(input(&#39;请输入年份:&#39;))</span><br><span class="line"># 如果代码太长写成一行不便于阅读 可以使用\对代码进行折行</span><br><span class="line">is_leap&#x3D; year % 4 &#x3D;&#x3D;0 and year % 100 !&#x3D;0 or\</span><br><span class="line">         year % 400&#x3D;&#x3D;0</span><br><span class="line">print(is_leap)</span><br></pre></td></tr></table></figure>
-
-<p>由于学判断语句就只先输出<code>True</code>和<code>False</code> 了</p>
-<hr>
-<p>Day 2还是比较轻松的，主要是了解一些基本的语法，由于有C和C++的基础所以学起来没啥难度。100天学python，今天是第二天</p>
+<p>小结:</p>
+<p>1.用<code>istringstream</code> 来做带空格的字符串的问题，好像挺不戳的</p>
+<p>2.STL好像用的挺多的，找个时间再去学吧</p>
+<p>3.<code>isspace</code>可以拿来装杯用</p>
+<p>这道题就暂时到这里了，如果你有什么问题或者建议可以联系我</p>
 
       
 
@@ -398,7 +319,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/10/18/python%E5%AD%A6%E4%B9%A0-02-Days/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/10/18/%E6%AF%8F%E6%97%A5leetcode-8-%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E9%95%BF%E5%BA%A6/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -412,18 +333,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/10/18/%E6%AF%8F%E6%97%A5leetcode-8-%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E9%95%BF%E5%BA%A6/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          每日leetcode-8-最后一个单词的长度
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/10/17/%E6%AF%8F%E6%97%A5leetcode-7-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">每日leetcode-7-删除排序数组中的重复项</div>
+    <a href="/2020/10/18/python%E5%AD%A6%E4%B9%A0-02-Days/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python学习-02-Days</div>
       <i class="icon-circle-right"></i>
     </a>
   

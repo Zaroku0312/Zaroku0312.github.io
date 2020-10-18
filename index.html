@@ -152,6 +152,213 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python学习-02-Days" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/18/python%E5%AD%A6%E4%B9%A0-02-Days/">python学习-02-Days</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/18/python%E5%AD%A6%E4%B9%A0-02-Days/" class="archive-article-date">
+  	<time datetime="2020-10-18T03:09:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Day-02-语言元素"><a href="#Day-02-语言元素" class="headerlink" title="Day 02-语言元素"></a>Day 02-语言元素</h2><h3 id="变量和类型"><a href="#变量和类型" class="headerlink" title="变量和类型"></a>变量和类型</h3><ul>
+<li>整型：Python中可以处理任意大小的整数（Python 2.x中有<code>int</code>和<code>long</code>两种类型的整数，但这种区分对Python来说意义不大，因此在Python 3.x中整数只有int这一种了），而且支持二进制（如<code>0b100</code>，换算成十进制是4）、八进制（如<code>0o100</code>，换算成十进制是64）、十进制（<code>100</code>）和十六进制（<code>0x100</code>，换算成十进制是256）的表示法。</li>
+<li>浮点型：浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的，浮点数除了数学写法（如<code>123.456</code>）之外还支持科学计数法（如<code>1.23456e2</code>）。</li>
+<li>字符串型：字符串是以单引号或双引号括起来的任意文本，比如<code>&#39;hello&#39;</code>和<code>&quot;hello&quot;</code>,字符串还有原始字符串表示法、字节字符串表示法、Unicode字符串表示法，而且可以书写成多行的形式（用三个单引号或三个双引号开头，三个单引号或三个双引号结尾）。</li>
+<li>布尔型：布尔值只有<code>True</code>、<code>False</code>两种值，要么是<code>True</code>，要么是<code>False</code>，在Python中，可以直接用<code>True</code>、<code>False</code>表示布尔值（请注意大小写），也可以通过布尔运算计算出来（例如<code>3 &lt; 5</code>会产生布尔值<code>True</code>，而<code>2 == 1</code>会产生布尔值<code>False</code>）。</li>
+<li>复数型：形如<code>3+5j</code>，跟数学上的复数表示一样，唯一不同的是虚部的<code>i</code>换成了<code>j</code>。实际上，这个类型并不常用，大家了解一下就可以了。</li>
+</ul>
+<h4 id="变量命名"><a href="#变量命名" class="headerlink" title="变量命名"></a>变量命名</h4><p>对于每个变量我们需要给它取一个名字，就如同我们每个人都有属于自己的响亮的名字一样。在Python中，变量命名需要遵循以下这些必须遵守硬性规则和强烈建议遵守的非硬性规则。</p>
+<ul>
+<li>硬性规则：<ul>
+<li>变量名由字母（广义的Unicode字符，不包括特殊字符）、数字和下划线构成，数字不能开头。</li>
+<li>大小写敏感（大写的<code>a</code>和小写的<code>A</code>是两个不同的变量）。</li>
+<li>不要跟关键字（有特殊含义的单词，后面会讲到）和系统保留字（如函数、模块等的名字）冲突。</li>
+</ul>
+</li>
+<li>PEP 8要求：<ul>
+<li>用小写字母拼写，多个单词用下划线连接。</li>
+<li>受保护的实例属性用单个下划线开头（后面会讲到）。</li>
+<li>私有的实例属性用两个下划线开头（后面会讲到）。</li>
+</ul>
+</li>
+</ul>
+<p>当然，作为一个专业的程序员，给变量（事实上应该是所有的标识符）命名时做到见名知意也是非常重要的。</p>
+<h4 id="变量的使用"><a href="#变量的使用" class="headerlink" title="变量的使用"></a>变量的使用</h4><p>Python中的变量不用声明类型就可以用。</p>
+<p>Python中可以使用<code>type</code>函数对变量的类型进行检查。</p>
+<p>如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 100</span><br><span class="line">b &#x3D; 12.345</span><br><span class="line">c &#x3D; 1 + 5j                    # 复数类型</span><br><span class="line">d &#x3D; &#39;hello, world&#39;</span><br><span class="line">e &#x3D; True</span><br><span class="line">print(type(a))   </span><br><span class="line">print(type(b))    </span><br><span class="line">print(type(c))    </span><br><span class="line">print(type(d))    </span><br><span class="line">print(type(e))    </span><br></pre></td></tr></table></figure>
+
+<p>输出:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;class &#39;int&#39;&gt;</span><br><span class="line">&lt;class &#39;float&#39;&gt;</span><br><span class="line">&lt;class &#39;complex&#39;&gt;          # 复数类型</span><br><span class="line">&lt;class &#39;str&#39;&gt;</span><br><span class="line">&lt;class &#39;bool&#39;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以使用Python中内置的函数对变量类型进行转换。(强制类型转换)</p>
+<ul>
+<li><code>int()</code>：将一个数值或字符串转换成整数，可以指定进制。</li>
+<li><code>float()</code>：将一个字符串转换成浮点数。</li>
+<li><code>str()</code>：将指定的对象转换成字符串形式，可以指定编码。</li>
+<li><code>chr()</code>：将整数转换成该编码对应的字符串（一个字符）。</li>
+<li><code>ord()</code>：将字符串（一个字符）转换成对应的编码（整数）。</li>
+</ul>
+<p>下面的代码通过键盘输入两个整数来实现对两个整数的算术运算。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">使用input()函数获取键盘输入(字符串)</span><br><span class="line">&#96;input(&#39;a &#x3D; &#39;)&#96;在输入时会输出 &#96; a &#x3D; &#96; 只是输出</span><br><span class="line">使用int()函数将输入的字符串转换成整数</span><br><span class="line">使用print()函数输出带占位符的字符串</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">a &#x3D; int(input(&#39;a &#x3D; &#39;))             </span><br><span class="line">b &#x3D; int(input(&#39;b &#x3D; &#39;))              </span><br><span class="line">print(&#39;%d + %d &#x3D; %d&#39; % (a, b, a + b))</span><br><span class="line">print(&#39;%d - %d &#x3D; %d&#39; % (a, b, a - b))</span><br><span class="line">print(&#39;%d * %d &#x3D; %d&#39; % (a, b, a * b))</span><br><span class="line">print(&#39;%d &#x2F; %d &#x3D; %f&#39; % (a, b, a &#x2F; b))</span><br><span class="line">print(&#39;%d &#x2F;&#x2F; %d &#x3D; %d&#39; % (a, b, a &#x2F;&#x2F; b))</span><br><span class="line">print(&#39;%d %% %d &#x3D; %d&#39; % (a, b, a % b))</span><br><span class="line">print(&#39;%d ** %d &#x3D; %d&#39; % (a, b, a ** b))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>说明</strong>：上面的print函数中输出的字符串使用了占位符语法，其中<code>%d</code>是整数的占位符，<code>%f</code>是小数的占位符，<code>%%</code>表示百分号（因为百分号代表了占位符，所以带占位符的字符串中要表示百分号必须写成<code>%%</code>），字符串之后的<code>%</code>后面跟的变量值会替换掉占位符然后输出到终端中</p>
+</blockquote>
+<hr>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p>Python支持多种运算符，下表大致按照优先级从高到低的顺序列出了所有的运算符。</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[]</code> <code>[:]</code></td>
+<td>下标，切片</td>
+</tr>
+<tr>
+<td><code>**</code></td>
+<td>指数</td>
+</tr>
+<tr>
+<td><code>~</code> <code>+</code> <code>-</code></td>
+<td>按位取反, 正负号</td>
+</tr>
+<tr>
+<td><code>*</code> <code>/</code> <code>%</code> <code>//</code></td>
+<td>乘，除，模，整除</td>
+</tr>
+<tr>
+<td><code>+</code> <code>-</code></td>
+<td>加，减</td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code> <code>&lt;&lt;</code></td>
+<td>右移，左移</td>
+</tr>
+<tr>
+<td><code>&amp;</code></td>
+<td>按位与</td>
+</tr>
+<tr>
+<td><code>^</code> `</td>
+<td>`</td>
+</tr>
+<tr>
+<td><code>&lt;=</code> <code>&lt;</code> <code>&gt;</code> <code>&gt;=</code></td>
+<td>小于等于，小于，大于，大于等于</td>
+</tr>
+<tr>
+<td><code>==</code> <code>!=</code></td>
+<td>等于，不等于</td>
+</tr>
+<tr>
+<td><code>is</code> <code>is not</code></td>
+<td>身份运算符</td>
+</tr>
+<tr>
+<td><code>in</code> <code>not in</code></td>
+<td>成员运算符</td>
+</tr>
+<tr>
+<td><code>not</code> <code>or</code> <code>and</code></td>
+<td>逻辑运算符</td>
+</tr>
+<tr>
+<td><code>=</code> <code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code> <code>%=</code> <code>//=</code> <code>**=</code> <code>&amp;=</code> `</td>
+<td>=<code> </code>^=<code> </code>&gt;&gt;=<code> </code>&lt;&lt;=`</td>
+</tr>
+</tbody></table>
+<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><p>和C跟C++一样</p>
+<h3 id="比较运算符和逻辑运算符"><a href="#比较运算符和逻辑运算符" class="headerlink" title="比较运算符和逻辑运算符"></a>比较运算符和逻辑运算符</h3><p>比较运算符有的地方也称为关系运算符，包括<code>==</code>、<code>!=</code>、<code>&lt;</code>、<code>&gt;</code>、<code>&lt;=</code>、<code>&gt;=</code>，和C跟C++一样</p>
+<p>比较运算符会产生布尔值，要么是<code>True</code>要么是<code>False</code>。</p>
+<p>逻辑运算符有三个，分别是<code>and</code>、<code>or</code>和<code>not</code></p>
+<blockquote>
+<p><code>and</code>对应C++的<code>&amp;&amp;</code></p>
+<p> <code>or</code> 对应C++的<code>||</code></p>
+<p><code>not</code> 对应C++的<code>!</code> 就是取非</p>
+</blockquote>
+<p>逻辑运算符也会产生布尔值，要么是<code>True</code>要么是<code>False</code>。</p>
+<p>下面举个例子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">flag0 &#x3D; 1 &#x3D;&#x3D; 1</span><br><span class="line">flag1 &#x3D; 3 &gt; 2</span><br><span class="line">flag2 &#x3D; 2 &lt; 1</span><br><span class="line">flag3 &#x3D; flag1 and flag2</span><br><span class="line">flag4 &#x3D; flag1 or flag2</span><br><span class="line">flag5 &#x3D; not (1 !&#x3D; 2)</span><br><span class="line">print(&#39;flag0 &#x3D;&#39;, flag0)    # flag0 &#x3D; True</span><br><span class="line">print(&#39;flag1 &#x3D;&#39;, flag1)    # flag1 &#x3D; True</span><br><span class="line">print(&#39;flag2 &#x3D;&#39;, flag2)    # flag2 &#x3D; False</span><br><span class="line">print(&#39;flag3 &#x3D;&#39;, flag3)    # flag3 &#x3D; False</span><br><span class="line">print(&#39;flag4 &#x3D;&#39;, flag4)    # flag4 &#x3D; True</span><br><span class="line">print(&#39;flag5 &#x3D;&#39;, flag5)    # flag5 &#x3D; False</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><h4 id="练习1：华氏温度转换为摄氏温度。"><a href="#练习1：华氏温度转换为摄氏温度。" class="headerlink" title="练习1：华氏温度转换为摄氏温度。"></a>练习1：华氏温度转换为摄氏温度。</h4><blockquote>
+<p>提示：华氏温度到摄氏温度的转换公式为：$C=(F - 32) \div 1.8$。</p>
+</blockquote>
+<p>参考答案：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f &#x3D; float(input(&#39;请输入华氏温度:&#39;))</span><br><span class="line">c &#x3D; (f-32)&#x2F;1.8</span><br><span class="line">print(&#39;%.1f华氏度 &#x3D; %.1f摄氏度&#39;%(f,c))</span><br></pre></td></tr></table></figure>
+
+<p>输出也可以写成这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(f&#39;&#123;f:.1f&#125;华氏度 &#x3D; &#123;c:.1f&#125;摄氏度&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>注意单引号前面那个<code>f</code> 是固定格式</p>
+<h4 id="练习2：输入圆的半径计算计算周长和面积。"><a href="#练习2：输入圆的半径计算计算周长和面积。" class="headerlink" title="练习2：输入圆的半径计算计算周长和面积。"></a>练习2：输入圆的半径计算计算周长和面积。</h4><p>参考答案：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">r &#x3D; float(input(&#39;请输入圆的半径:&#39;))</span><br><span class="line">pai&#x3D;3.1415926</span><br><span class="line">print(&#39;圆的周长:%.1f，圆的面积:%.1f&#39;%(2*pai*r,pai*r*r))</span><br></pre></td></tr></table></figure>
+
+<h4 id="练习3：输入年份判断是不是闰年。"><a href="#练习3：输入年份判断是不是闰年。" class="headerlink" title="练习3：输入年份判断是不是闰年。"></a>练习3：输入年份判断是不是闰年。</h4><p>判断任意年份是否为闰年，需要满足以下条件中的任意一个：<br>① 该年份能被 4 整除同时不能被 100 整除；<br>② 该年份能被400整除。</p>
+<p>参考答案：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">year&#x3D;int(input(&#39;请输入年份:&#39;))</span><br><span class="line"># 如果代码太长写成一行不便于阅读 可以使用\对代码进行折行</span><br><span class="line">is_leap&#x3D; year % 4 &#x3D;&#x3D;0 and year % 100 !&#x3D;0 or\</span><br><span class="line">         year % 400&#x3D;&#x3D;0</span><br><span class="line">print(is_leap)</span><br></pre></td></tr></table></figure>
+
+<p>由于学判断语句就只先输出<code>True</code>和<code>False</code> 了</p>
+<hr>
+<p>Day 2还是比较轻松的，主要是了解一些基本的语法，由于有C和C++的基础所以学起来没啥难度。100天学python，今天是第二天</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/18/python%E5%AD%A6%E4%B9%A0-02-Days/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-每日leetcode-7-删除排序数组中的重复项" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1067,125 +1274,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/13/%E6%AF%8F%E6%97%A5leetcode-3-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-每日leetcode-2-计数质数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/12/%E6%AF%8F%E6%97%A5leetcode-2-%E8%AE%A1%E6%95%B0%E8%B4%A8%E6%95%B0/">每日leetcode-2-计数质数</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/12/%E6%AF%8F%E6%97%A5leetcode-2-%E8%AE%A1%E6%95%B0%E8%B4%A8%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-10-12T00:54:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="每日leetcode-2-计数质数"><a href="#每日leetcode-2-计数质数" class="headerlink" title="每日leetcode-2-计数质数"></a>每日leetcode-2-计数质数</h2><p>问题描述:<br>    统计所有小于非负整数 <em><code>n</code></em> 的质数的数量。 0 &lt;= n &lt;= 5 * 10^6         (要注意是小于N)</p>
-<p>示例 1：</p>
-<blockquote>
-<p>输入：n = 10<br>输出：4<br>解释：小于 10 的质数一共有 4 个, 它们是 2, 3, 5, 7 。</p>
-</blockquote>
-<p>示例 2：</p>
-<blockquote>
-<p>输入：n = 0<br>输出：0</p>
-</blockquote>
-<p>示例 3：</p>
-<blockquote>
-<p>输入：n = 1<br>输出：0</p>
-</blockquote>
-<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-primes">https://leetcode-cn.com/problems/count-primes</a></p>
-<p>答题模板：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int countPrimes(int n) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>解题思路，总结用一个循环，发现一个质数，计数器就++，最后返回计数器</p>
-<p>下面给出我的代码：(简单暴力，但是也超时了。。。。)  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int countPrimes(int n) &#123;</span><br><span class="line">		if(n&lt;3)&#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			int flag&#x3D;0;</span><br><span class="line">			int i,j;</span><br><span class="line">			for(i&#x3D;2;i&lt;n;i++)&#123;</span><br><span class="line">				for(j&#x3D;2;j&lt;i;j++)&#123;</span><br><span class="line">					if(i%j&#x3D;&#x3D;0)&#123;</span><br><span class="line">                        break;</span><br><span class="line">                    &#125;</span><br><span class="line">				&#125;</span><br><span class="line">                if(j&#x3D;&#x3D;i)  flag++;</span><br><span class="line">			&#125;</span><br><span class="line">			return flag;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>写了两个循环，时间复杂度太高了？</p>
-<p>注:这个代码超时了</p>
-<hr>
-<p>接下来我对我的代码进行了一下优化:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int countPrimes(int n) &#123;</span><br><span class="line">		if(n&lt;3)&#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">			int flag&#x3D;1;</span><br><span class="line">			int i,j;</span><br><span class="line">			for(i&#x3D;3;i&lt;n;i++)&#123;</span><br><span class="line">                 if ((i % 2) &#x3D;&#x3D; 0)</span><br><span class="line">                  continue;</span><br><span class="line">                bool sing &#x3D;true;</span><br><span class="line">				for(j&#x3D;3;j*j&lt;&#x3D;i;j+&#x3D;2)&#123;</span><br><span class="line">					if(i%j&#x3D;&#x3D;0)&#123;</span><br><span class="line">                        sing&#x3D;false;</span><br><span class="line">                        break;</span><br><span class="line">                    &#125;</span><br><span class="line">				&#125;</span><br><span class="line">                if(sing)  flag++;</span><br><span class="line">			&#125;</span><br><span class="line">			return flag;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>在求质数时，老师教我们采用<code>sqrt(i)</code> 的办法，但是我发现用<code>j*j&lt;=i</code> 会更好，因为采取前一种的话循环时在哪能只能采取<code>j++</code></p>
-<p>而采取第二种方法时候能采取<code>j+=2</code> 能跳过偶数部分，使程序的时间更短，不过采取<code>j+=2</code> 的方式的话前面需要多求一步：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if ((i % 2) &#x3D;&#x3D; 0)</span><br><span class="line">           continue;</span><br></pre></td></tr></table></figure>
-
-<p>经测试，优化后的代码可以通过测试。</p>
-<hr>
-<p>下面让我们看看别人的做法:</p>
-<p>基本思想：我们在进行顺序遍历时，每取得一个数（排除0、1），如果将它所有的倍数（排除0、1、本身）都清除，那么，剩下的数是必为素数。</p>
-<p>这就是的<code>厄拉多塞筛法</code></p>
-<p>下面是别人的代码:</p>
-<p>作者：magicalchao<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-primes/solution/ji-shu-zhi-shu-bao-li-fa-ji-you-hua-shai-fa-ji-you/">https://leetcode-cn.com/problems/count-primes/solution/ji-shu-zhi-shu-bao-li-fa-ji-you-hua-shai-fa-ji-you/</a><br>来源：力扣（LeetCode）</p>
-<p>声明一个长度为最大限制数的布尔数组。用布尔值来区别筛选出的数和质数。</p>
-<p>运用厄拉多塞筛法得代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int countPrimes(int n) &#123;</span><br><span class="line">    int count &#x3D; 0;</span><br><span class="line">    &#x2F;&#x2F;初始默认所有数为质数</span><br><span class="line">    vector&lt;bool&gt; signs(n, true);</span><br><span class="line">    for (int i &#x3D; 2; i &lt; n; i++) &#123;</span><br><span class="line">        if (signs[i]) &#123;</span><br><span class="line">            count++;</span><br><span class="line">            for (int j &#x3D; i + i; j &lt; n; j +&#x3D; i) &#123;</span><br><span class="line">                &#x2F;&#x2F;排除不是质数的数</span><br><span class="line">                signs[j] &#x3D; false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注： <code>vector</code> 是一个容器的类型</p>
-<p>用厄拉多塞筛法能减少运行的时间，但对于这道题还能继续优化:</p>
-<p>运用比特表（Bitmap）算法对筛法进行内存优化：</p>
-<p>作者：magicalchao<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-primes/solution/ji-shu-zhi-shu-bao-li-fa-ji-you-hua-shai-fa-ji-you/">https://leetcode-cn.com/problems/count-primes/solution/ji-shu-zhi-shu-bao-li-fa-ji-you-hua-shai-fa-ji-you/</a><br>来源：力扣（LeetCode）</p>
-<blockquote>
-<p>上面运用厄拉多塞筛法求一定范围内的质数已经十分高效了。然而，我们使用布尔数组标记一个数是否为质数时，每个值都占用了一个字节（Byte）。但是，我们仅需要两个不同的值来表示是否为质数即可。即一个比特（bit）来表示即可（0、1）。如果这样的话，我们便最优可节省八分之七的空间（然而，还得结合代码和实际情况，并不是用了就一定有效果）。</p>
-<p>关于比特表算法在此便简要概述以下（可略过）：</p>
-<p>假如有从 1 至 8 总共八个数。现有一个字节大小的内存空间可供使用（仅供参考，不考虑实际用途及比特算法的最佳用处）。如何将每个数登记下来，并可以随时检查一个数是否存在呢？<br>如果用一个数组表示，即使不考虑数组的内存开销，哪怕用一个 byte 类型的变量记录每一数也将超出内存可使用范围。但是由于每个字节共有八个比特位，则可以用每个比特位来表示每个数字则恰好可以登记完所有的数字。<br>示例：</p>
-<p>登记数字 1 ：0 0 0 0 0 0 0 1<br>登记数字 1、3：0 0 0 0 0 1 0 1<br>登记数字 1、2、3、4、5 ：0 0 0 1 1 1 1 1</p>
-</blockquote>
-<p>下面是他的代码:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">int countPrimes(int n) &#123;</span><br><span class="line">    int count &#x3D; 0;</span><br><span class="line">    &#x2F;&#x2F;一个 int 变量不知道占多少字节（但请注意，这里采用了常量）</span><br><span class="line">    const int size &#x3D; sizeof(int) * 8;</span><br><span class="line">    vector&lt;int&gt; signs(n &#x2F; size + 1,0);</span><br><span class="line">    for (int i &#x3D; 2; i &lt; n; i++)&#123;</span><br><span class="line">        &#x2F;&#x2F;将元素和需确定得数字经行按位或运算，如果值改变，说明不存在该数字（未登记该数字），则其为质数。</span><br><span class="line">        &#x2F;&#x2F;在C++中，其提供了 bitset 来操作位，在此便不做介绍了。如果用了，可读性肯定会更好。</span><br><span class="line">        &#x2F;&#x2F;(当某个数为 2 的 n 次方时（n为自然数），其 &amp; (n - 1) 所得值将等价于取余运算所得值)</span><br><span class="line">        &#x2F;&#x2F;*如果 x &#x3D; 2^n ，则 x &amp; (n - 1) &#x3D;&#x3D; x % n</span><br><span class="line">        &#x2F;&#x2F;下面判断可以写成</span><br><span class="line">        &#x2F;&#x2F;if ((signs[i &#x2F; size] &amp; (1 &lt;&lt; (i % 32))) &#x3D;&#x3D; 0)</span><br><span class="line">        if ((signs[i &#x2F; size] &amp; (1 &lt;&lt; (i &amp; (size - 1)))) &#x3D;&#x3D; 0)&#123;</span><br><span class="line">            count++;</span><br><span class="line">            for (int j &#x3D; i + i; j &lt; n; j +&#x3D; i)&#123;</span><br><span class="line">                &#x2F;&#x2F;登记该数字</span><br><span class="line">            	signs[j &#x2F; size] |&#x3D; 1 &lt;&lt; (j &amp; (size - 1));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在LeetCode上，比特表（Bitmap）算法后能大量减少运行时间:  运行时间又<code>268 ms</code>减少到了<code>44 ms</code>,太强了。。。</p>
-<p>以上就是本题的全部内容了</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/12/%E6%AF%8F%E6%97%A5leetcode-2-%E8%AE%A1%E6%95%B0%E8%B4%A8%E6%95%B0/">展开全文 >></a>
         </p>
       
 

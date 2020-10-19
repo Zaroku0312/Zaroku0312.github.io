@@ -152,6 +152,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数据结构（c-语言描述）第三章-串" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%89%E7%AB%A0-%E4%B8%B2/">数据结构（c++语言描述）第三章_串</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%89%E7%AB%A0-%E4%B8%B2/" class="archive-article-date">
+  	<time datetime="2020-10-14T14:27:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="第三章-串"><a href="#第三章-串" class="headerlink" title="第三章-串"></a>第三章-串</h1><h4 id="什么是串"><a href="#什么是串" class="headerlink" title="什么是串?"></a>什么是串?</h4><blockquote>
+<p>串是有零个或多个字符组成的有限序列，又名为字符串</p>
+<p>空串：0个字符的串</p>
+<p>空格串：只包含空格的串</p>
+</blockquote>
+<p>感觉串跟C++的String类差不多？</p>
+<p>串的存储就不说了，也是分顺序存储和链式存储</p>
+<p>下面说说串的串的基本操作算法:</p>
+<hr>
+<h3 id="串的基本操作算法"><a href="#串的基本操作算法" class="headerlink" title="串的基本操作算法:"></a>串的基本操作算法:</h3><h4 id="1-串连接"><a href="#1-串连接" class="headerlink" title="1.串连接"></a>1.串连接</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">void StrCat(char *s1,char *s2)&#123;</span><br><span class="line">	int len1&#x3D;strlen(s1);</span><br><span class="line">	int len2&#x3D;strlen(s2);</span><br><span class="line">	if(len1+len2&gt;MaxSize-1)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;超长&quot;;</span><br><span class="line">		exit(1);</span><br><span class="line">	&#125;</span><br><span class="line">	int i&#x3D;0;</span><br><span class="line">	while(s2[i]!&#x3D;&#39;\0&#39;)&#123;</span><br><span class="line">		s1[i+len1]&#x3D;s2[i];</span><br><span class="line">		i++;</span><br><span class="line">	&#125; </span><br><span class="line">	s1[i+len1] &#x3D; &#39;\0&#39;;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h4 id="2-串比较"><a href="#2-串比较" class="headerlink" title="2.串比较"></a>2.串比较</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void StrCmp(char *s1,char *s2)&#123;</span><br><span class="line">	int i&#x3D;0;</span><br><span class="line">	while(s1[i]&#x3D;&#x3D;s2[i]&amp;&amp;s1[i]!&#x3D;&#39;\0&#39;)</span><br><span class="line">		i++;</span><br><span class="line">	return (s1[i]-s2[i]);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h4 id="3-串拷贝"><a href="#3-串拷贝" class="headerlink" title="3.串拷贝"></a>3.串拷贝</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void StrCpy(char *s1,char *s2)&#123;</span><br><span class="line">	int len&#x3D;strlen(s2);</span><br><span class="line">	if(len&gt;MaxSize-1)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;超长&quot;；</span><br><span class="line">		exit(1); </span><br><span class="line">	&#125;</span><br><span class="line">	while(*s1++&#x3D;*s2++);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>串的比较有个比较出名的算法，这里简单介绍一下：<code> KMP</code> 匹配算法</p>
+<p>有兴趣的可以去这里: <a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html">http://www.ruanyifeng.com/blog/2013/05/Knuth–Morris–Pratt_algorithm.html</a>   （转载）</p>
+<hr>
+<p>串的内容就写这么多</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%89%E7%AB%A0-%E4%B8%B2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-每日leetcode-4-2的幂" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1199,73 +1281,6 @@ int main()&#123;
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/06/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-my-first-post" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/05/my-first-post/">我的第一篇博客</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/05/my-first-post/" class="archive-article-date">
-  	<time datetime="2020-10-05T11:23:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="启程"><a href="#启程" class="headerlink" title="启程"></a>启程</h2><p>我是一个大二的学生<br>在2020年10月的某个假期，我突然意识到了自己好像似乎有那么一点点的咸鱼，在大一，我可以说是以应付方的度过了大一，整天咸鱼在宿舍里，“LOL它不香吗”，“DarkSoulsIII它不香吗”，“Sekiro它不香吗”。。。<br>在大一，我在游戏中荒废里许多的时光，感觉学得的知识好像也并不多。现在看着知乎，B站，贴吧上的各路大神，我不经陷入了沉思：原来我这么菜的吗。。。<br>唉，过去的就当过去了，人总得往前看</p>
-<hr>
-<h2 id="“种一棵树最好的时间是十年前-其次是现在”"><a href="#“种一棵树最好的时间是十年前-其次是现在”" class="headerlink" title="“种一棵树最好的时间是十年前,其次是现在”"></a>“种一棵树最好的时间是十年前,其次是现在”</h2><p>在这几天，我了解一下博客，我决定博客的形式记录下我接下来的学习和成长，也算是记录下自己努力吧。</p>
-<hr>
-<p>这第一篇博客也可以算是个小测试吧，字体排版啥的还没具体去了解，明天还有早课，暂时就写这么多吧。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/05/my-first-post/">展开全文 >></a>
         </p>
       
 

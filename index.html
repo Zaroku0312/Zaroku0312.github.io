@@ -152,6 +152,132 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每日leetcode-9-爬楼梯" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/19/%E6%AF%8F%E6%97%A5leetcode-9-%E7%88%AC%E6%A5%BC%E6%A2%AF/">每日leetcode-9-爬楼梯</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/19/%E6%AF%8F%E6%97%A5leetcode-9-%E7%88%AC%E6%A5%BC%E6%A2%AF/" class="archive-article-date">
+  	<time datetime="2020-10-19T03:55:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="爬楼梯"><a href="#爬楼梯" class="headerlink" title="爬楼梯"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/climbing-stairs/">爬楼梯</a></h4><p>源自LeetCode:  <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/climbing-stairs/">https://leetcode-cn.com/problems/climbing-stairs/</a></p>
+<p>问题描述:</p>
+<p>假设你正在爬楼梯。需要 <em>n</em> 阶你才能到达楼顶。</p>
+<p>每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
+<p><strong>注意：</strong>给定 <em>n</em> 是一个正整数。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入： 2</span><br><span class="line">输出： 2</span><br><span class="line">解释： 有两种方法可以爬到楼顶。</span><br><span class="line">1.  1 阶 + 1 阶</span><br><span class="line">2.  2 阶</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><figcaption><span>3</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入： 3</span><br><span class="line">输出： 3</span><br><span class="line">解释： 有三种方法可以爬到楼顶。</span><br><span class="line">1.  1 阶 + 1 阶 + 1 阶</span><br><span class="line">2.  1 阶 + 2 阶</span><br><span class="line">3.  2 阶 + 1 阶</span><br></pre></td></tr></table></figure>
+
+
+
+<p>题目给出的模板：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int climbStairs(int n) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>乍一看挺简单的，这是一道用递归做的题。</p>
+<p>下面给出我的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int climbStairs(int n) &#123;</span><br><span class="line">		if(n&#x3D;&#x3D;1) return 1;                &#x2F;&#x2F;递归出口</span><br><span class="line">		else if(n&#x3D;&#x3D;2) return 2;</span><br><span class="line">		else return climbStairs(n-1)+climbStairs(n-2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>直接运行超时，也是，递归所花费的时间和空间都是巨大的。</p>
+<p>让我来康康别人是怎么做的把。</p>
+<hr>
+<p>作者：LeetCode-Solution<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/climbing-stairs/solution/pa-lou-ti-by-leetcode-solution/">https://leetcode-cn.com/problems/climbing-stairs/solution/pa-lou-ti-by-leetcode-solution/</a><br>来源：力扣（LeetCode）</p>
+<h2 id="方法一-记忆化递归（对原来的递归进行优化）"><a href="#方法一-记忆化递归（对原来的递归进行优化）" class="headerlink" title="方法一 : 记忆化递归（对原来的递归进行优化）"></a>方法一 : 记忆化递归（对原来的递归进行优化）</h2><p>JAVA代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int climbStairs(int n) &#123;</span><br><span class="line">    	int memo[]&#x3D;new int[n+1];</span><br><span class="line">    	return climbStairsMemo(n,memo);</span><br><span class="line">    &#125;</span><br><span class="line">	public int climbStairsMemo(int n,int memo[])&#123;</span><br><span class="line">		if(memo[n]&gt;0)&#123;</span><br><span class="line">			return memo[n];</span><br><span class="line">		&#125;</span><br><span class="line">		if(n&#x3D;&#x3D;1) memo[n]&#x3D;1;                &#x2F;&#x2F;递归出口</span><br><span class="line">		else if(n&#x3D;&#x3D;2) memo[n]&#x3D;2;</span><br><span class="line">		else memo[n]&#x3D;climbStairsMemo(n-1,memo)+climbStairsMemo(n-2,memo);</span><br><span class="line">		return memo[n];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>记忆化递归再求解的时候，我们会把之前的信息记录下来，这样当我们需要每一项的值的时候就不需要重新返回计算，从而大大减少计算量。</p>
+</blockquote>
+<p>关于记忆化递归我还找了一篇文章，虽然我也看不懂。。。<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/73579773%EF%BC%88%E8%BD%AC%E8%BD%BD%EF%BC%89">https://zhuanlan.zhihu.com/p/73579773（转载）</a></p>
+<hr>
+<h3 id="方法二：动态规划"><a href="#方法二：动态规划" class="headerlink" title="方法二：动态规划"></a>方法二：动态规划</h3><p>作者：LeetCode-Solution<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/climbing-stairs/solution/pa-lou-ti-by-leetcode-solution/">https://leetcode-cn.com/problems/climbing-stairs/solution/pa-lou-ti-by-leetcode-solution/</a><br>本题其实是为动态规划的经典题</p>
+<p>思路和算法</p>
+<blockquote>
+<p>我们用 f(x)f(x) 表示爬到第 x 级台阶的方案数，考虑最后一步可能跨了一级台阶，也可能跨了两级台阶，所以我们可以列出如下式子：</p>
+<p><code>f(x) = f(x - 1) + f(x - 2)</code></p>
+<p>它意味着爬到第 xx 级台阶的方案数是爬到第 <code>x - 1</code>级台阶的方案数和爬到第 <code>x - 2</code> 级台阶的方案数的和。很好理解，因为每次只能爬 1 级或 2 级，所以 <code>f(x)</code>只能从 <code>f(x - 1)</code>和 <code>f(x - 2)</code>转移过来，而这里要统计方案总数，我们就需要对这两项的贡献求和。</p>
+<p>以上是动态规划的转移方程，下面我们来讨论边界条件。我们是从第 0 级开始爬的，所以从第 0 级爬到第 0 级我们可以看作只有一种方案，即 f(0) = 1；从第 00 级到第 1级也只有一种方案，即爬一级，f(1) = 1。这两个作为边界条件就可以继续向后推导出第 n 级的正确结果。我们不妨写几项来验证一下，根据转移方程得到 f(2) = 2，f(3) = 3，f(4) = 5……我们把这些情况都枚举出来，发现计算的结果是正确的。</p>
+<p>我们不难通过转移方程和边界条件给出一个时间复杂度和空间复杂度都是 O(n) 的实现，但是由于这里的 f(x)只和 f(x - 1)与 f(x - 2)有关，所以我们可以用「滚动数组思想」把空间复杂度优化成 O(1)。</p>
+</blockquote>
+<p>下面给出官方代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int climbStairs(int n) &#123;</span><br><span class="line">        int p &#x3D; 0, q &#x3D; 0, r &#x3D; 1;</span><br><span class="line">        for (int i &#x3D; 1; i &lt;&#x3D; n; ++i) &#123;</span><br><span class="line">            p &#x3D; q; </span><br><span class="line">            q &#x3D; r; </span><br><span class="line">            r &#x3D; p + q;</span><br><span class="line">        &#125;</span><br><span class="line">        return r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>补充:</p>
+<blockquote>
+<p><strong>动态规划</strong>（Dynamic Programming，DP）是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%BF%90%E7%AD%B9%E5%AD%A6/1559">运筹学</a>的一个分支，是求解<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/6714639">决策过程</a>最优化的过程。20世纪50年代初，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486">美国</a>数学家<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B4%9D%E5%B0%94%E6%9B%BC/9239579">贝尔曼</a>（R.Bellman）等人在研究多阶段决策过程的优化问题时，提出了著名的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%80%E4%BC%98%E5%8C%96%E5%8E%9F%E7%90%86/797797">最优化原理</a>，从而创立了动态规划。动态规划的应用极其广泛，包括<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF/6998399">工程技术</a>、经济、工业生产、军事以及<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8E%A7%E5%88%B6/8483773">自动化控制</a>等领域，并在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/2416931">背包问题</a>、生产经营问题、资金管理问题、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D%E9%97%AE%E9%A2%98/19135166">资源分配问题</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/23162228">最短路径问题</a>和复杂系统可靠性问题等中取得了显著的效果 。</p>
+</blockquote>
+<p>源自百度百科:<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/529408?fr=aladdin">https://baike.baidu.com/item/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/529408?fr=aladdin</a></p>
+<p>动态规划算是六大算法之一（其他五个是啥？抱歉我还没学）</p>
+<hr>
+<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><p>作者：Potwski<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/climbing-stairs/solution/fei-bo-na-qi-pa-lou-ti-chao-100-by-potwski/">https://leetcode-cn.com/problems/climbing-stairs/solution/fei-bo-na-qi-pa-lou-ti-chao-100-by-potwski/</a><br>来源：力扣（LeetCode）</p>
+<p>解题思路：</p>
+<blockquote>
+<p>比如5层楼梯可以从第四层一步跳上来，从第3层跳两步上来。所以第n层楼梯跳的跳法为f(n)=f(n-1)+f(n-2)。<br>如果采用递归会超时，设置第一步和第二步，然后加上去就行了</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int climbStairs(int n) &#123;</span><br><span class="line">        if (n&#x3D;&#x3D;1 || n&#x3D;&#x3D;2) return n;</span><br><span class="line">        int res,p1&#x3D;1,p2&#x3D;2;</span><br><span class="line">        for (int i&#x3D;3;i&lt;&#x3D;n;i++) &#123;</span><br><span class="line">            res&#x3D;p1+p2;</span><br><span class="line">            p1&#x3D;p2;</span><br><span class="line">            p2&#x3D;res;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>老实说，没看懂。。。</p>
+<hr>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结:"></a>小结:</h3><p><strong>一般都不使用递归，使用递归也是用记忆化递归或者动态规划</strong></p>
+<p><code>动态规划</code> 是个啥子?得找个时间去看看了，还有算法</p>
+<hr>
+<p>本题就到这里了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/19/%E6%AF%8F%E6%97%A5leetcode-9-%E7%88%AC%E6%A5%BC%E6%A2%AF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-每日leetcode-8-最后一个单词的长度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -442,7 +568,7 @@
 <p>参考答案：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">year&#x3D;int(input(&#39;请输入年份:&#39;))</span><br><span class="line"># 如果代码太长写成一行不便于阅读 可以使用\对代码进行折行</span><br><span class="line">is_leap&#x3D; year % 4 &#x3D;&#x3D;0 and year % 100 !&#x3D;0 or\</span><br><span class="line">         year % 400&#x3D;&#x3D;0</span><br><span class="line">print(is_leap)</span><br></pre></td></tr></table></figure>
 
-<p>由于学判断语句就只先输出<code>True</code>和<code>False</code> 了</p>
+<p>由于还没学判断语句就只先输出<code>True</code>和<code>False</code> 了</p>
 <hr>
 <p>Day 2还是比较轻松的，主要是了解一些基本的语法，由于有C和C++的基础所以学起来没啥难度。100天学python，今天是第二天</p>
 
@@ -1173,143 +1299,9 @@
 
 
   
-    <article id="post-每日leetcode-4-2的幂" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/">每日leetcode-4-2的幂</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/" class="archive-article-date">
-  	<time datetime="2020-10-14T06:47:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="2的幂"><a href="#2的幂" class="headerlink" title="2的幂"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/power-of-two/">2的幂</a></h2><p>源自LeetCode:  <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/power-of-two/">https://leetcode-cn.com/problems/power-of-two/</a></p>
-<p>问题描述:</p>
-<p>给定一个整数，编写一个函数来判断它是否是 2 的幂次方。</p>
-<p><strong>示例 1:</strong></p>
-<blockquote>
-<p><strong>输入:</strong> 1 </p>
-<p><strong>输出:</strong> true </p>
-<p><strong>解释:</strong> 2^0 = 1</p>
-</blockquote>
-<p><strong>示例 2:</strong></p>
-<blockquote>
-<p><strong>输入:</strong> 16 </p>
-<p><strong>输出:</strong> true </p>
-<p><strong>解释:</strong> 2^4 = 16</p>
-</blockquote>
-<p><strong>示例 3:</strong></p>
-<blockquote>
-<p><strong>输入:</strong> 218</p>
-<p><strong>输出:</strong> false</p>
-</blockquote>
-<p>题目给出的模板：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPowerOfTwo(int n) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>乍一看好像还挺简单的,写一个循环,就可以搞定了</p>
-<p>下面给出我的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPowerOfTwo(int n) &#123;</span><br><span class="line">    	if(n&#x3D;&#x3D;1) return true;</span><br><span class="line">    	double a&#x3D;2;</span><br><span class="line">		while(1)&#123;</span><br><span class="line">			if(n&#x3D;&#x3D;a) return true;</span><br><span class="line">			if(n&lt;a)	 return false;</span><br><span class="line">			a*&#x3D;2;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>需要注意的是，程序中的 <code>a</code>不能是<code>int</code> 类型，范围太小了，因此我采用了<code>double</code> 类型。</p>
-<p>一次就通过了？？？ 就这？</p>
-<p>让我来康康别人是怎么做的把。</p>
-<hr>
-<p>果然LeetCode不会让人失望的，我去解答区，看到的画风是这样的：</p>
-<p><img src="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/1%E8%A1%8C.png"></p>
-<p>我当时的表情是这样的:<br><img src="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/EX.jpg"></p>
-<p>原来是这个题目太弱了，不是我变强了：<br><img src="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/%E5%90%90xie.jpg"></p>
-<p>下面看看他们是怎么做的吧:</p>
-<p>作者：kadgang<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/power-of-two/solution/shi-yong-wei-yun-suan-xiao-ji-qiao-yi-xing-returnj/">https://leetcode-cn.com/problems/power-of-two/solution/shi-yong-wei-yun-suan-xiao-ji-qiao-yi-xing-returnj/</a><br>来源：力扣（LeetCode）</p>
-<blockquote>
-<p>首先拿到这道题可以观察题目。题目要求判断当前整数是否为2的幂。<br>那么首先可以观察一些2的幂的二进制。<br>例：<br>1 = 1;<br>2 = 10;<br>4 = 100;<br>8 = 1000;<br>…<br>是的，所有为2的幂的整数，其二进制均是除了其有效最高位以外全是0的数。也就是说，我们只需要判断这个数是否有除了有效最高位之外还有没有其他的1即可。</p>
-<p>那么这里可以用到一个位运算小技巧：给定一个数n，将n和(n-1)做一次与运算，即可将n的最后一位1去掉</p>
-<p>那么对于所有2的幂，我们将它与它-1后的数做一次与运算，就会将其唯一一位1消去，最后等于0。</p>
-</blockquote>
-<p>如果它等于0，那么就证明它是2的幂了。</p>
-<p>给出代码:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPowerOfTwo(int n) &#123;</span><br><span class="line">        return n &gt; 0 &amp;&amp; !(n &amp; (n - 1));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>等等，与运算是啥？</p>
-<blockquote>
-<p>“与”运算是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA/140338">计算机</a>中一种<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9F%BA%E6%9C%AC/763181">基本</a>的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97/7224729">逻辑运算</a>方式，符号表示为&amp;，与之相对应的词是“或”，在日常口语交流和书写中一般做关联词。汉语中表示<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%92%8C/1692925">和</a>的意思。</p>
-<h2 id="与运算的用法"><a href="#与运算的用法" class="headerlink" title="与运算的用法"></a>与运算的用法</h2><p>参加运算的两个数据，按二进制位进行“与”运算。</p>
-<p>运算规则：0&amp;0=0;0&amp;1=0;1&amp;0=0;1&amp;1=1;</p>
-<p>即：两位同时为“1”，结果才为“1”，否则为0</p>
-<p>例如：3&amp;5即 0000 0011 &amp; 0000 0101 = 0000 0001因此，3&amp;5的值得1。</p>
-<p>另，负数按补码形式参加按位与运算。</p>
-<p>“与运算”的特殊用途：</p>
-<p>（1）清零。如果想将一个单元清零，即使其全部二进制位为0，只要与一个各位都为零的数值相与，结果为零。</p>
-<p>（2）取一个数中指定位</p>
-<p>方法：找一个数，对应X要取的位，该数的对应位为1，其余位为零，此数与X进行“与运算”可以得到X中的指定位。</p>
-<p>例：设X=10101110，</p>
-<p>取X的第4位，用 X &amp; 0000 1111 = 0000 1110即可得到；</p>
-<p>还可用来取X的2、4、6位。</p>
-</blockquote>
-<p>源自百度百科: <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BD%8D%E8%BF%90%E7%AE%97/6888804?fr=aladdin">https://baike.baidu.com/item/位运算/6888804?fr=aladdin</a></p>
-<blockquote>
-<p>与运算，对应位全是1结果为1，否则为0</p>
-<p>或运算，对应位全是0结果为0，否则为1</p>
-</blockquote>
-<hr>
-<p>感觉自己还是才学疏浅啊。。。通过这题我学到了个<code>与运算</code>，以及<code>与运算</code>的一个性质（给定一个数n，将n和(n-1)做一次与运算，即可将n的最后一位1去掉）如果想知道这是咋来的可以看: <a target="_blank" rel="noopener" href="https://blog.csdn.net/nwpu_geeker/article/details/79763511">https://blog.csdn.net/nwpu_geeker/article/details/79763511</a>   (转载)</p>
-<p>这道题就暂时到这里了，如果你有什么问题或者建议可以联系我</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 

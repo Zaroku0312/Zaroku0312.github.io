@@ -152,6 +152,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数据结构（c-语言描述）第四章-数组和特殊矩阵" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%95%B0%E7%BB%84%E5%92%8C%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5/">数据结构（c-语言描述）第四章-数组和特殊矩阵</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%95%B0%E7%BB%84%E5%92%8C%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5/" class="archive-article-date">
+  	<time datetime="2020-10-15T13:46:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第四章-数组和特殊矩阵"><a href="#第四章-数组和特殊矩阵" class="headerlink" title="第四章-数组和特殊矩阵"></a>第四章-数组和特殊矩阵</h2><h3 id="一-数组"><a href="#一-数组" class="headerlink" title="一.数组"></a>一.数组</h3><p>数组大家应该都认识了吧，好像没啥好说的</p>
+<blockquote>
+<p><strong>数组</strong>（Array）是有序的元素序列。 [1] 若将有限个类型相同的变量的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%9B%86%E5%90%88/2908117">集合</a>命名，那么这个名称为数组名。组成数组的各个变量称为数组的分量，也称为数组的元素，有时也称为<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%8B%E6%A0%87%E5%8F%98%E9%87%8F/12713827">下标变量</a>。用于区分数组的各个元素的数字编号称为下标。数组是在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/223952">程序设计</a>中，为了处理方便， 把具有相同类型的若干元素按有序的形式组织起来的一种形式。 [1] 这些有序排列的同类数据元素的集合称为数组。</p>
+<p>数组是用于储存多个相同类型数据的集合。</p>
+</blockquote>
+<p>源自百度百科: <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E7%BB%84/3794097?fr=aladdin">https://baike.baidu.com/item/%E6%95%B0%E7%BB%84/3794097?fr=aladdin</a></p>
+<h5 id="补充一点数组的知识"><a href="#补充一点数组的知识" class="headerlink" title="补充一点数组的知识"></a>补充一点数组的知识</h5><ul>
+<li><p>二维数组以及多维数组可以看出是线性表的推广。</p>
+</li>
+<li><p>数组的存储一般使用顺序存储的方式 （分两种形式）</p>
+<ul>
+<li>行优先顺序</li>
+<li>列优先顺序</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="二-矩阵"><a href="#二-矩阵" class="headerlink" title="二.矩阵"></a>二.矩阵</h3><p>在用高级语言编制程序时，常将一个矩阵描述为一个二维数组。</p>
+<p>下面主要将特殊矩阵，主要包括:对称矩阵，三角矩阵，对角矩阵，稀疏矩阵等。</p>
+<p><strong>对称矩阵</strong> ：对称矩阵是指以主对角线为对称轴，各元素对应相等的矩阵。</p>
+<p><strong>三角矩阵</strong> ：三角矩阵是方形矩阵的一种，因其非零系数的排列呈三角形状而得名。三角矩阵分上三角矩阵和下三角矩阵两种。上三角矩阵的对角线左下方的系数全部为零，下三角矩阵的对角线右上方的系数全部为零。</p>
+<p>**对角矩阵 **:  是一个主对角线之外的元素皆为<code>0</code>的矩阵。</p>
+<p><strong>稀疏矩阵</strong> :  在矩阵中，若数值为0的元素数目远远多于非0元素的数目，并且非0元素分布没有规律时，则称该矩阵为稀疏矩阵；与之相反，若非0元素数目占大多数时，则称该矩阵为稠密矩阵。定义非零元素的总数比上矩阵所有元素的总数为矩阵的稠密度。</p>
+<p>在稀疏矩阵的存储时，会用到一个<code>三元组表</code> 三元组里的数据存放了非0元素的行，列下标以及元素的值，所以称为三元组表。</p>
+<p>三元组表也分有顺序存储和链式存储：</p>
+<p>基于三元组表存储的稀疏矩阵也称为十字链表</p>
+<hr>
+<p>由于之前也写了挺多的顺序存储和链式存储，发现来来回回就那些，现在就不再花时间去写这些的代码了，矩阵和数组也有一些基本的操作，但也只是在我们之前学的基础上加点东西，具体并不难实现。就不写了。。。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%95%B0%E7%BB%84%E5%92%8C%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-每日leetcode-5-两数之和" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1259,75 +1349,6 @@ int main()&#123;
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-关于PC登陆博客404" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/07/%E5%85%B3%E4%BA%8EPC%E7%99%BB%E9%99%86%E5%8D%9A%E5%AE%A2404/">关于PC登陆博客404（拒绝访问）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/07/%E5%85%B3%E4%BA%8EPC%E7%99%BB%E9%99%86%E5%8D%9A%E5%AE%A2404/" class="archive-article-date">
-  	<time datetime="2020-10-07T15:33:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> 百度了许久，一开始还以为是哪里的设置出现了问题才导致的，后来又有人说是局域网的问题，也有人说是个人的网络的问题，寻求了众多的方法都并未解决，其实以上种种方法都是“错误”的，其实并不是我个人的问题，近几个月挺多人都表示在PC上登陆不进去，其实是网站出了问题。。。大部分人和我以同样方法搭载博客的人都出现了不能或很难登陆的这个问题，等过一阵子希望能大家都能够正常登陆把。</p>
-<hr>
-<p>那么为什么手机又能登陆呢？  这让我百思不得其解，下次有时间我再去找找原因把。</p>
-<hr>
-<p>这次的404让我认识了挺多的。。。   有些网上所谓的方法是不能够全信的，有些可能并没有啥用，可能他们也没有搞懂问题的根源?  不过这次的解决方法也还是有的，就是让自己Ping 通自己的博客网址，就能做到登陆了，当然没有Ping通的当然还是无法访问（怎么有种掩耳盗铃的感觉）</p>
-<p>下次有机会我再写一篇关于Ping的做法把。</p>
-<hr>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/07/%E5%85%B3%E4%BA%8EPC%E7%99%BB%E9%99%86%E5%8D%9A%E5%AE%A2404/">展开全文 >></a>
         </p>
       
 

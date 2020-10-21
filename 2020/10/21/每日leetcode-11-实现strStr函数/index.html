@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2020/10 | Hexo</title>
+  <title>每日leetcode-11-实现strStr函数 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2020/10/page/3/index.html">
+  <meta name="description" content="实现 strStr()源自LeetCode: https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;implement-strstr&#x2F; 问题描述: 给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。 示例 1: 12输入: haystack &#x3D; &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每日leetcode-11-实现strStr函数">
+<meta property="og:url" content="http://example.com/2020/10/21/%E6%AF%8F%E6%97%A5leetcode-11-%E5%AE%9E%E7%8E%B0strStr%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="实现 strStr()源自LeetCode: https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;implement-strstr&#x2F; 问题描述: 给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。 示例 1: 12输入: haystack &#x3D; &amp;">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-21T09:08:53.000Z">
+<meta property="article:modified_time" content="2020-10-21T13:23:08.518Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,160 +154,220 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-每日leetcode-11-实现strStr函数" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      每日leetcode-11-实现strStr函数
+    </h1>
+  
+
+        
+        <a href="/2020/10/21/%E6%AF%8F%E6%97%A5leetcode-11-%E5%AE%9E%E7%8E%B0strStr%E5%87%BD%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2020-10-21T09:08:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-21</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="实现-strStr"><a href="#实现-strStr" class="headerlink" title="实现 strStr()"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-strstr/">实现 strStr()</a></h4><p>源自LeetCode: <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-strstr/">https://leetcode-cn.com/problems/implement-strstr/</a></p>
+<p>问题描述:</p>
+<p>给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: haystack &#x3D; &quot;hello&quot;, needle &#x3D; &quot;ll&quot;</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><figcaption><span>3</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: haystack &#x3D; &quot;aaaaa&quot;, needle &#x3D; &quot;bba&quot;</span><br><span class="line">输出: -1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>说明:</p>
+<blockquote>
+<p>当 needle 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。</p>
+</blockquote>
+<blockquote>
+<p>对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与C语言的 strstr() 以及 Java的 indexOf() 定义相符。</p>
+</blockquote>
+<p>题目给出的模板：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>字符串的匹配，怎么这么熟悉，这不是我前几个星期刚学的吗，其中有个KMP算法，我并没有记住怎么实现的，我只记得运用双指针的方法做这道题，时间复杂度很高</p>
+<p>我就不写那个简单的算法了，我们直接去看KMP算法</p>
+<p>让我们康康别人是怎么做的吧</p>
+<hr>
+<p>作者：carlsun-2<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-strstr/solution/bang-ni-ba-kmpsuan-fa-xue-ge-tong-tou-ming-ming-ba/">https://leetcode-cn.com/problems/implement-strstr/solution/bang-ni-ba-kmpsuan-fa-xue-ge-tong-tou-ming-ming-ba/</a><br>来源：力扣（LeetCode）</p>
+<p>KMP的经典思想就是:<strong>当出现字符串不匹配时，可以记录一部分之前已经匹配的文本内容，利用这些信息避免从头再去做匹配。</strong></p>
+<p>本篇将以如下顺序来讲解KMP，</p>
+<ol>
+<li>什么是KMP</li>
+<li>KMP可以解决什么问题</li>
+<li>分析KMP算法里的next数组</li>
+<li>什么是前缀表</li>
+<li>再分析为什么要是前缀表而不是什么哈希表其他表等等，偏偏要是前缀表。</li>
+<li>一步一步推导前缀表是怎么求的</li>
+<li>时间复杂度分析</li>
+<li>前缀表与next数组的关系</li>
+<li>如何使用next数组来做一遍匹配的过程</li>
+<li>构造next数组</li>
+<li>使用next数组进行匹配</li>
+<li>前缀表统一减一（右移）的KMP实现方式</li>
+<li>前缀表不减一的KMP实现方式</li>
+<li>总结</li>
+</ol>
+<p>那个作者讲的相当详细，各位有兴趣可以去看</p>
+<h3 id="什么是KMP"><a href="#什么是KMP" class="headerlink" title="什么是KMP"></a>什么是KMP</h3><p>说到KMP，先说一下KMP这个名字是怎么来的，为什么叫做KMP呢。</p>
+<p>因为是由这三位学者发明的：Knuth，Morris和Pratt，所以取了三位学者名字的首字母。所以叫做KMP</p>
+<h3 id="KMP有什么用"><a href="#KMP有什么用" class="headerlink" title="KMP有什么用"></a>KMP有什么用</h3><p>KMP主要应用在字符串匹配上。</p>
+<p>KMP的主要思想是当出现字符串不匹配时，可以知道一部分之前已经匹配的文本内容，可以利用这些信息避免从头再去做匹配了。</p>
+<p>所以如何记录已经匹配的文本内容，是KMP的重点，也是next数组肩负的重任。</p>
+<h3 id="什么是前缀表"><a href="#什么是前缀表" class="headerlink" title="什么是前缀表"></a>什么是前缀表</h3><p>写过KMP的同学，一定都写过next数组，那么这个next数组究竟是个啥呢？</p>
+<p>next数组就是一个前缀表（prefix table）。</p>
+<p>前缀表有什么作用呢？</p>
+<p><strong>前缀表是用来回退的，它记录了模式串与主串(文本串)不匹配的时候，模式串应该从哪里开始重新匹配。</strong></p>
+<p><strong>此时就要问了前缀表是如何记录的呢？</strong></p>
+<p>首先要知道前缀表的任务是当前位置匹配失败，找到之前已经匹配上的位置，在重新匹配，此也意味着在某个字符失配时，前缀表会告诉你下一步匹配中，模式串应该跳到哪个位置。</p>
+<p>那么什么是前缀表：记录下表i之前（包括i）的字符串中，有多大长度的相同前缀后缀。</p>
+<p>关于前缀表怎么写的话自行百度吧。。。</p>
+<p>本题的题解如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void getNext(int* next, const string&amp; s) &#123;</span><br><span class="line">        int j &#x3D; -1;</span><br><span class="line">        next[0] &#x3D; j;</span><br><span class="line">        for(int i &#x3D; 1; i &lt; s.size(); i++) &#123; &#x2F;&#x2F; 注意i从1开始</span><br><span class="line">            while (j &gt;&#x3D; 0 &amp;&amp; s[i] !&#x3D; s[j + 1]) &#123; &#x2F;&#x2F; 前后缀不相同了</span><br><span class="line">                j &#x3D; next[j]; &#x2F;&#x2F; 向前回溯</span><br><span class="line">            &#125;</span><br><span class="line">            if (s[i] &#x3D;&#x3D; s[j + 1]) &#123; &#x2F;&#x2F; 找到相同的前后缀</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">            next[i] &#x3D; j; &#x2F;&#x2F; 将j（前缀的长度）赋给next[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        if (needle.size() &#x3D;&#x3D; 0) &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        int next[needle.size()];</span><br><span class="line">        getNext(next, needle);</span><br><span class="line">        int j &#x3D; -1; &#x2F;&#x2F; &#x2F;&#x2F; 因为next数组里记录的起始位置为-1</span><br><span class="line">        for (int i &#x3D; 0; i &lt; haystack.size(); i++) &#123; &#x2F;&#x2F; 注意i就从0开始</span><br><span class="line">            while(j &gt;&#x3D; 0 &amp;&amp; haystack[i] !&#x3D; needle[j + 1]) &#123; &#x2F;&#x2F; 不匹配</span><br><span class="line">                j &#x3D; next[j]; &#x2F;&#x2F; j 寻找之前匹配的位置</span><br><span class="line">            &#125;</span><br><span class="line">            if (haystack[i] &#x3D;&#x3D; needle[j + 1]) &#123; &#x2F;&#x2F; 匹配，j和i同时向后移动 </span><br><span class="line">                j++; &#x2F;&#x2F; i的增加在for循环里</span><br><span class="line">            &#125;</span><br><span class="line">            if (j &#x3D;&#x3D; (needle.size() - 1) ) &#123; &#x2F;&#x2F; 文本串s里出现了模式串t</span><br><span class="line">                return (i - needle.size() + 1); </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>那么使用next数组，用模式串匹配文本串的整体代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int j &#x3D; -1; &#x2F;&#x2F; 因为next数组里记录的起始位置为-1</span><br><span class="line">for (int i &#x3D; 0; i &lt; s.size(); i++) &#123; &#x2F;&#x2F; 注意i就从0开始</span><br><span class="line">    while(j &gt;&#x3D; 0 &amp;&amp; s[i] !&#x3D; t[j + 1]) &#123; &#x2F;&#x2F; 不匹配</span><br><span class="line">        j &#x3D; next[j]; &#x2F;&#x2F; j 寻找之前匹配的位置</span><br><span class="line">    &#125;</span><br><span class="line">    if (s[i] &#x3D;&#x3D; t[j + 1]) &#123; &#x2F;&#x2F; 匹配，j和i同时向后移动</span><br><span class="line">        j++; &#x2F;&#x2F; i的增加在for循环里</span><br><span class="line">    &#125;</span><br><span class="line">    if (j &#x3D;&#x3D; (t.size() - 1) ) &#123; &#x2F;&#x2F; 文本串s里出现了模式串t</span><br><span class="line">        return (i - t.size() + 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结:"></a>小结:</h3><p>KMP算法其实也不会很难，之前是我把它想的太难了</p>
+<hr>
+<p>本题就到这里了</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-10-08T14:47:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">Markdown简介，基本语法</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/10/21/%E6%AF%8F%E6%97%A5leetcode-11-%E5%AE%9E%E7%8E%B0strStr%E5%87%BD%E6%95%B0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/07/%E5%85%B3%E4%BA%8EPC%E7%99%BB%E9%99%86%E5%8D%9A%E5%AE%A2404/" class="archive-article-date">
-  	<time datetime="2020-10-07T15:33:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-07</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/10/20/%E6%AF%8F%E6%97%A5leetcode-10-%E5%9B%9E%E6%96%87%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">每日leetcode-10-回文数</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/07/%E5%85%B3%E4%BA%8EPC%E7%99%BB%E9%99%86%E5%8D%9A%E5%AE%A2404/">关于PC登陆博客404（拒绝访问）</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/06/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-10-06T10:00:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/06/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84%E9%97%AE%E9%A2%98/">莫名其妙的问题</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/05/my-first-post/" class="archive-article-date">
-  	<time datetime="2020-10-05T11:23:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/05/my-first-post/">我的第一篇博客</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/05/hello-world/" class="archive-article-date">
-  	<time datetime="2020-10-05T11:00:00.008Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/05/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/10/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/10/">1</a><a class="page-number" href="/archives/2020/10/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
   
 
 
@@ -327,8 +391,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

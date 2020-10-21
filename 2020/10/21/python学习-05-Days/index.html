@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>python学习-05-Days | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/page/3/index.html">
+  <meta name="description" content="Day 05 构造程序逻辑迄今为止我们学习的内容只是Python的冰山一角，但是这些内容已经足够我们来构建程序中的逻辑。对于编程语言的初学者来说，在学习了Python的核心语言元素（变量、类型、运算符、表达式、分支结构、循环结构等）之后，必须做的一件事情就是尝试用所学知识去解决现实中的问题，换句话说就是锻炼自己把用人类自然语言描述的算法（解决问题的方法和步骤）翻译成Python代码的能力，而这件事">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python学习-05-Days">
+<meta property="og:url" content="http://example.com/2020/10/21/python%E5%AD%A6%E4%B9%A0-05-Days/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Day 05 构造程序逻辑迄今为止我们学习的内容只是Python的冰山一角，但是这些内容已经足够我们来构建程序中的逻辑。对于编程语言的初学者来说，在学习了Python的核心语言元素（变量、类型、运算符、表达式、分支结构、循环结构等）之后，必须做的一件事情就是尝试用所学知识去解决现实中的问题，换句话说就是锻炼自己把用人类自然语言描述的算法（解决问题的方法和步骤）翻译成Python代码的能力，而这件事">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2020/10/21/python%E5%AD%A6%E4%B9%A0-05-Days/1603292993(1).jpg">
+<meta property="article:published_time" content="2020-10-21T13:25:13.000Z">
+<meta property="article:modified_time" content="2020-10-21T16:00:12.129Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2020/10/21/python%E5%AD%A6%E4%B9%A0-05-Days/1603292993(1).jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,187 +156,186 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-python学习-05-Days" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python学习-05-Days
+    </h1>
+  
+
+        
+        <a href="/2020/10/21/python%E5%AD%A6%E4%B9%A0-05-Days/" class="archive-article-date">
+  	<time datetime="2020-10-21T13:25:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-21</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Day-05-构造程序逻辑"><a href="#Day-05-构造程序逻辑" class="headerlink" title="Day 05 构造程序逻辑"></a>Day 05 构造程序逻辑</h2><p>迄今为止我们学习的内容只是Python的冰山一角，但是这些内容已经足够我们来构建程序中的逻辑。对于编程语言的初学者来说，在学习了Python的核心语言元素（变量、类型、运算符、表达式、分支结构、循环结构等）之后，必须做的一件事情就是尝试用所学知识去解决现实中的问题，换句话说就是锻炼自己把用人类自然语言描述的算法（解决问题的方法和步骤）翻译成Python代码的能力，而这件事情必须通过大量的练习才能达成。</p>
+<h3 id="经典的例子"><a href="#经典的例子" class="headerlink" title="经典的例子"></a>经典的例子</h3><h4 id="1-寻找水仙花数"><a href="#1-寻找水仙花数" class="headerlink" title="1.寻找水仙花数"></a><strong>1.寻找水仙花数</strong></h4><p>寻找100~1000内的水仙花数</p>
+<blockquote>
+<p><strong>说明</strong>：水仙花数也被称为超完全数字不变数、自恋数、自幂数、阿姆斯特朗数，它是一个3位数，该数字每个位上数字的立方之和正好等于它本身，例如：<code>1^3 + 5^3+ 3^3=153</code>。</p>
+</blockquote>
+<p>给出我的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for i in range(100,1000):</span><br><span class="line">    x&#x3D;i</span><br><span class="line">    s&#x3D;0</span><br><span class="line">    while i:</span><br><span class="line">        s+&#x3D;int((i%10))**3</span><br><span class="line">        # 注意上面那行</span><br><span class="line">        i&#x2F;&#x3D;10</span><br><span class="line">    if x&#x3D;&#x3D;s:</span><br><span class="line">        print(x)</span><br></pre></td></tr></table></figure>
+
+<p>一开始我一直都通不过，想了半天也没找出错误，原因就是<code>Python</code>中浮点数也是能求余的，这在C和C++中不存在的，如<code>15.3</code>求余就变成了<code>5.3</code>。。。还有就是由于没有指定<code>i</code>的类型，<code>i</code>他会默认为<strong>浮点型</strong> 所以进行<code>/10</code>的时候它就会是一个浮点数，而浮点数能求余。。。所以我就跪了</p>
+<p><img src="/2020/10/21/python%E5%AD%A6%E4%B9%A0-05-Days/1603292993(1).jpg"></p>
+<h4 id="2-百钱百鸡问题"><a href="#2-百钱百鸡问题" class="headerlink" title="2.百钱百鸡问题"></a><strong>2.百钱百鸡问题</strong></h4><blockquote>
+<p><strong>说明</strong>：百钱百鸡是我国古代数学家<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%BC%A0%E4%B8%98%E5%BB%BA/10246238">张丘建</a>在《算经》一书中提出的数学问题：鸡翁一值钱五，鸡母一值钱三，鸡雏三值钱一。百钱买百鸡，问鸡翁、鸡母、鸡雏各几何？翻译成现代文是：公鸡5元一只，母鸡3元一只，小鸡1元三只，用100块钱买一百只鸡，问公鸡、母鸡、小鸡各有多少只？</p>
+</blockquote>
+<p>下面给出我的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; int(input(&#39;输入一个整数: &#39;))</span><br><span class="line">for i in range(0,int(x&#x2F;5)):</span><br><span class="line">    for j in range(0,int(x&#x2F;3)):</span><br><span class="line">        k&#x3D;100-i-j</span><br><span class="line">        if 5*i+3*j+k&#x2F;3 &#x3D;&#x3D; 100:</span><br><span class="line">            print(&#39;公鸡: %d只, 母鸡: %d只, 小鸡: %d只&#39; % (i, j, k))</span><br></pre></td></tr></table></figure>
+
+<p>上面使用的方法叫做<strong>穷举法</strong>，也称为<strong>暴力搜索法</strong>，这种方法通过一项一项的列举备选解决方案中所有可能的候选项并检查每个候选项是否符合问题的描述，最终得到问题的解。这种方法看起来比较笨拙，但对于运算能力非常强大的计算机来说，通常都是一个可行的甚至是不错的选择，而且问题的解如果存在，这种方法一定能够找到它。</p>
+<hr>
+<h4 id="3-CRAPS赌博游戏。"><a href="#3-CRAPS赌博游戏。" class="headerlink" title="3.CRAPS赌博游戏。"></a><strong>3.CRAPS赌博游戏</strong>。</h4><blockquote>
+<p><strong>说明</strong>：CRAPS又称花旗骰，是美国拉斯维加斯非常受欢迎的一种的桌上赌博游戏。该游戏使用两粒骰子，玩家通过摇两粒骰子获得点数进行游戏。简单的规则是：玩家第一次摇骰子如果摇出了7点或11点，玩家胜；玩家第一次如果摇出2点、3点或12点，庄家胜；其他点数玩家继续摇骰子，如果玩家摇出了7点，庄家胜；如果玩家摇出了第一次摇的点数，玩家胜；其他点数，玩家继续要骰子，直到分出胜负。</p>
+</blockquote>
+<blockquote>
+<p>我们设定玩家开始游戏时有1000元的赌注<br>游戏结束的条件是玩家输光所有的赌注</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">from random import randint</span><br><span class="line"></span><br><span class="line">money &#x3D; 1000</span><br><span class="line">while money &gt; 0:</span><br><span class="line">    print(&#39;你的总资产为:&#39;, money)</span><br><span class="line">    needs_go_on &#x3D; False</span><br><span class="line">    while True:</span><br><span class="line">        debt &#x3D; int(input(&#39;请下注: &#39;))</span><br><span class="line">        if 0 &lt; debt &lt;&#x3D; money:</span><br><span class="line">            break</span><br><span class="line">    first &#x3D; randint(1, 6) + randint(1, 6)</span><br><span class="line">    print(&#39;玩家摇出了%d点&#39; % first)</span><br><span class="line">    if first &#x3D;&#x3D; 7 or first &#x3D;&#x3D; 11:</span><br><span class="line">        print(&#39;玩家胜!&#39;)</span><br><span class="line">        money +&#x3D; debt</span><br><span class="line">    elif first &#x3D;&#x3D; 2 or first &#x3D;&#x3D; 3 or first &#x3D;&#x3D; 12:</span><br><span class="line">        print(&#39;庄家胜!&#39;)</span><br><span class="line">        money -&#x3D; debt</span><br><span class="line">    else:</span><br><span class="line">        needs_go_on &#x3D; True</span><br><span class="line">    while needs_go_on:</span><br><span class="line">        needs_go_on &#x3D; False</span><br><span class="line">        current &#x3D; randint(1, 6) + randint(1, 6)</span><br><span class="line">        print(&#39;玩家摇出了%d点&#39; % current)</span><br><span class="line">        if current &#x3D;&#x3D; 7:</span><br><span class="line">            print(&#39;庄家胜&#39;)</span><br><span class="line">            money -&#x3D; debt</span><br><span class="line">        elif current &#x3D;&#x3D; first:</span><br><span class="line">            print(&#39;玩家胜&#39;)</span><br><span class="line">            money +&#x3D; debt</span><br><span class="line">        else:</span><br><span class="line">            needs_go_on &#x3D; True</span><br><span class="line">print(&#39;你破产了, 游戏结束!&#39;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<p><strong>100天学python，今天是第五天</strong></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2020-10-09T04:50:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BA%BF%E6%80%A7%E8%A1%A8/">数据结构（c++语言描述）第一章</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/10/21/python%E5%AD%A6%E4%B9%A0-05-Days/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-10-08T14:47:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/10/21/%E6%AF%8F%E6%97%A5leetcode-11-%E5%AE%9E%E7%8E%B0strStr%E5%87%BD%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">每日leetcode-11-实现strStr函数</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/08/Markdown%E7%AE%80%E4%BB%8B%EF%BC%8C%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">Markdown简介，基本语法</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/07/%E5%85%B3%E4%BA%8EPC%E7%99%BB%E9%99%86%E5%8D%9A%E5%AE%A2404/" class="archive-article-date">
-  	<time datetime="2020-10-07T15:33:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/07/%E5%85%B3%E4%BA%8EPC%E7%99%BB%E9%99%86%E5%8D%9A%E5%AE%A2404/">关于PC登陆博客404（拒绝访问）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/06/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-10-06T10:00:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/06/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84%E9%97%AE%E9%A2%98/">莫名其妙的问题</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/05/my-first-post/" class="archive-article-date">
-  	<time datetime="2020-10-05T11:23:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/05/my-first-post/">我的第一篇博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/05/hello-world/" class="archive-article-date">
-  	<time datetime="2020-10-05T11:00:00.008Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/05/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
   
 
 
@@ -354,8 +359,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

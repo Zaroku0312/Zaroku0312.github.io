@@ -152,6 +152,171 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数据结构（c++语言描述）第二章_栈和队列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">数据结构（c++语言描述）第二章_栈和队列</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" class="archive-article-date">
+  	<time datetime="2020-10-09T05:56:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="栈与队列"><a href="#栈与队列" class="headerlink" title="栈与队列:"></a>栈与队列:</h2><h3 id="什么是栈-zhan-？"><a href="#什么是栈-zhan-？" class="headerlink" title="什么是栈(zhan)？"></a>什么是栈(zhan)？</h3><blockquote>
+<p>栈是只能在一段进行插入或删除的线性表。允许插入，删除的一端称为栈顶，另一端称为栈底。当栈中没有元素时称为空栈。</p>
+<p>栈有插入和删除两个主要操作，插入称为入栈（压栈），删除称为出栈（弹栈）</p>
+<p>栈的主要特点是后进先出</p>
+</blockquote>
+<p>当有n个元素按照某种顺序压入栈中，且可以在任意时刻弹出时，所获得可能的出栈序列个数可用<code> Catalan</code>列计算，即 1/n+1 *(Cn 2n)   C是排列组合符号。（这个公式不知道怎么打。。。还是拍个图吧）</p>
+<p><img src="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/%E5%85%AC%E5%BC%8F.png"></p>
+<h4 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h4><p>栈是操作受限的线性表，因此线性表那一套操作也可以拿来用</p>
+<p>顺序存储方式存放的栈称为顺序栈</p>
+<p>顺序栈的类模板声明如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">class SeqStack&#123;</span><br><span class="line">	T data[MaxSize];             &#x2F;&#x2F;存放栈元素</span><br><span class="line">	int  top;                    &#x2F;&#x2F;栈顶指针，指栈顶元素在数组的下标    栈空时 top&#x3D;&#x3D;-1,栈满时 top&#x3D;&#x3D;MaxSize-1 </span><br><span class="line">public:</span><br><span class="line">	SeqStack();					&#x2F;&#x2F;构造函数</span><br><span class="line">	void Push(T x);				&#x2F;&#x2F;入栈</span><br><span class="line">	T Pop();					&#x2F;&#x2F;出栈</span><br><span class="line">	T Top();					&#x2F;&#x2F;取栈顶元素（并不出栈）</span><br><span class="line">	bool Empty();				&#x2F;&#x2F;判断栈是否为空 </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>模板函数的实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T,int MaxSize&gt;                       &#x2F;&#x2F;初始化 </span><br><span class="line">SeqStack&lt;T,MaxSize&gt;::SeqStack()&#123;</span><br><span class="line">	top &#x3D; -1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;                     </span><br><span class="line">void SeqStack&lt;T,MaxSize&gt;::Push(T x)&#123;</span><br><span class="line">	if (top&#x3D;&#x3D;MaxSize-1)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;上溢&quot;;</span><br><span class="line">		exit(1); </span><br><span class="line">	&#125;</span><br><span class="line">	top++;</span><br><span class="line">	data[top]&#x3D;x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;   </span><br><span class="line">T SeqStack&lt;T,MaxSize&gt;::Pop()&#123;</span><br><span class="line">	if(top&#x3D;&#x3D;-1)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;下溢&quot;;</span><br><span class="line">		exit(1); </span><br><span class="line">	&#125;</span><br><span class="line">	T x&#x3D;data[top];</span><br><span class="line">	top--;</span><br><span class="line">	return x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;   </span><br><span class="line">T SeqStack&lt;T,MaxSize&gt;::Top()&#123;</span><br><span class="line">	if(top&#x3D;&#x3D;-1)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;下溢&quot;;</span><br><span class="line">		exit(1); </span><br><span class="line">	&#125;</span><br><span class="line">	return data[top];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;   </span><br><span class="line">bool SeqStack&lt;T,MaxSize&gt;::Empty()&#123;</span><br><span class="line">	return top&#x3D;&#x3D;-1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试所用的主函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">	SeqStack&lt;int,5&gt;s;</span><br><span class="line">	s.Push(1);</span><br><span class="line">	s.Push(3);</span><br><span class="line">	s.Push(5);</span><br><span class="line">	s.Push(7);</span><br><span class="line">	s.Push(9);</span><br><span class="line">	cout&lt;&lt;s.Empty()&lt;&lt;&quot;\t&quot;&lt;&lt;&quot;判断是否为空表 &quot;&lt;&lt;endl;          &#x2F;&#x2F;判断是否为空表 </span><br><span class="line">	cout&lt;&lt;s.Top()&lt;&lt;&quot;\t&quot;&lt;&lt;&quot;取栈顶&quot;&lt;&lt;endl;			&#x2F;&#x2F;取栈顶 </span><br><span class="line">	cout&lt;&lt;s.Pop()&lt;&lt;&quot;\t&quot;&lt;&lt;&quot;出栈 &quot;&lt;&lt;endl;			&#x2F;&#x2F;出栈 </span><br><span class="line">	cout&lt;&lt;s.Top()&lt;&lt;&quot;\t&quot;&lt;&lt;&quot;取栈顶 &quot;&lt;&lt;endl;			&#x2F;&#x2F;取栈顶 </span><br><span class="line">	return 0;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>输出结果:</p>
+<p><img src="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/%E6%A0%88%E6%A8%A1%E6%9D%BF.png"></p>
+<p>顺序栈暂时写这么多。</p>
+<h4 id="链栈"><a href="#链栈" class="headerlink" title="链栈"></a>链栈</h4><p>利用链接存储方式实现的栈叫做链栈</p>
+<p>链栈的实质是不带头结点的单链表</p>
+<p>结点的定义如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T&gt;</span><br><span class="line">struct Node&#123;</span><br><span class="line">	T data;             &#x2F;&#x2F;数据域 </span><br><span class="line">	Node&lt;T&gt; *next;      &#x2F;&#x2F;指针域</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>下面给出单链表的类模板：</p>
+<p>链栈的类模板声明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T&gt;</span><br><span class="line">class LinkStack&#123;</span><br><span class="line">	Node&lt;T&gt; *top;     &#x2F;&#x2F;栈顶指针</span><br><span class="line">public:</span><br><span class="line">	LinkStack();		&#x2F;&#x2F;构造函数</span><br><span class="line">	~LinkStack();        &#x2F;&#x2F;析构函数  </span><br><span class="line">	void Push(T x);           &#x2F;&#x2F;入栈</span><br><span class="line">	T Pop();                   &#x2F;&#x2F;出栈</span><br><span class="line">	T Top();                     &#x2F;&#x2F;取栈顶元素（并不出栈）</span><br><span class="line">	bool Empty();               &#x2F;&#x2F;判断栈是否为空 </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>具体实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T&gt;</span><br><span class="line">LinkStack&lt;T&gt;::LinkStack()&#123;</span><br><span class="line">	top&#x3D;NULL;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">void LinkStack&lt;T&gt;::Push(T x)&#123;</span><br><span class="line">	Node&lt;T&gt; *s&#x3D;new Node&lt;T&gt;;</span><br><span class="line">	s-&gt;data&#x3D;x;</span><br><span class="line">	s-&gt;next&#x3D;top;</span><br><span class="line">	top&#x3D;s;            &#x2F;&#x2F;将节点s插在栈顶 </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">T LinkStack&lt;T&gt;::Pop()&#123;</span><br><span class="line">	if(top&#x3D;&#x3D;NULL)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;下溢&quot;;</span><br><span class="line">		exit(1);</span><br><span class="line">	&#125;</span><br><span class="line">	T x&#x3D;top-&gt;data;</span><br><span class="line">	Node&lt;T&gt; *p&#x3D;top;</span><br><span class="line">	top&#x3D;top-&gt;next;</span><br><span class="line">	delete p;</span><br><span class="line">	return x;</span><br><span class="line">&#125;</span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">T LinkStack&lt;T&gt;::Top()&#123;</span><br><span class="line">	if(top&#x3D;&#x3D;NULL)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;下溢&quot;;</span><br><span class="line">		exit(1);</span><br><span class="line">	&#125;</span><br><span class="line">	return top-&gt;data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;   </span><br><span class="line">bool LinkStack&lt;T&gt;::Empty()&#123;</span><br><span class="line">	return top&#x3D;&#x3D;NULL;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;  </span><br><span class="line">LinkStack&lt;T&gt;::~LinkStack()&#123;</span><br><span class="line">	Node&lt;T&gt; *p&#x3D;top;</span><br><span class="line">	Node&lt;T&gt; *q;</span><br><span class="line">	while(p)&#123;</span><br><span class="line">		q&#x3D;p;</span><br><span class="line">		p&#x3D;p-&gt;next;</span><br><span class="line">		delete q;</span><br><span class="line">	&#125;</span><br><span class="line">	top&#x3D;NULL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>测试所用的主函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">	LinkStack&lt;int&gt; s;</span><br><span class="line">	cout&lt;&lt;s.Empty()&lt;&lt;endl;</span><br><span class="line">	s.Push(5);</span><br><span class="line">	cout&lt;&lt;s.Top()&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;s.Pop()&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;s.Pop()&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>输出结果：</p>
+<p><img src="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/%E9%93%BE%E6%A0%88.png"></p>
+<p>链栈暂时写这么多。</p>
+<p>栈也暂时写这么多。</p>
+<hr>
+<h2 id="什么是队列？"><a href="#什么是队列？" class="headerlink" title="什么是队列？"></a>什么是队列？</h2><blockquote>
+<p>队列是一种特殊的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BA%BF%E6%80%A7%E8%A1%A8/3228081">线性表</a>，特殊之处在于它只允许在表的前端（front）进行删除操作，而在表的后端（rear）进行插入操作，和栈一样，队列是一种操作受限制的线性表。进行插入操作的端称为队尾，进行删除操作的端称为队头。</p>
+</blockquote>
+<p>源自百度百科: <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%98%9F%E5%88%97/14580481">https://baike.baidu.com/item/队列/14580481</a></p>
+<p>队列的主要特点是先进先出</p>
+<p>由于队列是 线性表，所以队列也分顺序存储和链式存储，线性表的数据元素类型可以是任意的，因此采用C++模板机制。下面给线性序表的类模板</p>
+<h4 id="队列的顺序存储结构-循环队列"><a href="#队列的顺序存储结构-循环队列" class="headerlink" title="队列的顺序存储结构(循环队列):"></a>队列的顺序存储结构(循环队列):</h4><p>注:</p>
+<p>1.由于队列会出<code> 假溢出</code>现象，因此指针在移动时采取”加一对MaxSize取余“的形式,如</p>
+<p>rear= (rear+1)% MaxSize，front= (front+1)% MaxSize，</p>
+<p>2.判断队是否为空： rear==front</p>
+<p>3.判断队满：     (rear+1)% MaxSize ==front</p>
+<p>类模板的定义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">class SeqQueue&#123;</span><br><span class="line">	T data[MaxSize];            &#x2F;&#x2F;存放队列元素 </span><br><span class="line">	int front,rear;				&#x2F;&#x2F;队头和队尾指针,队头指针-&gt;队头元素前一个位置下标，，，队尾指针-&gt;队尾元素的下标 </span><br><span class="line">public:	</span><br><span class="line">	SeqQueue();                 &#x2F;&#x2F;构造函数，置空队	 </span><br><span class="line">	void EnQueue(T x);  		&#x2F;&#x2F;将元素x入队 </span><br><span class="line">	T DeQueue();                &#x2F;&#x2F;将队头元素出队</span><br><span class="line">	T GetQueue();               &#x2F;&#x2F;取队头元素（不删除）</span><br><span class="line">	bool Empty();				&#x2F;&#x2F;判断队列是否为空 </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>模板函数的实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">SeqQueue&lt;T,MaxSize&gt;::SeqQueue()&#123;</span><br><span class="line">	front&#x3D;rear&#x3D;0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">void SeqQueue&lt;T,MaxSize&gt;::EnQueue(T x)&#123;</span><br><span class="line">	if((rear+1)%MaxSize&#x3D;&#x3D;front)                &#x2F;&#x2F;判断队列是否满了 </span><br><span class="line">	&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;上溢&quot;;</span><br><span class="line">		exit(1); </span><br><span class="line">	&#125;</span><br><span class="line">	rear&#x3D;(rear+1) % MaxSize;                    &#x2F;&#x2F;防止假上溢 </span><br><span class="line">	data[rear]&#x3D;x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">T SeqQueue&lt;T,MaxSize&gt;::DeQueue()&#123;</span><br><span class="line">	if(rear&#x3D;&#x3D;front)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;下溢&quot;;</span><br><span class="line">		exit(1); </span><br><span class="line">	&#125;</span><br><span class="line">	front&#x3D;(front+1)%MaxSize;</span><br><span class="line">	return data[front];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">T SeqQueue&lt;T,MaxSize&gt;::GetQueue()&#123;</span><br><span class="line">	if(rear&#x3D;&#x3D;front)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;下溢&quot;;</span><br><span class="line">		exit(1); </span><br><span class="line">	&#125;</span><br><span class="line">	return data[front+1];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T,int MaxSize&gt;</span><br><span class="line">bool SeqQueue&lt;T,MaxSize&gt;::Empty()&#123;</span><br><span class="line">	return rear&#x3D;&#x3D;front;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试所用的主函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">	SeqQueue&lt;int,10&gt; s;</span><br><span class="line">	s.EnQueue(1);</span><br><span class="line">	s.EnQueue(3);</span><br><span class="line">	cout&lt;&lt;s.DeQueue()&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;s.GetQueue()&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;s.Empty()&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果:</p>
+<p><img src="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8.png"></p>
+<h4 id="队列的链式存储结构-链队列"><a href="#队列的链式存储结构-链队列" class="headerlink" title="队列的链式存储结构(链队列):"></a>队列的链式存储结构(链队列):</h4><p>链式存储还是要用到结点，结点的定义如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">struct Node&#123;</span><br><span class="line">	T data;             &#x2F;&#x2F;数据域 </span><br><span class="line">	Node&lt;T&gt; *next;      &#x2F;&#x2F;指针域 </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>为了操作方便，队头指针-&gt;链表头结点，队尾指针-&gt;链表尾结点</p>
+<p>类模板的定义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T&gt;</span><br><span class="line">class LinkQueue&#123;</span><br><span class="line">	Node&lt;T&gt; *front,*rear;     </span><br><span class="line">public:</span><br><span class="line">	LinkQueue();		&#x2F;&#x2F;构造函数，初始化空链队列</span><br><span class="line">	~LinkQueue();        &#x2F;&#x2F;析构函数  </span><br><span class="line">	void EnQueue(T x);           &#x2F;&#x2F;将元素如队 </span><br><span class="line">	T DeQueue();                &#x2F;&#x2F;将队头元素出队</span><br><span class="line">	T GetQueue();  				&#x2F;&#x2F;&#x2F;&#x2F;取队头元素（不删除） </span><br><span class="line">	bool Empty();               &#x2F;&#x2F;判断队列是否为空 </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>模板函数的实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T&gt;</span><br><span class="line">LinkQueue&lt;T&gt;::LinkQueue()&#123;</span><br><span class="line">	Node&lt;T&gt; *s&#x3D;new Node&lt;T&gt;;</span><br><span class="line">	s-&gt;next&#x3D;NULL;</span><br><span class="line">	front&#x3D;rear&#x3D;s; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">void LinkQueue&lt;T&gt;::EnQueue(T x)&#123;</span><br><span class="line">	Node&lt;T&gt; *s&#x3D;new Node&lt;T&gt;;</span><br><span class="line">	s-&gt;data&#x3D;x;</span><br><span class="line">	s-&gt;next&#x3D;NULL;</span><br><span class="line">	rear-&gt;next&#x3D;s;</span><br><span class="line">	rear&#x3D;s;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">T LinkQueue&lt;T&gt;::DeQueue()&#123;</span><br><span class="line">	if(rear&#x3D;&#x3D;front)&#123;</span><br><span class="line">		cerr&lt;&lt;&quot;下溢&quot;;</span><br><span class="line">		exit(1);</span><br><span class="line">	&#125;</span><br><span class="line">	Node&lt;T&gt; *s&#x3D;new Node&lt;T&gt;;</span><br><span class="line">	s&#x3D;front-&gt;next;</span><br><span class="line">	T x&#x3D;s-&gt;data;</span><br><span class="line">	front&#x3D;front-&gt;next;</span><br><span class="line">	if(s-&gt;next&#x3D;&#x3D;NULL)&#123;</span><br><span class="line">		rear&#x3D;front;	</span><br><span class="line">	&#125;</span><br><span class="line">	delete s;</span><br><span class="line">	return x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">T LinkQueue&lt;T&gt;::GetQueue()&#123;</span><br><span class="line">	</span><br><span class="line">	return front-&gt;next-&gt;data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">bool LinkQueue&lt;T&gt;::Empty()&#123;</span><br><span class="line">	return rear&#x3D;&#x3D;front;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">LinkQueue&lt;T&gt;::~LinkQueue()&#123;</span><br><span class="line">	Node&lt;T&gt; *p&#x3D;new Node&lt;T&gt;;</span><br><span class="line">	p&#x3D;front-&gt;next;</span><br><span class="line">	Node&lt;T&gt; *q;</span><br><span class="line">	while(p)&#123;</span><br><span class="line">		q&#x3D;p;</span><br><span class="line">		p&#x3D;p-&gt;next;</span><br><span class="line">		delete p;</span><br><span class="line">	&#125;</span><br><span class="line">	front&#x3D;rear&#x3D;NULL;</span><br><span class="line">	cout&lt;&lt;&quot;析构完成&quot;&lt;&lt;endl; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试所用的主函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">	LinkQueue&lt;int&gt;  s;</span><br><span class="line">	s.EnQueue(1);</span><br><span class="line">	s.EnQueue(3);</span><br><span class="line">	s.EnQueue(5);</span><br><span class="line">	cout&lt;&lt;s.GetQueue()&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;s.DeQueue()&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;s.Empty()&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;s.GetQueue()&lt;&lt;endl;</span><br><span class="line">	s.~LinkQueue();</span><br><span class="line">	cout&lt;&lt;s.Empty();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果:</p>
+<p><img src="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/%E9%93%BE%E9%98%9F%E5%88%97.png"></p>
+<p>链队列暂时写这么多。</p>
+<p>队列也暂时写这么多。</p>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>终于写完了栈和队列。。。写栈和队列要对线性表熟悉，栈和队列的许多操作和思想在线性表中都能找到，栈和队列要注意指针的位置以及判断“满”或者”空“的条件</p>
+<h5 id="对于顺序栈："><a href="#对于顺序栈：" class="headerlink" title="对于顺序栈："></a>对于顺序栈：</h5><p>栈顶指针top，指栈顶元素在数组的下标    栈空时 top==-1,栈满时 top==MaxSize-1 。</p>
+<h5 id="对于链栈："><a href="#对于链栈：" class="headerlink" title="对于链栈："></a>对于链栈：</h5><p>队头指针-&gt;链表头结点，队尾指针-&gt;链表尾结点。</p>
+<p>链栈为空： top==-1 。</p>
+<h5 id="对于循环队列"><a href="#对于循环队列" class="headerlink" title="对于循环队列:"></a>对于循环队列:</h5><p>1.由于队列会出<code> 假溢出</code>现象，因此指针在移动时采取”加一对MaxSize取余“的形式,如</p>
+<p>rear= (rear+1)% MaxSize，front= (front+1)% MaxSize，</p>
+<p>2.判断队是否为空： rear==front</p>
+<p>3.判断队满：     (rear+1)% MaxSize ==front</p>
+<h5 id="链队列："><a href="#链队列：" class="headerlink" title="链队列："></a>链队列：</h5><p>队头指针-&gt;链表头结点，队尾指针-&gt;链表尾结点。</p>
+<p>如果有头结点，则链队列的判空条件为rear == front;</p>
+<p>如果没有头结点，则判空条件为rear == NULL 或者front == NULL;但是不能用rear == front。</p>
+<p>第三章总算结束了。。。总结这个还是挺费时间的，不过也值得，这让我更加了解和熟悉了对栈和队列。</p>
+<p>如果有任何的问题和建议可以联系我。</p>
+<hr>
+<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c++%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数据结构（c++语言描述）第一章_线性表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

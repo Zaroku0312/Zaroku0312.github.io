@@ -152,6 +152,125 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每日leetcode-13-外观数列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/23/%E6%AF%8F%E6%97%A5leetcode-13-%E5%A4%96%E8%A7%82%E6%95%B0%E5%88%97/">每日leetcode-13-外观数列</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/23/%E6%AF%8F%E6%97%A5leetcode-13-%E5%A4%96%E8%A7%82%E6%95%B0%E5%88%97/" class="archive-article-date">
+  	<time datetime="2020-10-23T15:25:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="外观数列"><a href="#外观数列" class="headerlink" title="外观数列"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-and-say/">外观数列</a></h4><p>源自LeetCode: <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-and-say/">https://leetcode-cn.com/problems/count-and-say/</a></p>
+<p>问题描述:</p>
+<p>给定一个正整数 n（1 ≤ n ≤ 30），输出外观数列的第 n 项。</p>
+<p>注意：整数序列中的每一项将表示为一个字符串。</p>
+<p>「外观数列」是一个整数序列，从数字 1 开始，序列中的每一项都是对前一项的描述。前五项如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.     1</span><br><span class="line">2.     11</span><br><span class="line">3.     21</span><br><span class="line">4.     1211</span><br><span class="line">5.     111221</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第一项是数字 1</p>
+<p>描述前一项，这个数是 1 即 “一个 1 ”，记作 11</p>
+<p>描述前一项，这个数是 11 即 “两个 1 ” ，记作 21</p>
+<p>描述前一项，这个数是 21 即 “一个 2 一个 1 ” ，记作 1211</p>
+<p>描述前一项，这个数是 1211 即 “一个 1 一个 2 两个 1 ” ，记作 111221</p>
+</blockquote>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 1</span><br><span class="line">输出: &quot;1&quot;</span><br><span class="line">解释：这是一个基本样例。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><figcaption><span>3</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 4</span><br><span class="line">输出: &quot;1211&quot;</span><br><span class="line">解释：当 n &#x3D; 3 时，序列是 &quot;21&quot;，其中我们有 &quot;2&quot; 和 &quot;1&quot; 两组，&quot;2&quot; 可以读作 &quot;12&quot;，也就是出现频次 &#x3D; 1 而 值 &#x3D; 2；类似 &quot;1&quot; 可以读作 &quot;11&quot;。所以答案是 &quot;12&quot; 和 &quot;11&quot; 组合在一起，也就是 &quot;1211&quot;。</span><br></pre></td></tr></table></figure>
+
+<p>题目给出的答题模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string countAndSay(int n) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>弄两个<code>String</code>类变量，一个做中间变量，一个用来保存和返回，应该是要写两个循环的，大概的框架如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string countAndSay(int n) &#123;</span><br><span class="line">		string s1&#x3D;&quot;1&quot;;</span><br><span class="line">		string s2;</span><br><span class="line">		for(int i&#x3D;1;i&lt;&#x3D;n;i++)&#123;</span><br><span class="line">			s2&#x3D;&quot;&quot;;</span><br><span class="line">			for(int j&#x3D;0;s1[j];j++)&#123;</span><br><span class="line">				</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">			s1&#x3D;s2;</span><br><span class="line">		&#125;	</span><br><span class="line">		return s1; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>下面给出我的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string countAndSay(int n) &#123;</span><br><span class="line">		string s1&#x3D;&quot;1&quot;;</span><br><span class="line">		string s2;</span><br><span class="line">		for(int i&#x3D;1;i&lt;n;i++)&#123;</span><br><span class="line">			s2&#x3D;&quot;&quot;;</span><br><span class="line">			for(int j&#x3D;0;s1[j];j++)&#123;</span><br><span class="line">				if(s1[j]!&#x3D;s1[j+1])</span><br><span class="line">				&#123;</span><br><span class="line">					s2+&#x3D;&#39;1&#39;;</span><br><span class="line">					s2&#x3D;s2+s1[j];</span><br><span class="line"></span><br><span class="line">				&#125;</span><br><span class="line">				else &#123;</span><br><span class="line">					int count&#x3D;1;</span><br><span class="line">					while(s1[j]&#x3D;&#x3D;s1[j+1])&#123;</span><br><span class="line">						j++;</span><br><span class="line">						count++;</span><br><span class="line">					&#125;</span><br><span class="line">					s2+&#x3D;std::to_string(count);</span><br><span class="line">					s2+&#x3D;s1[j];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			s1&#x3D;s2;</span><br><span class="line">		&#125;	</span><br><span class="line">		return s1; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>通过，不过这个效率真是低的可怜。</p>
+<p><code>std::to_string()</code>是将整数转换为<code>string</code>类</p>
+<blockquote>
+<p>.c++11标准增加了全局函数std::to_string:</p>
+<p>string to_string (int val);</p>
+<p>string to_string (long val);</p>
+<p>string to_string (long long val);</p>
+<p>string to_string (unsigned val);</p>
+<p>string to_string (unsigned long val);</p>
+<p>string to_string (unsigned long long val);</p>
+<p>string to_string (float val);</p>
+<p>string to_string (double val);</p>
+<p>string to_string (long double val);</p>
+</blockquote>
+<p><img src="/2020/10/23/%E6%AF%8F%E6%97%A5leetcode-13-%E5%A4%96%E8%A7%82%E6%95%B0%E5%88%97/1603469873(1).jpg"></p>
+<p>让我们康康别人是怎么做的吧</p>
+<hr>
+<p>作者：netcan<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-and-say/solution/die-dai-shuang-100-by-netcan/">https://leetcode-cn.com/problems/count-and-say/solution/die-dai-shuang-100-by-netcan/</a><br>来源：力扣（LeetCode）</p>
+<p>思路： 用迭代做。</p>
+<p>本题的题解如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string countAndSay(int n) &#123;</span><br><span class="line">        std::string ans &#x3D; &quot;1&quot;;</span><br><span class="line">        for (size_t i &#x3D; 1; i &lt; n; ++i) &#123;</span><br><span class="line">            std::string nxt &#x3D; &quot;&quot;;</span><br><span class="line">            int j &#x3D; 0;</span><br><span class="line">            for (int k &#x3D; 0; k &lt;&#x3D; ans.length(); ++k) &#123;</span><br><span class="line">                if (k &lt; ans.length() &amp;&amp; ans[k] &#x3D;&#x3D; ans[j]) continue;</span><br><span class="line">                else &#123;</span><br><span class="line">                    nxt.push_back(&#39;0&#39; + (k - j));</span><br><span class="line">                    nxt.push_back(ans[j]);</span><br><span class="line">                    j &#x3D; k;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            std::swap(nxt, ans);</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>效率如下：</p>
+<p><img src="/2020/10/23/%E6%AF%8F%E6%97%A5leetcode-13-%E5%A4%96%E8%A7%82%E6%95%B0%E5%88%97/1603471022(1).jpg"></p>
+<p><code>push_back()</code>函数：在<code>string</code>中最后插入一个字符</p>
+<p>我发现这个答案的框架和我的框架异常相似，不过是循环里面实现部分不一样，今天太晚了，明天我在研究一下。</p>
+<h3 id="又多了一个要学的内容，“迭代”"><a href="#又多了一个要学的内容，“迭代”" class="headerlink" title="又多了一个要学的内容，“迭代”"></a>又多了一个要学的内容，“迭代”</h3><hr>
+<p>本题就到这里了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/23/%E6%AF%8F%E6%97%A5leetcode-13-%E5%A4%96%E8%A7%82%E6%95%B0%E5%88%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-python学习-07-Days" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1319,134 +1438,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/19/%E6%AF%8F%E6%97%A5leetcode-9-%E7%88%AC%E6%A5%BC%E6%A2%AF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-每日leetcode-8-最后一个单词的长度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/18/%E6%AF%8F%E6%97%A5leetcode-8-%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E9%95%BF%E5%BA%A6/">每日leetcode-8-最后一个单词的长度</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/18/%E6%AF%8F%E6%97%A5leetcode-8-%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E9%95%BF%E5%BA%A6/" class="archive-article-date">
-  	<time datetime="2020-10-18T05:20:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="最后一个单词的长度"><a href="#最后一个单词的长度" class="headerlink" title="最后一个单词的长度"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/length-of-last-word/">最后一个单词的长度</a></h4><p>源自LeetCode:  <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/length-of-last-word/">https://leetcode-cn.com/problems/length-of-last-word/</a></p>
-<p>问题描述:</p>
-<p>给定一个仅包含大小写字母和空格 ‘ ‘ 的字符串 s，返回其最后一个单词的长度。如果字符串从左向右滚动显示，那么最后一个单词就是最后出现的单词。</p>
-<p>如果不存在最后一个单词，请返回 0 。</p>
-<p>说明：一个单词是指仅由字母组成、不包含任何空格字符的 最大子字符串。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/length-of-last-word">https://leetcode-cn.com/problems/length-of-last-word</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;Hello World&quot;</span><br><span class="line">输出: 5</span><br></pre></td></tr></table></figure>
-
-<p>题目给出的模板：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int lengthOfLastWord(string s) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>乍一看挺简单的，从后往前找空格，找到最后一个单词输出其长度即可</p>
-<p>下面给出我的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int lengthOfLastWord(string s) &#123;</span><br><span class="line">    	int len &#x3D; 0;       &#x2F;&#x2F;记录长度</span><br><span class="line">    	bool flag&#x3D;false;         &#x2F;&#x2F;用来判断是否找到了单词</span><br><span class="line">		for(int i&#x3D;s.length()-1;i&gt;&#x3D;0;i--)&#123;</span><br><span class="line">			if(s[i]&#x3D;&#x3D;&#39; &#39;)&#123;</span><br><span class="line">				if(flag) break;</span><br><span class="line">				continue;         &#x2F;&#x2F;在没找到单词之前遇到空格都是跳过</span><br><span class="line">			&#125;</span><br><span class="line">			len++;                 </span><br><span class="line">			flag&#x3D;true;           &#x2F;&#x2F;不是空格了，就是找到了单词，往前走再找到空格就弹出</span><br><span class="line">		&#125;</span><br><span class="line">		return len;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>让我来康康别人是怎么做的把。</p>
-<hr>
-<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>作者：xiao-li-ge-6<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/length-of-last-word/solution/c-qiao-yong-stream-da-bai-100-by-xiao-li-ge-6/">https://leetcode-cn.com/problems/length-of-last-word/solution/c-qiao-yong-stream-da-bai-100-by-xiao-li-ge-6/</a><br>来源：力扣（LeetCode）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int lengthOfLastWord(string s) </span><br><span class="line">    &#123;</span><br><span class="line">        istringstream in(s);</span><br><span class="line">        string res;</span><br><span class="line">        while(in&gt;&gt;res);</span><br><span class="line">        return res.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>没见过，容我去百度一下</p>
-<blockquote>
-<p>istringstream是一个类 要用它时要包含<code>&lt;sstream&gt;</code>这个头文件。</p>
-</blockquote>
-<blockquote>
-<p><code>&lt;sstream&gt;</code>库定义了三种类：istringstream、ostringstream和stringstream，分别用来进行流的输入、输出和输入输出操作。</p>
-</blockquote>
-<p>下面举个例子会更容易懂一点</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include&lt;iostream&gt;  </span><br><span class="line">#include&lt;sstream&gt;        &#x2F;&#x2F;istringstream 必须包含这个头文件</span><br><span class="line">#include&lt;string&gt;  </span><br><span class="line">using namespace std;  </span><br><span class="line">int main()  </span><br><span class="line">&#123;  </span><br><span class="line">    string str&#x3D;&quot;i am a boy&quot;;  </span><br><span class="line">    istringstream is(str);  </span><br><span class="line">    string s;  </span><br><span class="line">    while(is&gt;&gt;s)  </span><br><span class="line">    &#123;  </span><br><span class="line">        cout&lt;&lt;s&lt;&lt;endl;  </span><br><span class="line">    &#125;  </span><br><span class="line">      </span><br></pre></td></tr></table></figure>
-
-<p>输出:</p>
-<blockquote>
-<p>i</p>
-<p>am</p>
-<p>a</p>
-<p>boy</p>
-</blockquote>
-<p>所以程序中的 <code>res.size()</code>就是返回最后一个单词的长度</p>
-<p>用<code>istringstream</code> 来做带空格的字符串的问题，好像挺不戳的</p>
-<p>具体可看<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_28949185/article/details/102652477">https://blog.csdn.net/weixin_28949185/article/details/102652477</a> （转载）</p>
-<hr>
-<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>作者：zegang-i<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/length-of-last-word/solution/c-stdfind_if-by-zegang-i/">https://leetcode-cn.com/problems/length-of-last-word/solution/c-stdfind_if-by-zegang-i/</a><br>来源：力扣（LeetCode）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int lengthOfLastWord(string s) &#123;</span><br><span class="line">        int rst &#x3D; 0;</span><br><span class="line">        string::reverse_iterator it &#x3D; std::find_if(s.rbegin(), s.rend(), [](char t) &#123; return isalpha(t);&#125;);</span><br><span class="line">        while (it !&#x3D; s.rend() &amp;&amp; isalpha(*it++) &amp;&amp; ++rst);</span><br><span class="line">        &#x2F;&#x2F; for(; it !&#x3D; s.rend(); ++it) &#123;</span><br><span class="line">        &#x2F;&#x2F;     if (isalpha(*it)) &#123;</span><br><span class="line">        &#x2F;&#x2F;         ++rst;</span><br><span class="line">        &#x2F;&#x2F;         continue;</span><br><span class="line">        &#x2F;&#x2F;     &#125;</span><br><span class="line">        &#x2F;&#x2F;     break;</span><br><span class="line">        &#x2F;&#x2F; &#125;       </span><br><span class="line">        return rst;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>容我再去百度一下</p>
-<p>STL的find，find_if函数提供了一种对数组、STL容器进行查找的方法。使用该函数，需 头文件<code>&lt;algorithm&gt;</code></p>
-<p>等我学了STL了再说吧。。。</p>
-<hr>
-<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><p>作者：xiao-fu-zi-1<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/length-of-last-word/solution/c-soeasy-zai-ye-bu-yong-dan-xin-wo-xue-xi-la-by-xi/">https://leetcode-cn.com/problems/length-of-last-word/solution/c-soeasy-zai-ye-bu-yong-dan-xin-wo-xue-xi-la-by-xi/</a><br>来源：力扣（LeetCode）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int lengthOfLastWord(string s) &#123;</span><br><span class="line">        int index &#x3D; s.size() - 1;</span><br><span class="line">        &#x2F;&#x2F; 去后导0</span><br><span class="line">        while (index &gt;&#x3D; 0 &amp;&amp; isspace(s[index])) --index;</span><br><span class="line">        int cnt &#x3D; 0;</span><br><span class="line">        &#x2F;&#x2F; 开始统计</span><br><span class="line">        while (index &gt;&#x3D; 0 &amp;&amp; isalpha(s[index--])) ++cnt;</span><br><span class="line">        return cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>容我去百度一下。。。</p>
-<blockquote>
-<p><code>isspace</code>，是一种计算机用语，主要用于检查参数c是否为空格字符。</p>
-</blockquote>
-<p>好像没啥意义，直接判断它是不是空格不是一样?</p>
-<p>不过学了个<code>isspace</code> 能让程序看上去更高级一点？</p>
-<hr>
-<p>小结:</p>
-<p>1.用<code>istringstream</code> 来做带空格的字符串的问题，好像挺不戳的</p>
-<p>2.STL好像用的挺多的，找个时间再去学吧</p>
-<p>3.<code>isspace</code>可以拿来装杯用</p>
-<p>这道题就暂时到这里了，如果你有什么问题或者建议可以联系我</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/18/%E6%AF%8F%E6%97%A5leetcode-8-%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E9%95%BF%E5%BA%A6/">展开全文 >></a>
         </p>
       
 

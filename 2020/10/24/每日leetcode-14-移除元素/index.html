@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2020/10 | Hexo</title>
+  <title>每日leetcode-14-移除元素 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2020/10/page/2/index.html">
+  <meta name="description" content="移除元素源自LeetCode: https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;remove-element&#x2F; 问题描述: 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。 不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每日leetcode-14-移除元素">
+<meta property="og:url" content="http://example.com/2020/10/24/%E6%AF%8F%E6%97%A5leetcode-14-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="移除元素源自LeetCode: https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;remove-element&#x2F; 问题描述: 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。 不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-24T05:19:59.000Z">
+<meta property="article:modified_time" content="2020-10-24T06:07:32.859Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,295 +154,202 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-每日leetcode-14-移除元素" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      每日leetcode-14-移除元素
+    </h1>
+  
+
+        
+        <a href="/2020/10/24/%E6%AF%8F%E6%97%A5leetcode-14-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" class="archive-article-date">
+  	<time datetime="2020-10-24T05:19:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-24</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-element/">移除元素</a></h4><p>源自LeetCode: <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-element/">https://leetcode-cn.com/problems/remove-element/</a></p>
+<p>问题描述:</p>
+<p>给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。</p>
+<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定 nums &#x3D; [3,2,2,3], val &#x3D; 3,</span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。</span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><figcaption><span>3</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">给定 nums &#x3D; [0,1,2,2,3,0,4,2], val &#x3D; 2,</span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。</span><br><span class="line"></span><br><span class="line">注意这五个元素可为任意顺序。</span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+
+<p>说明:</p>
+<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
+<p>请注意，输入数组是以「引用」方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
+<p>你可以想象内部操作如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝</span><br><span class="line">int len &#x3D; removeElement(nums, val);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 在函数里修改输入数组对于调用者是可见的。</span><br><span class="line">&#x2F;&#x2F; 根据你的函数返回的长度, 它会打印出数组中 该长度范围内 的所有元素。</span><br><span class="line">for (int i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>题目给出的答题模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>历遍数组，在数组中遇到<code>val</code>后面数据往前覆盖就是了。</p>
+<p>下面给出我的代码：(注意是错误的，至于为什么错，我也想不明白)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;</span><br><span class="line">		for(int i &#x3D; 0 ;nums[i];i++)&#123;</span><br><span class="line">			if(nums[i]&#x3D;&#x3D;val)&#123;</span><br><span class="line">				for(int j&#x3D;i+1;nums[j];j++)&#123;</span><br><span class="line">					nums[j-1]&#x3D;nums[j];</span><br><span class="line">            	&#125;</span><br><span class="line">                i--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return nums.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>下面给出我（强行改后）的代码：（感觉差不多的呀为啥上一个就通不过呢）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;</span><br><span class="line">        int size &#x3D; nums.size();</span><br><span class="line">		for(int i &#x3D; 0 ;i&lt;size;i++)&#123;</span><br><span class="line">			if(nums[i]&#x3D;&#x3D;val)&#123;</span><br><span class="line">				for(int j&#x3D;i+1;j&lt;size;j++)&#123;</span><br><span class="line">					nums[j-1]&#x3D;nums[j];</span><br><span class="line">            	&#125;</span><br><span class="line">                i--;</span><br><span class="line">                size--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return size;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>通过，不过效率挺低的。</p>
+<p>让我们康康别人是怎么做的吧</p>
+<hr>
+<p>作者：carlsun-2<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-element/solution/27-yi-chu-yuan-su-bao-li-jie-fa-shuang-zhi-zhen-ji/">https://leetcode-cn.com/problems/remove-element/solution/27-yi-chu-yuan-su-bao-li-jie-fa-shuang-zhi-zhen-ji/</a><br>来源：力扣（LeetCode）</p>
+<p>思路：<strong>双指针法</strong></p>
+<p>双指针法（快慢指针法）： <strong>通过一个快指针和慢指针在一个for循环下完成两个for循环的工作。</strong></p>
+<p>双指针法将时间复杂度O(n^2)的解法优化为 O(n)的解法。也就是降一个数量级</p>
+<p>本题的题解如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 时间复杂度：O(n)</span><br><span class="line">&#x2F;&#x2F; 空间复杂度：O(1)</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;</span><br><span class="line">        int slowIndex &#x3D; 0; </span><br><span class="line">        for (int fastIndex &#x3D; 0; fastIndex &lt; nums.size(); fastIndex++)&#123; </span><br><span class="line">            if (val !&#x3D; nums[fastIndex]) &#123; </span><br><span class="line">                nums[slowIndex++] &#x3D; nums[fastIndex]; </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return slowIndex;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<p>还有一个比较有意思的解法：</p>
+<p>作者：Wuzuobin<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-element/solution/di-yi-ci-0msji-nian-yi-xia-by-cai-bi-d/">https://leetcode-cn.com/problems/remove-element/solution/di-yi-ci-0msji-nian-yi-xia-by-cai-bi-d/</a><br>来源：力扣（LeetCode）</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;</span><br><span class="line">    	int n &#x3D; nums.size();</span><br><span class="line">    	for(int i &#x3D; 0; i &lt; n; i++)</span><br><span class="line">    	&#123;</span><br><span class="line">    		if(nums[i] &#x3D;&#x3D; val)</span><br><span class="line">    		&#123;</span><br><span class="line">    			swap(nums[i],nums[n-1]);</span><br><span class="line">    			i--;</span><br><span class="line">    			n--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return n;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>非常巧妙。</p>
+<hr>
+<p>本题就到这里了</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/19/%E6%AF%8F%E6%97%A5leetcode-9-%E7%88%AC%E6%A5%BC%E6%A2%AF/" class="archive-article-date">
-  	<time datetime="2020-10-19T03:55:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/19/%E6%AF%8F%E6%97%A5leetcode-9-%E7%88%AC%E6%A5%BC%E6%A2%AF/">每日leetcode-9-爬楼梯</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/10/24/%E6%AF%8F%E6%97%A5leetcode-14-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/18/%E6%AF%8F%E6%97%A5leetcode-8-%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E9%95%BF%E5%BA%A6/" class="archive-article-date">
-  	<time datetime="2020-10-18T05:20:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-18</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/10/23/%E6%AF%8F%E6%97%A5leetcode-13-%E5%A4%96%E8%A7%82%E6%95%B0%E5%88%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">每日leetcode-13-外观数列</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/18/%E6%AF%8F%E6%97%A5leetcode-8-%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E9%95%BF%E5%BA%A6/">每日leetcode-8-最后一个单词的长度</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/18/python%E5%AD%A6%E4%B9%A0-02-Days/" class="archive-article-date">
-  	<time datetime="2020-10-18T03:09:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/18/python%E5%AD%A6%E4%B9%A0-02-Days/">python学习-02-Days</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/17/%E6%AF%8F%E6%97%A5leetcode-7-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/" class="archive-article-date">
-  	<time datetime="2020-10-17T05:48:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/17/%E6%AF%8F%E6%97%A5leetcode-7-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/">每日leetcode-7-删除排序数组中的重复项</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/17/python%E5%AD%A6%E4%B9%A0-01-Days/" class="archive-article-date">
-  	<time datetime="2020-10-17T03:43:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/17/python%E5%AD%A6%E4%B9%A0-01-Days/">python学习-01-Days</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/16/%E6%AF%8F%E6%97%A5leetcode-6-%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/" class="archive-article-date">
-  	<time datetime="2020-10-16T03:49:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/16/%E6%AF%8F%E6%97%A5leetcode-6-%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/">每日leetcode-6-整数反转</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%B9%BF%E4%B9%89%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2020-10-15T14:32:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%B9%BF%E4%B9%89%E8%A1%A8/">数据结构（c-语言描述）第五章-广义表</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%95%B0%E7%BB%84%E5%92%8C%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5/" class="archive-article-date">
-  	<time datetime="2020-10-15T13:46:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%95%B0%E7%BB%84%E5%92%8C%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5/">数据结构（c-语言描述）第四章-数组和特殊矩阵</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/15/%E6%AF%8F%E6%97%A5leetcode-5-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" class="archive-article-date">
-  	<time datetime="2020-10-15T02:15:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/15/%E6%AF%8F%E6%97%A5leetcode-5-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">每日leetcode-5-两数之和</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%89%E7%AB%A0-%E4%B8%B2/" class="archive-article-date">
-  	<time datetime="2020-10-14T14:27:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%89%E7%AB%A0-%E4%B8%B2/">数据结构（c++语言描述）第三章_串</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/10/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/10/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2020/10/page/3/">3</a><a class="page-number" href="/archives/2020/10/page/4/">4</a><a class="extend next" rel="next" href="/archives/2020/10/page/3/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -462,8 +373,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

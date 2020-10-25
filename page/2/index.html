@@ -152,6 +152,170 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python学习-04-Days" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/20/python%E5%AD%A6%E4%B9%A0-04-Days/">python学习-04-Days</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/20/python%E5%AD%A6%E4%B9%A0-04-Days/" class="archive-article-date">
+  	<time datetime="2020-10-20T01:27:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Day-04-循环结构"><a href="#Day-04-循环结构" class="headerlink" title="Day 04 循环结构"></a>Day 04 循环结构</h2><p>循环结构有学过编程的应该都不陌生</p>
+<blockquote>
+<p>循环结构就是程序中控制某条或某些指令重复执行的结构。在Python中构造循环结构有两种做法，一种是<code>for-in</code>循环，一种是<code>while</code>循环。</p>
+</blockquote>
+<h3 id="for-in循环"><a href="#for-in循环" class="headerlink" title="for-in循环"></a>for-in循环</h3><p>如果明确的知道循环执行的次数或者要对一个容器进行迭代（后面会讲到），那么我们推荐使用<code>for-in</code>循环</p>
+<p>举个例子：**(计算1~100的求和)**</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sum &#x3D; 0</span><br><span class="line">for x in range(101):</span><br><span class="line">    sum +&#x3D; x</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
+
+<p>下面重点讲解一下 <code>range</code></p>
+<ul>
+<li><code>range(101)</code>：可以用来产生0到100范围的整数，需要注意的是取不到101。</li>
+<li><code>range(1, 101)</code>：可以用来产生1到100范围的整数，相当于前面是闭区间后面是开区间。</li>
+<li><code>range(1, 101, 2)</code>：可以用来产生1到100的奇数，其中2是步长，即每次数值递增的值。</li>
+<li><code>range(100, 0, -2)</code>：可以用来产生100到1的偶数，其中-2是步长，即每次数字递减的值。</li>
+</ul>
+<p>再举个例子：**(计算1~100的偶数求和)**</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sum &#x3D; 0</span><br><span class="line">for x in range(100,0,-2):</span><br><span class="line">    sum +&#x3D; x</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
+
+<p>是不是很简单</p>
+<hr>
+<h4 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h4><blockquote>
+<p>如果要构造不知道具体循环次数的循环结构，我们推荐使用<code>while</code>循环。<code>while</code>循环通过一个能够产生或转换出<code>bool</code>值的表达式来控制循环，表达式的值为<code>True</code>则继续循环；表达式的值为<code>False</code>则结束循环。</p>
+</blockquote>
+<blockquote>
+<p>下面我们通过一个“猜数字”的小游戏来看看如何使用<code>while</code>循环。猜数字游戏的规则是：计算机出一个1到100之间的随机数，玩家输入自己猜的数字，计算机给出对应的提示信息（大一点、小一点或猜对了），如果玩家猜中了数字，计算机提示用户一共猜了多少次，游戏结束，否则游戏继续。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line"># 文章后面会具体解释是如何产生随机数的</span><br><span class="line">answer &#x3D; random.randint(1,100)</span><br><span class="line"></span><br><span class="line">counter &#x3D; 0</span><br><span class="line">while True:</span><br><span class="line">    counter +&#x3D; 1</span><br><span class="line">    number &#x3D; int(input(&#39;请输入:&#39;))</span><br><span class="line">    if number &lt; answer:</span><br><span class="line">        print(&#39;大一点&#39;)</span><br><span class="line">    elif number &gt; answer:</span><br><span class="line">        print(&#39;小一点&#39;)</span><br><span class="line">    else:</span><br><span class="line">        print(&#39;恭喜你猜对了&#39;)</span><br><span class="line">        berak</span><br><span class="line">print(&#39;你总共猜了%d次&#39; % counter)</span><br><span class="line">if counter &gt; 7:</span><br><span class="line">    print(&#39;你的智商明显不足&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码中使用了<code>break</code>关键字来提前终止循环，需要注意的是<code>break</code>只能终止它所在的那个循环，这一点在使用嵌套的循环结构（下面会讲到）需要引起注意。除了<code>break</code>之外，还有另一个关键字是<code>continue</code>，它可以用来放弃本次循环后续的代码直接让循环进入下一轮。</p>
+<hr>
+<h4 id="练习1：输出一个九九乘法表"><a href="#练习1：输出一个九九乘法表" class="headerlink" title="练习1：输出一个九九乘法表"></a>练习1：输出一个九九乘法表</h4><p>参考代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in range(1,10):</span><br><span class="line">    for j in range(1,i+1):</span><br><span class="line">        print(&#39;%d*%d&#x3D;%d&#39; % (i,j,i*j),end&#x3D;&#39;\t&#39;)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="练习2：输入一个正整数判断是不是素数。"><a href="#练习2：输入一个正整数判断是不是素数。" class="headerlink" title="练习2：输入一个正整数判断是不是素数。"></a>练习2：输入一个正整数判断是不是素数。</h4><p>参考代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from math import sqrt</span><br><span class="line">n &#x3D; int(input(&#39;请输入一个整数:&#39;))</span><br><span class="line">is_prime &#x3D; True</span><br><span class="line">end &#x3D; int(sqrt(n))</span><br><span class="line">for i in range(2,end+1,2):</span><br><span class="line">    if n%i &#x3D;&#x3D; 0:</span><br><span class="line">        is_prime &#x3D; False</span><br><span class="line">        break</span><br><span class="line">if is_prime and n !&#x3D; 1:</span><br><span class="line">    print(&#39;%d是素数&#39; % n)</span><br><span class="line">else:</span><br><span class="line">    print(&#39;%d不是素数&#39; % n)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="练习3：输入两个正整数，计算它们的最大公约数和最小公倍数。"><a href="#练习3：输入两个正整数，计算它们的最大公约数和最小公倍数。" class="headerlink" title="练习3：输入两个正整数，计算它们的最大公约数和最小公倍数。"></a>练习3：输入两个正整数，计算它们的最大公约数和最小公倍数。</h4><blockquote>
+<p><strong>提示</strong>：两个数的最大公约数是两个数的公共因子中最大的那个数；两个数的最小公倍数则是能够同时被两个数整除的最小的那个数。</p>
+</blockquote>
+<p>参考答案：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; int(input(&#39;请输入一个整数:&#39;))</span><br><span class="line">y &#x3D; int(input(&#39;请输入一个整数:&#39;))</span><br><span class="line">if x&gt;y:</span><br><span class="line">    x,y&#x3D;y,x</span><br><span class="line"># 如果x大于y就交换x和y的值</span><br><span class="line">for factor in range(x,0,-1):</span><br><span class="line">    if x % factor &#x3D;&#x3D; 0 and y % factor &#x3D;&#x3D; 0:</span><br><span class="line">        print(&#39;%d和%d的最大公约数是%d&#39; % (x, y, factor))</span><br><span class="line">        print(&#39;%d和%d的最小公倍数是%d&#39; % (x, y, x * y &#x2F;&#x2F; factor))</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="练习4：打印如下所示的三角形"><a href="#练习4：打印如下所示的三角形" class="headerlink" title="练习4：打印如下所示的三角形"></a>练习4：打印如下所示的三角形</h4><blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;*</span><br><span class="line">&gt;**</span><br><span class="line">&gt;***</span><br><span class="line">&gt;****</span><br><span class="line">&gt;*****</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   *</span><br><span class="line">  **</span><br><span class="line"> ***</span><br><span class="line">****</span><br><span class="line">&gt;*****</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   *</span><br><span class="line">  ***</span><br><span class="line"> *****</span><br><span class="line">*******</span><br><span class="line">&gt;*********</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>参考答案：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in range(1,6):</span><br><span class="line">    for j in range(1,i+1):</span><br><span class="line">        print(&#39;*&#39;,end&#x3D;&#39;&#39;)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for i in range(1,6):</span><br><span class="line">    for j in range(1,6):</span><br><span class="line">        if j&lt;6-i:</span><br><span class="line">            print(&#39;&#39;,end&#x3D;&#39; &#39;)</span><br><span class="line">        else:</span><br><span class="line">            print(&#39;*&#39;,end&#x3D;&#39;&#39;)</span><br><span class="line">    print(&#39;&#39;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for i in range(1,6):</span><br><span class="line">    for j in range(1,11):</span><br><span class="line">        if j&lt;6-i or j&gt;4+i:</span><br><span class="line">            print(&#39;&#39;,end&#x3D;&#39; &#39;)</span><br><span class="line">        else:</span><br><span class="line">            print(&#39;*&#39;,end&#x3D;&#39;&#39;)</span><br><span class="line">    print(&#39;&#39;)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="补充-（关于import和random）"><a href="#补充-（关于import和random）" class="headerlink" title="补充 （关于import和random）"></a>补充 （关于<code>import</code>和<code>random</code>）</h4><p>先解释下第一行</p>
+<blockquote>
+<p><code>import</code>是关键字<code>import</code>语句用来导入其他python文件（称为模块module），使用该模块里定义的类、方法或者变量，从而达到代码复用的目的。</p>
+</blockquote>
+<blockquote>
+<p>Python标准库中的random函数，可以生成随机浮点数、整数、字符串，甚至帮助你随机选择列表序<br>列中的一个元素，打乱一组数据等。</p>
+</blockquote>
+<blockquote>
+<p>random()是Python中生成随机数的函数，是由random模块控制，random()函数不能直接访问，需要导入random 模块，然后再通过相应的静态对象调用该方法才能实现相应的功能</p>
+</blockquote>
+<blockquote>
+<p>random 一些简单的用法:</p>
+<p>1、随机生成（0,1）之间的浮点数                          random.random()</p>
+<p>2、随机生成100-200的整数                                    random.randint(100,200)</p>
+<p>3、随机产生范围为10间隔为2的数                         random.randrange(0,11,2)</p>
+<p>注：这里输出（0,2,4,6,8,10）中一个</p>
+<p>4、从序列中随机抽选一个数                                   random.choice(list)</p>
+<p>5、随机排序                                                              random.shuffle(list)</p>
+<p>注：list元素为数值型</p>
+</blockquote>
+<blockquote>
+<p>random中的一些重要函数的用法：<br>1 )、random() 返回0&lt;=n&lt;1之间的随机实数n；<br>2 )、choice(seq) 从序列seq中返回随机的元素；<br>3 )、getrandbits(n) 以长整型形式返回n个随机位；<br>4 )、shuffle(seq[, random]) 原地指定seq序列；<br>5 )、sample(seq, n) 从序列seq中选择n个随机且独立的元素；</p>
+</blockquote>
+<blockquote>
+<p>random.random()函数是这个模块中最常用的方法了，它会生成一个随机的浮点数，范围是在0.0~1.0之间。</p>
+<p>random.uniform()正好弥补了上面函数的不足，它可以设定浮点数的范围，一个是上限，一个是下限。</p>
+<p>random.randint()随机生一个整数int类型，可以指定这个整数的范围，同样有上限和下限值，python random.randint。</p>
+<p>random.choice()可以从任何序列，比如list列表中，选取一个随机的元素返回，可以用于字符串、列表、元组等。</p>
+<p>random.shuffle()如果你想将一个序列中的元素，随机打乱的话可以用这个函数方法。</p>
+<p>random.sample()可以从指定的序列中，随机的截取指定长度的片断，不作原地修改。</p>
+</blockquote>
+<hr>
+<p><strong>要熟练使用<code>range</code> ，注意是左闭右开区间</strong></p>
+<p><strong>了解并会使用生产随机数</strong></p>
+<p><strong>计算它们的最大公约数和最小公倍数的算法</strong></p>
+<p>最大公因数:<code>if x % factor == 0 and y % factor == 0:</code>  <code>factor即为最大公因数</code></p>
+<p>最小公倍数:<code>(x * y // factor)</code></p>
+<p><strong>计算一个数是否为素数的算法</strong></p>
+<p><code>print</code>后会主动换行，如<code>print()</code>等价于,<code>print(&#39;&#39;,end=&#39;\n&#39;)</code> 输出东西后的格式要用 <code>end=</code></p>
+<p><strong>100天学python，今天是第四天</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/20/python%E5%AD%A6%E4%B9%A0-04-Days/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-python学习-03-Days" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1190,118 +1354,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%95%B0%E7%BB%84%E5%92%8C%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-每日leetcode-5-两数之和" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/15/%E6%AF%8F%E6%97%A5leetcode-5-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">每日leetcode-5-两数之和</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/15/%E6%AF%8F%E6%97%A5leetcode-5-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" class="archive-article-date">
-  	<time datetime="2020-10-15T02:15:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/two-sum/">两数之和</a></h2><p>源自LeetCode:  <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/two-sum/">https://leetcode-cn.com/problems/two-sum/</a></p>
-<p>问题描述:</p>
-<p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
-<p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。</p>
-<p><strong>示例 :</strong></p>
-<blockquote>
-<p>给定 nums = [2, 7, 11, 15], target = 9</p>
-<p>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
-</blockquote>
-<p>题目给出的模板：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>乍一看好像挺简单的嘛，就是一个枚举就搞定了</p>
-<p>下面给出我的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">    	int n &#x3D; nums.size();</span><br><span class="line">		for(int i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">			for(int j&#x3D;i+1;j&lt;n;j++)</span><br><span class="line">				if(nums[i]+nums[j]&#x3D;&#x3D;target)&#123;</span><br><span class="line">					return &#123;i, j&#125;;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><code>nums.size()</code> 是获取向量元素个数；</p>
-<p>一次就通过了？？？ 就这？（不过内存和时间效率都挺低的）</p>
-<p>让我来康康别人是怎么做的把。</p>
-<hr>
-<p>作者：chenlele<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/two-sum/solution/liang-shu-zhi-he-by-gpe3dbjds1/">https://leetcode-cn.com/problems/two-sum/solution/liang-shu-zhi-he-by-gpe3dbjds1/</a><br>来源：力扣（LeetCode</p>
-<p>做法： <strong>1.两遍哈希表：</strong>（又是哈希表，看来要去好好了解一下什么是哈希表了）</p>
-<p>给出代码:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        map&lt;int,int&gt; a;&#x2F;&#x2F;建立hash表存放数组元素</span><br><span class="line">        vector&lt;int&gt; b(2,-1);&#x2F;&#x2F;存放结果</span><br><span class="line">        for(int i&#x3D;0;i&lt;nums.size();i++)</span><br><span class="line">            a.insert(map&lt;int,int&gt;::value_type(nums[i],i));</span><br><span class="line">        for(int i&#x3D;0;i&lt;nums.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(a.count(target-nums[i])&gt;0&amp;&amp;(a[target-nums[i]]!&#x3D;i))</span><br><span class="line">            &#x2F;&#x2F;判断是否找到目标元素且目标元素不能是本身</span><br><span class="line">            &#123;</span><br><span class="line">                b[0]&#x3D;i;</span><br><span class="line">                b[1]&#x3D;a[target-nums[i]];</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return b;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注：该方法用 map 实现，map 是 STL 的一个关联容器，它提供一对一（其中第一个可以称为关键字，每个关键字只能在 map 中出现一次，第二个可能称为该关键字的值）的数据处理能力</p>
-</blockquote>
-<p>(map也得去康康了)</p>
-<h4 id="2-一遍哈希表"><a href="#2-一遍哈希表" class="headerlink" title="2. 一遍哈希表"></a>2. 一遍哈希表</h4><blockquote>
-<p>改进：在进行迭代并将元素插入到表中的同时，我们还会回过头来检查表中是否已经存在当前元素所对应的目标元素。如果它存在，那我们已经找到了对应解，并立即将其返回。</p>
-</blockquote>
-<p>给出代码:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        map&lt;int,int&gt; a;&#x2F;&#x2F;提供一对一的hash</span><br><span class="line">        vector&lt;int&gt; b(2,-1);&#x2F;&#x2F;用来承载结果，初始化一个大小为2，值为-1的容器b</span><br><span class="line">        for(int i&#x3D;0;i&lt;nums.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(a.count(target-nums[i])&gt;0)</span><br><span class="line">            &#123;</span><br><span class="line">                b[0]&#x3D;a[target-nums[i]];</span><br><span class="line">                b[1]&#x3D;i;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            a[nums[i]]&#x3D;i;&#x2F;&#x2F;反过来放入map中，用来获取结果下标</span><br><span class="line">        &#125;</span><br><span class="line">        return b;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>(运行时间减少了25倍多)</p>
-<p><img src="/2020/10/15/%E6%AF%8F%E6%97%A5leetcode-5-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/%E8%BF%B7%E6%83%91.jpg"></p>
-<p>太强了</p>
-<hr>
-<p>关于<code>哈希表</code> 可以看 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/g8N6WmoQmsCUw3_BaWxHZA">https://mp.weixin.qq.com/s/g8N6WmoQmsCUw3_BaWxHZA</a>  （转载）</p>
-<p><strong>「一般哈希表都是用来快速判断一个元素是否出现集合里。」</strong></p>
-<p>当我们想使用哈希法来解决问题的时候，我们一般会选择如下三种数据结构。</p>
-<ul>
-<li>数组</li>
-<li>set （集合）</li>
-<li>map(映射)</li>
-</ul>
-<hr>
-<p>感觉不太对劲啊，这刷题刷出来许多问题，依靠搜索引擎也能读懂，但是感觉这样学习学的特别乱，太不够系统了，感觉东一个西一个的，而且下次遇到类似的题目也可能想不到用这种方法去做。</p>
-<p>这道题就暂时到这里了，如果你有什么问题或者建议可以联系我</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/15/%E6%AF%8F%E6%97%A5leetcode-5-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">展开全文 >></a>
         </p>
       
 

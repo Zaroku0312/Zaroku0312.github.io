@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2020/10 | Hexo</title>
+  <title>python学习-08-Days | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2020/10/index.html">
+  <meta name="description" content="Day 08-面向对象编程基础什么是”面向对象编程” “把一组数据结构和处理它们的方法组成对象（object），把相同行为的对象归纳为类（class），通过类的封装（encapsulation）隐藏内部细节，通过继承（inheritance）实现类的特化（specialization）和泛化（generalization），通过多态（polymorphism）实现基于对象类型的动态分派。”   定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python学习-08-Days">
+<meta property="og:url" content="http://example.com/2020/10/25/python%E5%AD%A6%E4%B9%A0-08-Days/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Day 08-面向对象编程基础什么是”面向对象编程” “把一组数据结构和处理它们的方法组成对象（object），把相同行为的对象归纳为类（class），通过类的封装（encapsulation）隐藏内部细节，通过继承（inheritance）实现类的特化（specialization）和泛化（generalization），通过多态（polymorphism）实现基于对象类型的动态分派。”   定">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-25T15:19:15.000Z">
+<meta property="article:modified_time" content="2020-10-25T16:41:28.968Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,295 +154,187 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-python学习-08-Days" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      python学习-08-Days
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/25/python%E5%AD%A6%E4%B9%A0-08-Days/" class="archive-article-date">
+
+        
+        <a href="/2020/10/25/python%E5%AD%A6%E4%B9%A0-08-Days/" class="archive-article-date">
   	<time datetime="2020-10-25T15:19:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-25</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/25/python%E5%AD%A6%E4%B9%A0-08-Days/">python学习-08-Days</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Day-08-面向对象编程基础"><a href="#Day-08-面向对象编程基础" class="headerlink" title="Day 08-面向对象编程基础"></a>Day 08-面向对象编程基础</h2><h3 id="什么是”面向对象编程”"><a href="#什么是”面向对象编程”" class="headerlink" title="什么是”面向对象编程”"></a>什么是”面向对象编程”</h3><blockquote>
+<p>“把一组数据结构和处理它们的方法组成对象（object），把相同行为的对象归纳为类（class），通过类的封装（encapsulation）隐藏内部细节，通过继承（inheritance）实现类的特化（specialization）和泛化（generalization），通过多态（polymorphism）实现基于对象类型的动态分派。”</p>
+</blockquote>
+<hr>
+<h3 id="定义类"><a href="#定义类" class="headerlink" title="定义类"></a>定义类</h3><p>在Python中可以使用<code>class</code>关键字定义类，然后在类中通过之前学习过的函数来定义方法，这样就可以将对象的动态特征描述出来，代码如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Student(object):</span><br><span class="line"></span><br><span class="line">    # __init__是一个特殊方法用于在创建对象时进行初始化操作</span><br><span class="line">    # 通过这个方法我们可以为学生对象绑定name和age两个属性</span><br><span class="line">    def __init__(self, name, age):</span><br><span class="line">        self.name &#x3D; name</span><br><span class="line">        self.age &#x3D; age</span><br><span class="line"></span><br><span class="line">    def study(self, course_name):</span><br><span class="line">        print(&#39;%s正在学习%s.&#39; % (self.name, course_name))</span><br><span class="line"></span><br><span class="line">    # PEP 8要求标识符的名字用全小写多个单词用下划线连接</span><br><span class="line">    # 但是部分程序员和公司更倾向于使用驼峰命名法(驼峰标识)</span><br><span class="line">    def watch_movie(self):</span><br><span class="line">        if self.age &lt; 18:</span><br><span class="line">            print(&#39;%s只能观看《熊出没》.&#39; % self.name)</span><br><span class="line">        else:</span><br><span class="line">            print(&#39;%s正在观看岛国爱情大电影.&#39; % self.name)</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<h3 id="创建和使用对象"><a href="#创建和使用对象" class="headerlink" title="创建和使用对象"></a>创建和使用对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def main():</span><br><span class="line">    stu1 &#x3D; Student(&#39;Zaroku&#39;,18)</span><br><span class="line">    stu1.study(&#39;Python程序设计&#39;)</span><br><span class="line">    stu1.watch_movie()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 
+<h3 id="访问可见性问题"><a href="#访问可见性问题" class="headerlink" title="访问可见性问题"></a>访问可见性问题</h3><p>对于上面的代码，有C++、Java、C#等编程经验的程序员可能会问，我们给<code>Student</code>对象绑定的<code>name</code>和<code>age</code>属性到底具有怎样的访问权限（也称为可见性）。因为在很多面向对象编程语言中，我们通常会将对象的属性设置为私有的（private）或受保护的（protected），简单的说就是不允许外界访问，而对象的方法通常都是公开的（public），因为公开的方法就是对象能够接受的消息。在Python中，属性和方法的访问权限只有两种，也就是公开的和私有的，如果希望属性是私有的，在给属性命名时可以用两个下划线作为开头。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Test:</span><br><span class="line"></span><br><span class="line">    def __init__(self, foo):</span><br><span class="line">        self.__foo &#x3D; foo</span><br><span class="line"></span><br><span class="line">    def __bar(self):</span><br><span class="line">        print(self.__foo)</span><br><span class="line">        print(&#39;__bar&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    test &#x3D; Test(&#39;hello&#39;)</span><br><span class="line">    # AttributeError: &#39;Test&#39; object has no attribute &#39;__bar&#39;</span><br><span class="line">    test.__bar()</span><br><span class="line">    # AttributeError: &#39;Test&#39; object has no attribute &#39;__foo&#39;</span><br><span class="line">    print(test.__foo)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>但是，Python并没有从语法上严格保证私有属性或方法的私密性，它只是给私有的属性和方法换了一个名字来妨碍对它们的访问，事实上如果你知道更换名字的规则仍然可以访问到它们，下面的代码就可以验证这一点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Test:</span><br><span class="line"></span><br><span class="line">    def __init__(self, foo):</span><br><span class="line">        self.__foo &#x3D; foo</span><br><span class="line"></span><br><span class="line">    def __bar(self):</span><br><span class="line">        print(self.__foo)</span><br><span class="line">        print(&#39;__bar&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    test &#x3D; Test(&#39;hello&#39;)</span><br><span class="line">    test._Test__bar()</span><br><span class="line">    print(test._Test__foo)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>在实际开发中，我们并不建议将属性设置为私有的，因为这会导致子类无法访问（后面会讲到）。所以大多数Python程序员会遵循一种命名惯例就是让属性名以单下划线开头来表示属性是受保护的，本类之外的代码在访问这样的属性时应该要保持慎重。这种做法并不是语法上的规则，单下划线开头的属性和方法外界仍然是可以访问的，所以更多的时候它是一种暗示或隐喻</p>
+<hr>
+<h3 id="面向对象的支柱"><a href="#面向对象的支柱" class="headerlink" title="面向对象的支柱"></a>面向对象的支柱</h3><p>面向对象有三大支柱：封装、继承和多态。后面两个概念在下一个章节中进行详细的说明，这里我们先说一下什么是封装。我自己对封装的理解是”隐藏一切可以隐藏的实现细节，只向外界暴露（提供）简单的编程接口”。我们在类中定义的方法其实就是把数据和对数据的操作封装起来了，在我们创建了对象之后，只需要给对象发送一个消息（调用方法）就可以执行方法中的代码，也就是说我们只需要知道方法的名字和传入的参数（方法的外部视图），而不需要知道方法内部的实现细节（方法的内部视图）。</p>
+<hr>
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><h4 id="练习1：定义一个类描述数字时钟。"><a href="#练习1：定义一个类描述数字时钟。" class="headerlink" title="练习1：定义一个类描述数字时钟。"></a>练习1：定义一个类描述数字时钟。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">from time import sleep</span><br><span class="line"></span><br><span class="line">class Clock(object):</span><br><span class="line">    def __init__(self,hour&#x3D;0,minute&#x3D;0,second&#x3D;0):</span><br><span class="line">        &quot;&quot;&quot;初始化方法</span><br><span class="line"></span><br><span class="line">        :param hour: 时</span><br><span class="line">        :param minute: 分</span><br><span class="line">        :param second: 秒</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self._hour &#x3D; hour</span><br><span class="line">        self._minute &#x3D; minute</span><br><span class="line">        self._second &#x3D; second</span><br><span class="line"></span><br><span class="line">    def run(self):</span><br><span class="line">        &quot;&quot;&quot;走字&quot;&quot;&quot;</span><br><span class="line">        self._second +&#x3D; 1</span><br><span class="line">        if self._second &#x3D;&#x3D; 60:</span><br><span class="line">            self._second &#x3D; 0</span><br><span class="line">            self._minute +&#x3D; 1</span><br><span class="line">            if self._minute &#x3D;&#x3D; 60:</span><br><span class="line">                self._hour +&#x3D; 1</span><br><span class="line">                self._minute &#x3D; 0</span><br><span class="line">                if self._hour &#x3D;&#x3D; 24:</span><br><span class="line">                    self._hour &#x3D; 0</span><br><span class="line">    def show(self):</span><br><span class="line">        &quot;&quot;&quot;显示时间&quot;&quot;&quot;</span><br><span class="line">        return &#39;%02d:%02d:%02d&#39; % \</span><br><span class="line">                (self._hour,self._minute,self._second)        </span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    clock &#x3D; Clock(23,59,58)</span><br><span class="line">    while True:</span><br><span class="line">        print(clock.show())</span><br><span class="line">        sleep(1)</span><br><span class="line">        clock.run()</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="练习2：定义一个类描述平面上的点并提供移动点和计算到另一个点距离的方法。"><a href="#练习2：定义一个类描述平面上的点并提供移动点和计算到另一个点距离的方法。" class="headerlink" title="练习2：定义一个类描述平面上的点并提供移动点和计算到另一个点距离的方法。"></a>练习2：定义一个类描述平面上的点并提供移动点和计算到另一个点距离的方法。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">from math import sqrt</span><br><span class="line"></span><br><span class="line">class Point (object):</span><br><span class="line"></span><br><span class="line">    def __init__(self,x&#x3D;0,y&#x3D;0):</span><br><span class="line">        &quot;&quot;&quot;初始化方法</span><br><span class="line">        </span><br><span class="line">        :param x: 横坐标</span><br><span class="line">        :param y: 纵坐标</span><br><span class="line">        &quot;&quot;&quot;        </span><br><span class="line">        self.x&#x3D;x</span><br><span class="line">        self.y&#x3D;y</span><br><span class="line"></span><br><span class="line">    def move_to(self,x,y):</span><br><span class="line">        &quot;&quot;&quot;移动到指定位置</span><br><span class="line">        </span><br><span class="line">        :param x: 新的横坐标</span><br><span class="line">        &quot;param y: 新的纵坐标</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.x&#x3D;x</span><br><span class="line">        self.y&#x3D;y</span><br><span class="line"></span><br><span class="line">    def move_by(self, dx, dy):</span><br><span class="line">        &quot;&quot;&quot;移动指定的增量</span><br><span class="line">        </span><br><span class="line">        :param dx: 横坐标的增量</span><br><span class="line">        &quot;param dy: 纵坐标的增量</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.x +&#x3D; dx</span><br><span class="line">        self.y +&#x3D; dy</span><br><span class="line"></span><br><span class="line">    def distance_to(self, other):</span><br><span class="line">        &quot;&quot;&quot;计算与另一个点的距离</span><br><span class="line">        </span><br><span class="line">        :param other: 另一个点</span><br><span class="line">        &quot;&quot;&quot;        </span><br><span class="line">        dx &#x3D; self.x - other.x</span><br><span class="line">        dy &#x3D; self.y - other.y</span><br><span class="line">        return sqrt(dx ** 2 +dy **2)</span><br><span class="line">        </span><br><span class="line">    def __str__(self):</span><br><span class="line">        return &#39;(%s,%s)&#39; % (str(self.x), str(self.y))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    p1 &#x3D; Point(3,5)</span><br><span class="line">    p2 &#x3D; Point()</span><br><span class="line">    print(p1)</span><br><span class="line">    print(p2)</span><br><span class="line">    p2.move_by(-1,2)</span><br><span class="line">    print(p2)</span><br><span class="line">    print(p1.distance_to(p2))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>python中方法名如果是<code>__xx__</code> ()的，那么就有特殊的功能，因此叫做“魔法”方法</li>
+<li>当使用<code>print</code>输出对象的伤害，只要自己定义了<code>__str__(self)</code>方法，那么就会打印从在这个方法中<code>return</code>的数据</li>
+<li><code>__str__</code>方法需要返回一个字符串，当做这个对象的描写</li>
+</ul>
+<hr>
+<p>感觉python这样做它的封装性会不会出问题啊，等于赤裸着啊，其他的好像和C++的差不多，<code>__str__</code>感觉也就那样啊，直接打印不差不多？</p>
+<p>100天学python，今天是第八天</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/10/25/python%E5%AD%A6%E4%B9%A0-08-Days/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/25/%E6%AF%8F%E6%97%A5leetcode-15-x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/" class="archive-article-date">
-  	<time datetime="2020-10-25T12:28:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-25</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/10/25/%E6%AF%8F%E6%97%A5leetcode-15-x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">每日leetcode-15-x的平方根</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/25/%E6%AF%8F%E6%97%A5leetcode-15-x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/">每日leetcode-15-x的平方根</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/24/%E6%AF%8F%E6%97%A5leetcode-14-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" class="archive-article-date">
-  	<time datetime="2020-10-24T05:19:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/24/%E6%AF%8F%E6%97%A5leetcode-14-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/">每日leetcode-14-移除元素</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/23/%E6%AF%8F%E6%97%A5leetcode-13-%E5%A4%96%E8%A7%82%E6%95%B0%E5%88%97/" class="archive-article-date">
-  	<time datetime="2020-10-23T15:25:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/23/%E6%AF%8F%E6%97%A5leetcode-13-%E5%A4%96%E8%A7%82%E6%95%B0%E5%88%97/">每日leetcode-13-外观数列</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/23/python%E5%AD%A6%E4%B9%A0-07-Days/" class="archive-article-date">
-  	<time datetime="2020-10-23T02:17:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/23/python%E5%AD%A6%E4%B9%A0-07-Days/">python学习-07-Days</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/22/%E6%AF%8F%E6%97%A5leetcode-12-%E7%BD%97%E9%A9%AC%E6%95%B0%E8%BD%AC%E6%95%B4%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-10-22T15:42:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/22/%E6%AF%8F%E6%97%A5leetcode-12-%E7%BD%97%E9%A9%AC%E6%95%B0%E8%BD%AC%E6%95%B4%E6%95%B0/">每日leetcode-12-罗马数转整数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/22/python%E5%AD%A6%E4%B9%A0-06-Days/" class="archive-article-date">
-  	<time datetime="2020-10-21T22:59:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/22/python%E5%AD%A6%E4%B9%A0-06-Days/">python学习-06-Days</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/21/python%E5%AD%A6%E4%B9%A0-05-Days/" class="archive-article-date">
-  	<time datetime="2020-10-21T13:25:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/21/python%E5%AD%A6%E4%B9%A0-05-Days/">python学习-05-Days</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/21/%E6%AF%8F%E6%97%A5leetcode-11-%E5%AE%9E%E7%8E%B0strStr%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-10-21T09:08:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/21/%E6%AF%8F%E6%97%A5leetcode-11-%E5%AE%9E%E7%8E%B0strStr%E5%87%BD%E6%95%B0/">每日leetcode-11-实现strStr函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/20/%E6%AF%8F%E6%97%A5leetcode-10-%E5%9B%9E%E6%96%87%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-10-20T08:44:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/20/%E6%AF%8F%E6%97%A5leetcode-10-%E5%9B%9E%E6%96%87%E6%95%B0/">每日leetcode-10-回文数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/10/page/2/">2</a><a class="page-number" href="/archives/2020/10/page/3/">3</a><a class="page-number" href="/archives/2020/10/page/4/">4</a><a class="extend next" rel="next" href="/archives/2020/10/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -462,8 +358,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -152,6 +152,108 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每日leetcode-17-有效的括号" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/27/%E6%AF%8F%E6%97%A5leetcode-17-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/">每日leetcode-17-有效的括号</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/27/%E6%AF%8F%E6%97%A5leetcode-17-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" class="archive-article-date">
+  	<time datetime="2020-10-27T04:56:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="有效的括号"><a href="#有效的括号" class="headerlink" title="有效的括号"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/valid-parentheses/">有效的括号</a></h4><p>源自LeetCode: <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/valid-parentheses/">https://leetcode-cn.com/problems/valid-parentheses/</a></p>
+<hr>
+<p>问题描述:</p>
+<p>给定一个只包括 <code>&#39;(&#39;</code>，<code>&#39;)&#39;</code>，<code>&#39;&#123;&#39;</code>，<code>&#39;&#125;&#39;</code>，<code>&#39;[&#39;</code>，<code>&#39;]&#39;</code> 的字符串，判断字符串是否有效。</p>
+<p>有效字符串需满足：</p>
+<ol>
+<li>左括号必须用相同类型的右括号闭合。</li>
+<li>左括号必须以正确的顺序闭合。</li>
+</ol>
+<p>注意空字符串可被认为是有效字符串。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;()&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;()[]&#123;&#125;&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;(]&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 4:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;([)]&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 5:</strong></p>
+<figure class="highlight plain"><figcaption><span>5:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;&#123;[]&#125;&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>题目给出的答题模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isValid(string s) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>通过分析题目，我们发现从左往右，一开始应为左括号，之后可能出现左括号和右括号，当出现右括号时，一定是会跟此时最后一个出现的左括号类型一致，理所应当的， 我想到了用栈去解这道题目，当遇到左括号 -&gt;入栈，遇到右括号，找栈顶元素，一致就出栈，不一致或者空栈就 <code>return false</code> 当遍历完字符串且栈为空就 <code>return true</code></p>
+<p>下面给出我的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isValid(string s) &#123;</span><br><span class="line">		int n &#x3D; s.length();</span><br><span class="line">        if (n % 2 &#x3D;&#x3D; 1) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        unordered_map&lt;char,int&gt; m&#123;</span><br><span class="line">			&#123;&#39;(&#39;,1&#125;,&#123;&#39;[&#39;,2&#125;,&#123;&#39;&#123;&#39;,3&#125;,</span><br><span class="line">            &#123;&#39;)&#39;,4&#125;,&#123;&#39;]&#39;,5&#125;,&#123;&#39;&#125;&#39;,6&#125;</span><br><span class="line">		&#125;;</span><br><span class="line"></span><br><span class="line">		stack&lt;char&gt; stk;</span><br><span class="line">		bool istrue&#x3D;true;</span><br><span class="line">        for(char c:s)&#123;</span><br><span class="line">            int flag&#x3D;m[c];</span><br><span class="line">            if(flag&gt;&#x3D;1&amp;&amp;flag&lt;&#x3D;3) stk.push(c);</span><br><span class="line">            else if(!stk.empty()&amp;&amp;m[stk.top()]&#x3D;&#x3D;flag-3) stk.pop();</span><br><span class="line">            else &#123;istrue&#x3D;false;break;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(!stk.empty()) istrue&#x3D;false;</span><br><span class="line">        return istrue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>震惊，居然 100%了</p>
+<p>让我们康康别人是怎么做的把。</p>
+<hr>
+<p>和我的大致思路差不多，用栈做，同时使用了<code>哈希衍射</code></p>
+<hr>
+<p>本题就到这里了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/27/%E6%AF%8F%E6%97%A5leetcode-17-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-每日leetcode-16-赎金信" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1233,134 +1335,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/21/python%E5%AD%A6%E4%B9%A0-05-Days/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-每日leetcode-11-实现strStr函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/21/%E6%AF%8F%E6%97%A5leetcode-11-%E5%AE%9E%E7%8E%B0strStr%E5%87%BD%E6%95%B0/">每日leetcode-11-实现strStr函数</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/21/%E6%AF%8F%E6%97%A5leetcode-11-%E5%AE%9E%E7%8E%B0strStr%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-10-21T09:08:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="实现-strStr"><a href="#实现-strStr" class="headerlink" title="实现 strStr()"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-strstr/">实现 strStr()</a></h4><p>源自LeetCode: <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-strstr/">https://leetcode-cn.com/problems/implement-strstr/</a></p>
-<p>问题描述:</p>
-<p>给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: haystack &#x3D; &quot;hello&quot;, needle &#x3D; &quot;ll&quot;</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plain"><figcaption><span>3</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: haystack &#x3D; &quot;aaaaa&quot;, needle &#x3D; &quot;bba&quot;</span><br><span class="line">输出: -1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>说明:</p>
-<blockquote>
-<p>当 needle 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。</p>
-</blockquote>
-<blockquote>
-<p>对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与C语言的 strstr() 以及 Java的 indexOf() 定义相符。</p>
-</blockquote>
-<p>题目给出的模板：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>字符串的匹配，怎么这么熟悉，这不是我前几个星期刚学的吗，其中有个KMP算法，我并没有记住怎么实现的，我只记得运用双指针的方法做这道题，时间复杂度很高</p>
-<p>我就不写那个简单的算法了，我们直接去看KMP算法</p>
-<p>让我们康康别人是怎么做的吧</p>
-<hr>
-<p>作者：carlsun-2<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-strstr/solution/bang-ni-ba-kmpsuan-fa-xue-ge-tong-tou-ming-ming-ba/">https://leetcode-cn.com/problems/implement-strstr/solution/bang-ni-ba-kmpsuan-fa-xue-ge-tong-tou-ming-ming-ba/</a><br>来源：力扣（LeetCode）</p>
-<p>KMP的经典思想就是:<strong>当出现字符串不匹配时，可以记录一部分之前已经匹配的文本内容，利用这些信息避免从头再去做匹配。</strong></p>
-<p>本篇将以如下顺序来讲解KMP，</p>
-<ol>
-<li>什么是KMP</li>
-<li>KMP可以解决什么问题</li>
-<li>分析KMP算法里的next数组</li>
-<li>什么是前缀表</li>
-<li>再分析为什么要是前缀表而不是什么哈希表其他表等等，偏偏要是前缀表。</li>
-<li>一步一步推导前缀表是怎么求的</li>
-<li>时间复杂度分析</li>
-<li>前缀表与next数组的关系</li>
-<li>如何使用next数组来做一遍匹配的过程</li>
-<li>构造next数组</li>
-<li>使用next数组进行匹配</li>
-<li>前缀表统一减一（右移）的KMP实现方式</li>
-<li>前缀表不减一的KMP实现方式</li>
-<li>总结</li>
-</ol>
-<p>那个作者讲的相当详细，各位有兴趣可以去看</p>
-<h3 id="什么是KMP"><a href="#什么是KMP" class="headerlink" title="什么是KMP"></a>什么是KMP</h3><p>说到KMP，先说一下KMP这个名字是怎么来的，为什么叫做KMP呢。</p>
-<p>因为是由这三位学者发明的：Knuth，Morris和Pratt，所以取了三位学者名字的首字母。所以叫做KMP</p>
-<h3 id="KMP有什么用"><a href="#KMP有什么用" class="headerlink" title="KMP有什么用"></a>KMP有什么用</h3><p>KMP主要应用在字符串匹配上。</p>
-<p>KMP的主要思想是当出现字符串不匹配时，可以知道一部分之前已经匹配的文本内容，可以利用这些信息避免从头再去做匹配了。</p>
-<p>所以如何记录已经匹配的文本内容，是KMP的重点，也是next数组肩负的重任。</p>
-<h3 id="什么是前缀表"><a href="#什么是前缀表" class="headerlink" title="什么是前缀表"></a>什么是前缀表</h3><p>写过KMP的同学，一定都写过next数组，那么这个next数组究竟是个啥呢？</p>
-<p>next数组就是一个前缀表（prefix table）。</p>
-<p>前缀表有什么作用呢？</p>
-<p><strong>前缀表是用来回退的，它记录了模式串与主串(文本串)不匹配的时候，模式串应该从哪里开始重新匹配。</strong></p>
-<p><strong>此时就要问了前缀表是如何记录的呢？</strong></p>
-<p>首先要知道前缀表的任务是当前位置匹配失败，找到之前已经匹配上的位置，在重新匹配，此也意味着在某个字符失配时，前缀表会告诉你下一步匹配中，模式串应该跳到哪个位置。</p>
-<p>那么什么是前缀表：记录下表i之前（包括i）的字符串中，有多大长度的相同前缀后缀。</p>
-<p>关于前缀表怎么写的话自行百度吧。。。</p>
-<p>本题的题解如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void getNext(int* next, const string&amp; s) &#123;</span><br><span class="line">        int j &#x3D; -1;</span><br><span class="line">        next[0] &#x3D; j;</span><br><span class="line">        for(int i &#x3D; 1; i &lt; s.size(); i++) &#123; &#x2F;&#x2F; 注意i从1开始</span><br><span class="line">            while (j &gt;&#x3D; 0 &amp;&amp; s[i] !&#x3D; s[j + 1]) &#123; &#x2F;&#x2F; 前后缀不相同了</span><br><span class="line">                j &#x3D; next[j]; &#x2F;&#x2F; 向前回溯</span><br><span class="line">            &#125;</span><br><span class="line">            if (s[i] &#x3D;&#x3D; s[j + 1]) &#123; &#x2F;&#x2F; 找到相同的前后缀</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">            next[i] &#x3D; j; &#x2F;&#x2F; 将j（前缀的长度）赋给next[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        if (needle.size() &#x3D;&#x3D; 0) &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        int next[needle.size()];</span><br><span class="line">        getNext(next, needle);</span><br><span class="line">        int j &#x3D; -1; &#x2F;&#x2F; &#x2F;&#x2F; 因为next数组里记录的起始位置为-1</span><br><span class="line">        for (int i &#x3D; 0; i &lt; haystack.size(); i++) &#123; &#x2F;&#x2F; 注意i就从0开始</span><br><span class="line">            while(j &gt;&#x3D; 0 &amp;&amp; haystack[i] !&#x3D; needle[j + 1]) &#123; &#x2F;&#x2F; 不匹配</span><br><span class="line">                j &#x3D; next[j]; &#x2F;&#x2F; j 寻找之前匹配的位置</span><br><span class="line">            &#125;</span><br><span class="line">            if (haystack[i] &#x3D;&#x3D; needle[j + 1]) &#123; &#x2F;&#x2F; 匹配，j和i同时向后移动 </span><br><span class="line">                j++; &#x2F;&#x2F; i的增加在for循环里</span><br><span class="line">            &#125;</span><br><span class="line">            if (j &#x3D;&#x3D; (needle.size() - 1) ) &#123; &#x2F;&#x2F; 文本串s里出现了模式串t</span><br><span class="line">                return (i - needle.size() + 1); </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>那么使用next数组，用模式串匹配文本串的整体代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int j &#x3D; -1; &#x2F;&#x2F; 因为next数组里记录的起始位置为-1</span><br><span class="line">for (int i &#x3D; 0; i &lt; s.size(); i++) &#123; &#x2F;&#x2F; 注意i就从0开始</span><br><span class="line">    while(j &gt;&#x3D; 0 &amp;&amp; s[i] !&#x3D; t[j + 1]) &#123; &#x2F;&#x2F; 不匹配</span><br><span class="line">        j &#x3D; next[j]; &#x2F;&#x2F; j 寻找之前匹配的位置</span><br><span class="line">    &#125;</span><br><span class="line">    if (s[i] &#x3D;&#x3D; t[j + 1]) &#123; &#x2F;&#x2F; 匹配，j和i同时向后移动</span><br><span class="line">        j++; &#x2F;&#x2F; i的增加在for循环里</span><br><span class="line">    &#125;</span><br><span class="line">    if (j &#x3D;&#x3D; (t.size() - 1) ) &#123; &#x2F;&#x2F; 文本串s里出现了模式串t</span><br><span class="line">        return (i - t.size() + 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结:"></a>小结:</h3><p>KMP算法其实也不会很难，之前是我把它想的太难了</p>
-<hr>
-<p>本题就到这里了</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/21/%E6%AF%8F%E6%97%A5leetcode-11-%E5%AE%9E%E7%8E%B0strStr%E5%87%BD%E6%95%B0/">展开全文 >></a>
         </p>
       
 

@@ -152,6 +152,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python学习-08-Days" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/25/python%E5%AD%A6%E4%B9%A0-08-Days/">python学习-08-Days</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/25/python%E5%AD%A6%E4%B9%A0-08-Days/" class="archive-article-date">
+  	<time datetime="2020-10-25T15:19:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Day-08-面向对象编程基础"><a href="#Day-08-面向对象编程基础" class="headerlink" title="Day 08-面向对象编程基础"></a>Day 08-面向对象编程基础</h2><h3 id="什么是”面向对象编程”"><a href="#什么是”面向对象编程”" class="headerlink" title="什么是”面向对象编程”"></a>什么是”面向对象编程”</h3><blockquote>
+<p>“把一组数据结构和处理它们的方法组成对象（object），把相同行为的对象归纳为类（class），通过类的封装（encapsulation）隐藏内部细节，通过继承（inheritance）实现类的特化（specialization）和泛化（generalization），通过多态（polymorphism）实现基于对象类型的动态分派。”</p>
+</blockquote>
+<hr>
+<h3 id="定义类"><a href="#定义类" class="headerlink" title="定义类"></a>定义类</h3><p>在Python中可以使用<code>class</code>关键字定义类，然后在类中通过之前学习过的函数来定义方法，这样就可以将对象的动态特征描述出来，代码如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Student(object):</span><br><span class="line"></span><br><span class="line">    # __init__是一个特殊方法用于在创建对象时进行初始化操作</span><br><span class="line">    # 通过这个方法我们可以为学生对象绑定name和age两个属性</span><br><span class="line">    def __init__(self, name, age):</span><br><span class="line">        self.name &#x3D; name</span><br><span class="line">        self.age &#x3D; age</span><br><span class="line"></span><br><span class="line">    def study(self, course_name):</span><br><span class="line">        print(&#39;%s正在学习%s.&#39; % (self.name, course_name))</span><br><span class="line"></span><br><span class="line">    # PEP 8要求标识符的名字用全小写多个单词用下划线连接</span><br><span class="line">    # 但是部分程序员和公司更倾向于使用驼峰命名法(驼峰标识)</span><br><span class="line">    def watch_movie(self):</span><br><span class="line">        if self.age &lt; 18:</span><br><span class="line">            print(&#39;%s只能观看《熊出没》.&#39; % self.name)</span><br><span class="line">        else:</span><br><span class="line">            print(&#39;%s正在观看岛国爱情大电影.&#39; % self.name)</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建和使用对象"><a href="#创建和使用对象" class="headerlink" title="创建和使用对象"></a>创建和使用对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def main():</span><br><span class="line">    stu1 &#x3D; Student(&#39;Zaroku&#39;,18)</span><br><span class="line">    stu1.study(&#39;Python程序设计&#39;)</span><br><span class="line">    stu1.watch_movie()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h3 id="访问可见性问题"><a href="#访问可见性问题" class="headerlink" title="访问可见性问题"></a>访问可见性问题</h3><p>对于上面的代码，有C++、Java、C#等编程经验的程序员可能会问，我们给<code>Student</code>对象绑定的<code>name</code>和<code>age</code>属性到底具有怎样的访问权限（也称为可见性）。因为在很多面向对象编程语言中，我们通常会将对象的属性设置为私有的（private）或受保护的（protected），简单的说就是不允许外界访问，而对象的方法通常都是公开的（public），因为公开的方法就是对象能够接受的消息。在Python中，属性和方法的访问权限只有两种，也就是公开的和私有的，如果希望属性是私有的，在给属性命名时可以用两个下划线作为开头。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Test:</span><br><span class="line"></span><br><span class="line">    def __init__(self, foo):</span><br><span class="line">        self.__foo &#x3D; foo</span><br><span class="line"></span><br><span class="line">    def __bar(self):</span><br><span class="line">        print(self.__foo)</span><br><span class="line">        print(&#39;__bar&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    test &#x3D; Test(&#39;hello&#39;)</span><br><span class="line">    # AttributeError: &#39;Test&#39; object has no attribute &#39;__bar&#39;</span><br><span class="line">    test.__bar()</span><br><span class="line">    # AttributeError: &#39;Test&#39; object has no attribute &#39;__foo&#39;</span><br><span class="line">    print(test.__foo)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>但是，Python并没有从语法上严格保证私有属性或方法的私密性，它只是给私有的属性和方法换了一个名字来妨碍对它们的访问，事实上如果你知道更换名字的规则仍然可以访问到它们，下面的代码就可以验证这一点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Test:</span><br><span class="line"></span><br><span class="line">    def __init__(self, foo):</span><br><span class="line">        self.__foo &#x3D; foo</span><br><span class="line"></span><br><span class="line">    def __bar(self):</span><br><span class="line">        print(self.__foo)</span><br><span class="line">        print(&#39;__bar&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    test &#x3D; Test(&#39;hello&#39;)</span><br><span class="line">    test._Test__bar()</span><br><span class="line">    print(test._Test__foo)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>在实际开发中，我们并不建议将属性设置为私有的，因为这会导致子类无法访问（后面会讲到）。所以大多数Python程序员会遵循一种命名惯例就是让属性名以单下划线开头来表示属性是受保护的，本类之外的代码在访问这样的属性时应该要保持慎重。这种做法并不是语法上的规则，单下划线开头的属性和方法外界仍然是可以访问的，所以更多的时候它是一种暗示或隐喻</p>
+<hr>
+<h3 id="面向对象的支柱"><a href="#面向对象的支柱" class="headerlink" title="面向对象的支柱"></a>面向对象的支柱</h3><p>面向对象有三大支柱：封装、继承和多态。后面两个概念在下一个章节中进行详细的说明，这里我们先说一下什么是封装。我自己对封装的理解是”隐藏一切可以隐藏的实现细节，只向外界暴露（提供）简单的编程接口”。我们在类中定义的方法其实就是把数据和对数据的操作封装起来了，在我们创建了对象之后，只需要给对象发送一个消息（调用方法）就可以执行方法中的代码，也就是说我们只需要知道方法的名字和传入的参数（方法的外部视图），而不需要知道方法内部的实现细节（方法的内部视图）。</p>
+<hr>
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><h4 id="练习1：定义一个类描述数字时钟。"><a href="#练习1：定义一个类描述数字时钟。" class="headerlink" title="练习1：定义一个类描述数字时钟。"></a>练习1：定义一个类描述数字时钟。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">from time import sleep</span><br><span class="line"></span><br><span class="line">class Clock(object):</span><br><span class="line">    def __init__(self,hour&#x3D;0,minute&#x3D;0,second&#x3D;0):</span><br><span class="line">        &quot;&quot;&quot;初始化方法</span><br><span class="line"></span><br><span class="line">        :param hour: 时</span><br><span class="line">        :param minute: 分</span><br><span class="line">        :param second: 秒</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self._hour &#x3D; hour</span><br><span class="line">        self._minute &#x3D; minute</span><br><span class="line">        self._second &#x3D; second</span><br><span class="line"></span><br><span class="line">    def run(self):</span><br><span class="line">        &quot;&quot;&quot;走字&quot;&quot;&quot;</span><br><span class="line">        self._second +&#x3D; 1</span><br><span class="line">        if self._second &#x3D;&#x3D; 60:</span><br><span class="line">            self._second &#x3D; 0</span><br><span class="line">            self._minute +&#x3D; 1</span><br><span class="line">            if self._minute &#x3D;&#x3D; 60:</span><br><span class="line">                self._hour +&#x3D; 1</span><br><span class="line">                self._minute &#x3D; 0</span><br><span class="line">                if self._hour &#x3D;&#x3D; 24:</span><br><span class="line">                    self._hour &#x3D; 0</span><br><span class="line">    def show(self):</span><br><span class="line">        &quot;&quot;&quot;显示时间&quot;&quot;&quot;</span><br><span class="line">        return &#39;%02d:%02d:%02d&#39; % \</span><br><span class="line">                (self._hour,self._minute,self._second)        </span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    clock &#x3D; Clock(23,59,58)</span><br><span class="line">    while True:</span><br><span class="line">        print(clock.show())</span><br><span class="line">        sleep(1)</span><br><span class="line">        clock.run()</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="练习2：定义一个类描述平面上的点并提供移动点和计算到另一个点距离的方法。"><a href="#练习2：定义一个类描述平面上的点并提供移动点和计算到另一个点距离的方法。" class="headerlink" title="练习2：定义一个类描述平面上的点并提供移动点和计算到另一个点距离的方法。"></a>练习2：定义一个类描述平面上的点并提供移动点和计算到另一个点距离的方法。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">from math import sqrt</span><br><span class="line"></span><br><span class="line">class Point (object):</span><br><span class="line"></span><br><span class="line">    def __init__(self,x&#x3D;0,y&#x3D;0):</span><br><span class="line">        &quot;&quot;&quot;初始化方法</span><br><span class="line">        </span><br><span class="line">        :param x: 横坐标</span><br><span class="line">        :param y: 纵坐标</span><br><span class="line">        &quot;&quot;&quot;        </span><br><span class="line">        self.x&#x3D;x</span><br><span class="line">        self.y&#x3D;y</span><br><span class="line"></span><br><span class="line">    def move_to(self,x,y):</span><br><span class="line">        &quot;&quot;&quot;移动到指定位置</span><br><span class="line">        </span><br><span class="line">        :param x: 新的横坐标</span><br><span class="line">        &quot;param y: 新的纵坐标</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.x&#x3D;x</span><br><span class="line">        self.y&#x3D;y</span><br><span class="line"></span><br><span class="line">    def move_by(self, dx, dy):</span><br><span class="line">        &quot;&quot;&quot;移动指定的增量</span><br><span class="line">        </span><br><span class="line">        :param dx: 横坐标的增量</span><br><span class="line">        &quot;param dy: 纵坐标的增量</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.x +&#x3D; dx</span><br><span class="line">        self.y +&#x3D; dy</span><br><span class="line"></span><br><span class="line">    def distance_to(self, other):</span><br><span class="line">        &quot;&quot;&quot;计算与另一个点的距离</span><br><span class="line">        </span><br><span class="line">        :param other: 另一个点</span><br><span class="line">        &quot;&quot;&quot;        </span><br><span class="line">        dx &#x3D; self.x - other.x</span><br><span class="line">        dy &#x3D; self.y - other.y</span><br><span class="line">        return sqrt(dx ** 2 +dy **2)</span><br><span class="line">        </span><br><span class="line">    def __str__(self):</span><br><span class="line">        return &#39;(%s,%s)&#39; % (str(self.x), str(self.y))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    p1 &#x3D; Point(3,5)</span><br><span class="line">    p2 &#x3D; Point()</span><br><span class="line">    print(p1)</span><br><span class="line">    print(p2)</span><br><span class="line">    p2.move_by(-1,2)</span><br><span class="line">    print(p2)</span><br><span class="line">    print(p1.distance_to(p2))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>python中方法名如果是<code>__xx__</code> ()的，那么就有特殊的功能，因此叫做“魔法”方法</li>
+<li>当使用<code>print</code>输出对象的伤害，只要自己定义了<code>__str__(self)</code>方法，那么就会打印从在这个方法中<code>return</code>的数据</li>
+<li><code>__str__</code>方法需要返回一个字符串，当做这个对象的描写</li>
+</ul>
+<hr>
+<p>感觉python这样做它的封装性会不会出问题啊，等于赤裸着啊，其他的好像和C++的差不多，<code>__str__</code>感觉也就那样啊，直接打印不差不多？</p>
+<p>100天学python，今天是第八天</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/25/python%E5%AD%A6%E4%B9%A0-08-Days/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-每日leetcode-15-x的平方根" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1268,170 +1363,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/20/%E6%AF%8F%E6%97%A5leetcode-10-%E5%9B%9E%E6%96%87%E6%95%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python学习-04-Days" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/20/python%E5%AD%A6%E4%B9%A0-04-Days/">python学习-04-Days</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/20/python%E5%AD%A6%E4%B9%A0-04-Days/" class="archive-article-date">
-  	<time datetime="2020-10-20T01:27:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Day-04-循环结构"><a href="#Day-04-循环结构" class="headerlink" title="Day 04 循环结构"></a>Day 04 循环结构</h2><p>循环结构有学过编程的应该都不陌生</p>
-<blockquote>
-<p>循环结构就是程序中控制某条或某些指令重复执行的结构。在Python中构造循环结构有两种做法，一种是<code>for-in</code>循环，一种是<code>while</code>循环。</p>
-</blockquote>
-<h3 id="for-in循环"><a href="#for-in循环" class="headerlink" title="for-in循环"></a>for-in循环</h3><p>如果明确的知道循环执行的次数或者要对一个容器进行迭代（后面会讲到），那么我们推荐使用<code>for-in</code>循环</p>
-<p>举个例子：**(计算1~100的求和)**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sum &#x3D; 0</span><br><span class="line">for x in range(101):</span><br><span class="line">    sum +&#x3D; x</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
-
-<p>下面重点讲解一下 <code>range</code></p>
-<ul>
-<li><code>range(101)</code>：可以用来产生0到100范围的整数，需要注意的是取不到101。</li>
-<li><code>range(1, 101)</code>：可以用来产生1到100范围的整数，相当于前面是闭区间后面是开区间。</li>
-<li><code>range(1, 101, 2)</code>：可以用来产生1到100的奇数，其中2是步长，即每次数值递增的值。</li>
-<li><code>range(100, 0, -2)</code>：可以用来产生100到1的偶数，其中-2是步长，即每次数字递减的值。</li>
-</ul>
-<p>再举个例子：**(计算1~100的偶数求和)**</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sum &#x3D; 0</span><br><span class="line">for x in range(100,0,-2):</span><br><span class="line">    sum +&#x3D; x</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
-
-<p>是不是很简单</p>
-<hr>
-<h4 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h4><blockquote>
-<p>如果要构造不知道具体循环次数的循环结构，我们推荐使用<code>while</code>循环。<code>while</code>循环通过一个能够产生或转换出<code>bool</code>值的表达式来控制循环，表达式的值为<code>True</code>则继续循环；表达式的值为<code>False</code>则结束循环。</p>
-</blockquote>
-<blockquote>
-<p>下面我们通过一个“猜数字”的小游戏来看看如何使用<code>while</code>循环。猜数字游戏的规则是：计算机出一个1到100之间的随机数，玩家输入自己猜的数字，计算机给出对应的提示信息（大一点、小一点或猜对了），如果玩家猜中了数字，计算机提示用户一共猜了多少次，游戏结束，否则游戏继续。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line"># 文章后面会具体解释是如何产生随机数的</span><br><span class="line">answer &#x3D; random.randint(1,100)</span><br><span class="line"></span><br><span class="line">counter &#x3D; 0</span><br><span class="line">while True:</span><br><span class="line">    counter +&#x3D; 1</span><br><span class="line">    number &#x3D; int(input(&#39;请输入:&#39;))</span><br><span class="line">    if number &lt; answer:</span><br><span class="line">        print(&#39;大一点&#39;)</span><br><span class="line">    elif number &gt; answer:</span><br><span class="line">        print(&#39;小一点&#39;)</span><br><span class="line">    else:</span><br><span class="line">        print(&#39;恭喜你猜对了&#39;)</span><br><span class="line">        berak</span><br><span class="line">print(&#39;你总共猜了%d次&#39; % counter)</span><br><span class="line">if counter &gt; 7:</span><br><span class="line">    print(&#39;你的智商明显不足&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>上面的代码中使用了<code>break</code>关键字来提前终止循环，需要注意的是<code>break</code>只能终止它所在的那个循环，这一点在使用嵌套的循环结构（下面会讲到）需要引起注意。除了<code>break</code>之外，还有另一个关键字是<code>continue</code>，它可以用来放弃本次循环后续的代码直接让循环进入下一轮。</p>
-<hr>
-<h4 id="练习1：输出一个九九乘法表"><a href="#练习1：输出一个九九乘法表" class="headerlink" title="练习1：输出一个九九乘法表"></a>练习1：输出一个九九乘法表</h4><p>参考代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in range(1,10):</span><br><span class="line">    for j in range(1,i+1):</span><br><span class="line">        print(&#39;%d*%d&#x3D;%d&#39; % (i,j,i*j),end&#x3D;&#39;\t&#39;)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="练习2：输入一个正整数判断是不是素数。"><a href="#练习2：输入一个正整数判断是不是素数。" class="headerlink" title="练习2：输入一个正整数判断是不是素数。"></a>练习2：输入一个正整数判断是不是素数。</h4><p>参考代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from math import sqrt</span><br><span class="line">n &#x3D; int(input(&#39;请输入一个整数:&#39;))</span><br><span class="line">is_prime &#x3D; True</span><br><span class="line">end &#x3D; int(sqrt(n))</span><br><span class="line">for i in range(2,end+1,2):</span><br><span class="line">    if n%i &#x3D;&#x3D; 0:</span><br><span class="line">        is_prime &#x3D; False</span><br><span class="line">        break</span><br><span class="line">if is_prime and n !&#x3D; 1:</span><br><span class="line">    print(&#39;%d是素数&#39; % n)</span><br><span class="line">else:</span><br><span class="line">    print(&#39;%d不是素数&#39; % n)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="练习3：输入两个正整数，计算它们的最大公约数和最小公倍数。"><a href="#练习3：输入两个正整数，计算它们的最大公约数和最小公倍数。" class="headerlink" title="练习3：输入两个正整数，计算它们的最大公约数和最小公倍数。"></a>练习3：输入两个正整数，计算它们的最大公约数和最小公倍数。</h4><blockquote>
-<p><strong>提示</strong>：两个数的最大公约数是两个数的公共因子中最大的那个数；两个数的最小公倍数则是能够同时被两个数整除的最小的那个数。</p>
-</blockquote>
-<p>参考答案：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; int(input(&#39;请输入一个整数:&#39;))</span><br><span class="line">y &#x3D; int(input(&#39;请输入一个整数:&#39;))</span><br><span class="line">if x&gt;y:</span><br><span class="line">    x,y&#x3D;y,x</span><br><span class="line"># 如果x大于y就交换x和y的值</span><br><span class="line">for factor in range(x,0,-1):</span><br><span class="line">    if x % factor &#x3D;&#x3D; 0 and y % factor &#x3D;&#x3D; 0:</span><br><span class="line">        print(&#39;%d和%d的最大公约数是%d&#39; % (x, y, factor))</span><br><span class="line">        print(&#39;%d和%d的最小公倍数是%d&#39; % (x, y, x * y &#x2F;&#x2F; factor))</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="练习4：打印如下所示的三角形"><a href="#练习4：打印如下所示的三角形" class="headerlink" title="练习4：打印如下所示的三角形"></a>练习4：打印如下所示的三角形</h4><blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;*</span><br><span class="line">&gt;**</span><br><span class="line">&gt;***</span><br><span class="line">&gt;****</span><br><span class="line">&gt;*****</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   *</span><br><span class="line">  **</span><br><span class="line"> ***</span><br><span class="line">****</span><br><span class="line">&gt;*****</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   *</span><br><span class="line">  ***</span><br><span class="line"> *****</span><br><span class="line">*******</span><br><span class="line">&gt;*********</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>参考答案：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in range(1,6):</span><br><span class="line">    for j in range(1,i+1):</span><br><span class="line">        print(&#39;*&#39;,end&#x3D;&#39;&#39;)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for i in range(1,6):</span><br><span class="line">    for j in range(1,6):</span><br><span class="line">        if j&lt;6-i:</span><br><span class="line">            print(&#39;&#39;,end&#x3D;&#39; &#39;)</span><br><span class="line">        else:</span><br><span class="line">            print(&#39;*&#39;,end&#x3D;&#39;&#39;)</span><br><span class="line">    print(&#39;&#39;)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for i in range(1,6):</span><br><span class="line">    for j in range(1,11):</span><br><span class="line">        if j&lt;6-i or j&gt;4+i:</span><br><span class="line">            print(&#39;&#39;,end&#x3D;&#39; &#39;)</span><br><span class="line">        else:</span><br><span class="line">            print(&#39;*&#39;,end&#x3D;&#39;&#39;)</span><br><span class="line">    print(&#39;&#39;)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="补充-（关于import和random）"><a href="#补充-（关于import和random）" class="headerlink" title="补充 （关于import和random）"></a>补充 （关于<code>import</code>和<code>random</code>）</h4><p>先解释下第一行</p>
-<blockquote>
-<p><code>import</code>是关键字<code>import</code>语句用来导入其他python文件（称为模块module），使用该模块里定义的类、方法或者变量，从而达到代码复用的目的。</p>
-</blockquote>
-<blockquote>
-<p>Python标准库中的random函数，可以生成随机浮点数、整数、字符串，甚至帮助你随机选择列表序<br>列中的一个元素，打乱一组数据等。</p>
-</blockquote>
-<blockquote>
-<p>random()是Python中生成随机数的函数，是由random模块控制，random()函数不能直接访问，需要导入random 模块，然后再通过相应的静态对象调用该方法才能实现相应的功能</p>
-</blockquote>
-<blockquote>
-<p>random 一些简单的用法:</p>
-<p>1、随机生成（0,1）之间的浮点数                          random.random()</p>
-<p>2、随机生成100-200的整数                                    random.randint(100,200)</p>
-<p>3、随机产生范围为10间隔为2的数                         random.randrange(0,11,2)</p>
-<p>注：这里输出（0,2,4,6,8,10）中一个</p>
-<p>4、从序列中随机抽选一个数                                   random.choice(list)</p>
-<p>5、随机排序                                                              random.shuffle(list)</p>
-<p>注：list元素为数值型</p>
-</blockquote>
-<blockquote>
-<p>random中的一些重要函数的用法：<br>1 )、random() 返回0&lt;=n&lt;1之间的随机实数n；<br>2 )、choice(seq) 从序列seq中返回随机的元素；<br>3 )、getrandbits(n) 以长整型形式返回n个随机位；<br>4 )、shuffle(seq[, random]) 原地指定seq序列；<br>5 )、sample(seq, n) 从序列seq中选择n个随机且独立的元素；</p>
-</blockquote>
-<blockquote>
-<p>random.random()函数是这个模块中最常用的方法了，它会生成一个随机的浮点数，范围是在0.0~1.0之间。</p>
-<p>random.uniform()正好弥补了上面函数的不足，它可以设定浮点数的范围，一个是上限，一个是下限。</p>
-<p>random.randint()随机生一个整数int类型，可以指定这个整数的范围，同样有上限和下限值，python random.randint。</p>
-<p>random.choice()可以从任何序列，比如list列表中，选取一个随机的元素返回，可以用于字符串、列表、元组等。</p>
-<p>random.shuffle()如果你想将一个序列中的元素，随机打乱的话可以用这个函数方法。</p>
-<p>random.sample()可以从指定的序列中，随机的截取指定长度的片断，不作原地修改。</p>
-</blockquote>
-<hr>
-<p><strong>要熟练使用<code>range</code> ，注意是左闭右开区间</strong></p>
-<p><strong>了解并会使用生产随机数</strong></p>
-<p><strong>计算它们的最大公约数和最小公倍数的算法</strong></p>
-<p>最大公因数:<code>if x % factor == 0 and y % factor == 0:</code>  <code>factor即为最大公因数</code></p>
-<p>最小公倍数:<code>(x * y // factor)</code></p>
-<p><strong>计算一个数是否为素数的算法</strong></p>
-<p><code>print</code>后会主动换行，如<code>print()</code>等价于,<code>print(&#39;&#39;,end=&#39;\n&#39;)</code> 输出东西后的格式要用 <code>end=</code></p>
-<p><strong>100天学python，今天是第四天</strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/20/python%E5%AD%A6%E4%B9%A0-04-Days/">展开全文 >></a>
         </p>
       
 

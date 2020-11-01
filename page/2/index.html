@@ -152,6 +152,107 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每日leetcode-16-赎金信" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/26/%E6%AF%8F%E6%97%A5leetcode-16-%E8%B5%8E%E9%87%91%E4%BF%A1/">每日leetcode-16-赎金信</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/26/%E6%AF%8F%E6%97%A5leetcode-16-%E8%B5%8E%E9%87%91%E4%BF%A1/" class="archive-article-date">
+  	<time datetime="2020-10-26T15:54:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="赎金信"><a href="#赎金信" class="headerlink" title="赎金信"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ransom-note/">赎金信</a></h4><p>源自LeetCode: <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ransom-note/">https://leetcode-cn.com/problems/ransom-note/</a></p>
+<hr>
+<p>问题描述:</p>
+<p>给定一个赎金信 (ransom) 字符串和一个杂志(magazine)字符串，判断第一个字符串 ransom 能不能由第二个字符串 magazines 里面的字符构成。如果可以构成，返回 true ；否则返回 false。</p>
+<p>(题目说明：为了不暴露赎金信字迹，要从杂志上搜索各个需要的字母，组成单词来表达意思。杂志字符串中的每个字符只能在赎金信字符串中使用一次。)</p>
+<p> <strong>注意：</strong></p>
+<p>你可以假设两个字符串均只含有小写字母。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">canConstruct(&quot;a&quot;, &quot;b&quot;) -&gt; false</span><br><span class="line">canConstruct(&quot;aa&quot;, &quot;ab&quot;) -&gt; false</span><br><span class="line">canConstruct(&quot;aa&quot;, &quot;aab&quot;) -&gt; true</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>题目给出的答题模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool canConstruct(string ransomNote, string magazine) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>一个一个搜索字符串，暴力枚举了，两层for循环。</p>
+<p>下面给出我的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool canConstruct(string ransomNote, string magazine) &#123;</span><br><span class="line">		if(ransomNote.length()&gt;magazine.length()) return false;</span><br><span class="line">		for(int i&#x3D;0;i&lt;magazine.length();i++)&#123;</span><br><span class="line">			for(int j&#x3D;0;j&lt;ransomNote.length();j++)&#123;</span><br><span class="line">				if(magazine[i]&#x3D;&#x3D;ransomNote[j])&#123;</span><br><span class="line">					ransomNote.erase(ransomNote.begin()+j);   &#x2F;&#x2F;删除ransomNote[j]</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if (ransomNote.length() &#x3D;&#x3D; 0) &#123; </span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>通过，效率一般，一个50%，一个40%</p>
+<p>让我们康康别人是怎么做的把。</p>
+<hr>
+<h3 id="方法一：STL"><a href="#方法一：STL" class="headerlink" title="方法一：STL"></a>方法一：STL</h3><p>作者：kuluoluo<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ransom-note/solution/jian-dan-shou-xi-stl-by-nian-yu-h/">https://leetcode-cn.com/problems/ransom-note/solution/jian-dan-shou-xi-stl-by-nian-yu-h/</a><br>来源：力扣（LeetCode）</p>
+<p>简单，熟悉STL即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool canConstruct(string ransomNote, string magazine) &#123;</span><br><span class="line">        int len &#x3D; ransomNote.size();</span><br><span class="line">        for(int i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">            if(magazine.find(ransomNote[i]) &#x3D;&#x3D; string::npos)</span><br><span class="line">                return false;</span><br><span class="line">            else &#123;</span><br><span class="line">                magazine.erase(magazine.find(ransomNote[i]), 1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>效率和我暴力枚举差不多。。。</p>
+<hr>
+<h3 id="方法二：字典计数法（哈希策略）"><a href="#方法二：字典计数法（哈希策略）" class="headerlink" title="方法二：字典计数法（哈希策略）"></a>方法二：字典计数法（哈希策略）</h3><p>作者：carlsun-2<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ransom-note/solution/383-shu-jin-xin-bao-li-jie-fa-zi-dian-ji-shu-fa-2/">https://leetcode-cn.com/problems/ransom-note/solution/383-shu-jin-xin-bao-li-jie-fa-zi-dian-ji-shu-fa-2/</a><br>来源：力扣（LeetCode）</p>
+<blockquote>
+<p>用一个长度为26的数组还记录magazine里字母出现的次数，然后再用ransomNote去验证这个数组是否包含了ransomNote所需要的所有字母。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool canConstruct(string ransomNote, string magazine) &#123;</span><br><span class="line">        int record[26] &#x3D; &#123;0&#125;;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; magazine.length(); i++) &#123;</span><br><span class="line">            &#x2F;&#x2F; 通过recode数据记录 magazine里各个字符出现次数</span><br><span class="line">            record[magazine[i]-&#39;a&#39;] ++; </span><br><span class="line">        &#125;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; ransomNote.length(); j++) &#123;</span><br><span class="line">            &#x2F;&#x2F; 遍历ransomNote，在record里对应的字符个数做--操作</span><br><span class="line">            record[ransomNote[j]-&#39;a&#39;]--; </span><br><span class="line">            &#x2F;&#x2F; 如果小于零说明 magazine里出现的字符，ransomNote没有</span><br><span class="line">            if(record[ransomNote[j]-&#39;a&#39;] &lt; 0) &#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>看不懂这是嘛啊</p>
+<hr>
+<p>又是这两兄弟，<strong>哈希表</strong>，<strong>STL</strong></p>
+<p>有机会一定学</p>
+<p>下次一定</p>
+<p>本题就到这里了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/26/%E6%AF%8F%E6%97%A5leetcode-16-%E8%B5%8E%E9%87%91%E4%BF%A1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-python学习-08-Days" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1260,109 +1361,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/21/%E6%AF%8F%E6%97%A5leetcode-11-%E5%AE%9E%E7%8E%B0strStr%E5%87%BD%E6%95%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-每日leetcode-10-回文数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/20/%E6%AF%8F%E6%97%A5leetcode-10-%E5%9B%9E%E6%96%87%E6%95%B0/">每日leetcode-10-回文数</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/20/%E6%AF%8F%E6%97%A5leetcode-10-%E5%9B%9E%E6%96%87%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-10-20T08:44:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/palindrome-number/">回文数</a></h4><p>源自LeetCode:  <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/palindrome-number/">https://leetcode-cn.com/problems/palindrome-number/</a></p>
-<p>问题描述:</p>
-<p>判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 121</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plain"><figcaption><span>3</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: -121</span><br><span class="line">输出: false</span><br><span class="line">解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 3：</strong></p>
-<figure class="highlight plain"><figcaption><span>3</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 10</span><br><span class="line">输出: false</span><br><span class="line">解释: 从右向左读, 为 01 。因此它不是一个回文数。</span><br></pre></td></tr></table></figure>
-
-<p>题目给出的模板：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>负数肯定不是回文数，首先可以排除，可以用将这个数的各个位置拆出来，再按顺序乘，即从后往前开始乘，再进行比较即可</p>
-<p>下面给出我的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line">    	if(x&lt;0) return false;</span><br><span class="line">    	if(x&lt;10) return true;</span><br><span class="line">		int m&#x3D;x;</span><br><span class="line">        long n&#x3D;0;</span><br><span class="line">		while(m!&#x3D;0)&#123;</span><br><span class="line">			n&#x3D;n*10+m%10;</span><br><span class="line">			m&#x2F;&#x3D;10;</span><br><span class="line">		&#125;	</span><br><span class="line">		return n&#x3D;&#x3D;x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>通过，但是要注意，n要定义为long ，因为反转数字后后遇到<code>数字溢出</code>的问题</p>
-<p>让我们康康别人是怎么做的吧</p>
-<hr>
-<p>作者：LeetCode-Solution<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/palindrome-number/solution/hui-wen-shu-by-leetcode-solution/">https://leetcode-cn.com/problems/palindrome-number/solution/hui-wen-shu-by-leetcode-solution/</a><br>来源：力扣（LeetCode）</p>
-<p><strong>方法一：反转一半数字</strong><br>思路</p>
-<blockquote>
-<p>映入脑海的第一个想法是将数字转换为字符串，并检查字符串是否为回文。但是，这需要额外的非常量空间来创建问题描述中所不允许的字符串。</p>
-</blockquote>
-<blockquote>
-<p>第二个想法是将数字本身反转，然后将反转后的数字与原始数字进行比较，如果它们是相同的，那么这个数字就是回文。<br>但是，如果反转后的数字大于 \text{int.MAX}int.MAX，我们将遇到整数溢出问题。</p>
-</blockquote>
-<blockquote>
-<p>按照第二个想法，为了避免数字反转可能导致的溢出问题，为什么不考虑只反转 \text{int}int 数字的一半？毕竟，如果该数字是回文，其后半部分反转后应该与原始数字的前半部分相同。</p>
-</blockquote>
-<p>C++ 代码实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line">        &#x2F;&#x2F; 特殊情况：</span><br><span class="line">        &#x2F;&#x2F; 如上所述，当 x &lt; 0 时，x 不是回文数。</span><br><span class="line">        &#x2F;&#x2F; 同样地，如果数字的最后一位是 0，为了使该数字为回文，</span><br><span class="line">        &#x2F;&#x2F; 则其第一位数字也应该是 0</span><br><span class="line">        &#x2F;&#x2F; 只有 0 满足这一属性</span><br><span class="line">        if (x &lt; 0 || (x % 10 &#x3D;&#x3D; 0 &amp;&amp; x !&#x3D; 0)) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int revertedNumber &#x3D; 0;</span><br><span class="line">        while (x &gt; revertedNumber) &#123;</span><br><span class="line">            revertedNumber &#x3D; revertedNumber * 10 + x % 10;</span><br><span class="line">            x &#x2F;&#x3D; 10;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 当数字长度为奇数时，我们可以通过 revertedNumber&#x2F;10 去除处于中位的数字。</span><br><span class="line">        &#x2F;&#x2F; 例如，当输入为 12321 时，在 while 循环的末尾我们可以得到 x &#x3D; 12，revertedNumber &#x3D; 123，</span><br><span class="line">        &#x2F;&#x2F; 由于处于中位的数字不影响回文（它总是与自己相等），所以我们可以简单地将其去除。</span><br><span class="line">        return x &#x3D;&#x3D; revertedNumber || x &#x3D;&#x3D; revertedNumber &#x2F; 10;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><strong>不可谓不妙啊，少了一半以上的时间</strong></p>
-<hr>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结:"></a>小结:</h3><p>有时候一些步骤不一定要完全做完，要善于观察，能省下很多东西</p>
-<hr>
-<p>本题就到这里了</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/20/%E6%AF%8F%E6%97%A5leetcode-10-%E5%9B%9E%E6%96%87%E6%95%B0/">展开全文 >></a>
         </p>
       
 

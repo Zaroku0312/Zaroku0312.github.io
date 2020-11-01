@@ -152,6 +152,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每日leetcode-22-密钥格式化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/01/%E6%AF%8F%E6%97%A5leetcode-22-%E5%AF%86%E9%92%A5%E6%A0%BC%E5%BC%8F%E5%8C%96/">每日leetcode-22-密钥格式化</a>
+    </h1>
+  
+
+        
+        <a href="/2020/11/01/%E6%AF%8F%E6%97%A5leetcode-22-%E5%AF%86%E9%92%A5%E6%A0%BC%E5%BC%8F%E5%8C%96/" class="archive-article-date">
+  	<time datetime="2020-11-01T09:27:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="密钥格式化"><a href="#密钥格式化" class="headerlink" title="密钥格式化"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/license-key-formatting/">密钥格式化</a></h4><p>源自LeetCode:   <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/license-key-formatting/">https://leetcode-cn.com/problems/license-key-formatting/</a></p>
+<hr>
+<p>有一个密钥字符串 S ，只包含字母，数字以及 ‘-‘（破折号）。其中， N 个 ‘-‘ 将字符串分成了 N+1 组。</p>
+<p>给你一个数字 K，请你重新格式化字符串，使每个分组恰好包含 K 个字符。特别地，第一个分组包含的字符个数必须小于等于 K，但至少要包含 1 个字符。两个分组之间需要用 ‘-‘（破折号）隔开，并且将所有的小写字母转换为大写字母。</p>
+<p>给定非空字符串 S 和数字 K，按照上面描述的规则进行格式化。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：S &#x3D; &quot;5F3Z-2e-9-w&quot;, K &#x3D; 4</span><br><span class="line">输出：&quot;5F3Z-2E9W&quot;</span><br><span class="line">解释：字符串 S 被分成了两个部分，每部分 4 个字符；</span><br><span class="line">     注意，两个额外的破折号需要删掉。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：S &#x3D; &quot;2-5g-3-J&quot;, K &#x3D; 2</span><br><span class="line">输出：&quot;2-5G-3J&quot;</span><br><span class="line">解释：字符串 S 被分成了 3 个部分，按照前面的规则描述，第一部分的字符可以少于给定的数量，其余部分皆为 2 个字符。</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示:</strong></p>
+<ol>
+<li>S 的长度可能很长，请按需分配大小。K 为正整数。</li>
+<li>S 只包含字母数字（a-z，A-Z，0-9）以及破折号’-‘</li>
+<li>S 非空</li>
+</ol>
+<hr>
+<p>题目给出的答题模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string licenseKeyFormatting(string S, int K) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>下面给出我的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string licenseKeyFormatting(string S, int K) &#123;</span><br><span class="line">        if(S.size() &#x3D;&#x3D; 0) return S;</span><br><span class="line">        int idx &#x3D; 0, count &#x3D; 0; </span><br><span class="line">        string res(K + 1, &#39;-&#39;);</span><br><span class="line">        res.reserve(2 * S.size());</span><br><span class="line">        for(int i &#x3D; S.size() - 1; i &gt;&#x3D; 0; i--)&#123;</span><br><span class="line">            if(S[i] &#x3D;&#x3D; &#39;-&#39;) continue;</span><br><span class="line">            res[idx++] &#x3D; toupper(S[i]);</span><br><span class="line">            if(++count &#x3D;&#x3D; K)&#123;</span><br><span class="line">                idx++;</span><br><span class="line">                count &#x3D; 0;</span><br><span class="line">                res.append(K + 1, &#39;-&#39;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(idx &#x3D;&#x3D; 0) return &quot;&quot;;</span><br><span class="line">        res.erase(res.begin() + idx + (res[idx - 1] &#x3D;&#x3D; &#39;-&#39;?-1:0), res.end());</span><br><span class="line">        reverse(res.begin(), res.end());</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>今天状态很差</p>
+<p>本题就到这里了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/01/%E6%AF%8F%E6%97%A5leetcode-22-%E5%AF%86%E9%92%A5%E6%A0%BC%E5%BC%8F%E5%8C%96/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-每日leetcode-21-排列硬币" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1446,107 +1536,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/27/%E6%AF%8F%E6%97%A5leetcode-17-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-每日leetcode-16-赎金信" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/26/%E6%AF%8F%E6%97%A5leetcode-16-%E8%B5%8E%E9%87%91%E4%BF%A1/">每日leetcode-16-赎金信</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/26/%E6%AF%8F%E6%97%A5leetcode-16-%E8%B5%8E%E9%87%91%E4%BF%A1/" class="archive-article-date">
-  	<time datetime="2020-10-26T15:54:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="赎金信"><a href="#赎金信" class="headerlink" title="赎金信"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ransom-note/">赎金信</a></h4><p>源自LeetCode: <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ransom-note/">https://leetcode-cn.com/problems/ransom-note/</a></p>
-<hr>
-<p>问题描述:</p>
-<p>给定一个赎金信 (ransom) 字符串和一个杂志(magazine)字符串，判断第一个字符串 ransom 能不能由第二个字符串 magazines 里面的字符构成。如果可以构成，返回 true ；否则返回 false。</p>
-<p>(题目说明：为了不暴露赎金信字迹，要从杂志上搜索各个需要的字母，组成单词来表达意思。杂志字符串中的每个字符只能在赎金信字符串中使用一次。)</p>
-<p> <strong>注意：</strong></p>
-<p>你可以假设两个字符串均只含有小写字母。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">canConstruct(&quot;a&quot;, &quot;b&quot;) -&gt; false</span><br><span class="line">canConstruct(&quot;aa&quot;, &quot;ab&quot;) -&gt; false</span><br><span class="line">canConstruct(&quot;aa&quot;, &quot;aab&quot;) -&gt; true</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>题目给出的答题模板</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool canConstruct(string ransomNote, string magazine) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>一个一个搜索字符串，暴力枚举了，两层for循环。</p>
-<p>下面给出我的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool canConstruct(string ransomNote, string magazine) &#123;</span><br><span class="line">		if(ransomNote.length()&gt;magazine.length()) return false;</span><br><span class="line">		for(int i&#x3D;0;i&lt;magazine.length();i++)&#123;</span><br><span class="line">			for(int j&#x3D;0;j&lt;ransomNote.length();j++)&#123;</span><br><span class="line">				if(magazine[i]&#x3D;&#x3D;ransomNote[j])&#123;</span><br><span class="line">					ransomNote.erase(ransomNote.begin()+j);   &#x2F;&#x2F;删除ransomNote[j]</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if (ransomNote.length() &#x3D;&#x3D; 0) &#123; </span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>通过，效率一般，一个50%，一个40%</p>
-<p>让我们康康别人是怎么做的把。</p>
-<hr>
-<h3 id="方法一：STL"><a href="#方法一：STL" class="headerlink" title="方法一：STL"></a>方法一：STL</h3><p>作者：kuluoluo<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ransom-note/solution/jian-dan-shou-xi-stl-by-nian-yu-h/">https://leetcode-cn.com/problems/ransom-note/solution/jian-dan-shou-xi-stl-by-nian-yu-h/</a><br>来源：力扣（LeetCode）</p>
-<p>简单，熟悉STL即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool canConstruct(string ransomNote, string magazine) &#123;</span><br><span class="line">        int len &#x3D; ransomNote.size();</span><br><span class="line">        for(int i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">            if(magazine.find(ransomNote[i]) &#x3D;&#x3D; string::npos)</span><br><span class="line">                return false;</span><br><span class="line">            else &#123;</span><br><span class="line">                magazine.erase(magazine.find(ransomNote[i]), 1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>效率和我暴力枚举差不多。。。</p>
-<hr>
-<h3 id="方法二：字典计数法（哈希策略）"><a href="#方法二：字典计数法（哈希策略）" class="headerlink" title="方法二：字典计数法（哈希策略）"></a>方法二：字典计数法（哈希策略）</h3><p>作者：carlsun-2<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ransom-note/solution/383-shu-jin-xin-bao-li-jie-fa-zi-dian-ji-shu-fa-2/">https://leetcode-cn.com/problems/ransom-note/solution/383-shu-jin-xin-bao-li-jie-fa-zi-dian-ji-shu-fa-2/</a><br>来源：力扣（LeetCode）</p>
-<blockquote>
-<p>用一个长度为26的数组还记录magazine里字母出现的次数，然后再用ransomNote去验证这个数组是否包含了ransomNote所需要的所有字母。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool canConstruct(string ransomNote, string magazine) &#123;</span><br><span class="line">        int record[26] &#x3D; &#123;0&#125;;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; magazine.length(); i++) &#123;</span><br><span class="line">            &#x2F;&#x2F; 通过recode数据记录 magazine里各个字符出现次数</span><br><span class="line">            record[magazine[i]-&#39;a&#39;] ++; </span><br><span class="line">        &#125;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; ransomNote.length(); j++) &#123;</span><br><span class="line">            &#x2F;&#x2F; 遍历ransomNote，在record里对应的字符个数做--操作</span><br><span class="line">            record[ransomNote[j]-&#39;a&#39;]--; </span><br><span class="line">            &#x2F;&#x2F; 如果小于零说明 magazine里出现的字符，ransomNote没有</span><br><span class="line">            if(record[ransomNote[j]-&#39;a&#39;] &lt; 0) &#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>看不懂这是嘛啊</p>
-<hr>
-<p>又是这两兄弟，<strong>哈希表</strong>，<strong>STL</strong></p>
-<p>有机会一定学</p>
-<p>下次一定</p>
-<p>本题就到这里了</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/26/%E6%AF%8F%E6%97%A5leetcode-16-%E8%B5%8E%E9%87%91%E4%BF%A1/">展开全文 >></a>
         </p>
       
 

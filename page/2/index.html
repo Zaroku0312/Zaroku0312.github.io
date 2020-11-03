@@ -152,6 +152,218 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python学习-11-Days" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/28/python%E5%AD%A6%E4%B9%A0-11-Days/">python学习-11-Days</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/28/python%E5%AD%A6%E4%B9%A0-11-Days/" class="archive-article-date">
+  	<time datetime="2020-10-28T08:01:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Day-11-文件和异常"><a href="#Day-11-文件和异常" class="headerlink" title="Day 11 文件和异常"></a>Day 11 文件和异常</h2><p>实际开发中常常会遇到对数据进行<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96">持久化</a>操作的场景，而实现数据持久化最直接简单的方式就是将数据保存到文件中。</p>
+<p>在Python中实现文件的读写操作其实非常简单，通过Python内置的<code>open</code>函数，我们可以指定文件名、操作模式、编码信息等来获得操作文件的对象，接下来就可以对文件进行读写操作了。这里所说的操作模式是指要打开什么样的文件（字符文件还是二进制文件）以及做什么样的操作（读、写还是追加），具体的如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th align="center">操作模式</th>
+<th>具体含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>&#39;r&#39;</code></td>
+<td>读取 （默认）</td>
+</tr>
+<tr>
+<td align="center"><code>&#39;w&#39;</code></td>
+<td>写入（会先截断之前的内容）</td>
+</tr>
+<tr>
+<td align="center"><code>&#39;x&#39;</code></td>
+<td>写入，如果文件已经存在会产生异常</td>
+</tr>
+<tr>
+<td align="center"><code>&#39;a&#39;</code></td>
+<td>追加，将内容写入到已有文件的末尾</td>
+</tr>
+<tr>
+<td align="center"><code>&#39;b&#39;</code></td>
+<td>二进制模式</td>
+</tr>
+<tr>
+<td align="center"><code>&#39;t&#39;</code></td>
+<td>文本模式（默认）</td>
+</tr>
+<tr>
+<td align="center"><code>&#39;+&#39;</code></td>
+<td>更新（既可以读又可以写）</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="读写文本文件"><a href="#读写文本文件" class="headerlink" title="读写文本文件"></a>读写文本文件</h3><p>读取文本文件时，需要在使用<code>open</code>函数时指定好带路径的文件名（可以使用相对路径或绝对路径）并将文件模式设置为<code>&#39;r&#39;</code>（如果不指定，默认值也是<code>&#39;r&#39;</code>），然后通过<code>encoding</code>参数指定编码（如果不指定，默认值是None，那么在读取文件时使用的是操作系统默认的编码），如果不能保证保存文件时使用的编码方式与encoding参数指定的编码方式是一致的，那么就可能因无法解码字符而导致读取失败。下面的例子演示了如何读取一个纯文本文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def main():</span><br><span class="line">    f &#x3D; open(&#39;致橡树.txt&#39;, &#39;r&#39;, encoding&#x3D;&#39;utf-8&#39;)</span><br><span class="line">    print(f.read())</span><br><span class="line">    f.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>请注意上面的代码，如果<code>open</code>函数指定的文件并不存在或者无法打开，那么将引发异常状况导致程序崩溃。为了让代码有一定的健壮性和容错性，我们可以使用Python的异常机制对可能在运行时发生状况的代码进行适当的处理，如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def main():</span><br><span class="line">    f &#x3D; None</span><br><span class="line">    try:</span><br><span class="line">        f &#x3D; open(&#39;text.txt&#39;,&#39;r&#39;,encoding&#x3D;&#39;utf-8&#39;)</span><br><span class="line">        print(f.read())</span><br><span class="line">    except FileNotFoundError:</span><br><span class="line">        print(&#39;无法打开指定的文件！&#39;)</span><br><span class="line">    except LookupError:</span><br><span class="line">        print(&#39;指定了未知的编码！&#39;)</span><br><span class="line">    except UnicodeDecodeError:</span><br><span class="line">        print(&#39;读取文件时解码错误！&#39;)</span><br><span class="line">    finally:</span><br><span class="line">        if f:</span><br><span class="line">            f.close()</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>在Python中，我们可以将那些在运行时可能会出现状况的代码放在<code>try</code>代码块中，在<code>try</code>代码块的后面可以跟上一个或多个<code>except</code>来捕获可能出现的异常状况。例如在上面读取文件的过程中，<strong>文件找不到会引发<code>FileNotFoundError</code>**，</strong>指定了未知的编码会引发<code>LookupError</code><strong>，而如果读取文件时</strong>无法按指定方式解码会引发<code>UnicodeDecodeError</code><strong>，我们在<code>try</code>后面跟上了三个<code>except</code>分别处理这三种不同的异常状况。最后我们使用<code>finally</code>代码块来关闭打开的文件，释放掉程序中获取的外部资源，由于<code>finally</code>块的代码不论程序正常还是异常都会执行到（甚至是调用了<code>sys</code>模块的<code>exit</code>函数退出Python环境，<code>finally</code>块都会被执行，因为<code>exit</code>函数实质上是引发了<code>SystemExit</code>异常），因此我们通常</strong>把<code>finally</code>块称为“总是执行代码块”<strong>，它最适合用来做释放外部资源的操作。如果不愿意在<code>finally</code>代码块中关闭文件对象释放资源，也可以使用上下文语法，</strong>通过<code>with</code>关键字指定文件对象的上下文环境并在离开上下文环境时自动释放文件资源**，代码如下所示。</p>
+<p>关于<code>with</code>关键字，我找了一篇详解放到了后面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def main():</span><br><span class="line">    try:</span><br><span class="line">        with open(&#39;text.txt&#39;,&#39;r&#39;,encoding&#x3D;&#39;utf-8&#39;) as f:</span><br><span class="line">            print(f.read())</span><br><span class="line">    except FileNotFoundError:</span><br><span class="line">        print(&#39;无法打开指定的文件!&#39;)</span><br><span class="line">    except LookupError:</span><br><span class="line">        print(&#39;指定了未知的编码!&#39;)</span><br><span class="line">    except UnicodeDecodeError:</span><br><span class="line">        print(&#39;读取文件时解码错误!&#39;)</span><br><span class="line">    </span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()   </span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>除了使用文件对象的<code>read</code>方法读取文件之外，还可以使用<code>for-in</code>循环逐行读取或者用<code>readlines</code>方法将文件按行读取到一个列表容器中，代码如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    # 一次性读取整个文件内容</span><br><span class="line">    with open(&#39;致橡树.txt&#39;, &#39;r&#39;, encoding&#x3D;&#39;utf-8&#39;) as f:</span><br><span class="line">        print(f.read())</span><br><span class="line"></span><br><span class="line">    # 通过for-in循环逐行读取</span><br><span class="line">    with open(&#39;致橡树.txt&#39;, mode&#x3D;&#39;r&#39;) as f:</span><br><span class="line">        for line in f:</span><br><span class="line">            print(line, end&#x3D;&#39;&#39;)</span><br><span class="line">            time.sleep(0.5)</span><br><span class="line">    print()</span><br><span class="line"></span><br><span class="line">    # 读取文件按行读取到列表中</span><br><span class="line">    with open(&#39;致橡树.txt&#39;) as f:</span><br><span class="line">        lines &#x3D; f.readlines()</span><br><span class="line">    print(lines)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>要将文本信息写入文件文件也非常简单，在使用<code>open</code>函数时指定好文件名并将文件模式设置为<code>&#39;w&#39;</code>即可。注意如果需要对文件内容进行追加式写入，应该将模式设置为<code>&#39;a&#39;</code>。如果要写入的文件不存在会自动创建文件而不是引发异常。下面的例子演示了如何将1-9999之间的素数分别写入三个文件中（1-99之间的素数保存在a.txt中，100-999之间的素数保存在b.txt中，1000-9999之间的素数保存在c.txt中）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from 判断一个数是不是素数 import  is_prime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    filenames &#x3D; (&#39;a.txt&#39;,&#39;b.txt&#39;,&#39;c.txt&#39;)</span><br><span class="line">    fs_list &#x3D; []</span><br><span class="line">    try:</span><br><span class="line">        for filename in filenames:</span><br><span class="line">            fs_list.append(open(filename,&#39;w&#39;,encoding &#x3D; &#39;utf-8&#39;))</span><br><span class="line">        for number in range(1,10000):</span><br><span class="line">            if is_prime(number):</span><br><span class="line">                if number &lt; 100:</span><br><span class="line">                    fs_list[0].write(str(number)+&#39;\n&#39;)</span><br><span class="line">                elif number &lt;1000:</span><br><span class="line">                    fs_list[1].write(str(number)+&#39;\n&#39;)</span><br><span class="line">                else:</span><br><span class="line">                    fs_list[2].write(str(number)+&#39;\n&#39;)</span><br><span class="line">    except IOError as ex:</span><br><span class="line">        print(ex)</span><br><span class="line">        print(&#39;写入文件时发生错误！&#39;)</span><br><span class="line">    finally:</span><br><span class="line">        for fs in fs_list:</span><br><span class="line">            fs.close()</span><br><span class="line">    print(&#39;操作完成！&#39;)</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="读写二进制文件"><a href="#读写二进制文件" class="headerlink" title="读写二进制文件"></a>读写二进制文件</h3><p>知道了如何读写文本文件要读写二进制文件也就很简单了，下面的代码实现了复制图片文件的功能。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def main():</span><br><span class="line">    try:</span><br><span class="line">        with open(&#39;课表.jpg&#39;,&#39;rb&#39;) as fs1:</span><br><span class="line">            data &#x3D; fs1.read()</span><br><span class="line">        #    print(type(data ))    # &lt;class &#39;bytes&#39;&gt;  </span><br><span class="line">        with open(&#39;时间表.jpg&#39;,&#39;wb&#39;) as fs2:</span><br><span class="line">            fs2.write(data)</span><br><span class="line">    except FileNotFoundError as e:</span><br><span class="line">        print(&#39;指定的文件无法打开。&#39;)</span><br><span class="line">    except IOError as e:</span><br><span class="line">        print(&#39;读写文件时出现错误。&#39;)</span><br><span class="line">    print(&#39;程序执行结束。&#39;)</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="读写JSON文件"><a href="#读写JSON文件" class="headerlink" title="读写JSON文件"></a>读写JSON文件</h3><p>通过上面的讲解，我们已经知道如何将文本数据和二进制数据保存到文件中，那么这里还有一个问题，如果希望把一个列表或者一个字典中的数据保存到文件中又该怎么做呢？答案是将数据以JSON格式进行保存。JSON是“JavaScript Object Notation”的缩写，它本来是JavaScript语言中创建对象的一种字面量语法，现在已经被广泛的应用于跨平台跨语言的数据交换，原因很简单，因为JSON也是纯文本，任何系统任何编程语言处理纯文本都是没有问题的。目前JSON基本上已经取代了XML作为异构系统间交换数据的事实标准。关于JSON的知识，更多的可以参考<a target="_blank" rel="noopener" href="http://json.org/">JSON的官方网站</a>，从这个网站也可以了解到每种语言处理JSON数据格式可以使用的工具或三方库，下面是一个JSON的简单例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;: &quot;骆昊&quot;,</span><br><span class="line">    &quot;age&quot;: 38,</span><br><span class="line">    &quot;qq&quot;: 957658,</span><br><span class="line">    &quot;friends&quot;: [&quot;王大锤&quot;, &quot;白元芳&quot;],</span><br><span class="line">    &quot;cars&quot;: [</span><br><span class="line">        &#123;&quot;brand&quot;: &quot;BYD&quot;, &quot;max_speed&quot;: 180&#125;,</span><br><span class="line">        &#123;&quot;brand&quot;: &quot;Audi&quot;, &quot;max_speed&quot;: 280&#125;,</span><br><span class="line">        &#123;&quot;brand&quot;: &quot;Benz&quot;, &quot;max_speed&quot;: 320&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可能大家已经注意到了，上面的JSON跟Python中的字典其实是一样一样的，事实上JSON的数据类型和Python的数据类型是很容易找到对应关系的，如下面两张表所示。</p>
+<table>
+<thead>
+<tr>
+<th>JSON</th>
+<th>Python</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>object</td>
+<td>dict</td>
+</tr>
+<tr>
+<td>array</td>
+<td>list</td>
+</tr>
+<tr>
+<td>string</td>
+<td>str</td>
+</tr>
+<tr>
+<td>number (int / real)</td>
+<td>int / float</td>
+</tr>
+<tr>
+<td>true / false</td>
+<td>True / False</td>
+</tr>
+<tr>
+<td>null</td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<table>
+<thead>
+<tr>
+<th>Python</th>
+<th align="center">JSON</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dict</td>
+<td align="center">object</td>
+</tr>
+<tr>
+<td>list, tuple</td>
+<td align="center">array</td>
+</tr>
+<tr>
+<td>str</td>
+<td align="center">string</td>
+</tr>
+<tr>
+<td>int, float, int- &amp; float-derived Enums</td>
+<td align="center">number</td>
+</tr>
+<tr>
+<td>True / False</td>
+<td align="center">true / false</td>
+</tr>
+<tr>
+<td>None</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>我们使用Python中的json模块就可以将字典或列表以JSON格式保存到文件中，代码如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    mydict &#x3D; &#123;</span><br><span class="line">        &#39;name&#39;: &#39;骆昊&#39;,</span><br><span class="line">        &#39;age&#39;: 38,</span><br><span class="line">        &#39;qq&#39;: 957658,</span><br><span class="line">        &#39;friends&#39;: [&#39;王大锤&#39;, &#39;白元芳&#39;],</span><br><span class="line">        &#39;cars&#39;: [</span><br><span class="line">            &#123;&#39;brand&#39;: &#39;BYD&#39;, &#39;max_speed&#39;: 180&#125;,</span><br><span class="line">            &#123;&#39;brand&#39;: &#39;Audi&#39;, &#39;max_speed&#39;: 280&#125;,</span><br><span class="line">            &#123;&#39;brand&#39;: &#39;Benz&#39;, &#39;max_speed&#39;: 320&#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">    try:</span><br><span class="line">        with open(&#39;data.json&#39;, &#39;w&#39;, encoding&#x3D;&#39;utf-8&#39;) as fs:</span><br><span class="line">            json.dump(mydict, fs)</span><br><span class="line">    except IOError as e:</span><br><span class="line">        print(e)</span><br><span class="line">    print(&#39;保存数据完成!&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>json模块主要有四个比较重要的函数，分别是：</p>
+<ul>
+<li><code>dump</code> - 将Python对象按照JSON格式序列化到文件中</li>
+<li><code>dumps</code> - 将Python对象处理成JSON格式的字符串</li>
+<li><code>load</code> - 将文件中的JSON数据反序列化成对象</li>
+<li><code>loads</code> - 将字符串的内容反序列化成Python对象</li>
+</ul>
+<p>这里出现了两个概念，一个叫序列化，一个叫反序列化。自由的百科全书<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/">维基百科</a>上对这两个概念是这样解释的：“序列化（serialization）在计算机科学的数据处理中，是指将数据结构或对象状态转换为可以存储或传输的形式，这样在需要的时候能够恢复到原先的状态，而且通过序列化的数据重新获取字节时，可以利用这些字节来产生原始对象的副本（拷贝）。与这个过程相反的动作，即从一系列字节中提取数据结构的操作，就是反序列化（deserialization）”。</p>
+<p>目前绝大多数网络数据服务（或称之为网络API）都是基于<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE">HTTP协议</a>提供JSON格式的数据，关于HTTP协议的相关知识，可以看看阮一峰老师的<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2016/08/http.html">《HTTP协议入门》</a>，如果想了解国内的网络数据服务，可以看看<a target="_blank" rel="noopener" href="https://www.juhe.cn/">聚合数据</a>和<a target="_blank" rel="noopener" href="http://www.avatardata.cn/">阿凡达数据</a>等网站，国外的可以看看<a target="_blank" rel="noopener" href="http://apis.io/">{API}Search</a>网站。下面的例子演示了如何使用<a target="_blank" rel="noopener" href="http://docs.python-requests.org/zh_CN/latest/">requests</a>模块（封装得足够好的第三方网络访问模块）访问网络API获取国内新闻，如何通过json模块解析JSON数据并显示新闻标题，这个例子使用了<a target="_blank" rel="noopener" href="https://www.tianapi.com/">天行数据</a>提供的国内新闻数据接口，其中的APIKey需要自己到该网站申请。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    resp &#x3D; requests.get(&#39;http:&#x2F;&#x2F;api.tianapi.com&#x2F;guonei&#x2F;?key&#x3D;APIKey&amp;num&#x3D;10&#39;)</span><br><span class="line">    data_model &#x3D; json.loads(resp.text)</span><br><span class="line">    for news in data_model[&#39;newslist&#39;]:</span><br><span class="line">        print(news[&#39;title&#39;])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>在Python中要实现序列化和反序列化除了使用json模块之外，还可以使用pickle和shelve模块，但是这两个模块是使用特有的序列化协议来序列化数据，因此序列化后的数据只能被Python识别。关于这两个模块的相关知识可以自己看看网络上的资料。另外，如果要了解更多的关于Python异常机制的知识，可以看看segmentfault上面的文章<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000007736783">《总结：Python中的异常处理》</a>，这篇文章不仅介绍了Python中异常机制的使用，还总结了一系列的最佳实践，很值得一读。</p>
+<hr>
+<p>关于 <code>with</code>关键字<a target="_blank" rel="noopener" href="https://blog.csdn.net/lu13093323120/article/details/82195060">https://blog.csdn.net/lu13093323120/article/details/82195060</a></p>
+<p>大致内容就上所示，注意<code>w</code>时会主动产生文件</p>
+<p>100天学python，今天是第十一天</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/28/python%E5%AD%A6%E4%B9%A0-11-Days/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-python学习-10-Days" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1171,180 +1383,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/22/%E6%AF%8F%E6%97%A5leetcode-12-%E7%BD%97%E9%A9%AC%E6%95%B0%E8%BD%AC%E6%95%B4%E6%95%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python学习-06-Days" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/22/python%E5%AD%A6%E4%B9%A0-06-Days/">python学习-06-Days</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/22/python%E5%AD%A6%E4%B9%A0-06-Days/" class="archive-article-date">
-  	<time datetime="2020-10-21T22:59:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Day-06-函数和模块的使用"><a href="#Day-06-函数和模块的使用" class="headerlink" title="Day 06 函数和模块的使用"></a>Day 06 函数和模块的使用</h2><h3 id="函数的作用"><a href="#函数的作用" class="headerlink" title="函数的作用"></a>函数的作用</h3><p>不知道大家是否注意到，在上面的代码中，我们做了3次求阶乘，这样的代码实际上就是重复代码。编程大师<em>Martin Fowler</em>先生曾经说过：“<strong>代码有很多种坏味道，重复是最坏的一种！</strong> “，要写出高质量的代码首先要解决的就是重复代码的问题。我们可以将计算的功能封装到一个称之为‘函数’的功能模块中，在需要用到它的地方，我们只需要“调用”这个“函数”就可以了。</p>
-<h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><p>在Python中可以使用<code>def</code>关键字来定义函数，和变量相同每个函数也有一个响亮的名字，而且命名规则跟变量的命名规则是一致的。在函数名后面的圆括号中可以放置传递给函数的参数，此点和数学上的函数非常相似，程序中函数的参数就相当于是数学上说的函数的自变量，而函数执行完成后我们可以通过<code>return</code>关键字来返回一个值，这相当于数学上说的函数的因变量。</p>
-<p>以求阶乘为例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def fac(num):</span><br><span class="line">    &quot;&quot;&quot;求阶乘&quot;&quot;&quot;</span><br><span class="line">    result &#x3D; 1</span><br><span class="line">    for n in range(1, num + 1):</span><br><span class="line">        result *&#x3D; n</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">m &#x3D; int(input(&#39;m &#x3D; &#39;))</span><br><span class="line">n &#x3D; int(input(&#39;n &#x3D; &#39;))</span><br><span class="line"># 当需要计算阶乘的时候不用再写循环求阶乘而是直接调用已经定义好的函数</span><br><span class="line">print(fac(m) &#x2F;&#x2F; fac(n) &#x2F;&#x2F; fac(m - n))</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong>说明：</strong> Python的<code>math</code>模块中其实已经有一个<code>factorial</code>函数实现了阶乘运算，实际上是求阶乘而不用自己定义函数。下面的例子中，我们讲的函数在Python标准库已经实现过了，我们这里是为了讲解函数的定义和使用才把它们又实现了一遍遍，<strong>实际开发中并不建议做这种低级的重复劳动</strong>。</p>
-</blockquote>
-<hr>
-<h3 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h3><p>函数是编程语言中都支持的一个代码的“内置块”，但是Python中的函数与其他语言中的函数还是有很多不太相同的地方，其中一个显着的区别就是Python对函数参数的处理。在Python中，函数的参数可以有替代值，也支持使用可变参数，所以**Python并不需要像其他语言一样支持<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD">函数的重载</a>**，因为我们在定义一个函数的时候可以让它有多种不同的使用方式，下面是两个小例子。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">from random import randint</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def roll_dice(n&#x3D;2):</span><br><span class="line">    &quot;&quot;&quot;摇色子&quot;&quot;&quot;</span><br><span class="line">    total &#x3D; 0</span><br><span class="line">    for _ in range(n):</span><br><span class="line">        total +&#x3D; randint(1, 6)</span><br><span class="line">    return total</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def add(a&#x3D;0, b&#x3D;0, c&#x3D;0):</span><br><span class="line">    &quot;&quot;&quot;三个数相加&quot;&quot;&quot;</span><br><span class="line">    return a + b + c</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 如果没有指定参数那么使用默认值摇两颗色子</span><br><span class="line">print(roll_dice())</span><br><span class="line"># 摇三颗色子</span><br><span class="line">print(roll_dice(3))</span><br><span class="line">print(add())</span><br><span class="line">print(add(1))</span><br><span class="line">print(add(1, 2))</span><br><span class="line">print(add(1, 2, 3))</span><br><span class="line"># 传递参数时可以不按照设定的顺序进行传递</span><br><span class="line">print(add(c&#x3D;50, a&#x3D;100, b&#x3D;200))</span><br></pre></td></tr></table></figure>
-
-<p>我们给上面两个函数的参数都设定了默认值，这也就意味着如果在调用函数的时候如果没有传入对应参数的值时将使用该参数的默认值，所以在上面的代码中我们可以用各种不同的方式去调用<code>add</code>函数，这跟其他很多语言中函数重载的效果是一致的。</p>
-<p>其实上面的<code>add</code>函数还有更好的实现方案，因为我们可能会对0个或多个参数进行加法运算，而具体有多少个参数是由调用者来决定，我们作为函数的设计者对这一点是一无所知的，因此在不确定参数个数的时候，我们可以使用可变参数，代码如下所示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 在参数名前面的*表示args是一个可变参数</span><br><span class="line">def add(*args):</span><br><span class="line">    total &#x3D; 0</span><br><span class="line">    for val in args:</span><br><span class="line">        total +&#x3D; val</span><br><span class="line">    return total</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 在调用add函数时可以传入0个或多个参数</span><br><span class="line">print(add())</span><br><span class="line">print(add(1))</span><br><span class="line">print(add(1, 2))</span><br><span class="line">print(add(1, 2, 3))</span><br><span class="line">print(add(1, 3, 5, 7, 9))</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="用模块管理函数"><a href="#用模块管理函数" class="headerlink" title="用模块管理函数"></a>用模块管理函数</h3><p>对于任何一种编程语言来说，给变量、函数这样的标识符起名字都是一个让人头疼的问题，因为我们会遇到命名冲突这种尴尬的情况。最简单的场景就是在同一个.py文件中定义了两个同名函数，由于Python没有函数重载的概念，那么后面的定义会覆盖之前的定义，也就意味着两个函数同名函数实际上只有一个是存在的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def foo():</span><br><span class="line">    print(&#39;hello, world!&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def foo():</span><br><span class="line">    print(&#39;goodbye, world!&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 下面的代码会输出什么呢？</span><br><span class="line">foo()</span><br></pre></td></tr></table></figure>
-
-<p>当然上面的这种情况我们很容易就能避免，但是如果项目是由多人协作进行团队开发的时候，团队中可能有多个程序员都定义了名为<code>foo</code>的函数，那么怎么解决这种命名冲突呢？答案其实很简单，Python中每个文件就代表了一个模块（module），我们在不同的模块中可以有同名的函数，在使用函数的时候我们通过<code>import</code>关键字导入指定的模块就可以区分到底要使用的是哪个模块中的<code>foo</code>函数，代码如下所示。</p>
-<p><code>module1.py</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def foo():</span><br><span class="line">    print(&#39;hello, world!&#39;)</span><br></pre></td></tr></table></figure>
-
-<p><code>module2.py</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def foo():</span><br><span class="line">    print(&#39;goodbye, world!&#39;)</span><br></pre></td></tr></table></figure>
-
-<p><code>test.py</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from module1 import foo</span><br><span class="line"></span><br><span class="line"># 输出hello, world!</span><br><span class="line">foo()</span><br><span class="line"></span><br><span class="line">from module2 import foo</span><br><span class="line"></span><br><span class="line"># 输出goodbye, world!</span><br><span class="line">foo()</span><br></pre></td></tr></table></figure>
-
-<p>需要说明的是，如果我们导入的模块除了定义函数之外还中有可以执行代码，那么Python解释器在导入这个模块时就会执行这些代码，事实上我们可能并不希望如此，因此如果我们在模块中编写了执行代码，最好是将这些执行代码放入如下所示的条件中，这样的话除非直接运行该模块，if条件下的这些代码是不会执行的，因为只有直接执行的模块的名字才<code>_main_</code></p>
-<p><code>module3.py</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def foo():</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def bar():</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># __name__是Python中一个隐含的变量它代表了模块的名字</span><br><span class="line"># 只有被Python解释器直接执行的模块的名字才是__main__</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    print(&#39;call foo()&#39;)</span><br><span class="line">    foo()</span><br><span class="line">    print(&#39;call bar()&#39;)</span><br><span class="line">    bar()</span><br></pre></td></tr></table></figure>
-
-<p><code>test.py</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import module3</span><br><span class="line"></span><br><span class="line"># 导入module3时 不会执行模块中if条件成立时的代码 因为模块的名字是module3而不是__main__</span><br></pre></td></tr></table></figure>
-
-<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><h4 id="练习1：实现计算求最大公约数和最小公倍数的函数。"><a href="#练习1：实现计算求最大公约数和最小公倍数的函数。" class="headerlink" title="练习1：实现计算求最大公约数和最小公倍数的函数。"></a>练习1：实现计算求最大公约数和最小公倍数的函数。</h4><p>给出我的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def gcd(x,y):</span><br><span class="line">     &quot;&quot;&quot;求最大公约数&quot;&quot;&quot;</span><br><span class="line">    (x,y)&#x3D;(y,x) if x&gt;y else (x,y)</span><br><span class="line">    for factor in range(x,0,-1):</span><br><span class="line">        if x % factor &#x3D;&#x3D; 0 and y % factor &#x3D;&#x3D; 0</span><br><span class="line">            return factor</span><br><span class="line">def lcm(x,y):</span><br><span class="line">    return x*y&#x2F;&#x2F;gcd(x,y)</span><br></pre></td></tr></table></figure>
-
-<h4 id="练习2：实现判断一个数是不是回文数的函数。"><a href="#练习2：实现判断一个数是不是回文数的函数。" class="headerlink" title="练习2：实现判断一个数是不是回文数的函数。"></a>练习2：实现判断一个数是不是回文数的函数。</h4><p>给出我的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def is_palindrome(num):</span><br><span class="line">    s&#x3D;0</span><br><span class="line">    while num&gt;s:</span><br><span class="line">        s&#x3D;s*10+int(num%10)</span><br><span class="line">        num&#x2F;&#x2F;&#x3D;10</span><br><span class="line">    return num &#x3D;&#x3D; s or num &#x3D;&#x3D; s&#x2F;&#x2F;10</span><br><span class="line">if __name__&#x3D;&#x3D;&#39;__main__&#39;:</span><br><span class="line">    n &#x3D; int(input(&#39;n &#x3D; &#39;))</span><br><span class="line">    print(is_palindrome(n))</span><br></pre></td></tr></table></figure>
-
-<p>上面这个代码用到了我几天前新学的内容，只反转一半</p>
-<hr>
-<h4 id="练习3：实现判断一个数是不是素数的函数。"><a href="#练习3：实现判断一个数是不是素数的函数。" class="headerlink" title="练习3：实现判断一个数是不是素数的函数。"></a>练习3：实现判断一个数是不是素数的函数。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from math import sqrt</span><br><span class="line">def is_prime(num):</span><br><span class="line">    if num &lt;&#x3D;1:</span><br><span class="line">        return False</span><br><span class="line">    a&#x3D;int(sqrt(num))</span><br><span class="line">    for i in range(2,a+1,2):</span><br><span class="line">        if num % a &#x3D;&#x3D; 0:</span><br><span class="line">            return False</span><br><span class="line">    return True</span><br><span class="line"></span><br><span class="line">if __name__&#x3D;&#x3D;&#39;__main__&#39;:</span><br><span class="line">    n &#x3D; int(input(&#39;n &#x3D; &#39;))</span><br><span class="line">    print(is_prime(n))</span><br></pre></td></tr></table></figure>
-
-<p>使用库函数要注意语法</p>
-<p>下面是<code>骆昊</code>大佬写的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def is_prime(num):</span><br><span class="line">    &quot;&quot;&quot;判断一个数是不是素数&quot;&quot;&quot;</span><br><span class="line">    for factor in range(2, int(num ** 0.5) + 1):</span><br><span class="line">        if num % factor &#x3D;&#x3D; 0:</span><br><span class="line">            return False</span><br><span class="line">    return True if num !&#x3D; 1 else False</span><br></pre></td></tr></table></figure>
-
-<p>并不用使用<code>sqrt</code>函数，感觉大佬的代码简洁很多</p>
-<h4 id="练习4：写一个程序判断输入的正整数是不是回文素数。"><a href="#练习4：写一个程序判断输入的正整数是不是回文素数。" class="headerlink" title="练习4：写一个程序判断输入的正整数是不是回文素数。"></a>练习4：写一个程序判断输入的正整数是不是回文素数。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from 判断一个数是不是素数 import is_prime</span><br><span class="line">from 回文数 import is_palindrome</span><br><span class="line"></span><br><span class="line">if __name__&#x3D;&#x3D;&#39;__main__&#39;:</span><br><span class="line">    num&#x3D;int(input(&#39;请输入正整数：&#39;))</span><br><span class="line">    if is_palindrome(num) and is_prime(num):</span><br><span class="line">        print(&#39;%d是回文素数&#39; % num)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong>注意</strong>：通过上面的程序可以看出，当我们<strong>将代码中重复出现的和相对独立的功能抽取成函数</strong>后，我们可以<strong>组合使用这些函数</strong>来解决更为复杂的问题，这也是我们为什么要定义和使用函数的一个非常重要的原因。</p>
-</blockquote>
-<hr>
-<h3 id="变量的作用域"><a href="#变量的作用域" class="headerlink" title="变量的作用域"></a>变量的作用域</h3><p>最后，我们来讨论一下Python中有关变量作用域的问题。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def foo():</span><br><span class="line">    b &#x3D; &#39;hello&#39;</span><br><span class="line"></span><br><span class="line">    # Python中可以在函数内部再定义函数</span><br><span class="line">    def bar():</span><br><span class="line">        c &#x3D; True</span><br><span class="line">        print(a)</span><br><span class="line">        print(b)</span><br><span class="line">        print(c)</span><br><span class="line"></span><br><span class="line">    bar()</span><br><span class="line">    # print(c)  # NameError: name &#39;c&#39; is not defined</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    a &#x3D; 100</span><br><span class="line">    # print(b)  # NameError: name &#39;b&#39; is not defined</span><br><span class="line">    foo()</span><br></pre></td></tr></table></figure>
-
-<p>上面的代码能够顺利的执行并且打印出100、hello和True，但我们注意到了，在<code>bar</code>函数的内部并没有定义<code>a</code>和<code>b</code>两个变量，那么<code>a</code>和<code>b</code>是从哪里来的。我们在上面代码的<code>if</code>分支中定义了一个变量<code>a</code>，这是一个全局变量（global variable），属于全局作用域，因为它没有定义在任何一个函数中。在上面的<code>foo</code>函数中我们定义了变量<code>b</code>，这是一个定义在函数中的局部变量（local variable），属于局部作用域，在<code>foo</code>函数的外部并不能访问到它；但对于<code>foo</code>函数内部的<code>bar</code>函数来说，变量<code>b</code>属于嵌套作用域，在<code>bar</code>函数中我们是可以访问到它的。<code>bar</code>函数中的变量<code>c</code>属于局部作用域，在<code>bar</code>函数之外是无法访问的。事实上，Python查找一个变量时会按照“局部作用域”、“嵌套作用域”、“全局作用域”和“内置作用域”的顺序进行搜索，前三者我们在上面的代码中已经看到了，所谓的“内置作用域”就是Python内置的那些标识符，我们之前用过的<code>input</code>、<code>print</code>、<code>int</code>等都属于内置作用域。</p>
-<p>再看看下面这段代码，我们希望通过函数调用修改全局变量<code>a</code>的值，但实际上下面的代码是做不到的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def foo():</span><br><span class="line">    a &#x3D; 200</span><br><span class="line">    print(a)  # 200</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    a &#x3D; 100</span><br><span class="line">    foo()</span><br><span class="line">    print(a)  # 100</span><br></pre></td></tr></table></figure>
-
-<p>在调用<code>foo</code>函数后，我们发现<code>a</code>的值仍然是100，这是因为当我们在函数<code>foo</code>中写<code>a = 200</code>的时候，是重新定义了一个名字为<code>a</code>的局部变量，它跟全局作用域的<code>a</code>并不是同一个变量，因为局部作用域中有了自己的变量<code>a</code>，因此<code>foo</code>函数不再搜索全局作用域中的<code>a</code>。如果我们希望在<code>foo</code>函数中修改全局作用域中的<code>a</code>，代码如下所示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def foo():</span><br><span class="line">    global a</span><br><span class="line">    a &#x3D; 200</span><br><span class="line">    print(a)  # 200</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    a &#x3D; 100</span><br><span class="line">    foo()</span><br><span class="line">    print(a)  # 200</span><br></pre></td></tr></table></figure>
-
-<p>我们可以使用<code>global</code>关键字来指示<code>foo</code>函数中的变量<code>a</code>来自于全局作用域，如果全局作用域中没有<code>a</code>，那么下面一行的代码就会定义变量<code>a</code>并将其置于全局作用域。同理，如果我们希望函数内部的函数能够修改嵌套作用域中的变量，可以使用<code>nonlocal</code>关键字来指示变量来自于嵌套作用域，请大家自行试验。</p>
-<p>在实际开发中，我们应该尽量减少对全局变量的使用，因为全局变量的作用域和影响过于广泛，可能会发生意料之外的修改和使用，除此之外全局变量比局部变量拥有更长的生命周期，可能导致对象占用的内存长时间无法被<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6_(%E8%A8%88%E7%AE%97%E6%A9%9F%E7%A7%91%E5%AD%B8)">垃圾回收</a>。事实上，减少对全局变量的使用，也是降低代码之间耦合度的一个重要举措，同时也是对<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/%E5%BE%97%E5%A2%A8%E5%BF%92%E8%80%B3%E5%AE%9A%E5%BE%8B">迪米特法则</a>的践行。减少全局变量的使用就意味着我们应该尽量让变量的作用域在函数的内部，但是如果我们希望将一个局部变量的生命周期延长，使其在定义它的函数调用结束后依然可以使用它的值，这时候就需要使用<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%97%AD%E5%8C%85_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)">闭包</a>，这个我们在后续的内容中进行讲解。</p>
-<blockquote>
-<p><strong>说明：</strong> 很多人经常会将“闭包”和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0">“匿名函数”</a>混为一谈，但实际上它们并不是一回事，如果想了解这个概念，可以看看<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/">维基百科</a>的解释或者<a target="_blank" rel="noopener" href="https://www.zhihu.com/">知乎</a>上对这个概念的讨论。</p>
-</blockquote>
-<p>说了那么多，其实结论很简单，从现在开始我们可以将Python代码按照下面的格式进行书写，这一点点的改进其实就是在我们理解了函数和作用域的基础上跨出的巨大的一步。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def main():</span><br><span class="line">    # Todo: Add your code here</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>在python中有时候能看到定义一个def函数，函数内容部分填写为pass。</p>
-<p>这里的pass主要作用就是占据位置，让代码整体完整。如果定义一个函数里面为空，</p>
-<p>那么就会报错，当你还没想清楚函数内部内容，就可以用pass来进行填坑。</p>
-</blockquote>
-<hr>
-<h2 id="总结一下小知识点："><a href="#总结一下小知识点：" class="headerlink" title="总结一下小知识点："></a>总结一下小知识点：</h2><ol>
-<li><p>Python中可以使用<code>def</code>关键字来定义函数 </p>
-</li>
-<li><p>如果定义一个函数里面为空，那么就会报错，当你还没想清楚函数内部内容，就可以用<code>pass</code>来进行填坑。</p>
-</li>
-<li><p>在Python中，函数的参数可以有替代值，也支持使用可变参数，所以<strong>Python并不需要像其他语言一样支持函数的重载</strong></p>
-<ul>
-<li><p>传递参数时可以不按照设定的顺序进行传递</p>
-</li>
-<li><p>参数数量可以不固定</p>
-<p>​       在参数名前面的表示*args是一个可变参数</p>
-<p>​       <code>def add(*args):</code></p>
-</li>
-</ul>
-</li>
-<li><p>当需要调用函数时  <code>from 库名 import 要调用的函数</code>  如：<code>from random import randint</code> (产生随机数的函数)</p>
-</li>
-<li><p>注意，调用函数时，如果库有可执行的语句它去去执行，这是比较坑的</p>
-<p>所以我们需要在函数主体前面加上<code>if __name__ == &#39;__main__&#39;:</code></p>
-<p>__name__是Python中一个隐含的变量它代表了模块的名字</p>
-<p>只有被Python解释器直接执行的模块的名字才是<strong>main</strong></p>
-</li>
-<li><p><code>global</code>关键字来指示函数中的变量来自于全局作用域</p>
-</li>
-<li><p><code>nonlocal</code>关键字来指示变量来自于嵌套作用域</p>
-</li>
-</ol>
-<hr>
-<p>今天学的内容还是挺多的，每天坚持写这个感觉也是有点累的。。。但跪在坚持嘛。。。</p>
-<p><strong>100天学python，今天是第六天</strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/22/python%E5%AD%A6%E4%B9%A0-06-Days/">展开全文 >></a>
         </p>
       
 

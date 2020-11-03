@@ -152,6 +152,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每日leetcode-24-键盘行" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/03/%E6%AF%8F%E6%97%A5leetcode-24-%E9%94%AE%E7%9B%98%E8%A1%8C/">每日leetcode-24-键盘行</a>
+    </h1>
+  
+
+        
+        <a href="/2020/11/03/%E6%AF%8F%E6%97%A5leetcode-24-%E9%94%AE%E7%9B%98%E8%A1%8C/" class="archive-article-date">
+  	<time datetime="2020-11-03T14:18:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="键盘行"><a href="#键盘行" class="headerlink" title=" 键盘行"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/keyboard-row/"> 键盘行</a></h4><p>源自LeetCode:   <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/keyboard-row/">https://leetcode-cn.com/problems/keyboard-row/</a></p>
+<hr>
+<p><strong>问题描述：</strong></p>
+<p>给定一个单词列表，只返回可以使用在键盘同一行的字母打印出来的单词。键盘如下图所示。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [&quot;Hello&quot;, &quot;Alaska&quot;, &quot;Dad&quot;, &quot;Peace&quot;]</span><br><span class="line">输出: [&quot;Alaska&quot;, &quot;Dad&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>** <strong>注意：</strong></p>
+<ol>
+<li>你可以重复使用键盘上同一字符。</li>
+<li>你可以假设输入的字符串将只包含字母。</li>
+</ol>
+<hr>
+<p><strong>题目给出的答题模板：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;string&gt; findWords(vector&lt;string&gt;&amp; words) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>用哈希表处理之后会变得很简单</p>
+<hr>
+<p>下面给出我的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;string&gt; findWords(vector&lt;string&gt;&amp; words) &#123;</span><br><span class="line">        map&lt;char,int&gt; map1&#x3D;&#123;</span><br><span class="line"></span><br><span class="line">            &#123;&#39;q&#39;,0&#125;,&#123;&#39;w&#39;,0&#125;,&#123;&#39;e&#39;,0&#125;,&#123;&#39;r&#39;,0&#125;,&#123;&#39;t&#39;,0&#125;,&#123;&#39;y&#39;,0&#125;,&#123;&#39;u&#39;,0&#125;,&#123;&#39;i&#39;,0&#125;,&#123;&#39;o&#39;,0&#125;,&#123;&#39;p&#39;,0&#125;,</span><br><span class="line">            &#123;&#39;Q&#39;,0&#125;,&#123;&#39;W&#39;,0&#125;,&#123;&#39;E&#39;,0&#125;,&#123;&#39;R&#39;,0&#125;,&#123;&#39;T&#39;,0&#125;,&#123;&#39;Y&#39;,0&#125;,&#123;&#39;U&#39;,0&#125;,&#123;&#39;I&#39;,0&#125;,&#123;&#39;O&#39;,0&#125;,&#123;&#39;P&#39;,0&#125;,</span><br><span class="line"></span><br><span class="line">            &#123;&#39;a&#39;,1&#125;,&#123;&#39;s&#39;,1&#125;,&#123;&#39;d&#39;,1&#125;,&#123;&#39;f&#39;,1&#125;,&#123;&#39;g&#39;,1&#125;,&#123;&#39;h&#39;,1&#125;,&#123;&#39;j&#39;,1&#125;,&#123;&#39;k&#39;,1&#125;,&#123;&#39;l&#39;,1&#125;,</span><br><span class="line">            &#123;&#39;A&#39;,1&#125;,&#123;&#39;S&#39;,1&#125;,&#123;&#39;D&#39;,1&#125;,&#123;&#39;F&#39;,1&#125;,&#123;&#39;G&#39;,1&#125;,&#123;&#39;H&#39;,1&#125;,&#123;&#39;J&#39;,1&#125;,&#123;&#39;K&#39;,1&#125;,&#123;&#39;L&#39;,1&#125;,</span><br><span class="line"></span><br><span class="line">            &#123;&#39;z&#39;,2&#125;,&#123;&#39;x&#39;,2&#125;,&#123;&#39;c&#39;,2&#125;,&#123;&#39;v&#39;,2&#125;,&#123;&#39;b&#39;,2&#125;,&#123;&#39;n&#39;,2&#125;,&#123;&#39;m&#39;,2&#125;,</span><br><span class="line">            &#123;&#39;Z&#39;,2&#125;,&#123;&#39;X&#39;,2&#125;,&#123;&#39;C&#39;,2&#125;,&#123;&#39;V&#39;,2&#125;,&#123;&#39;B&#39;,2&#125;,&#123;&#39;N&#39;,2&#125;,&#123;&#39;M&#39;,2&#125;</span><br><span class="line"></span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">        vector&lt;string&gt; vec;&#x2F;&#x2F;存放结果</span><br><span class="line">        string str;&#x2F;&#x2F;暂存字符串</span><br><span class="line"></span><br><span class="line">        int k,flat;</span><br><span class="line">        for(int i&#x3D;0;i&lt;words.size();i++)&#123;</span><br><span class="line">            str&#x3D;words[i];</span><br><span class="line">            k&#x3D;map1[str[0]];&#x2F;&#x2F;获取首字母所在的行</span><br><span class="line">            if(str.size()&#x3D;&#x3D;1) vec.push_back(str);&#x2F;&#x2F;特例</span><br><span class="line">            else&#123;</span><br><span class="line">                flat&#x3D;0;</span><br><span class="line">                for(int j&#x3D;1;j&lt;str.size();j++)&#123;</span><br><span class="line">                    if(map1[str[j]]!&#x3D;k)&#123;</span><br><span class="line">                        flat&#x3D;1;</span><br><span class="line">                        break;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                if(flat&#x3D;&#x3D;0) vec.push_back(str);&#x2F;&#x2F;若每个字符都在k行，则将此字符串存入vec中              </span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        return vec;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p> <strong>100%了</strong></p>
+<p>让我们看看别人是怎么做的吧</p>
+<hr>
+<p>和我写的差不多</p>
+<hr>
+<p>本题就到这里了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/03/%E6%AF%8F%E6%97%A5leetcode-24-%E9%94%AE%E7%9B%98%E8%A1%8C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-每日leetcode-23-七进制数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1288,218 +1378,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/28/%E6%AF%8F%E6%97%A5leetcode-18-Fizz-Buzz/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python学习-11-Days" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/28/python%E5%AD%A6%E4%B9%A0-11-Days/">python学习-11-Days</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/28/python%E5%AD%A6%E4%B9%A0-11-Days/" class="archive-article-date">
-  	<time datetime="2020-10-28T08:01:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Day-11-文件和异常"><a href="#Day-11-文件和异常" class="headerlink" title="Day 11 文件和异常"></a>Day 11 文件和异常</h2><p>实际开发中常常会遇到对数据进行<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96">持久化</a>操作的场景，而实现数据持久化最直接简单的方式就是将数据保存到文件中。</p>
-<p>在Python中实现文件的读写操作其实非常简单，通过Python内置的<code>open</code>函数，我们可以指定文件名、操作模式、编码信息等来获得操作文件的对象，接下来就可以对文件进行读写操作了。这里所说的操作模式是指要打开什么样的文件（字符文件还是二进制文件）以及做什么样的操作（读、写还是追加），具体的如下表所示。</p>
-<table>
-<thead>
-<tr>
-<th align="center">操作模式</th>
-<th>具体含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>&#39;r&#39;</code></td>
-<td>读取 （默认）</td>
-</tr>
-<tr>
-<td align="center"><code>&#39;w&#39;</code></td>
-<td>写入（会先截断之前的内容）</td>
-</tr>
-<tr>
-<td align="center"><code>&#39;x&#39;</code></td>
-<td>写入，如果文件已经存在会产生异常</td>
-</tr>
-<tr>
-<td align="center"><code>&#39;a&#39;</code></td>
-<td>追加，将内容写入到已有文件的末尾</td>
-</tr>
-<tr>
-<td align="center"><code>&#39;b&#39;</code></td>
-<td>二进制模式</td>
-</tr>
-<tr>
-<td align="center"><code>&#39;t&#39;</code></td>
-<td>文本模式（默认）</td>
-</tr>
-<tr>
-<td align="center"><code>&#39;+&#39;</code></td>
-<td>更新（既可以读又可以写）</td>
-</tr>
-</tbody></table>
-<hr>
-<h3 id="读写文本文件"><a href="#读写文本文件" class="headerlink" title="读写文本文件"></a>读写文本文件</h3><p>读取文本文件时，需要在使用<code>open</code>函数时指定好带路径的文件名（可以使用相对路径或绝对路径）并将文件模式设置为<code>&#39;r&#39;</code>（如果不指定，默认值也是<code>&#39;r&#39;</code>），然后通过<code>encoding</code>参数指定编码（如果不指定，默认值是None，那么在读取文件时使用的是操作系统默认的编码），如果不能保证保存文件时使用的编码方式与encoding参数指定的编码方式是一致的，那么就可能因无法解码字符而导致读取失败。下面的例子演示了如何读取一个纯文本文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def main():</span><br><span class="line">    f &#x3D; open(&#39;致橡树.txt&#39;, &#39;r&#39;, encoding&#x3D;&#39;utf-8&#39;)</span><br><span class="line">    print(f.read())</span><br><span class="line">    f.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<p>请注意上面的代码，如果<code>open</code>函数指定的文件并不存在或者无法打开，那么将引发异常状况导致程序崩溃。为了让代码有一定的健壮性和容错性，我们可以使用Python的异常机制对可能在运行时发生状况的代码进行适当的处理，如下所示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def main():</span><br><span class="line">    f &#x3D; None</span><br><span class="line">    try:</span><br><span class="line">        f &#x3D; open(&#39;text.txt&#39;,&#39;r&#39;,encoding&#x3D;&#39;utf-8&#39;)</span><br><span class="line">        print(f.read())</span><br><span class="line">    except FileNotFoundError:</span><br><span class="line">        print(&#39;无法打开指定的文件！&#39;)</span><br><span class="line">    except LookupError:</span><br><span class="line">        print(&#39;指定了未知的编码！&#39;)</span><br><span class="line">    except UnicodeDecodeError:</span><br><span class="line">        print(&#39;读取文件时解码错误！&#39;)</span><br><span class="line">    finally:</span><br><span class="line">        if f:</span><br><span class="line">            f.close()</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<p>在Python中，我们可以将那些在运行时可能会出现状况的代码放在<code>try</code>代码块中，在<code>try</code>代码块的后面可以跟上一个或多个<code>except</code>来捕获可能出现的异常状况。例如在上面读取文件的过程中，<strong>文件找不到会引发<code>FileNotFoundError</code>**，</strong>指定了未知的编码会引发<code>LookupError</code><strong>，而如果读取文件时</strong>无法按指定方式解码会引发<code>UnicodeDecodeError</code><strong>，我们在<code>try</code>后面跟上了三个<code>except</code>分别处理这三种不同的异常状况。最后我们使用<code>finally</code>代码块来关闭打开的文件，释放掉程序中获取的外部资源，由于<code>finally</code>块的代码不论程序正常还是异常都会执行到（甚至是调用了<code>sys</code>模块的<code>exit</code>函数退出Python环境，<code>finally</code>块都会被执行，因为<code>exit</code>函数实质上是引发了<code>SystemExit</code>异常），因此我们通常</strong>把<code>finally</code>块称为“总是执行代码块”<strong>，它最适合用来做释放外部资源的操作。如果不愿意在<code>finally</code>代码块中关闭文件对象释放资源，也可以使用上下文语法，</strong>通过<code>with</code>关键字指定文件对象的上下文环境并在离开上下文环境时自动释放文件资源**，代码如下所示。</p>
-<p>关于<code>with</code>关键字，我找了一篇详解放到了后面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def main():</span><br><span class="line">    try:</span><br><span class="line">        with open(&#39;text.txt&#39;,&#39;r&#39;,encoding&#x3D;&#39;utf-8&#39;) as f:</span><br><span class="line">            print(f.read())</span><br><span class="line">    except FileNotFoundError:</span><br><span class="line">        print(&#39;无法打开指定的文件!&#39;)</span><br><span class="line">    except LookupError:</span><br><span class="line">        print(&#39;指定了未知的编码!&#39;)</span><br><span class="line">    except UnicodeDecodeError:</span><br><span class="line">        print(&#39;读取文件时解码错误!&#39;)</span><br><span class="line">    </span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()   </span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>除了使用文件对象的<code>read</code>方法读取文件之外，还可以使用<code>for-in</code>循环逐行读取或者用<code>readlines</code>方法将文件按行读取到一个列表容器中，代码如下所示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    # 一次性读取整个文件内容</span><br><span class="line">    with open(&#39;致橡树.txt&#39;, &#39;r&#39;, encoding&#x3D;&#39;utf-8&#39;) as f:</span><br><span class="line">        print(f.read())</span><br><span class="line"></span><br><span class="line">    # 通过for-in循环逐行读取</span><br><span class="line">    with open(&#39;致橡树.txt&#39;, mode&#x3D;&#39;r&#39;) as f:</span><br><span class="line">        for line in f:</span><br><span class="line">            print(line, end&#x3D;&#39;&#39;)</span><br><span class="line">            time.sleep(0.5)</span><br><span class="line">    print()</span><br><span class="line"></span><br><span class="line">    # 读取文件按行读取到列表中</span><br><span class="line">    with open(&#39;致橡树.txt&#39;) as f:</span><br><span class="line">        lines &#x3D; f.readlines()</span><br><span class="line">    print(lines)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>要将文本信息写入文件文件也非常简单，在使用<code>open</code>函数时指定好文件名并将文件模式设置为<code>&#39;w&#39;</code>即可。注意如果需要对文件内容进行追加式写入，应该将模式设置为<code>&#39;a&#39;</code>。如果要写入的文件不存在会自动创建文件而不是引发异常。下面的例子演示了如何将1-9999之间的素数分别写入三个文件中（1-99之间的素数保存在a.txt中，100-999之间的素数保存在b.txt中，1000-9999之间的素数保存在c.txt中）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from 判断一个数是不是素数 import  is_prime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    filenames &#x3D; (&#39;a.txt&#39;,&#39;b.txt&#39;,&#39;c.txt&#39;)</span><br><span class="line">    fs_list &#x3D; []</span><br><span class="line">    try:</span><br><span class="line">        for filename in filenames:</span><br><span class="line">            fs_list.append(open(filename,&#39;w&#39;,encoding &#x3D; &#39;utf-8&#39;))</span><br><span class="line">        for number in range(1,10000):</span><br><span class="line">            if is_prime(number):</span><br><span class="line">                if number &lt; 100:</span><br><span class="line">                    fs_list[0].write(str(number)+&#39;\n&#39;)</span><br><span class="line">                elif number &lt;1000:</span><br><span class="line">                    fs_list[1].write(str(number)+&#39;\n&#39;)</span><br><span class="line">                else:</span><br><span class="line">                    fs_list[2].write(str(number)+&#39;\n&#39;)</span><br><span class="line">    except IOError as ex:</span><br><span class="line">        print(ex)</span><br><span class="line">        print(&#39;写入文件时发生错误！&#39;)</span><br><span class="line">    finally:</span><br><span class="line">        for fs in fs_list:</span><br><span class="line">            fs.close()</span><br><span class="line">    print(&#39;操作完成！&#39;)</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="读写二进制文件"><a href="#读写二进制文件" class="headerlink" title="读写二进制文件"></a>读写二进制文件</h3><p>知道了如何读写文本文件要读写二进制文件也就很简单了，下面的代码实现了复制图片文件的功能。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def main():</span><br><span class="line">    try:</span><br><span class="line">        with open(&#39;课表.jpg&#39;,&#39;rb&#39;) as fs1:</span><br><span class="line">            data &#x3D; fs1.read()</span><br><span class="line">        #    print(type(data ))    # &lt;class &#39;bytes&#39;&gt;  </span><br><span class="line">        with open(&#39;时间表.jpg&#39;,&#39;wb&#39;) as fs2:</span><br><span class="line">            fs2.write(data)</span><br><span class="line">    except FileNotFoundError as e:</span><br><span class="line">        print(&#39;指定的文件无法打开。&#39;)</span><br><span class="line">    except IOError as e:</span><br><span class="line">        print(&#39;读写文件时出现错误。&#39;)</span><br><span class="line">    print(&#39;程序执行结束。&#39;)</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="读写JSON文件"><a href="#读写JSON文件" class="headerlink" title="读写JSON文件"></a>读写JSON文件</h3><p>通过上面的讲解，我们已经知道如何将文本数据和二进制数据保存到文件中，那么这里还有一个问题，如果希望把一个列表或者一个字典中的数据保存到文件中又该怎么做呢？答案是将数据以JSON格式进行保存。JSON是“JavaScript Object Notation”的缩写，它本来是JavaScript语言中创建对象的一种字面量语法，现在已经被广泛的应用于跨平台跨语言的数据交换，原因很简单，因为JSON也是纯文本，任何系统任何编程语言处理纯文本都是没有问题的。目前JSON基本上已经取代了XML作为异构系统间交换数据的事实标准。关于JSON的知识，更多的可以参考<a target="_blank" rel="noopener" href="http://json.org/">JSON的官方网站</a>，从这个网站也可以了解到每种语言处理JSON数据格式可以使用的工具或三方库，下面是一个JSON的简单例子。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;: &quot;骆昊&quot;,</span><br><span class="line">    &quot;age&quot;: 38,</span><br><span class="line">    &quot;qq&quot;: 957658,</span><br><span class="line">    &quot;friends&quot;: [&quot;王大锤&quot;, &quot;白元芳&quot;],</span><br><span class="line">    &quot;cars&quot;: [</span><br><span class="line">        &#123;&quot;brand&quot;: &quot;BYD&quot;, &quot;max_speed&quot;: 180&#125;,</span><br><span class="line">        &#123;&quot;brand&quot;: &quot;Audi&quot;, &quot;max_speed&quot;: 280&#125;,</span><br><span class="line">        &#123;&quot;brand&quot;: &quot;Benz&quot;, &quot;max_speed&quot;: 320&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可能大家已经注意到了，上面的JSON跟Python中的字典其实是一样一样的，事实上JSON的数据类型和Python的数据类型是很容易找到对应关系的，如下面两张表所示。</p>
-<table>
-<thead>
-<tr>
-<th>JSON</th>
-<th>Python</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>object</td>
-<td>dict</td>
-</tr>
-<tr>
-<td>array</td>
-<td>list</td>
-</tr>
-<tr>
-<td>string</td>
-<td>str</td>
-</tr>
-<tr>
-<td>number (int / real)</td>
-<td>int / float</td>
-</tr>
-<tr>
-<td>true / false</td>
-<td>True / False</td>
-</tr>
-<tr>
-<td>null</td>
-<td></td>
-</tr>
-</tbody></table>
-<hr>
-<table>
-<thead>
-<tr>
-<th>Python</th>
-<th align="center">JSON</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>dict</td>
-<td align="center">object</td>
-</tr>
-<tr>
-<td>list, tuple</td>
-<td align="center">array</td>
-</tr>
-<tr>
-<td>str</td>
-<td align="center">string</td>
-</tr>
-<tr>
-<td>int, float, int- &amp; float-derived Enums</td>
-<td align="center">number</td>
-</tr>
-<tr>
-<td>True / False</td>
-<td align="center">true / false</td>
-</tr>
-<tr>
-<td>None</td>
-<td align="center"></td>
-</tr>
-</tbody></table>
-<p>我们使用Python中的json模块就可以将字典或列表以JSON格式保存到文件中，代码如下所示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    mydict &#x3D; &#123;</span><br><span class="line">        &#39;name&#39;: &#39;骆昊&#39;,</span><br><span class="line">        &#39;age&#39;: 38,</span><br><span class="line">        &#39;qq&#39;: 957658,</span><br><span class="line">        &#39;friends&#39;: [&#39;王大锤&#39;, &#39;白元芳&#39;],</span><br><span class="line">        &#39;cars&#39;: [</span><br><span class="line">            &#123;&#39;brand&#39;: &#39;BYD&#39;, &#39;max_speed&#39;: 180&#125;,</span><br><span class="line">            &#123;&#39;brand&#39;: &#39;Audi&#39;, &#39;max_speed&#39;: 280&#125;,</span><br><span class="line">            &#123;&#39;brand&#39;: &#39;Benz&#39;, &#39;max_speed&#39;: 320&#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">    try:</span><br><span class="line">        with open(&#39;data.json&#39;, &#39;w&#39;, encoding&#x3D;&#39;utf-8&#39;) as fs:</span><br><span class="line">            json.dump(mydict, fs)</span><br><span class="line">    except IOError as e:</span><br><span class="line">        print(e)</span><br><span class="line">    print(&#39;保存数据完成!&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<p>json模块主要有四个比较重要的函数，分别是：</p>
-<ul>
-<li><code>dump</code> - 将Python对象按照JSON格式序列化到文件中</li>
-<li><code>dumps</code> - 将Python对象处理成JSON格式的字符串</li>
-<li><code>load</code> - 将文件中的JSON数据反序列化成对象</li>
-<li><code>loads</code> - 将字符串的内容反序列化成Python对象</li>
-</ul>
-<p>这里出现了两个概念，一个叫序列化，一个叫反序列化。自由的百科全书<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/">维基百科</a>上对这两个概念是这样解释的：“序列化（serialization）在计算机科学的数据处理中，是指将数据结构或对象状态转换为可以存储或传输的形式，这样在需要的时候能够恢复到原先的状态，而且通过序列化的数据重新获取字节时，可以利用这些字节来产生原始对象的副本（拷贝）。与这个过程相反的动作，即从一系列字节中提取数据结构的操作，就是反序列化（deserialization）”。</p>
-<p>目前绝大多数网络数据服务（或称之为网络API）都是基于<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE">HTTP协议</a>提供JSON格式的数据，关于HTTP协议的相关知识，可以看看阮一峰老师的<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2016/08/http.html">《HTTP协议入门》</a>，如果想了解国内的网络数据服务，可以看看<a target="_blank" rel="noopener" href="https://www.juhe.cn/">聚合数据</a>和<a target="_blank" rel="noopener" href="http://www.avatardata.cn/">阿凡达数据</a>等网站，国外的可以看看<a target="_blank" rel="noopener" href="http://apis.io/">{API}Search</a>网站。下面的例子演示了如何使用<a target="_blank" rel="noopener" href="http://docs.python-requests.org/zh_CN/latest/">requests</a>模块（封装得足够好的第三方网络访问模块）访问网络API获取国内新闻，如何通过json模块解析JSON数据并显示新闻标题，这个例子使用了<a target="_blank" rel="noopener" href="https://www.tianapi.com/">天行数据</a>提供的国内新闻数据接口，其中的APIKey需要自己到该网站申请。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    resp &#x3D; requests.get(&#39;http:&#x2F;&#x2F;api.tianapi.com&#x2F;guonei&#x2F;?key&#x3D;APIKey&amp;num&#x3D;10&#39;)</span><br><span class="line">    data_model &#x3D; json.loads(resp.text)</span><br><span class="line">    for news in data_model[&#39;newslist&#39;]:</span><br><span class="line">        print(news[&#39;title&#39;])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<p>在Python中要实现序列化和反序列化除了使用json模块之外，还可以使用pickle和shelve模块，但是这两个模块是使用特有的序列化协议来序列化数据，因此序列化后的数据只能被Python识别。关于这两个模块的相关知识可以自己看看网络上的资料。另外，如果要了解更多的关于Python异常机制的知识，可以看看segmentfault上面的文章<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000007736783">《总结：Python中的异常处理》</a>，这篇文章不仅介绍了Python中异常机制的使用，还总结了一系列的最佳实践，很值得一读。</p>
-<hr>
-<p>关于 <code>with</code>关键字<a target="_blank" rel="noopener" href="https://blog.csdn.net/lu13093323120/article/details/82195060">https://blog.csdn.net/lu13093323120/article/details/82195060</a></p>
-<p>大致内容就上所示，注意<code>w</code>时会主动产生文件</p>
-<p>100天学python，今天是第十一天</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/28/python%E5%AD%A6%E4%B9%A0-11-Days/">展开全文 >></a>
         </p>
       
 

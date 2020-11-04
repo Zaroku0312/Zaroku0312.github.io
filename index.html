@@ -152,6 +152,118 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每日leetcode-25-找不同" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/04/%E6%AF%8F%E6%97%A5leetcode-25-%E6%89%BE%E4%B8%8D%E5%90%8C/">每日leetcode-25-找不同</a>
+    </h1>
+  
+
+        
+        <a href="/2020/11/04/%E6%AF%8F%E6%97%A5leetcode-25-%E6%89%BE%E4%B8%8D%E5%90%8C/" class="archive-article-date">
+  	<time datetime="2020-11-04T15:25:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="找不同"><a href="#找不同" class="headerlink" title="找不同"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-the-difference/">找不同</a></h4><p>源自LeetCode:   <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-the-difference/">https://leetcode-cn.com/problems/find-the-difference/</a></p>
+<hr>
+<p>给定两个字符串 <strong><em>s</em></strong> 和 <strong><em>t</em></strong>，它们只包含小写字母。</p>
+<p>字符串 <strong><em>t</em></strong>由字符串 <strong><em>s</em></strong>  随机重排，然后在随机位置添加一个字母。</p>
+<p>请找出在 <strong><em>t</em></strong> 中被添加的字母。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：s &#x3D; &quot;abcd&quot;, t &#x3D; &quot;abcde&quot;</span><br><span class="line">输出：&quot;e&quot;</span><br><span class="line">解释：&#39;e&#39; 是那个被添加的字母。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：s &#x3D; &quot;abcd&quot;, t &#x3D; &quot;abcde&quot;</span><br><span class="line">输出：&quot;e&quot;</span><br><span class="line">解释：&#39;e&#39; 是那个被添加的字母。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：s &#x3D; &quot;a&quot;, t &#x3D; &quot;aa&quot;</span><br><span class="line">输出：&quot;a&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 4：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：s &#x3D; &quot;ae&quot;, t &#x3D; &quot;aea&quot;</span><br><span class="line">输出：&quot;a&quot;</span><br></pre></td></tr></table></figure>
+
+<p> <strong>提示：</strong></p>
+<ul>
+<li><code>0 &lt;= s.length &lt;= 1000</code></li>
+<li><code>t.length == s.length + 1</code></li>
+<li><code>s</code> 和 <code>t</code> 只包含小写字母</li>
+</ul>
+<hr>
+<p><strong>题目给出的答题模板：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    char findTheDifference(string s, string t) &#123;</span><br><span class="line">		</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>对两个字符串排序然后一个循环就搞定了</p>
+<hr>
+<p>下面给出我的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    char findTheDifference(string s, string t) &#123;</span><br><span class="line">		sort(s.begin(), s.end());</span><br><span class="line">		sort(t.begin(), t.end());</span><br><span class="line">		for(int i&#x3D;0;i&lt;s.length();i++)&#123;</span><br><span class="line">			if(s[i]!&#x3D;t[i])&#123;</span><br><span class="line">				return t[i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return t[t.length()-1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/04/%E6%AF%8F%E6%97%A5leetcode-25-%E6%89%BE%E4%B8%8D%E5%90%8C/1604504173(1).jpg"></p>
+<p>效率感人</p>
+<p>让我们看看别人是怎么做的吧</p>
+<hr>
+<h2 id="方法一：异或运算"><a href="#方法一：异或运算" class="headerlink" title="方法一：异或运算"></a>方法一：异或运算</h2><p>作者：yudou<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-the-difference/solution/c3xing-ji-bai-100-ling-kong-jian-fu-za-du-by-yudou/">https://leetcode-cn.com/problems/find-the-difference/solution/c3xing-ji-bai-100-ling-kong-jian-fu-za-du-by-yudou/</a><br>来源：力扣（LeetCode）</p>
+<p><img src="/2020/11/04/%E6%AF%8F%E6%97%A5leetcode-25-%E6%89%BE%E4%B8%8D%E5%90%8C/%E5%BC%82%E6%88%96.jpg"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    char findTheDifference(string s, string t) &#123;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; s.size(); ++i) t[0] ^&#x3D; s[i];</span><br><span class="line">        for (int i &#x3D; 1; i &lt; t.size(); ++i) t[0] ^&#x3D; t[i];</span><br><span class="line">        return t[0];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>恐怖如斯</p>
+<hr>
+<h2 id="方法二：ASCII码之差"><a href="#方法二：ASCII码之差" class="headerlink" title="方法二：ASCII码之差"></a>方法二：ASCII码之差</h2><p>作者：Gary_coding<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-the-difference/solution/c-zhong-gui-zhong-ju-de-0msjie-fa-bao-li-by-gary-5/">https://leetcode-cn.com/problems/find-the-difference/solution/c-zhong-gui-zhong-ju-de-0msjie-fa-bao-li-by-gary-5/</a><br>来源：力扣（LeetCode）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    char findTheDifference(string s, string t) &#123;</span><br><span class="line">        int ans &#x3D; 0;</span><br><span class="line">        for (char ch : t) ans +&#x3D; ch;</span><br><span class="line">        for (char ch : s) ans -&#x3D; ch;</span><br><span class="line">        return (char)ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>恐怖如斯</p>
+<hr>
+<p>感觉<strong>位运算</strong>有点奇妙啊，有时间一定要看一下</p>
+<p>本题就到这里了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/04/%E6%AF%8F%E6%97%A5leetcode-25-%E6%89%BE%E4%B8%8D%E5%90%8C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-每日leetcode-24-键盘行" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1271,113 +1383,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/29/%E6%AF%8F%E6%97%A5leetcode-19-%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-每日leetcode-18-Fizz-Buzz" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/28/%E6%AF%8F%E6%97%A5leetcode-18-Fizz-Buzz/">每日leetcode-18-Fizz Buzz</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/28/%E6%AF%8F%E6%97%A5leetcode-18-Fizz-Buzz/" class="archive-article-date">
-  	<time datetime="2020-10-28T15:49:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Fizz-Buzz"><a href="#Fizz-Buzz" class="headerlink" title="Fizz Buzz"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/fizz-buzz/">Fizz Buzz</a></h4><p>源自LeetCode: <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/fizz-buzz/">https://leetcode-cn.com/problems/fizz-buzz/</a></p>
-<hr>
-<p>问题描述:</p>
-<p>写一个程序，输出从 1 到 n 数字的字符串表示。</p>
-<ol>
-<li><p>如果 n 是3的倍数，输出“Fizz”；</p>
-</li>
-<li><p>如果 n 是5的倍数，输出“Buzz”；</p>
-</li>
-</ol>
-<p>3.如果 n 同时是3和5的倍数，输出 “FizzBuzz”。</p>
-<p><strong>示例 :</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">n &#x3D; 15,</span><br><span class="line"></span><br><span class="line">返回:</span><br><span class="line">[</span><br><span class="line">    &quot;1&quot;,</span><br><span class="line">    &quot;2&quot;,</span><br><span class="line">    &quot;Fizz&quot;,</span><br><span class="line">    &quot;4&quot;,</span><br><span class="line">    &quot;Buzz&quot;,</span><br><span class="line">    &quot;Fizz&quot;,</span><br><span class="line">    &quot;7&quot;,</span><br><span class="line">    &quot;8&quot;,</span><br><span class="line">    &quot;Fizz&quot;,</span><br><span class="line">    &quot;Buzz&quot;,</span><br><span class="line">    &quot;11&quot;,</span><br><span class="line">    &quot;Fizz&quot;,</span><br><span class="line">    &quot;13&quot;,</span><br><span class="line">    &quot;14&quot;,</span><br><span class="line">    &quot;FizzBuzz&quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>题目给出的答题模板</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;string&gt; fizzBuzz(int n) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>这不写一个循环就搞定了？</p>
-<p>下面给出我的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;string&gt; fizzBuzz(int n) &#123;</span><br><span class="line">    	vector&lt;string&gt; s;</span><br><span class="line">		for(int i&#x3D;1;i&lt;&#x3D;n;i++)&#123;</span><br><span class="line">			if(i%15 &#x3D;&#x3D; 0)&#123;</span><br><span class="line">				s.push_back(&quot;FizzBuzz&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">			else if(i%3&#x3D;&#x3D;0)&#123;</span><br><span class="line">				s.push_back(&quot;Fizz&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">			else if(i%5&#x3D;&#x3D;0)&#123;</span><br><span class="line">				s.push_back(&quot;Buzz&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">			else s.push_back(to_string(i));  &#x2F;&#x2F;to_string(i)将数字以字符形式输出</span><br><span class="line">		&#125;</span><br><span class="line">		return s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注：<code>push_back()</code>函数的用法</p>
-<p>函数将一个新的元素加到<code>vector</code>的最后面，位置为当前最后一个元素的下一个元素</p>
-<p>类似的：</p>
-<p>pop_back() //移除最后一个元素</p>
-<p>clear() //清空所有元素</p>
-<p>empty() //判断vector是否为空，如果返回true为空</p>
-<p>erase() // 删除指定元素</p>
-</blockquote>
-<p>震惊，居然能100%</p>
-<hr>
-<p>作者：LeetCode<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/fizz-buzz/solution/fizz-buzz-by-leetcode/">https://leetcode-cn.com/problems/fizz-buzz/solution/fizz-buzz-by-leetcode/</a><br>来源：力扣（LeetCode）</p>
-<p><img src="/2020/10/28/%E6%AF%8F%E6%97%A5leetcode-18-Fizz-Buzz/1603901179(1).jpg"></p>
-<p>感觉和<code>Python</code>中的字典很像</p>
-<p>给出C++的代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;string&gt; fizzBuzz(int n) &#123;</span><br><span class="line">        vector&lt;string&gt; ans;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;Hash map to store all fizzbuzz mappings.</span><br><span class="line">        map&lt;int, string&gt; fizzBuzzDict &#x3D; &#123;</span><br><span class="line">            &#123;3, &quot;Fizz&quot;&#125;,</span><br><span class="line">            &#123;5, &quot;Buzz&quot;&#125; </span><br><span class="line">        &#125;;</span><br><span class="line">    </span><br><span class="line">        for (int num &#x3D; 1; num &lt;&#x3D; n; ++num)</span><br><span class="line">        &#123;</span><br><span class="line">            string numAnsStr &#x3D; &quot;&quot;;</span><br><span class="line"></span><br><span class="line">            for (auto key : fizzBuzzDict)</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;If the num is divisible by key,</span><br><span class="line">                &#x2F;&#x2F;then add the corressponding string mapping to current numAnsStr</span><br><span class="line">                if (num % key.first &#x3D;&#x3D; 0)</span><br><span class="line">                    numAnsStr +&#x3D; key.second;</span><br><span class="line">            &#125;</span><br><span class="line">            &#x2F;&#x2F;Not divisible by 3 or 5, add the number</span><br><span class="line">            if (numAnsStr &#x3D;&#x3D; &quot;&quot;)</span><br><span class="line">                numAnsStr +&#x3D; to_string(num);</span><br><span class="line">            &#x2F;&#x2F; Append the current answer str to the ans list</span><br><span class="line">            ans.push_back(numAnsStr);</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>本题比较简单，主要考察C++ <code>vector</code>的语法</p>
-<p>关于<code>vector</code>我找了一篇博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32172673/article/details/85127176">https://blog.csdn.net/qq_32172673/article/details/85127176</a></p>
-<p>还有就是考察了<strong>映射</strong>（又多了个要学的内容）</p>
-<p>本题就到这里了</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/28/%E6%AF%8F%E6%97%A5leetcode-18-Fizz-Buzz/">展开全文 >></a>
         </p>
       
 

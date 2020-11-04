@@ -152,6 +152,122 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-每日leetcode-12-罗马数转整数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/22/%E6%AF%8F%E6%97%A5leetcode-12-%E7%BD%97%E9%A9%AC%E6%95%B0%E8%BD%AC%E6%95%B4%E6%95%B0/">每日leetcode-12-罗马数转整数</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/22/%E6%AF%8F%E6%97%A5leetcode-12-%E7%BD%97%E9%A9%AC%E6%95%B0%E8%BD%AC%E6%95%B4%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2020-10-22T15:42:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="罗马数字转整数"><a href="#罗马数字转整数" class="headerlink" title="罗马数字转整数"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/roman-to-integer/">罗马数字转整数</a></h4><p>源自LeetCode: <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/roman-to-integer/">https://leetcode-cn.com/problems/roman-to-integer/</a></p>
+<p>问题描述:</p>
+<p>罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">字符          数值</span><br><span class="line">I             1</span><br><span class="line">V             5</span><br><span class="line">X             10</span><br><span class="line">L             50</span><br><span class="line">C             100</span><br><span class="line">D             500</span><br><span class="line">M             1000</span><br></pre></td></tr></table></figure>
+
+<p>例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做  XXVII, 即为 XX + V + II 。</p>
+<blockquote>
+<p>通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况：</p>
+</blockquote>
+<blockquote>
+<p>I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。<br>X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。<br>C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。</p>
+</blockquote>
+<p>给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;III&quot;</span><br><span class="line">输出: 3</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><figcaption><span>3</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;IV&quot;</span><br><span class="line">输出: 4</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><figcaption><span>3</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;IX&quot;</span><br><span class="line">输出: 9</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 4：</strong></p>
+<figure class="highlight plain"><figcaption><span>3</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;LVIII&quot;</span><br><span class="line">输出: 58</span><br><span class="line">解释: L &#x3D; 50, V&#x3D; 5, III &#x3D; 3.</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 5：</strong></p>
+<figure class="highlight plain"><figcaption><span>3</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;MCMXCIV&quot;</span><br><span class="line">输出: 1994</span><br><span class="line">解释: M &#x3D; 1000, CM &#x3D; 900, XC &#x3D; 90, IV &#x3D; 4.</span><br></pre></td></tr></table></figure>
+
+<p>提升：</p>
+<blockquote>
+<p>题目所给测试用例皆符合罗马数字书写规则，不会出现跨位等情况。<br>IC 和 IM 这样的例子并不符合题目要求，49 应该写作 XLIX，999 应该写作 CMXCIX 。<br>关于罗马数字的详尽书写规则，可以参考 罗马数字 - Mathematics 。</p>
+</blockquote>
+<p>题目给出的答题模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int romanToInt(string s) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>将给的字符串按顺序一个一个读取出来，一个字对应一个数字，将其全部加起来即可，但有些需要判断一下，先罗列出来   IV (4)    ，IX (9)  ，XL(40) ，XC(90)  , CD (400)  , CM (900)</p>
+<p>下面给出我的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int romanToInt(string s) &#123;</span><br><span class="line">    	int count &#x3D; 0;</span><br><span class="line">		for(int i&#x3D;0;i&lt;s.length();i++)&#123;</span><br><span class="line">			if(s[i]&#x3D;&#x3D;&#39;I&#39;)&#123;</span><br><span class="line">				if(s[i+1]&#x3D;&#x3D;&#39;V&#39;)&#123;</span><br><span class="line">					count+&#x3D;4;</span><br><span class="line">					i++;</span><br><span class="line">				&#125;</span><br><span class="line">				else if(s[i+1]&#x3D;&#x3D;&#39;X&#39;)&#123;</span><br><span class="line">					count+&#x3D;9;</span><br><span class="line">					i++;</span><br><span class="line">				&#125;</span><br><span class="line">				else  count+&#x3D;1;</span><br><span class="line">			&#125;</span><br><span class="line">			else if(s[i]&#x3D;&#x3D;&#39;V&#39;)&#123;</span><br><span class="line">				count+&#x3D;5;</span><br><span class="line">			&#125;</span><br><span class="line">			else if(s[i]&#x3D;&#x3D;&#39;X&#39;)&#123;</span><br><span class="line">				if(s[i+1]&#x3D;&#x3D;&#39;L&#39;)&#123;</span><br><span class="line">					count+&#x3D;40;</span><br><span class="line">					i++;</span><br><span class="line">				&#125;</span><br><span class="line">				else if(s[i+1]&#x3D;&#x3D;&#39;C&#39;)&#123;</span><br><span class="line">					count+&#x3D;90;</span><br><span class="line">					i++;</span><br><span class="line">				&#125;</span><br><span class="line">				else  count+&#x3D;10;</span><br><span class="line">			&#125;</span><br><span class="line">			else if(s[i]&#x3D;&#x3D;&#39;L&#39;)&#123;</span><br><span class="line">				count+&#x3D;50;</span><br><span class="line">			&#125;</span><br><span class="line">			else if(s[i]&#x3D;&#x3D;&#39;C&#39;)&#123;</span><br><span class="line">				if(s[i+1]&#x3D;&#x3D;&#39;D&#39;)&#123;</span><br><span class="line">					count+&#x3D;400;</span><br><span class="line">					i++;</span><br><span class="line">				&#125;</span><br><span class="line">				else if(s[i+1]&#x3D;&#x3D;&#39;M&#39;)&#123;</span><br><span class="line">					count+&#x3D;900;</span><br><span class="line">					i++;</span><br><span class="line">				&#125;</span><br><span class="line">				else  count+&#x3D;100;				</span><br><span class="line">			&#125;</span><br><span class="line">			else if(s[i]&#x3D;&#x3D;&#39;D&#39;)&#123;</span><br><span class="line">				count+&#x3D;500;</span><br><span class="line">			&#125;</span><br><span class="line">			else if(s[i]&#x3D;&#x3D;&#39;M&#39;)&#123;</span><br><span class="line">				count+&#x3D;1000;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; </span><br><span class="line">		return count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>通过，这次效率意外的还行</p>
+<p><img src="/2020/10/22/%E6%AF%8F%E6%97%A5leetcode-12-%E7%BD%97%E9%A9%AC%E6%95%B0%E8%BD%AC%E6%95%B4%E6%95%B0/31839b96dc7b5120a122c76a88bd400.png"></p>
+<p>但是我感觉代码很长，不是很好看，显得特别冗长，想过用<code>switch</code>语句，但判断时候又不太好用</p>
+<p>让我们康康别人是怎么做的吧</p>
+<hr>
+<p>作者：z1m<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/roman-to-integer/solution/qing-xi-tu-jie-python3-by-ml-zimingmeng/">https://leetcode-cn.com/problems/roman-to-integer/solution/qing-xi-tu-jie-python3-by-ml-zimingmeng/</a><br>来源：力扣（LeetCode）</p>
+<p>解题思路<br>通过观察我们发现，只有在遇到特殊情况时，两个字符中左边的字符小于右边的字符，且等于右边的字符代表的数减左边字符代表的数。 比如 CM 等于 1000 - 100，XC 等于 100 - 10…</p>
+<p>因此，我们将 字符：数值 存在 Roman2Int 的哈希表中。然后从左到右遍历每个字符，如果 s[i] &lt; s[i+1]，就将结果减去 s[i] 代表的数字；否则，将结果加上 s[i] 代表的数字。</p>
+<p>本题的题解如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int romanToInt(string s) &#123;</span><br><span class="line">        int result&#x3D;0;</span><br><span class="line">        map&lt;char,int&gt; luomab&#x3D;&#123;</span><br><span class="line">            &#123;&#39;I&#39;,1&#125;,</span><br><span class="line">            &#123;&#39;V&#39;,5&#125;,</span><br><span class="line">            &#123;&#39;X&#39;,10&#125;,</span><br><span class="line">            &#123;&#39;L&#39;,50&#125;,</span><br><span class="line">            &#123;&#39;C&#39;,100&#125;,</span><br><span class="line">            &#123;&#39;D&#39;, 500&#125;,</span><br><span class="line">            &#123;&#39;M&#39;, 1000&#125;</span><br><span class="line">        &#125;;&#x2F;&#x2F;初始化哈希表</span><br><span class="line">        for(int i&#x3D;0;i&lt;s.length();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(luomab[s[i]] &lt; luomab[s[i+1]])</span><br><span class="line">                result -&#x3D; luomab[s[i]];</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                result +&#x3D; luomab[s[i]];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结:"></a>小结:</h3><p>我看了一下LeetCode上挺多都是用哈希表做的，用哈希表能让你的代码看上去简洁很多，今天时间也不早了，明天早上还满课，有关哈希表的内容我下次再写吧！</p>
+<hr>
+<p>本题就到这里了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/22/%E6%AF%8F%E6%97%A5leetcode-12-%E7%BD%97%E9%A9%AC%E6%95%B0%E8%BD%AC%E6%95%B4%E6%95%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-python学习-06-Days" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1358,105 +1474,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/18/python%E5%AD%A6%E4%B9%A0-02-Days/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-每日leetcode-7-删除排序数组中的重复项" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/17/%E6%AF%8F%E6%97%A5leetcode-7-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/">每日leetcode-7-删除排序数组中的重复项</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/17/%E6%AF%8F%E6%97%A5leetcode-7-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/" class="archive-article-date">
-  	<time datetime="2020-10-17T05:48:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="删除排序数组中的重复项"><a href="#删除排序数组中的重复项" class="headerlink" title="删除排序数组中的重复项"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">删除排序数组中的重复项</a></h4><p>源自LeetCode:  <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/</a></p>
-<p>问题描述:</p>
-<p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
-<p><strong>示例 1:</strong></p>
-<blockquote>
-<p>给定数组 nums = [1,1,2], </p>
-<p>函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </p>
-<p>你不需要考虑数组中超出新长度后面的元素。</p>
-</blockquote>
-<p> <strong>示例 2:</strong></p>
-<blockquote>
-<p>给定 nums = [0,0,1,1,1,2,2,3,3,4],</p>
-<p>函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</p>
-<p>你不需要考虑数组中超出新长度后面的元素。</p>
-</blockquote>
-<p><strong>说明:</strong></p>
-<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
-<p>请注意，输入数组是以<strong>「引用」</strong>方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
-<blockquote>
-<p>// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝<br>int len = removeDuplicates(nums);</p>
-<p>// 在函数里修改输入数组对于调用者是可见的。<br>// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>for (int i = 0; i &lt; len; i++) {<br>   print(nums[i]);<br>}</p>
-</blockquote>
-<p>题目给出的模板：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeDuplicates(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>乍一看挺简单的，只要检测相邻两个元素不同即可。</p>
-<p>下面给出我的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeDuplicates(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    	if(nums.empty()) return 0;       &#x2F;&#x2F;empty函数</span><br><span class="line">		int s&#x3D;1;</span><br><span class="line">		for(int i&#x3D;0;i&lt;nums.size()-1;i++)&#123;</span><br><span class="line">			if(nums[i]!&#x3D;nums[i+1])&#123;</span><br><span class="line">				nums[s++]&#x3D;nums[i+1];          &#x2F;&#x2F;这一步不可谓不妙啊</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>注：empty函数一般用来判断是否为空，它的返回值是<code>bool</code>型</p>
-<p>一遍过，原来真的很简单。。。。</p>
-<p>让我来康康别人是怎么做的把。</p>
-<hr>
-<p>没啥好看的。。。和我写的差不多，好像也没啥了</p>
-<hr>
-<p>这道题就暂时到这里了，如果你有什么问题或者建议可以联系我</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/17/%E6%AF%8F%E6%97%A5leetcode-7-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/">展开全文 >></a>
         </p>
       
 

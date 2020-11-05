@@ -152,6 +152,456 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python学习-12-Days" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/29/python%E5%AD%A6%E4%B9%A0-12-Days/">python学习-12-Days</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/29/python%E5%AD%A6%E4%B9%A0-12-Days/" class="archive-article-date">
+  	<time datetime="2020-10-29T03:32:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Day-12-使用正则表达式"><a href="#Day-12-使用正则表达式" class="headerlink" title="Day 12 使用正则表达式"></a>Day 12 使用正则表达式</h2><h2 id="使用正则表达式"><a href="#使用正则表达式" class="headerlink" title="使用正则表达式"></a>使用正则表达式</h2><h3 id="正则表达式相关知识"><a href="#正则表达式相关知识" class="headerlink" title="正则表达式相关知识"></a>正则表达式相关知识</h3><p>在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要，正则表达式就是用于描述这些规则的工具，换句话说正则表达式是一种工具，它定义了字符串的匹配模式（如何检查一个字符串是否有跟某种模式匹配的部分或者从一个字符串中将与模式匹配的部分提取出来或者替换掉）。如果你在Windows操作系统中使用过文件查找并且在指定文件名时使用过通配符（*和?），那么正则表达式也是与之类似的用来进行文本匹配的工具，只不过比起通配符正则表达式更强大，它能更精确地描述你的需求（当然你付出的代价是书写一个正则表达式比打出一个通配符要复杂得多，要知道任何给你带来好处的东西都是有代价的，就如同学习一门编程语言一样），比如你可以编写一个正则表达式，用来查找所有以0开头，后面跟着2-3个数字，然后是一个连字号“-”，最后是7或8位数字的字符串（像028-12345678或0813-7654321），这不就是国内的座机号码吗。最初计算机是为了做数学运算而诞生的，处理的信息基本上都是数值，而今天我们在日常工作中处理的信息基本上都是文本数据，我们希望计算机能够识别和处理符合某些模式的文本，正则表达式就显得非常重要了。今天几乎所有的编程语言都提供了对正则表达式操作的支持，Python通过标准库中的re模块来支持正则表达式操作。</p>
+<p>我们可以考虑下面一个问题：我们从某个地方（可能是一个文本文件，也可能是网络上的一则新闻）获得了一个字符串，希望在字符串中找出手机号和座机号。当然我们可以设定手机号是11位的数字（注意并不是随机的11位数字，因为你没有见过“25012345678”这样的手机号吧）而座机号跟上一段中描述的模式相同，如果不使用正则表达式要完成这个任务就会很麻烦。</p>
+<p>关于正则表达式的相关知识，大家可以阅读一篇非常有名的博客叫<a target="_blank" rel="noopener" href="https://deerchao.net/tutorials/regex/regex.htm">《正则表达式30分钟入门教程》</a>，读完这篇文章后你就可以看懂下面的表格，这是我们对正则表达式中的一些基本符号进行的扼要总结。</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>解释</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.</td>
+<td>匹配任意字符</td>
+<td>b.t</td>
+<td>可以匹配bat / but / b#t / b1t等</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配字母/数字/下划线</td>
+<td>b\wt</td>
+<td>可以匹配bat / b1t / b_t等 但不能匹配b#t</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配空白字符（包括\r、\n、\t等）</td>
+<td>love\syou</td>
+<td>可以匹配love you</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配数字</td>
+<td>\d\d</td>
+<td>可以匹配01 / 23 / 99等</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配单词的边界</td>
+<td>\bThe\b</td>
+<td></td>
+</tr>
+<tr>
+<td>^</td>
+<td>匹配字符串的开始</td>
+<td>^The</td>
+<td>可以匹配The开头的字符串</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配字符串的结束</td>
+<td>.exe$</td>
+<td>可以匹配.exe结尾的字符串</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配非字母/数字/下划线</td>
+<td>b\Wt</td>
+<td>可以匹配b#t / b@t等 但不能匹配but / b1t / b_t等</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配非空白字符</td>
+<td>love\Syou</td>
+<td>可以匹配love#you等 但不能匹配love you</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配非数字</td>
+<td>\d\D</td>
+<td>可以匹配9a / 3# / 0F等</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>匹配非单词边界</td>
+<td>\Bio\B</td>
+<td></td>
+</tr>
+<tr>
+<td>[]</td>
+<td>匹配来自字符集的任意单一字符</td>
+<td>[aeiou]</td>
+<td>可以匹配任一元音字母字符</td>
+</tr>
+<tr>
+<td>[^]</td>
+<td>匹配不在字符集中的任意单一字符</td>
+<td>[^aeiou]</td>
+<td>可以匹配任一非元音字母字符</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配0次或多次</td>
+<td>\w*</td>
+<td></td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配1次或多次</td>
+<td>\w+</td>
+<td></td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配0次或1次</td>
+<td>\w?</td>
+<td></td>
+</tr>
+<tr>
+<td>{N}</td>
+<td>匹配N次</td>
+<td>\w{3}</td>
+<td></td>
+</tr>
+<tr>
+<td>{M,}</td>
+<td>匹配至少M次</td>
+<td>\w{3,}</td>
+<td></td>
+</tr>
+<tr>
+<td>{M,N}</td>
+<td>匹配至少M次至多N次</td>
+<td>\w{3,6}</td>
+<td></td>
+</tr>
+<tr>
+<td>|</td>
+<td>分支</td>
+<td>foo|bar</td>
+<td>可以匹配foo或者bar</td>
+</tr>
+<tr>
+<td>(?#)</td>
+<td>注释</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>(exp)</td>
+<td>匹配exp并捕获到自动命名的组中</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>(?<name>exp)</name></td>
+<td>匹配exp并捕获到名为name的组中</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>(?:exp)</td>
+<td>匹配exp但是不捕获匹配的文本</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>(?=exp)</td>
+<td>匹配exp前面的位置</td>
+<td>\b\w+(?=ing)</td>
+<td>可以匹配I’m dancing中的danc</td>
+</tr>
+<tr>
+<td>(?&lt;=exp)</td>
+<td>匹配exp后面的位置</td>
+<td>(?&lt;=\bdanc)\w+\b</td>
+<td>可以匹配I love dancing and reading中的第一个ing</td>
+</tr>
+<tr>
+<td>(?!exp)</td>
+<td>匹配后面不是exp的位置</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>(?&lt;!exp)</td>
+<td>匹配前面不是exp的位置</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>*?</td>
+<td>重复任意次，但尽可能少重复</td>
+<td>a.<em>b a.</em>?b</td>
+<td>将正则表达式应用于aabab，前者会匹配整个字符串aabab，后者会匹配aab和ab两个字符串</td>
+</tr>
+<tr>
+<td>+?</td>
+<td>重复1次或多次，但尽可能少重复</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>??</td>
+<td>重复0次或1次，但尽可能少重复</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>{M,N}?</td>
+<td>重复M到N次，但尽可能少重复</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>{M,}?</td>
+<td>重复M次以上，但尽可能少重复</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>说明：</strong> 如果需要匹配的字符是正则表达式中的特殊字符，那么可以使用\进行转义处理，例如想匹配小数点可以写成.就可以了，因为直接写.会匹配任意字符；同理，想匹配圆括号必须写成(和)，否则圆括号被视为正则表达式中的分组。</p>
+</blockquote>
+<h3 id="Python对正则表达式的支持"><a href="#Python对正则表达式的支持" class="headerlink" title="Python对正则表达式的支持"></a>Python对正则表达式的支持</h3><p>Python提供了re模块来支持正则表达式相关操作，下面是re模块中的核心函数。</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>compile(pattern, flags=0)</td>
+<td>编译正则表达式返回正则表达式对象</td>
+</tr>
+<tr>
+<td>match(pattern, string, flags=0)</td>
+<td>用正则表达式匹配字符串 成功返回匹配对象 否则返回None</td>
+</tr>
+<tr>
+<td>search(pattern, string, flags=0)</td>
+<td>搜索字符串中第一次出现正则表达式的模式 成功返回匹配对象 否则返回None</td>
+</tr>
+<tr>
+<td>split(pattern, string, maxsplit=0, flags=0)</td>
+<td>用正则表达式指定的模式分隔符拆分字符串 返回列表</td>
+</tr>
+<tr>
+<td>sub(pattern, repl, string, count=0, flags=0)</td>
+<td>用指定的字符串替换原字符串中与正则表达式匹配的模式 可以用count指定替换的次数</td>
+</tr>
+<tr>
+<td>fullmatch(pattern, string, flags=0)</td>
+<td>match函数的完全匹配（从字符串开头到结尾）版本</td>
+</tr>
+<tr>
+<td>findall(pattern, string, flags=0)</td>
+<td>查找字符串所有与正则表达式匹配的模式 返回字符串的列表</td>
+</tr>
+<tr>
+<td>finditer(pattern, string, flags=0)</td>
+<td>查找字符串所有与正则表达式匹配的模式 返回一个迭代器</td>
+</tr>
+<tr>
+<td>purge()</td>
+<td>清除隐式编译的正则表达式的缓存</td>
+</tr>
+<tr>
+<td>re.I / re.IGNORECASE</td>
+<td>忽略大小写匹配标记</td>
+</tr>
+<tr>
+<td>re.M / re.MULTILINE</td>
+<td>多行匹配标记</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>说明：</strong> 上面提到的re模块中的这些函数，实际开发中也可以用正则表达式对象的方法替代对这些函数的使用，如果一个正则表达式需要重复的使用，那么先通过compile函数编译正则表达式并创建出正则表达式对象无疑是更为明智的选择。</p>
+</blockquote>
+<p>下面我们通过一系列的例子来告诉大家在Python中如何使用正则表达式。</p>
+<h4 id="例子1：验证输入用户名和QQ号是否有效并给出对应的提示信息。"><a href="#例子1：验证输入用户名和QQ号是否有效并给出对应的提示信息。" class="headerlink" title="例子1：验证输入用户名和QQ号是否有效并给出对应的提示信息。"></a>例子1：验证输入用户名和QQ号是否有效并给出对应的提示信息。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">验证输入用户名和QQ号是否有效并给出对应的提示信息</span><br><span class="line"></span><br><span class="line">要求：用户名必须由字母、数字或下划线构成且长度在6~20个字符之间，QQ号是5~12的数字且首位不能为0</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    username &#x3D; input(&#39;请输入用户名: &#39;)</span><br><span class="line">    qq &#x3D; input(&#39;请输入QQ号: &#39;)</span><br><span class="line">    # match函数的第一个参数是正则表达式字符串或正则表达式对象</span><br><span class="line">    # 第二个参数是要跟正则表达式做匹配的字符串对象</span><br><span class="line">    m1 &#x3D; re.match(r&#39;^[0-9a-zA-Z_]&#123;6,20&#125;$&#39;, username)</span><br><span class="line">    if not m1:</span><br><span class="line">        print(&#39;请输入有效的用户名.&#39;)</span><br><span class="line">    m2 &#x3D; re.match(r&#39;^[1-9]\d&#123;4,11&#125;$&#39;, qq)</span><br><span class="line">    if not m2:</span><br><span class="line">        print(&#39;请输入有效的QQ号.&#39;)</span><br><span class="line">    if m1 and m2:</span><br><span class="line">        print(&#39;你输入的信息是有效的!&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>提示：</strong> 上面在书写正则表达式时使用了“原始字符串”的写法（在字符串前面加上了r），所谓“原始字符串”就是字符串中的每个字符都是它原始的意义，说得更直接一点就是字符串中没有所谓的转义字符啦。因为正则表达式中有很多元字符和需要进行转义的地方，如果不使用原始字符串就需要将反斜杠写作\，例如表示数字的\d得书写成\d，这样不仅写起来不方便，阅读的时候也会很吃力。</p>
+</blockquote>
+<h4 id="例子2：从一段文字中提取出国内手机号码。"><a href="#例子2：从一段文字中提取出国内手机号码。" class="headerlink" title="例子2：从一段文字中提取出国内手机号码。"></a>例子2：从一段文字中提取出国内手机号码。</h4><p>下面这张图是截止到2017年底，国内三家运营商推出的手机号段。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jackfrued/Python-100-Days/blob/master/Day01-15/res/tel-start-number.png"><img src="https://github.com/jackfrued/Python-100-Days/raw/master/Day01-15/res/tel-start-number.png" alt="img"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    # 创建正则表达式对象 使用了前瞻和回顾来保证手机号前后不应该出现数字</span><br><span class="line">    pattern &#x3D; re.compile(r&#39;(?&lt;&#x3D;\D)1[34578]\d&#123;9&#125;(?&#x3D;\D)&#39;)</span><br><span class="line">    sentence &#x3D; &#39;&#39;&#39;</span><br><span class="line">    重要的事情说8130123456789遍，我的手机号是13512346789这个靓号，</span><br><span class="line">    不是15600998765，也是110或119，王大锤的手机号才是15600998765。</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    # 查找所有匹配并保存到一个列表中</span><br><span class="line">    mylist &#x3D; re.findall(pattern, sentence)</span><br><span class="line">    print(mylist)</span><br><span class="line">    print(&#39;--------华丽的分隔线--------&#39;)</span><br><span class="line">    # 通过迭代器取出匹配对象并获得匹配的内容</span><br><span class="line">    for temp in pattern.finditer(sentence):</span><br><span class="line">        print(temp.group())</span><br><span class="line">    print(&#39;--------华丽的分隔线--------&#39;)</span><br><span class="line">    # 通过search函数指定搜索位置找出所有匹配</span><br><span class="line">    m &#x3D; pattern.search(sentence)</span><br><span class="line">    while m:</span><br><span class="line">        print(m.group())</span><br><span class="line">        m &#x3D; pattern.search(sentence, m.end())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>说明：</strong> 上面匹配国内手机号的正则表达式并不够好，因为像14开头的号码只有145或147，而上面的正则表达式并没有考虑这种情况，要匹配国内手机号，更好的正则表达式的写法是：<code>(?&lt;=\D)(1[38]\d&#123;9&#125;|14[57]\d&#123;8&#125;|15[0-35-9]\d&#123;8&#125;|17[678]\d&#123;8&#125;)(?=\D)</code>，国内最近好像有19和16开头的手机号了，但是这个暂时不在我们考虑之列。</p>
+</blockquote>
+<h4 id="例子3：替换字符串中的不良内容"><a href="#例子3：替换字符串中的不良内容" class="headerlink" title="例子3：替换字符串中的不良内容"></a>例子3：替换字符串中的不良内容</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    sentence &#x3D; &#39;你丫是傻叉吗? 我操你大爷的. Fuck you.&#39;</span><br><span class="line">    purified &#x3D; re.sub(&#39;[操肏艹]|fuck|shit|傻[比屄逼叉缺吊屌]|煞笔&#39;,</span><br><span class="line">                      &#39;*&#39;, sentence, flags&#x3D;re.IGNORECASE)</span><br><span class="line">    print(purified)  # 你丫是*吗? 我*你大爷的. * you.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>说明：</strong> re模块的正则表达式相关函数中都有一个flags参数，它代表了正则表达式的匹配标记，可以通过该标记来指定匹配时是否忽略大小写、是否进行多行匹配、是否显示调试信息等。如果需要为flags参数指定多个值，可以使用<a target="_blank" rel="noopener" href="http://www.runoob.com/python/python-operators.html#ysf5">按位或运算符</a>进行叠加，如<code>flags=re.I | re.M</code>。</p>
+</blockquote>
+<h4 id="例子4：拆分长字符串"><a href="#例子4：拆分长字符串" class="headerlink" title="例子4：拆分长字符串"></a>例子4：拆分长字符串</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    poem &#x3D; &#39;窗前明月光，疑是地上霜。举头望明月，低头思故乡。&#39;</span><br><span class="line">    sentence_list &#x3D; re.split(r&#39;[，。, .]&#39;, poem)</span><br><span class="line">    while &#39;&#39; in sentence_list:</span><br><span class="line">        sentence_list.remove(&#39;&#39;)</span><br><span class="line">    print(sentence_list)  # [&#39;窗前明月光&#39;, &#39;疑是地上霜&#39;, &#39;举头望明月&#39;, &#39;低头思故乡&#39;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h3 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h3><p>如果要从事爬虫类应用的开发，那么正则表达式一定是一个非常好的助手，因为它可以帮助我们迅速的从网页代码中发现某种我们指定的模式并提取出我们需要的信息，当然对于初学者来收，要编写一个正确的适当的正则表达式可能并不是一件容易的事情（当然有些常用的正则表达式可以直接在网上找找），所以实际开发爬虫应用的时候，有很多人会选择<a target="_blank" rel="noopener" href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>或<a target="_blank" rel="noopener" href="http://lxml.de/">Lxml</a>来进行匹配和信息的提取，前者简单方便但是性能较差，后者既好用性能也好，但是安装稍嫌麻烦，这些内容我们会在后期的爬虫专题中为大家介绍。</p>
+<p>100天学python，今天是第十二天</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/29/python%E5%AD%A6%E4%B9%A0-12-Days/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-每日leetcode-19-分发饼干" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/29/%E6%AF%8F%E6%97%A5leetcode-19-%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2/">每日leetcode-19-分发饼干</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/29/%E6%AF%8F%E6%97%A5leetcode-19-%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2/" class="archive-article-date">
+  	<time datetime="2020-10-29T02:39:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="分发饼干"><a href="#分发饼干" class="headerlink" title="分发饼干"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/assign-cookies/">分发饼干</a></h4><p>源自LeetCode: <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/assign-cookies/">https://leetcode-cn.com/problems/assign-cookies/</a></p>
+<hr>
+<p>假设你是一位很棒的家长，想要给你的孩子们一些小饼干。但是，每个孩子最多只能给一块饼干。</p>
+<p>对每个孩子 i，都有一个胃口值 g[i]，这是能让孩子们满足胃口的饼干的最小尺寸；并且每块饼干 j，都有一个尺寸 s[j] 。如果 s[j] &gt;= g[i]，我们可以将这个饼干 j 分配给孩子 i ，这个孩子会得到满足。你的目标是尽可能满足越多数量的孩子，并输出这个最大数值。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入: g &#x3D; [1,2,3], s &#x3D; [1,1]</span><br><span class="line">输出: 1</span><br><span class="line">解释: </span><br><span class="line">你有三个孩子和两块小饼干，3个孩子的胃口值分别是：1,2,3。</span><br><span class="line">虽然你有两块小饼干，由于他们的尺寸都是1，你只能让胃口值是1的孩子满足。</span><br><span class="line">所以你应该输出1。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入: g &#x3D; [1,2], s &#x3D; [1,2,3]</span><br><span class="line">输出: 2</span><br><span class="line">解释: </span><br><span class="line">你有两个孩子和三块小饼干，2个孩子的胃口值分别是1,2。</span><br><span class="line">你拥有的饼干数量和尺寸都足以让所有孩子满足。</span><br><span class="line">所以你应该输出2.</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<blockquote>
+<p>1 &lt;= g.length &lt;= 3 * 10[^4]<br>0 &lt;= s.length &lt;= 3 * 10[^4]<br>1 &lt;= g[i], s[j] &lt;= 2[^31] - 1</p>
+</blockquote>
+<hr>
+<p>题目给出的答题模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findContentChildren(vector&lt;int&gt;&amp; g, vector&lt;int&gt;&amp; s) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>先排序，然后用两个指针历遍即可，注意历遍完其中一个就行了</p>
+<p>下面给出我的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findContentChildren(vector&lt;int&gt;&amp; g, vector&lt;int&gt;&amp; s) &#123;</span><br><span class="line">        sort(g.begin(), g.end());    &#x2F;&#x2F; vector排序  sort()</span><br><span class="line">        sort(s.begin(), s.end());</span><br><span class="line">        int counts &#x3D; 0;</span><br><span class="line">        int j&#x3D;0;</span><br><span class="line">        for(int i&#x3D;0;i&lt;g.size();i++)&#123;</span><br><span class="line">            for(;j&lt;s.size();j++)&#123;</span><br><span class="line">                if(g[i]&lt;&#x3D;s[j])    &#x2F;&#x2F;胃口小于饼干</span><br><span class="line">                &#123;</span><br><span class="line">                    counts++;</span><br><span class="line">                    j++;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return counts;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>让我们康康别人是怎么做的吧</p>
+<hr>
+<p>作者：Smart_Shelly<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/assign-cookies/solution/455-jian-dan-tan-xin-de-fen-fa-bing-gan-by-smart_s/">https://leetcode-cn.com/problems/assign-cookies/solution/455-jian-dan-tan-xin-de-fen-fa-bing-gan-by-smart_s/</a><br>来源：力扣（LeetCode）</p>
+<p><img src="/2020/10/29/%E6%AF%8F%E6%97%A5leetcode-19-%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2/1603942149(1).jpg"></p>
+<p>给出C++的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int findContentChildren(vector&lt;int&gt;&amp; g, vector&lt;int&gt;&amp; s) &#123;</span><br><span class="line">	sort(g.begin(), g.end());</span><br><span class="line">	sort(s.begin(), s.end());</span><br><span class="line">	int i &#x3D; 0, j &#x3D; 0;</span><br><span class="line">	int result &#x3D; 0;</span><br><span class="line">	while (i !&#x3D; g.size() &amp;&amp; j !&#x3D; s.size())</span><br><span class="line">	&#123;</span><br><span class="line">		if (g[i] &lt;&#x3D; s[j])</span><br><span class="line">		&#123;</span><br><span class="line">			result++;</span><br><span class="line">			i++;</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">			j++;</span><br><span class="line">	&#125;</span><br><span class="line">	return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>莫名其妙使用了一次<code>贪心</code>？和我的代码差不多，不过这个代码好像优化更好</p>
+<hr>
+<p><strong>贪心</strong>（又多了个要学的内容）</p>
+<p>本题就到这里了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/29/%E6%AF%8F%E6%97%A5leetcode-19-%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-每日leetcode-18-Fizz-Buzz" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1064,316 +1514,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/24/%E6%AF%8F%E6%97%A5leetcode-14-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-每日leetcode-13-外观数列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/23/%E6%AF%8F%E6%97%A5leetcode-13-%E5%A4%96%E8%A7%82%E6%95%B0%E5%88%97/">每日leetcode-13-外观数列</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/23/%E6%AF%8F%E6%97%A5leetcode-13-%E5%A4%96%E8%A7%82%E6%95%B0%E5%88%97/" class="archive-article-date">
-  	<time datetime="2020-10-23T15:25:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="外观数列"><a href="#外观数列" class="headerlink" title="外观数列"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-and-say/">外观数列</a></h4><p>源自LeetCode: <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-and-say/">https://leetcode-cn.com/problems/count-and-say/</a></p>
-<p>问题描述:</p>
-<p>给定一个正整数 n（1 ≤ n ≤ 30），输出外观数列的第 n 项。</p>
-<p>注意：整数序列中的每一项将表示为一个字符串。</p>
-<p>「外观数列」是一个整数序列，从数字 1 开始，序列中的每一项都是对前一项的描述。前五项如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.     1</span><br><span class="line">2.     11</span><br><span class="line">3.     21</span><br><span class="line">4.     1211</span><br><span class="line">5.     111221</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>第一项是数字 1</p>
-<p>描述前一项，这个数是 1 即 “一个 1 ”，记作 11</p>
-<p>描述前一项，这个数是 11 即 “两个 1 ” ，记作 21</p>
-<p>描述前一项，这个数是 21 即 “一个 2 一个 1 ” ，记作 1211</p>
-<p>描述前一项，这个数是 1211 即 “一个 1 一个 2 两个 1 ” ，记作 111221</p>
-</blockquote>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 1</span><br><span class="line">输出: &quot;1&quot;</span><br><span class="line">解释：这是一个基本样例。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plain"><figcaption><span>3</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 4</span><br><span class="line">输出: &quot;1211&quot;</span><br><span class="line">解释：当 n &#x3D; 3 时，序列是 &quot;21&quot;，其中我们有 &quot;2&quot; 和 &quot;1&quot; 两组，&quot;2&quot; 可以读作 &quot;12&quot;，也就是出现频次 &#x3D; 1 而 值 &#x3D; 2；类似 &quot;1&quot; 可以读作 &quot;11&quot;。所以答案是 &quot;12&quot; 和 &quot;11&quot; 组合在一起，也就是 &quot;1211&quot;。</span><br></pre></td></tr></table></figure>
-
-<p>题目给出的答题模板</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string countAndSay(int n) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>弄两个<code>String</code>类变量，一个做中间变量，一个用来保存和返回，应该是要写两个循环的，大概的框架如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string countAndSay(int n) &#123;</span><br><span class="line">		string s1&#x3D;&quot;1&quot;;</span><br><span class="line">		string s2;</span><br><span class="line">		for(int i&#x3D;1;i&lt;&#x3D;n;i++)&#123;</span><br><span class="line">			s2&#x3D;&quot;&quot;;</span><br><span class="line">			for(int j&#x3D;0;s1[j];j++)&#123;</span><br><span class="line">				</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">			s1&#x3D;s2;</span><br><span class="line">		&#125;	</span><br><span class="line">		return s1; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>下面给出我的代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string countAndSay(int n) &#123;</span><br><span class="line">		string s1&#x3D;&quot;1&quot;;</span><br><span class="line">		string s2;</span><br><span class="line">		for(int i&#x3D;1;i&lt;n;i++)&#123;</span><br><span class="line">			s2&#x3D;&quot;&quot;;</span><br><span class="line">			for(int j&#x3D;0;s1[j];j++)&#123;</span><br><span class="line">				if(s1[j]!&#x3D;s1[j+1])</span><br><span class="line">				&#123;</span><br><span class="line">					s2+&#x3D;&#39;1&#39;;</span><br><span class="line">					s2&#x3D;s2+s1[j];</span><br><span class="line"></span><br><span class="line">				&#125;</span><br><span class="line">				else &#123;</span><br><span class="line">					int count&#x3D;1;</span><br><span class="line">					while(s1[j]&#x3D;&#x3D;s1[j+1])&#123;</span><br><span class="line">						j++;</span><br><span class="line">						count++;</span><br><span class="line">					&#125;</span><br><span class="line">					s2+&#x3D;std::to_string(count);</span><br><span class="line">					s2+&#x3D;s1[j];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			s1&#x3D;s2;</span><br><span class="line">		&#125;	</span><br><span class="line">		return s1; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>通过，不过这个效率真是低的可怜。</p>
-<p><code>std::to_string()</code>是将整数转换为<code>string</code>类</p>
-<blockquote>
-<p>.c++11标准增加了全局函数std::to_string:</p>
-<p>string to_string (int val);</p>
-<p>string to_string (long val);</p>
-<p>string to_string (long long val);</p>
-<p>string to_string (unsigned val);</p>
-<p>string to_string (unsigned long val);</p>
-<p>string to_string (unsigned long long val);</p>
-<p>string to_string (float val);</p>
-<p>string to_string (double val);</p>
-<p>string to_string (long double val);</p>
-</blockquote>
-<p><img src="/2020/10/23/%E6%AF%8F%E6%97%A5leetcode-13-%E5%A4%96%E8%A7%82%E6%95%B0%E5%88%97/1603469873(1).jpg"></p>
-<p>让我们康康别人是怎么做的吧</p>
-<hr>
-<p>作者：netcan<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-and-say/solution/die-dai-shuang-100-by-netcan/">https://leetcode-cn.com/problems/count-and-say/solution/die-dai-shuang-100-by-netcan/</a><br>来源：力扣（LeetCode）</p>
-<p>思路： 用迭代做。</p>
-<p>本题的题解如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string countAndSay(int n) &#123;</span><br><span class="line">        std::string ans &#x3D; &quot;1&quot;;</span><br><span class="line">        for (size_t i &#x3D; 1; i &lt; n; ++i) &#123;</span><br><span class="line">            std::string nxt &#x3D; &quot;&quot;;</span><br><span class="line">            int j &#x3D; 0;</span><br><span class="line">            for (int k &#x3D; 0; k &lt;&#x3D; ans.length(); ++k) &#123;</span><br><span class="line">                if (k &lt; ans.length() &amp;&amp; ans[k] &#x3D;&#x3D; ans[j]) continue;</span><br><span class="line">                else &#123;</span><br><span class="line">                    nxt.push_back(&#39;0&#39; + (k - j));</span><br><span class="line">                    nxt.push_back(ans[j]);</span><br><span class="line">                    j &#x3D; k;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            std::swap(nxt, ans);</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>效率如下：</p>
-<p><img src="/2020/10/23/%E6%AF%8F%E6%97%A5leetcode-13-%E5%A4%96%E8%A7%82%E6%95%B0%E5%88%97/1603471022(1).jpg"></p>
-<p><code>push_back()</code>函数：在<code>string</code>中最后插入一个字符</p>
-<p>我发现这个答案的框架和我的框架异常相似，不过是循环里面实现部分不一样，今天太晚了，明天我在研究一下。</p>
-<h3 id="又多了一个要学的内容，“迭代”"><a href="#又多了一个要学的内容，“迭代”" class="headerlink" title="又多了一个要学的内容，“迭代”"></a>又多了一个要学的内容，“迭代”</h3><hr>
-<p>本题就到这里了</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/23/%E6%AF%8F%E6%97%A5leetcode-13-%E5%A4%96%E8%A7%82%E6%95%B0%E5%88%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python学习-07-Days" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/23/python%E5%AD%A6%E4%B9%A0-07-Days/">python学习-07-Days</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/23/python%E5%AD%A6%E4%B9%A0-07-Days/" class="archive-article-date">
-  	<time datetime="2020-10-23T02:17:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Day-07-字符串和常用数据结构"><a href="#Day-07-字符串和常用数据结构" class="headerlink" title="Day 07 字符串和常用数据结构"></a>Day 07 <strong>字符串和常用数据结构</strong></h2><h2 id="串口和常用数据结构"><a href="#串口和常用数据结构" class="headerlink" title="串口和常用数据结构"></a>串口和常用数据结构</h2><p>所谓<strong>字符串</strong>，就是由零个或多个字符组成的有限序列。</p>
-<p>在Python程序中，如果我们把分开或多个字符用单引号或双引号包围起来，就可以表示一个字符串。</p>
-<p>举个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">s1 &#x3D; &#39;hello, world!&#39;</span><br><span class="line">s2 &#x3D; &quot;hello, world!&quot;</span><br><span class="line"># 以三个双引号或单引号开头的字符串可以折行</span><br><span class="line">s3 &#x3D; &quot;&quot;&quot;</span><br><span class="line">hello, </span><br><span class="line">world!</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">print(s1, s2, s3, end&#x3D;&#39;&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>可以在字符串中使用<code>\</code>（反斜杠）来表示转义，也就是说<code>\</code>后面的字符不再是它原来的意义，例如：<code>\n</code>不是代表反斜杠和字符n，而是表示换行；而<code>\t</code>也不是代表反斜杠和字符t，而是表示制表符。所以如果想在字符串中表示<code>&#39;</code>要写成<code>\&#39;</code>，同理想表示<code>\</code>要写成<code>\\</code>。</p>
-<p>在<code>\</code>后面还可以跟一个八进制或者十六进制数来表示字符，例如<code>\141</code>和<code>\x61</code>都代表小写字母<code>a</code>，前者是八进制的表示法，后者是十六进制的表示法。也可以在<code>\</code>后面跟Unicode字符编码来表示字符，例如<code>\u9a86\u660a</code>代表的是中文“骆昊”。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s1 &#x3D; &#39;\141\142\143\x61\x62\x63&#39;</span><br><span class="line">s2 &#x3D; &#39;\u9a86\u660a&#39;</span><br><span class="line">print(s1, s2)</span><br></pre></td></tr></table></figure>
-
-<p>和C语言的<code>ascii码</code>差不多?</p>
-<p>如果不希望字符串中的<code>\</code>表示转义，我们可以通过在字符串的最前面加上字母<code>r</code>来加以说明</p>
-<p>即<code>r&#39;内容&#39;</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s1 &#x3D; r&#39;\&#39;hello, world!\&#39;&#39;</span><br><span class="line">s2 &#x3D; r&#39;\n\\hello, world!\\\n&#39;</span><br><span class="line">print(s1, s2, end&#x3D;&#39;&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>Python为字符串类型提供了非常丰富的运算符，我们可以使用<code>+</code>运算符来实现字符串的拼接，可以使用<code>*</code>运算符来重复一个字符串的内容，可以使用<code>in</code>和<code>not in</code>来判断一个字符串是否包含另外一个字符串（成员运算），我们也可以用<code>[]</code>和<code>[:]</code>运算符从字符串取出某个字符或某些字符（切片运算），代码如下所示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">s1 &#x3D; &#39;hello &#39; * 3</span><br><span class="line">print(s1)   # hello hello hello </span><br><span class="line">s2 &#x3D; &#39;world&#39;</span><br><span class="line">s1 +&#x3D; s2</span><br><span class="line">print(s1)     # hello hello hello world</span><br><span class="line">print(&#39;ll&#39; in s1) #True</span><br><span class="line">print(&#39;good&#39; in s1) # False</span><br><span class="line">str2 &#x3D; &#39;abc123456&#39; </span><br><span class="line"># 从字符串中取出指定位置的字符(下标运算)</span><br><span class="line">print(str2[2]) # c  </span><br><span class="line"># 字符串切片(从指定的开始索引到指定的结束索引)</span><br><span class="line">print(str2[2:5]) # c12   左开右闭</span><br><span class="line">print(str2[2:]) # c123456   从左一直到右</span><br><span class="line">print(str2[2::2]) # c246     从左每次跳2</span><br><span class="line">print(str2[::2]) # ac246     从左每次跳2</span><br><span class="line">print(str2[::-1]) # 654321cba    从最后一位开始倒叙</span><br><span class="line">print(str2[-3:-1]) # 45          从到数第三位到到数第二位  左闭右开</span><br></pre></td></tr></table></figure>
-
-<p>在Python中，我们还可以通过一系列的方法来完成对字符串的处理，代码如下所示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">str1 &#x3D; &#39;hello, world!&#39;</span><br><span class="line"># 通过内置函数len计算字符串的长度</span><br><span class="line">print(len(str1)) # 13</span><br><span class="line"># 获得字符串首字母大写的拷贝</span><br><span class="line">print(str1.capitalize()) # Hello, world!</span><br><span class="line"># 获得字符串每个单词首字母大写的拷贝</span><br><span class="line">print(str1.title()) # Hello, World!</span><br><span class="line"># 获得字符串变大写后的拷贝</span><br><span class="line">print(str1.upper()) # HELLO, WORLD!</span><br><span class="line"># 从字符串中查找子串所在位置</span><br><span class="line">print(str1.find(&#39;or&#39;)) # 8</span><br><span class="line">print(str1.find(&#39;shit&#39;)) # -1</span><br><span class="line"># 与find类似但找不到子串时会引发异常</span><br><span class="line"># print(str1.index(&#39;or&#39;))</span><br><span class="line"># print(str1.index(&#39;shit&#39;))</span><br><span class="line"># 检查字符串是否以指定的字符串开头</span><br><span class="line">print(str1.startswith(&#39;He&#39;)) # False</span><br><span class="line">print(str1.startswith(&#39;hel&#39;)) # True</span><br><span class="line"># 检查字符串是否以指定的字符串结尾</span><br><span class="line">print(str1.endswith(&#39;!&#39;)) # True</span><br><span class="line"># 将字符串以指定的宽度居中并在两侧填充指定的字符</span><br><span class="line">print(str1.center(50, &#39;*&#39;))</span><br><span class="line"># 将字符串以指定的宽度靠右放置左侧填充指定的字符</span><br><span class="line">print(str1.rjust(50, &#39; &#39;))</span><br><span class="line"># 将字符串以指定的宽度靠左放置右侧填充指定的字符</span><br><span class="line">print(str1.ljust(50, &#39; &#39;))</span><br><span class="line">str2 &#x3D; &#39;abc123456&#39;</span><br><span class="line"># 检查字符串是否由数字构成</span><br><span class="line">print(str2.isdigit())  # False</span><br><span class="line"># 检查字符串是否以字母构成</span><br><span class="line">print(str2.isalpha())  # False</span><br><span class="line"># 检查字符串是否以数字和字母构成</span><br><span class="line">print(str2.isalnum())  # True</span><br><span class="line">str3 &#x3D; &#39;  abcde &#39;  # (  abcde )</span><br><span class="line">print(str3)</span><br><span class="line"># 获得字符串修剪左右两侧空格之后的拷贝</span><br><span class="line">print(str3.strip())             # (abcde)</span><br></pre></td></tr></table></figure>
-
-<p>我们之前讲过，可以用下面的方式来格式化输出字符串。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a, b &#x3D; 5, 10</span><br><span class="line">print(&#39;%d * %d &#x3D; %d&#39; % (a, b, a * b))</span><br></pre></td></tr></table></figure>
-
-<p>当然，我们也可以用字符串提供的方法来完成字符串的格式，代码如下所示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a, b &#x3D; 5, 10</span><br><span class="line">print(&#39;&#123;0&#125; * &#123;1&#125; &#x3D; &#123;2&#125;&#39;.format(a, b, a * b))</span><br></pre></td></tr></table></figure>
-
-<p>Python 3.6以后，格式化字符串还有更为简洁的书写方式，就是在字符串前加上字母<code>f</code>，我们可以使用下面的语法糖来简化上面的代码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a, b &#x3D; 5, 10</span><br><span class="line">print(f&#39;&#123;a&#125; * &#123;b&#125; &#x3D; &#123;a * b&#125;&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>除了字符串，Python还内置了多种类型的数据结构，如果要在程序中保存和操作数据，绝大多数时候可以利用现有的数据结构来实现，最常用的包括<code>列表</code>、<code>元组</code>、<code>集合</code>和<code>字典</code>。</p>
-<hr>
-<h3 id="使用列表"><a href="#使用列表" class="headerlink" title="使用列表"></a>使用列表</h3><p>不知道大家是否注意到，刚才我们讲到的字符串类型（<code>str</code>）和之前我们讲到的数值类型（<code>int</code>和<code>float</code>）有一些区别。数值类型是标量类型，也就是说这种类型的对象没有可以访问的内部结构；而字符串类型是一种结构化的、非标量类型，所以才会有一系列的属性和方法。接下来我们要介绍的列表（<code>list</code>），也是一种结构化的、非标量类型，它是值的有序序列，每个值都可以通过索引进行标识，定义列表可以将列表的元素放在<code>[]</code>中，多个元素用<code>,</code>进行分隔，可以使用<code>for</code>循环对列表元素进行遍历，也可以使用<code>[]</code>或<code>[:]</code>运算符取出列表中的一个或多个元素。</p>
-<p>下面的代码演示了如何定义列表、如何遍历列表以及列表的下标运算。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">list1 &#x3D; [1, 3, 5, 7, 100]</span><br><span class="line">print(list1) # [1, 3, 5, 7, 100]</span><br><span class="line"># 乘号表示列表元素的重复</span><br><span class="line">list2 &#x3D; [&#39;hello&#39;] * 3</span><br><span class="line">print(list2) # [&#39;hello&#39;, &#39;hello&#39;, &#39;hello&#39;]</span><br><span class="line"># 计算列表长度(元素个数)</span><br><span class="line">print(len(list1)) # 5</span><br><span class="line"># 下标(索引)运算</span><br><span class="line">print(list1[0]) # 1</span><br><span class="line">print(list1[4]) # 100</span><br><span class="line"># print(list1[5])  # IndexError: list index out of range</span><br><span class="line">print(list1[-1]) # 100</span><br><span class="line">print(list1[-3]) # 5</span><br><span class="line">list1[2] &#x3D; 300</span><br><span class="line">print(list1) # [1, 3, 300, 7, 100]</span><br><span class="line"># 通过循环用下标遍历列表元素</span><br><span class="line">for index in range(len(list1)):</span><br><span class="line">    print(list1[index])</span><br><span class="line"># 通过for循环遍历列表元素</span><br><span class="line">for elem in list1:</span><br><span class="line">    print(elem)</span><br><span class="line"># 通过enumerate函数处理列表之后再遍历可以同时获得元素索引和值</span><br><span class="line">for index, elem in enumerate(list1):</span><br><span class="line">    print(index, elem)</span><br></pre></td></tr></table></figure>
-
-<p>下面的代码演示了如何向列表中添加元素以及如何从列表中移除元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">list1 &#x3D; [1, 3, 5, 7, 100]</span><br><span class="line"># 添加元素,到最后一位</span><br><span class="line">list1.append(200)</span><br><span class="line"># 添加元素,到下表为1的位置</span><br><span class="line">list1.insert(1, 400)</span><br><span class="line"># 合并两个列表</span><br><span class="line"># list1.extend([1000, 2000])</span><br><span class="line">list1 +&#x3D; [1000, 2000]</span><br><span class="line">print(list1) # [1, 400, 3, 5, 7, 100, 200, 1000, 2000]</span><br><span class="line">print(len(list1)) # 9</span><br><span class="line"># 先通过成员运算判断元素是否在列表中，如果存在就删除该元素</span><br><span class="line">if 3 in list1:</span><br><span class="line">	list1.remove(3)</span><br><span class="line">if 1234 in list1:</span><br><span class="line">    list1.remove(1234)</span><br><span class="line">print(list1) # [1, 400, 5, 7, 100, 200, 1000, 2000]</span><br><span class="line"># 从指定的位置删除元素</span><br><span class="line">list1.pop(0)</span><br><span class="line">list1.pop(len(list1) - 1)</span><br><span class="line">print(list1) # [400, 5, 7, 100, 200, 1000]</span><br><span class="line"># 清空列表元素</span><br><span class="line">list1.clear()</span><br><span class="line">print(list1) # []</span><br></pre></td></tr></table></figure>
-
-<p>和字符串一样，列表也可以做切片操作，通过切片操作我们可以实现对列表的复制或者将列表中的一部分取出来创建出新的列表，代码如下所示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">fruits &#x3D; [&#39;grape&#39;, &#39;apple&#39;, &#39;strawberry&#39;, &#39;waxberry&#39;]</span><br><span class="line">fruits +&#x3D; [&#39;pitaya&#39;, &#39;pear&#39;, &#39;mango&#39;]</span><br><span class="line"># 列表切片，左闭右开</span><br><span class="line">fruits2 &#x3D; fruits[1:4]</span><br><span class="line">print(fruits2) # apple strawberry waxberry</span><br><span class="line"># 可以通过完整切片操作来复制列表</span><br><span class="line">fruits3 &#x3D; fruits[:]</span><br><span class="line">print(fruits3) # [&#39;grape&#39;, &#39;apple&#39;, &#39;strawberry&#39;, &#39;waxberry&#39;, &#39;pitaya&#39;, &#39;pear&#39;, &#39;mango&#39;]</span><br><span class="line"># 左开右闭</span><br><span class="line">fruits4 &#x3D; fruits[-3:-1]  </span><br><span class="line">print(fruits4) # [&#39;pitaya&#39;, &#39;pear&#39;]</span><br><span class="line"># 可以通过反向切片操作来获得倒转后的列表的拷贝</span><br><span class="line">fruits5 &#x3D; fruits[::-1]</span><br><span class="line">print(fruits5) # [&#39;mango&#39;, &#39;pear&#39;, &#39;pitaya&#39;, &#39;waxberry&#39;, &#39;strawberry&#39;, &#39;apple&#39;, &#39;grape&#39;]</span><br></pre></td></tr></table></figure>
-
-<p>下面的代码实现了对列表的排序操作。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">list1 &#x3D; [&#39;orange&#39;, &#39;apple&#39;, &#39;zoo&#39;, &#39;internationalization&#39;, &#39;blueberry&#39;]</span><br><span class="line">list2 &#x3D; sorted(list1)</span><br><span class="line"># sorted函数返回列表排序后的拷贝不会修改传入的列表</span><br><span class="line"># 函数的设计就应该像sorted函数一样尽可能不产生副作用</span><br><span class="line"># 按字母表反序输出</span><br><span class="line">list3 &#x3D; sorted(list1, reverse&#x3D;True)</span><br><span class="line"># 通过key关键字参数指定根据字符串长度进行排序而不是默认的字母表顺序</span><br><span class="line">list4 &#x3D; sorted(list1, key&#x3D;len)</span><br><span class="line">print(list1) </span><br><span class="line">print(list2)</span><br><span class="line">print(list3)</span><br><span class="line">print(list4)</span><br><span class="line"># 给列表对象发出排序消息直接在列表对象上进行排序</span><br><span class="line">list1.sort(reverse&#x3D;True) # 按字母表反序输出</span><br><span class="line">print(list1)</span><br></pre></td></tr></table></figure>
-
-<h3 id="生成式和生成器"><a href="#生成式和生成器" class="headerlink" title="生成式和生成器"></a>生成式和生成器</h3><p>我们还可以使用列表的生成式语法来创建列表，代码如下所示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">f &#x3D; [x for x in range(1, 10)]</span><br><span class="line">print(f)</span><br><span class="line">f &#x3D; [x + y for x in &#39;ABCDE&#39; for y in &#39;1234567&#39;]</span><br><span class="line">print(f)</span><br><span class="line"># 用列表的生成表达式语法创建列表容器</span><br><span class="line"># 用这种语法创建列表之后元素已经准备就绪所以需要耗费较多的内存空间</span><br><span class="line">f &#x3D; [x ** 2 for x in range(1, 1000)]</span><br><span class="line">print(sys.getsizeof(f))  # 查看对象占用内存的字节数</span><br><span class="line">print(f)</span><br><span class="line"># 请注意下面的代码创建的不是一个列表而是一个生成器对象</span><br><span class="line"># 通过生成器可以获取到数据但它不占用额外的空间存储数据</span><br><span class="line"># 每次需要数据的时候就通过内部的运算得到数据(需要花费额外的时间)</span><br><span class="line">f &#x3D; (x ** 2 for x in range(1, 1000))</span><br><span class="line">print(sys.getsizeof(f))  # 相比生成式生成器不占用存储数据的空间</span><br><span class="line">print(f)</span><br><span class="line">for val in f:</span><br><span class="line">    print(val)</span><br></pre></td></tr></table></figure>
-
-<p>除了上面提到的生成器语法，Python中还有另外一种定义生成器的方式，就是通过<code>yield</code>关键字将一个普通函数改造成生成器函数。下面的代码演示了如何实现一个生成<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97">斐波拉切数列</a>的生成器。所谓斐波拉切数列可以通过下面<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%80%92%E5%BD%92">递归</a>的方法来进行定义：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def fib(n):</span><br><span class="line">    a, b &#x3D; 0, 1</span><br><span class="line">    for _ in range(n):</span><br><span class="line">        a, b &#x3D; b, a + b</span><br><span class="line">        yield a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    for val in fib(20):</span><br><span class="line">        print(val)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="使用元组"><a href="#使用元组" class="headerlink" title="使用元组"></a>使用元组</h3><p>Python中的元组与列表类似也是一种容器数据类型，可以用一个变量（对象）来存储多个数据，不同之处在于元组的元素不能修改，在前面的代码中我们已经不止一次使用过元组了。顾名思义，我们把多个元素组合到一起就形成了一个元组，所以它和列表一样可以保存多条数据。下面的代码演示了如何定义和使用元组。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># 定义元组</span><br><span class="line">t &#x3D; (&#39;骆昊&#39;, 38, True, &#39;四川成都&#39;)</span><br><span class="line">print(t)</span><br><span class="line"># 获取元组中的元素</span><br><span class="line">print(t[0])</span><br><span class="line">print(t[3])</span><br><span class="line"># 遍历元组中的值</span><br><span class="line">for member in t:</span><br><span class="line">    print(member)</span><br><span class="line"># 重新给元组赋值</span><br><span class="line"># t[0] &#x3D; &#39;王大锤&#39;  # TypeError</span><br><span class="line"># 变量t重新引用了新的元组原来的元组将被垃圾回收</span><br><span class="line">t &#x3D; (&#39;王大锤&#39;, 20, True, &#39;云南昆明&#39;)</span><br><span class="line">print(t)</span><br><span class="line"># 将元组转换成列表</span><br><span class="line">person &#x3D; list(t)</span><br><span class="line">print(person)</span><br><span class="line"># 列表是可以修改它的元素的</span><br><span class="line">person[0] &#x3D; &#39;李小龙&#39;</span><br><span class="line">person[1] &#x3D; 25</span><br><span class="line">print(person)</span><br><span class="line"># 将列表转换成元组</span><br><span class="line">fruits_list &#x3D; [&#39;apple&#39;, &#39;banana&#39;, &#39;orange&#39;]</span><br><span class="line">fruits_tuple &#x3D; tuple(fruits_list)</span><br><span class="line">print(fruits_tuple)</span><br></pre></td></tr></table></figure>
-
-<p>这里有一个非常值得探讨的问题，我们已经有了列表这种数据结构，为什么还需要元组这样的类型呢？</p>
-<ol>
-<li>元组中的元素是无法修改的，事实上我们在项目中尤其是<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/%E5%A4%9A%E7%BA%BF%E7%A8%8B">多线程</a>环境（后面会讲到）中可能更喜欢使用的是那些不变对象（一方面因为对象状态不能修改，所以可以避免由此引起的不必要的程序错误，简单的说就是一个不变的对象要比可变的对象更加容易维护；另一方面因为没有任何一个线程能够修改不变对象的内部状态，一个不变对象自动就是线程安全的，这样就可以省掉处理同步化的开销。一个不变对象可以方便的被共享访问）。所以结论就是：如果不需要对元素进行添加、删除、修改的时候，可以考虑使用元组，当然如果一个方法要返回多个值，使用元组也是不错的选择。</li>
-<li>元组在创建时间和占用的空间上面都优于列表。我们可以使用sys模块的getsizeof函数来检查存储同样的元素的元组和列表各自占用了多少内存空间，这个很容易做到。我们也可以在ipython中使用魔法指令%timeit来分析创建同样内容的元组和列表所花费的时间。</li>
-</ol>
-<hr>
-<h3 id="使用集合"><a href="#使用集合" class="headerlink" title="使用集合"></a>使用集合</h3><p>Python中的集合跟数学上的集合是一致的，不允许有重复元素，而且可以进行交集、并集、差集等运算。</p>
-<p>可以按照下面代码所示的方式来创建和使用集合。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 创建集合的字面量语法</span><br><span class="line">set1 &#x3D; &#123;1, 2, 3, 3, 3, 2&#125;</span><br><span class="line">print(set1)</span><br><span class="line">print(&#39;Length &#x3D;&#39;, len(set1))</span><br><span class="line"># 创建集合的构造器语法(面向对象部分会进行详细讲解)</span><br><span class="line">set2 &#x3D; set(range(1, 10))</span><br><span class="line">set3 &#x3D; set((1, 2, 3, 3, 2, 1))</span><br><span class="line">print(set2, set3)</span><br><span class="line"># 创建集合的推导式语法(推导式也可以用于推导集合)</span><br><span class="line">set4 &#x3D; &#123;num for num in range(1, 100) if num % 3 &#x3D;&#x3D; 0 or num % 5 &#x3D;&#x3D; 0&#125;</span><br><span class="line">print(set4)</span><br></pre></td></tr></table></figure>
-
-<p>向集合添加元素和从集合删除元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 增加</span><br><span class="line">set1.add(4)</span><br><span class="line">set1.add(5)</span><br><span class="line">set2.update([11, 12])</span><br><span class="line"># 减少</span><br><span class="line">set2.discard(5)</span><br><span class="line">if 4 in set2:</span><br><span class="line">    set2.remove(4)</span><br><span class="line">print(set1, set2)</span><br><span class="line">print(set3.pop())</span><br><span class="line">print(set3)</span><br></pre></td></tr></table></figure>
-
-<p>集合的成员、交集、并集、差集等运算。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 集合的交集、并集、差集、对称差运算</span><br><span class="line">print(set1 &amp; set2)</span><br><span class="line"># print(set1.intersection(set2))</span><br><span class="line">print(set1 | set2)</span><br><span class="line"># print(set1.union(set2))</span><br><span class="line">print(set1 - set2)</span><br><span class="line"># print(set1.difference(set2))</span><br><span class="line">print(set1 ^ set2)</span><br><span class="line"># print(set1.symmetric_difference(set2))</span><br><span class="line"># 判断子集和超集</span><br><span class="line">print(set2 &lt;&#x3D; set1)</span><br><span class="line"># print(set2.issubset(set1))</span><br><span class="line">print(set3 &lt;&#x3D; set1)</span><br><span class="line"># print(set3.issubset(set1))</span><br><span class="line">print(set1 &gt;&#x3D; set2)</span><br><span class="line"># print(set1.issuperset(set2))</span><br><span class="line">print(set1 &gt;&#x3D; set3)</span><br><span class="line"># print(set1.issuperset(set3))</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong>说明：</strong> Python中允许通过一些特殊的方法来为某种类型或数据结构自定义运算符（后面的章节中会讲到），上面的代码中我们对集合进行运算的时候可以调用集合对象的方法，也可以直接使用对应的运算符，例如<code>&amp;</code>运算符跟intersection方法的作用就是一样的，但是使用运算符让代码更加直观。</p>
-</blockquote>
-<hr>
-<h3 id="使用字典"><a href="#使用字典" class="headerlink" title="使用字典"></a>使用字典</h3><p>字典是另一种可变容器模型，Python中的字典跟我们生活中使用的字典是一样一样的，它可以存储任意类型对象，与列表、集合不同的是，字典的每个元素都是由一个键和一个值组成的“键值对”，键和值通过冒号分开。下面的代码演示了如何定义和使用字典。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"># 创建字典的字面量语法</span><br><span class="line">scores &#x3D; &#123;&#39;骆昊&#39;: 95, &#39;白元芳&#39;: 78, &#39;狄仁杰&#39;: 82&#125;</span><br><span class="line">print(scores)</span><br><span class="line"># 创建字典的构造器语法</span><br><span class="line">items1 &#x3D; dict(one&#x3D;1, two&#x3D;2, three&#x3D;3, four&#x3D;4)</span><br><span class="line"># 通过zip函数将两个序列压成字典</span><br><span class="line">items2 &#x3D; dict(zip([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], &#39;123&#39;))</span><br><span class="line"># 创建字典的推导式语法</span><br><span class="line">items3 &#x3D; &#123;num: num ** 2 for num in range(1, 10)&#125;</span><br><span class="line">print(items1, items2, items3)</span><br><span class="line"># 通过键可以获取字典中对应的值</span><br><span class="line">print(scores[&#39;骆昊&#39;])</span><br><span class="line">print(scores[&#39;狄仁杰&#39;])</span><br><span class="line"># 对字典中所有键值对进行遍历</span><br><span class="line">for key in scores:</span><br><span class="line">    print(f&#39;&#123;key&#125;: &#123;scores[key]&#125;&#39;)</span><br><span class="line"># 更新字典中的元素</span><br><span class="line">scores[&#39;白元芳&#39;] &#x3D; 65</span><br><span class="line">scores[&#39;诸葛王朗&#39;] &#x3D; 71</span><br><span class="line">scores.update(冷面&#x3D;67, 方启鹤&#x3D;85)</span><br><span class="line">print(scores)</span><br><span class="line">if &#39;武则天&#39; in scores:</span><br><span class="line">    print(scores[&#39;武则天&#39;])</span><br><span class="line">print(scores.get(&#39;武则天&#39;))</span><br><span class="line"># get方法也是通过键获取对应的值但是可以设置默认值</span><br><span class="line">print(scores.get(&#39;武则天&#39;, 60))</span><br><span class="line"># 删除字典中的元素</span><br><span class="line">print(scores.popitem())</span><br><span class="line">print(scores.popitem())</span><br><span class="line">print(scores.pop(&#39;骆昊&#39;, 100))</span><br><span class="line"># 清空字典</span><br><span class="line">scores.clear()</span><br><span class="line">print(scores)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><h4 id="练习1：在屏幕上显示跑马灯文字。"><a href="#练习1：在屏幕上显示跑马灯文字。" class="headerlink" title="练习1：在屏幕上显示跑马灯文字。"></a>练习1：在屏幕上显示跑马灯文字。</h4><p>给出我的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    content &#x3D; &#39;北京欢迎你，为你开天辟地......&#39;</span><br><span class="line">    while True:</span><br><span class="line">        os.system(&#39;cls&#39;)</span><br><span class="line">        print(content)</span><br><span class="line">        time.sleep(0.2)</span><br><span class="line">        content &#x3D; content[1:] + content[0]  # 字符串的切片运算</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__&#x3D;&#x3D;&#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<h4 id="练习2：设计一个函数产生指定长度的验证码，验证码由大小写字母和数字构成。"><a href="#练习2：设计一个函数产生指定长度的验证码，验证码由大小写字母和数字构成。" class="headerlink" title="练习2：设计一个函数产生指定长度的验证码，验证码由大小写字母和数字构成。"></a>练习2：设计一个函数产生指定长度的验证码，验证码由大小写字母和数字构成。</h4><p>给出我的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def generate_code(code_len&#x3D;4):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    生成指定长度的验证码</span><br><span class="line"></span><br><span class="line">    :param code_len: 验证码的长度(默认4个字符)</span><br><span class="line"></span><br><span class="line">    :return: 由大小写英文字母和数字构成的随机验证码</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    all_chars &#x3D; &#39;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span><br><span class="line">    last_pos &#x3D; len(all_chars) - 1</span><br><span class="line">    code &#x3D; &#39;&#39;</span><br><span class="line">    for _ in range(code_len):</span><br><span class="line">        index &#x3D; random.randint(0, last_pos)</span><br><span class="line">        code +&#x3D; all_chars[index]</span><br><span class="line">    return code</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="练习3：设计一个函数返回给定文件名的后缀名。"><a href="#练习3：设计一个函数返回给定文件名的后缀名。" class="headerlink" title="练习3：设计一个函数返回给定文件名的后缀名。"></a>练习3：设计一个函数返回给定文件名的后缀名。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">def get_suffix(filename,has_dot &#x3D; False):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    获取文件名的后缀名</span><br><span class="line"></span><br><span class="line">    :param filename: 文件名</span><br><span class="line">    :param has_dot: 返回的后缀名是否需要带点</span><br><span class="line">    :return: 文件的后缀名</span><br><span class="line">    &quot;&quot;&quot; </span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    rfind() 返回字符串最后一次出现的索引，如果没有匹配项则返回-1</span><br><span class="line">    find() 返回字符串第一次出现的索引，如果没有匹配项则返回-1</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    </span><br><span class="line">    pos &#x3D; filename.rfind(&#39;.&#39;)</span><br><span class="line">    if 0 &lt; pos &lt; len(filename) - 1:</span><br><span class="line">        index &#x3D; pos if has_dot else pos +1</span><br><span class="line">        return filename[index:]</span><br><span class="line">    else:</span><br><span class="line">        return &#39;&#39;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    name &#x3D; input(&#39;请输入文件名：&#39;)</span><br><span class="line">    print(get_suffix(name,True))</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="练习4：设计一个函数返回传入的列表中最大和第二大的元素的值。"><a href="#练习4：设计一个函数返回传入的列表中最大和第二大的元素的值。" class="headerlink" title="练习4：设计一个函数返回传入的列表中最大和第二大的元素的值。"></a>练习4：设计一个函数返回传入的列表中最大和第二大的元素的值。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def max2(x):</span><br><span class="line">    m1,m2 &#x3D; (x[0],x[1]) if x[0]&gt;x[1] else (x[1],x[0])</span><br><span class="line">    for index in range(2,len(x)):</span><br><span class="line">        if x[index]&gt;m1:</span><br><span class="line">            m2 &#x3D; m1</span><br><span class="line">            m1 &#x3D; x[index]</span><br><span class="line">        elif x[index] &gt; m2:</span><br><span class="line">            m2 &#x3D; x[index]</span><br><span class="line">    return m1,m2</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    x&#x3D;[1,3,5,7,100,200,50]</span><br><span class="line">    print(max2(x))</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="练习5：计算指定的年月日是这一年的第几天。"><a href="#练习5：计算指定的年月日是这一年的第几天。" class="headerlink" title="练习5：计算指定的年月日是这一年的第几天。"></a>练习5：计算指定的年月日是这一年的第几天。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">def is_leap_year(year):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    判断指定的年份是不是闰年</span><br><span class="line"></span><br><span class="line">    :param year: 年份</span><br><span class="line">    :return: 闰年返回True平年返回False</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    return year % 4 &#x3D;&#x3D; 0 and year % 100 !&#x3D;0 or year % 400 &#x3D;&#x3D;0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def which_day(year, month, date):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    计算传入的日期是这一年的第几天</span><br><span class="line"></span><br><span class="line">    :param year: 年</span><br><span class="line">    :param month: 月</span><br><span class="line">    :param date: 日</span><br><span class="line">    :return: 第几天</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    # 下面这个元组最后的[]代表用哪个，is_leap_year(year)返回值是 0或1 </span><br><span class="line">    days_of_moth &#x3D; [</span><br><span class="line">        [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], </span><br><span class="line">        [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],</span><br><span class="line">    ][is_leap_year(year)]</span><br><span class="line"></span><br><span class="line">    total &#x3D; 0</span><br><span class="line">    for index in range(month - 1):</span><br><span class="line">        total +&#x3D; days_of_moth[index]</span><br><span class="line">    return total + date</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    print(which_day(1980, 11, 28))</span><br><span class="line">    print(which_day(1981, 12, 31))</span><br><span class="line">    print(which_day(2018, 1, 1))</span><br><span class="line">    print(which_day(2016, 3, 1))</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="练习6：打印杨辉三角。"><a href="#练习6：打印杨辉三角。" class="headerlink" title="练习6：打印杨辉三角。"></a>练习6：打印<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%E5%BD%A2">杨辉三角</a>。</h4><p>参考答案：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def main():</span><br><span class="line">    num &#x3D; int(input(&#39;Number of rows: &#39;))</span><br><span class="line">    yh &#x3D; [[]] * num</span><br><span class="line">    for row in range(len(yh)):</span><br><span class="line">        yh[row] &#x3D; [None] * (row + 1)</span><br><span class="line">        for col in range(len(yh[row])):</span><br><span class="line">            if col &#x3D;&#x3D; 0 or col &#x3D;&#x3D; row:</span><br><span class="line">                yh[row][col] &#x3D; 1</span><br><span class="line">            else:</span><br><span class="line">                yh[row][col] &#x3D; yh[row - 1][col] + yh[row - 1][col - 1]</span><br><span class="line">            print(yh[row][col], end&#x3D;&#39;\t&#39;)</span><br><span class="line">        print()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>在 <a target="_blank" rel="noopener" href="http://c.biancheng.net/python/">Python</a> 中，有一个特殊的常量 None（N 必须大写）。和 False 不同，它不表示 0，也不表示空字符串，而表示没有值，也就是空值。</p>
-</blockquote>
-<hr>
-<h3 id="综合案例"><a href="#综合案例" class="headerlink" title="综合案例"></a>综合案例</h3><h4 id="案例1：双色球选号。"><a href="#案例1：双色球选号。" class="headerlink" title="案例1：双色球选号。"></a>案例1：双色球选号。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">from random import randrange, randint, sample</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def display(balls):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    输出列表中的双色球号码</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    for index, ball in enumerate(balls):</span><br><span class="line">        if index &#x3D;&#x3D; len(balls) - 1:</span><br><span class="line">            print(&#39;|&#39;, end&#x3D;&#39; &#39;)</span><br><span class="line">        print(&#39;%02d&#39; % ball, end&#x3D;&#39; &#39;)</span><br><span class="line">    print()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def random_select():</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    随机选择一组号码</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    red_balls &#x3D; [x for x in range(1, 34)]</span><br><span class="line">    selected_balls &#x3D; []</span><br><span class="line">    selected_balls &#x3D; sample(red_balls, 6)</span><br><span class="line">    selected_balls.sort()</span><br><span class="line">    selected_balls.append(randint(1, 16))</span><br><span class="line">    return selected_balls</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    n &#x3D; int(input(&#39;机选几注: &#39;))</span><br><span class="line">    for _ in range(n):</span><br><span class="line">        display(random_select())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong>说明：</strong> 上面使用random模块的sample函数来实现从列表中选择不重复的n个元素。</p>
-</blockquote>
-<hr>
-<h4 id="综合案例2：约瑟夫环问题。"><a href="#综合案例2：约瑟夫环问题。" class="headerlink" title="综合案例2：约瑟夫环问题。"></a>综合案例2：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BA%A6%E7%91%9F%E5%A4%AB%E6%96%AF%E9%97%AE%E9%A2%98">约瑟夫环问题</a>。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">《幸运的基督徒》</span><br><span class="line">有15个基督徒和15个非基督徒在海上遇险，为了能让一部分人活下来不得不将其中15个人扔到海里面去，有个人想了个办法就是大家围成一个圈，由某个人开始从1报数，报到9的人就扔到海里面，他后面的人接着从1开始报数，报到9的人继续扔到海里面，直到扔掉15个人。由于上帝的保佑，15个基督徒都幸免于难，问这些人最开始是怎么站的，哪些位置是基督徒哪些位置是非基督徒。</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    persons &#x3D; [True] * 30</span><br><span class="line">    counter, index, number &#x3D; 0, 0, 0</span><br><span class="line">    while counter &lt; 15:</span><br><span class="line">        if persons[index]:</span><br><span class="line">            number +&#x3D; 1</span><br><span class="line">            if number &#x3D;&#x3D; 9:</span><br><span class="line">                persons[index] &#x3D; False</span><br><span class="line">                counter +&#x3D; 1</span><br><span class="line">                number &#x3D; 0</span><br><span class="line">        index +&#x3D; 1</span><br><span class="line">        index %&#x3D; 30</span><br><span class="line">    for person in persons:</span><br><span class="line">        print(&#39;基&#39; if person else &#39;非&#39;, end&#x3D;&#39;&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="综合案例3：井字棋游戏。"><a href="#综合案例3：井字棋游戏。" class="headerlink" title="综合案例3：井字棋游戏。"></a>综合案例3：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BA%95%E5%AD%97%E6%A3%8B">井字棋</a>游戏。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def print_board(board):</span><br><span class="line">    print(board[&#39;TL&#39;] + &#39;|&#39; + board[&#39;TM&#39;] + &#39;|&#39; + board[&#39;TR&#39;])</span><br><span class="line">    print(&#39;-+-+-&#39;)</span><br><span class="line">    print(board[&#39;ML&#39;] + &#39;|&#39; + board[&#39;MM&#39;] + &#39;|&#39; + board[&#39;MR&#39;])</span><br><span class="line">    print(&#39;-+-+-&#39;)</span><br><span class="line">    print(board[&#39;BL&#39;] + &#39;|&#39; + board[&#39;BM&#39;] + &#39;|&#39; + board[&#39;BR&#39;])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    init_board &#x3D; &#123;</span><br><span class="line">        &#39;TL&#39;: &#39; &#39;, &#39;TM&#39;: &#39; &#39;, &#39;TR&#39;: &#39; &#39;,</span><br><span class="line">        &#39;ML&#39;: &#39; &#39;, &#39;MM&#39;: &#39; &#39;, &#39;MR&#39;: &#39; &#39;,</span><br><span class="line">        &#39;BL&#39;: &#39; &#39;, &#39;BM&#39;: &#39; &#39;, &#39;BR&#39;: &#39; &#39;</span><br><span class="line">    &#125;</span><br><span class="line">    begin &#x3D; True</span><br><span class="line">    while begin:</span><br><span class="line">        curr_board &#x3D; init_board.copy()</span><br><span class="line">        begin &#x3D; False</span><br><span class="line">        turn &#x3D; &#39;x&#39;</span><br><span class="line">        counter &#x3D; 0</span><br><span class="line">        os.system(&#39;clear&#39;)</span><br><span class="line">        print_board(curr_board)</span><br><span class="line">        while counter &lt; 9:</span><br><span class="line">            move &#x3D; input(&#39;轮到%s走棋, 请输入位置: &#39; % turn)</span><br><span class="line">            if curr_board[move] &#x3D;&#x3D; &#39; &#39;:</span><br><span class="line">                counter +&#x3D; 1</span><br><span class="line">                curr_board[move] &#x3D; turn</span><br><span class="line">                if turn &#x3D;&#x3D; &#39;x&#39;:</span><br><span class="line">                    turn &#x3D; &#39;o&#39;</span><br><span class="line">                else:</span><br><span class="line">                    turn &#x3D; &#39;x&#39;</span><br><span class="line">            os.system(&#39;clear&#39;)</span><br><span class="line">            print_board(curr_board)</span><br><span class="line">        choice &#x3D; input(&#39;再玩一局?(yes|no)&#39;)</span><br><span class="line">        begin &#x3D; choice &#x3D;&#x3D; &#39;yes&#39;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong>说明：</strong> 最后这个案例来自<a target="_blank" rel="noopener" href="https://item.jd.com/11943853.html">《Python编程快速上手:让繁琐工作自动化》</a>一书（这本书对有编程基础想迅速使用Python将日常工作自动化的人来说还是不错的选择），对代码做了一点点的调整。</p>
-</blockquote>
-<hr>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>字符串的定义：<code>s1 = &#39;hello &#39;</code></p>
-<p>列表  <code>list1 = [1, 3, 5, 7, 100]</code></p>
-<p>元组 <code>t = (&#39;骆昊&#39;, 38, True, &#39;四川成都&#39;)</code></p>
-<p>集合 <code>set1 = &#123;1, 2, 3, 3, 3, 2&#125;</code></p>
-<p>字典 <code>scores = &#123;&#39;骆昊&#39;: 95, &#39;白元芳&#39;: 78, &#39;狄仁杰&#39;: 82&#125;</code></p>
-<p><code>items1 = dict(one=1, two=2, three=3, four=4)</code></p>
-<p><code>items2 = dict(zip([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], &#39;123&#39;))</code></p>
-<hr>
-<p>这两天是怎么回事啊，怎么感觉画风突变啊，咋感觉突然变得好难了，今天知识点很多，练习题也很多，做法也让我眼花缭乱，明天继续加油吧！</p>
-<p><strong>100天学python，今天是第七天</strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/23/python%E5%AD%A6%E4%B9%A0-07-Days/">展开全文 >></a>
         </p>
       
 

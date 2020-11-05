@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>python学习-14-Days | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/page/4/index.html">
+  <meta name="description" content="Day 14 网络编程入门计算机网络基础计算机网络是独立自主的计算机互连互联的系统的总称，组建计算机网络最主要的目的是实现多台计算机之间的通信和资源共享。今天计算机网络中的设备和计算机网络的用户已经多得不可计数，而计算机网络也可以称得上是一个“复杂巨系统”，对于这样的系统，我们不可能用一两篇文章把它讲清楚，有兴趣的读者可以自行阅读Andrew S.Tanenbaum老师的经典之作作《计算机网络》或">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python学习-14-Days">
+<meta property="og:url" content="http://example.com/2020/11/05/python%E5%AD%A6%E4%B9%A0-14-Days/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Day 14 网络编程入门计算机网络基础计算机网络是独立自主的计算机互连互联的系统的总称，组建计算机网络最主要的目的是实现多台计算机之间的通信和资源共享。今天计算机网络中的设备和计算机网络的用户已经多得不可计数，而计算机网络也可以称得上是一个“复杂巨系统”，对于这样的系统，我们不可能用一两篇文章把它讲清楚，有兴趣的读者可以自行阅读Andrew S.Tanenbaum老师的经典之作作《计算机网络》或">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2020/11/05/python%E5%AD%A6%E4%B9%A0-14-Days/TCP-IP.jpg">
+<meta property="article:published_time" content="2020-11-05T02:01:53.000Z">
+<meta property="article:modified_time" content="2020-11-05T15:00:50.424Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2020/11/05/python%E5%AD%A6%E4%B9%A0-14-Days/TCP-IP.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,295 +156,192 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-python学习-14-Days" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python学习-14-Days
+    </h1>
+  
+
+        
+        <a href="/2020/11/05/python%E5%AD%A6%E4%B9%A0-14-Days/" class="archive-article-date">
+  	<time datetime="2020-11-05T02:01:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-05</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Day-14-网络编程入门"><a href="#Day-14-网络编程入门" class="headerlink" title="Day 14 网络编程入门"></a>Day 14 网络编程入门</h2><h3 id="计算机网络基础"><a href="#计算机网络基础" class="headerlink" title="计算机网络基础"></a>计算机网络基础</h3><p>计算机网络是独立自主的计算机互连互联的系统的总称，<strong>组建计算机网络最主要的目的是实现多台计算机之间的通信和资源共享</strong>。今天计算机网络中的设备和计算机网络的用户已经多得不可计数，而计算机网络也可以称得上是一个“复杂巨系统”，对于这样的系统，我们不可能用一两篇文章把它讲清楚，有兴趣的读者可以自行阅读Andrew S.Tanenbaum老师的经典之作作《计算机网络》或Kurose和Ross老师合着的《计算机网络：自顶向下方法》来了解计算机网络的相关知识。</p>
+<hr>
+<h4 id="计算机网络发展史"><a href="#计算机网络发展史" class="headerlink" title="计算机网络发展史"></a>计算机网络发展史</h4><ol>
+<li>1960年代-美国国防部ARPANET项目问世，曾经有分组交换网络的基础。</li>
+<li>1980年代-国际标准化组织（ISO）发布OSI / RM，扩展了网络技术标准化的基础。</li>
+<li>20世纪90年代-英国人<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%8F%90%E5%A7%86%C2%B7%E6%9F%8F%E5%85%A7%E8%8C%B2-%E6%9D%8E">蒂姆·伯纳斯-李</a>总部办公楼了图形化的浏览器，浏览器的简单易用性使得计算机网络迅速被普及。</li>
+</ol>
+<hr>
+<h4 id="TCP-IP模型"><a href="#TCP-IP模型" class="headerlink" title="TCP / IP模型"></a>TCP / IP模型</h4><p>实现网络通信的基础是<strong>网络通信协议</strong>，这些协议通常的英文由<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E5%B7%A5%E7%A8%8B%E4%BB%BB%E5%8A%A1%E7%BB%84">互联网工程任务组</a>（IETF）制定的。所谓“协议”就是通信计算机双方必须共同遵从的一组约定，例如怎样建立连接，怎样互相识别等，，网络协议的三要素是：语法，语义和顺序。构成我们今天使用的Internet的基础的是<strong>TCP / IP协议族</strong>，所谓协议族就是一系列的协议及其构成的通信模型，我们通常也把这套东西称为<strong>TCP / IP模型</strong>。与国际标准化组织发布的OSI / RM这个七层模型不同，TCP / IP是一个四层模型，即，该模型将我们使用的网络从逻辑上分解为四一个层次，自底向上依次是：网络接口层，网络层，传输层和应用层</p>
+<p><strong>TCP / IP 四层模型</strong></p>
+<p><img src="/2020/11/05/python%E5%AD%A6%E4%B9%A0-14-Days/TCP-IP.jpg"></p>
+<p><strong>IP</strong>通常被翻译为<strong>网际协议</strong>，它<strong>服务于网络层</strong>，主要实现了<strong>寻址和路由</strong>的功能。接入网络的每一台主机都需要有自己的IP地址，IP地址就是主机在计算机网络上的<strong>身份标识</strong>。当然由于IPv4地址的匮乏，我们平常在家里、办公室以及其他可以接入网络的公共区域上网时获得的IP地址并不是全球唯一的IP地址，而是一个<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/%E5%B1%80%E5%9F%9F%E7%BD%91">局域网（LAN）</a>中的内部IP地址，通过<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2">网络地址转换（NAT）服务</a>我们也可以实现对网络的访问。计算机网络上有大量的被我们称为“<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%B7%AF%E7%94%B1%E5%99%A8">路由器</a>”的网络中继设备，它们会<strong>存储转发我们发送到网络上的数据分组</strong>，让从源头发出的数据最终能够找到<strong>传送</strong>到目的地通路，这项功能就是所谓的路由。</p>
+<p>TCP全称<strong>传输控制协议</strong>，它是基于IP提供的寻址和路由服务而建立起来的负责<strong>实现端到端可靠传输的协议</strong>，之所以将TCP称为可靠的传输协议是因为TCP向调用者<strong>承诺</strong>了三件事情：</p>
+<ol>
+<li>数据不传丢不传错（利用握手、校验和重传机制可以实现）。</li>
+<li>流量控制（通过滑动窗口匹配数据发送者和接收者之间的传输速度）。</li>
+<li>拥塞控制（通过RTT时间以及对滑动窗口的控制缓解网络拥堵）。</li>
+</ol>
+<hr>
+<h4 id="网络应用模式"><a href="#网络应用模式" class="headerlink" title="网络应用模式"></a>网络应用模式</h4><ol>
+<li>C/S模式和B/S模式。这里的C指的是Client（客户端），通常是一个需要安装到某个宿主操作系统上的应用程序；而B指的是Browser（浏览器），它几乎是所有图形化操作系统都默认安装了的一个应用软件；通过C或B都可以实现对S（服务器）的访问。关于二者的比较和讨论在网络上有一大堆的文章，在此我们就不再浪费笔墨了。</li>
+<li>去中心化的网络应用模式。不管是B/S还是C/S都需要服务器的存在，服务器就是整个应用模式的中心，而去中心化的网络应用通常没有固定的服务器或者固定的客户端，所有应用的使用者既可以作为资源的提供者也可以作为资源的访问者。</li>
+</ol>
+<hr>
+<h3 id="基于HTTP协议的网络资源访问"><a href="#基于HTTP协议的网络资源访问" class="headerlink" title="基于HTTP协议的网络资源访问"></a>基于HTTP协议的网络资源访问</h3><h4 id="HTTP（超文本传输协议）"><a href="#HTTP（超文本传输协议）" class="headerlink" title="HTTP（超文本传输协议）"></a>HTTP（超文本传输协议）</h4><p>HTTP是超文本传输协议（Hyper-Text Transfer Proctol）的简称，维基百科上对HTTP的解释是：超文本传输协议是一种用于分布式、协作式和超媒体信息系统的应用层协议，它是<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%85%A8%E7%90%83%E8%B3%87%E8%A8%8A%E7%B6%B2">万维网</a>数据通信的基础，设计HTTP最初的目的是为了提供一种发布和接收<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTML">HTML</a>页面的方法，通过HTTP或者<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE">HTTPS</a>（超文本传输安全协议）请求的资源由URI（<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%B5%B1%E4%B8%80%E8%B3%87%E6%BA%90%E6%A8%99%E8%AD%98%E7%AC%A6">统一资源标识符</a>）来标识。关于HTTP的更多内容，我们推荐阅读阮一峰老师的<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2016/08/http.html">《HTTP 协议入门》</a>，简单的说，通过HTTP我们可以获取网络上的（基于字符的）资源，开发中经常会用到的网络API（有的地方也称之为网络数据接口）就是基于HTTP来实现数据传输的。</p>
+<hr>
+<h4 id="JSON格式"><a href="#JSON格式" class="headerlink" title="JSON格式"></a>JSON格式</h4><p><strong>JSON</strong>（<strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation）是一种轻量级的数据交换语言，该语言以易于让人阅读的文字（纯文本）为基础，用来传输由属性值或者序列性的值组成的数据对象。尽管JSON是最初只是Javascript中一种创建对象的字面量语法，但它在当下更是一种独立于语言的数据格式，很多编程语言都支持JSON格式数据的生成和解析，Python内置的json模块也提供了这方面的功能。由于JSON是纯文本，它和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/XML">XML</a>一样都适用于异构系统之间的数据交换，而相较于XML，JSON显得更加的轻便和优雅。下面是表达同样信息的XML和JSON，而JSON的优势是相当直观的。</p>
+<hr>
+<p>100天学python，今天是<strong>第十四天</strong></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/18/%E6%AF%8F%E6%97%A5leetcode-8-%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E9%95%BF%E5%BA%A6/" class="archive-article-date">
-  	<time datetime="2020-10-18T05:20:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/18/%E6%AF%8F%E6%97%A5leetcode-8-%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E9%95%BF%E5%BA%A6/">每日leetcode-8-最后一个单词的长度</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/11/05/python%E5%AD%A6%E4%B9%A0-14-Days/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/18/python%E5%AD%A6%E4%B9%A0-02-Days/" class="archive-article-date">
-  	<time datetime="2020-10-18T03:09:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-18</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/11/05/%E6%AF%8F%E6%97%A5leetcode-26-%E5%AE%8C%E7%BE%8E%E6%95%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          每日leetcode-26-完美数
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/11/04/%E6%AF%8F%E6%97%A5leetcode-25-%E6%89%BE%E4%B8%8D%E5%90%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">每日leetcode-25-找不同</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/18/python%E5%AD%A6%E4%B9%A0-02-Days/">python学习-02-Days</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/17/%E6%AF%8F%E6%97%A5leetcode-7-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/" class="archive-article-date">
-  	<time datetime="2020-10-17T05:48:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/17/%E6%AF%8F%E6%97%A5leetcode-7-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/">每日leetcode-7-删除排序数组中的重复项</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/17/python%E5%AD%A6%E4%B9%A0-01-Days/" class="archive-article-date">
-  	<time datetime="2020-10-17T03:43:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/17/python%E5%AD%A6%E4%B9%A0-01-Days/">python学习-01-Days</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/16/%E6%AF%8F%E6%97%A5leetcode-6-%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/" class="archive-article-date">
-  	<time datetime="2020-10-16T03:49:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/16/%E6%AF%8F%E6%97%A5leetcode-6-%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/">每日leetcode-6-整数反转</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%B9%BF%E4%B9%89%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2020-10-15T14:32:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%B9%BF%E4%B9%89%E8%A1%A8/">数据结构（c-语言描述）第五章-广义表</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%95%B0%E7%BB%84%E5%92%8C%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5/" class="archive-article-date">
-  	<time datetime="2020-10-15T13:46:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%95%B0%E7%BB%84%E5%92%8C%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5/">数据结构（c-语言描述）第四章-数组和特殊矩阵</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/15/%E6%AF%8F%E6%97%A5leetcode-5-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" class="archive-article-date">
-  	<time datetime="2020-10-15T02:15:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/15/%E6%AF%8F%E6%97%A5leetcode-5-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">每日leetcode-5-两数之和</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%89%E7%AB%A0-%E4%B8%B2/" class="archive-article-date">
-  	<time datetime="2020-10-14T14:27:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88c-%E8%AF%AD%E8%A8%80%E6%8F%8F%E8%BF%B0%EF%BC%89%E7%AC%AC%E4%B8%89%E7%AB%A0-%E4%B8%B2/">数据结构（c++语言描述）第三章_串</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/" class="archive-article-date">
-  	<time datetime="2020-10-14T06:47:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/14/%E6%AF%8F%E6%97%A5leetcode-4-2%E7%9A%84%E5%B9%82/">每日leetcode-4-2的幂</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/5/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -462,8 +365,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
